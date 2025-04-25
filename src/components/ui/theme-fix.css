@@ -1,0 +1,189 @@
+/* Theme Fix CSS - Light/Dark Mode Contrast */
+
+/* Card backgrounds with proper contrast */
+.about-card,
+.experience-card,
+.blog-card {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Skills cards - different background */
+.skills-card {
+  background-color: #f9f5ff !important; /* Light purple tint */
+  border-color: #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+:root.dark .about-card,
+.dark .about-card,
+html.dark .about-card,
+:root.dark .experience-card,
+.dark .experience-card,
+html.dark .experience-card,
+:root.dark .blog-card,
+.dark .blog-card,
+html.dark .blog-card {
+  background-color: #27272a !important; /* Slightly lighter than page bg */
+  border-color: #3f3f46 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+:root.dark .skills-card,
+.dark .skills-card,
+html.dark .skills-card {
+  background-color: #2e2a36 !important; /* Dark purple tint */
+  border-color: #3f3f46 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Sections background with alternating colors */
+section {
+  background-color: #ffffff !important;
+}
+
+section:nth-of-type(even) {
+  background-color: #fafafa !important;
+}
+
+:root.dark section,
+.dark section,
+html.dark section {
+  background-color: #18181b !important;
+}
+
+:root.dark section:nth-of-type(even),
+.dark section:nth-of-type(even),
+html.dark section:nth-of-type(even) {
+  background-color: #1a1a1f !important;
+}
+
+/* Navigation with proper contrast */
+nav {
+  background-color: #ffffff !important;
+}
+
+:root.dark nav,
+.dark nav,
+html.dark nav {
+  background-color: #18181b !important;
+}
+
+/* Fix purple elements */
+button[class*="bg-purple"] {
+  background-color: #9333ea !important;
+}
+
+div[class*="bg-purple-100"] {
+  background-color: #f3e8ff !important;
+}
+
+:root.dark div[class*="dark:bg-purple-900"],
+.dark div[class*="dark:bg-purple-900"],
+html.dark div[class*="dark:bg-purple-900"] {
+  background-color: #581c87 !important;
+}
+
+/* Card icon containers with proper coloring */
+.rounded-full:not(.profile-container) {
+  background-color: #f3e8ff !important;
+}
+
+:root.dark .rounded-full:not(.profile-container),
+.dark .rounded-full:not(.profile-container),
+html.dark .rounded-full:not(.profile-container) {
+  background-color: #581c87 !important;
+}
+
+/* Profile image specific styles */
+.profile-container {
+  border-color: #9333ea !important;
+  overflow: hidden !important;
+}
+
+:root.dark .profile-container,
+.dark .profile-container,
+html.dark .profile-container {
+  border-color: #a855f7 !important;
+}
+
+/* Fix profile image opacity issue */
+.profile-image,
+.profile-container img,
+img.profile-image,
+:root.dark .profile-image,
+.dark .profile-image,
+html.dark .profile-image {
+  opacity: 1 !important;
+  object-fit: cover !important;
+  filter: none !important;
+}
+
+/* Fix HTML root element for dark theme */
+:root.dark,
+html.dark,
+.dark {
+  background-color: #18181b !important;
+  color-scheme: dark;
+}
+
+:root:not(.dark),
+html:not(.dark) {
+  background-color: #ffffff !important;
+  color-scheme: light;
+}
+
+/* Reset mobile menu */
+html:not(.dark) .md\:hidden {
+  background-color: #ffffff !important;
+}
+
+/* Enhanced card fixes */
+html:not(.dark) [class*="rounded-lg"] {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.dark [class*="rounded-lg"],
+html.dark [class*="rounded-lg"],
+:root.dark [class*="rounded-lg"] {
+  background-color: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+}
+
+/* Ensure dark theme cards have appropriate background */
+.dark [class*="dark:bg-zinc"],
+html.dark [class*="dark:bg-zinc"],
+:root.dark [class*="dark:bg-zinc"] {
+  background-color: #27272a !important;
+}
+
+/* Fix any remaining card elements */
+.card,
+[class*="card"],
+[class*="-card"] {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.dark .card,
+html.dark .card,
+:root.dark .card,
+.dark [class*="card"],
+html.dark [class*="card"],
+:root.dark [class*="card"],
+.dark [class*="-card"],
+html.dark [class*="-card"],
+:root.dark [class*="-card"] {
+  background-color: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}

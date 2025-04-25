@@ -1,0 +1,173 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "experience": "Experiência",
+    "skills": "Habilidades",
+    "blog": "Blog"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "title": "Renan Rambul",
+    "subtitle": "Desenvolvedor de Software",
+    "cta": "Entre em contato"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "content": "Sou um desenvolvedor de software apaixonado com experiência na construção de aplicações web modernas. Gosto de resolver problemas complexos e criar interfaces amigáveis.",
+    "personal": {
+      "title": "Pessoal",
+      "content": "Apaixonado por criar interfaces amigáveis e resolver problemas complexos"
+    },
+    "technical": {
+      "title": "Técnico",
+      "content": "Experiente em tecnologias web modernas e melhores práticas"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "content": "Fluente em inglês e português, permitindo comunicação eficaz entre fronteiras"
+    }
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "jobTitle": "Cargo",
+    "company": "Empresa",
+    "period": "Período",
+    "location": "Localização",
+    "responsibilities": "Responsabilidades",
+    "companies": {
+      "tas": {
+        "title": "Engenheiro Frontend",
+        "responsibilities": [
+          "Desenvolvimento de novas funcionalidades da plataforma, com foco no frontend",
+          "Criação de novos componentes seguindo o Design System da empresa, priorizando performance, acessibilidade, testes unitários e documentação com Storybook",
+          "Refatoração de funcionalidades existentes para utilizar os novos componentes, realização de testes e implementação de melhorias de acessibilidade",
+          "Trabalho principalmente com Web Components, utilizando Lit e TypeScript"
+        ],
+        "skills": [
+          "Lit",
+          "Web Components",
+          "TypeScript",
+          "Storybook",
+          "Acessibilidade"
+        ]
+      },
+      "freelance": {
+        "title": "Engenheiro Frontend",
+        "responsibilities": [
+          "Desenvolvimento do frontend de uma aplicação para curso pré-vestibular com gerenciamento de alunos, atividades, usuários, turmas e modelos de atividade",
+          "Criação de landing pages voltadas para captação de alunos, com foco em performance, responsividade e conversão",
+          "Implementação de UI usando React.js, Ant Design para componentes, React Query para data fetching e cache, e React Hook Form para formulários",
+          "Documentação de componentes usando Storybook e aplicação de arquitetura baseada em Domain-Driven Design"
+        ],
+        "skills": [
+          "React.js",
+          "Ant Design",
+          "React Query",
+          "React Hook Form",
+          "Storybook",
+          "CSS",
+          "TypeScript"
+        ]
+      },
+      "bymycell": {
+        "title": "Engenheiro de Software",
+        "responsibilities": [
+          "Atuação como desenvolvedor full stack em startup de biotecnologia, desenvolvendo funcionalidades para projeto de análise de amostras de solo usando React.js, Tailwind CSS e React Query",
+          "Desenvolvimento do sistema de administração de fluxo de trabalho para análises de laboratório, trabalhando tanto no frontend (React.js) quanto no backend (Express.js)",
+          "Refatoração e migração de backend legado para novos projetos com arquitetura baseada em Domain-Driven Design, resultando em código mais manutenível e testável",
+          "Implementação de testes unitários e de integração com Jest e Supertest, e manutenção de aplicação legada desenvolvida com Svelte.js"
+        ],
+        "skills": [
+          "React.js",
+          "Express.js",
+          "MySQL",
+          "TypeORM",
+          "Prisma",
+          "Docker",
+          "Tailwind CSS",
+          "Svelte.js",
+          "Jest",
+          "Supertest",
+          "React Query"
+        ]
+      },
+      "take": {
+        "title": "Engenheiro Frontend",
+        "responsibilities": [
+          "Contribuição chave na implementação frontend do sistema de backoffice da empresa para gerenciamento de pedidos, estoque, usuários, dashboards e telemetria de coolers usando React.js, Material UI, Redux e Clean Architecture",
+          "Manutenção e correção do frontend legado desenvolvido em Angular",
+          "Participação ativa no desenvolvimento de projetos para clientes internacionais usando React.js, Ant Design, Context API, React Hook Form e React Query",
+          "Implementação de testes end-to-end com Cypress, integração de ferramentas de monitoramento como Microsoft Clarity, uso de bibliotecas de gráficos SVG como Recharts e documentação de componentes com Storybook"
+        ],
+        "skills": [
+          "React.js",
+          "AWS Amplify",
+          "Material UI",
+          "Redux",
+          "Angular",
+          "Ant Design",
+          "Cypress",
+          "Recharts",
+          "Clean Architecture",
+          "Context API",
+          "React Hook Form",
+          "React Query",
+          "Storybook"
+        ]
+      },
+      "suave": {
+        "title": "Desenvolvedor Full Stack",
+        "responsibilities": [
+          "Desenvolvimento de landing pages e implementação de novas funcionalidades em sites de clientes usando Next.js",
+          "Construção de agregador de links para redes sociais usando Express.js, MySQL e React.js",
+          "Realização de análises e otimizações de SEO em sites de clientes, com foco em performance e aumento de conversões"
+        ],
+        "skills": [
+          "React.js",
+          "Next.js",
+          "Express.js",
+          "MySQL",
+          "SEO",
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ]
+      }
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Ferramentas",
+    "languages": "Linguagens"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Confira meus artigos e pensamentos mais recentes sobre desenvolvimento de software",
+    "readMore": "Leia Mais",
+    "publishedOn": "Publicado em"
+  },
+  "footer": {
+    "about": "Sobre",
+    "aboutText": "Um desenvolvedor apaixonado por criar interfaces amigáveis e resolver problemas complexos.",
+    "social": "Social",
+    "links": "Links Rápidos",
+    "aboutLink": "Sobre",
+    "experienceLink": "Experiência",
+    "skillsLink": "Habilidades",
+    "contact": "Contato",
+    "contactText": "Sinta-se à vontade para entrar em contato se tiver alguma pergunta ou oportunidade.",
+    "copyright": "Todos os direitos reservados."
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "language": {
+    "english": "Inglês",
+    "portuguese": "Português"
+  }
+}

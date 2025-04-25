@@ -1,0 +1,173 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "blog": "Blog"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "title": "Renan Rambul",
+    "subtitle": "Software Developer",
+    "cta": "Get in touch"
+  },
+  "about": {
+    "title": "About Me",
+    "content": "I am a passionate software developer with experience in building modern web applications. I enjoy solving complex problems and creating user-friendly interfaces.",
+    "personal": {
+      "title": "Personal",
+      "content": "Passionate about creating user-friendly interfaces and solving complex problems"
+    },
+    "technical": {
+      "title": "Technical",
+      "content": "Experienced in modern web technologies and best practices"
+    },
+    "languages": {
+      "title": "Languages",
+      "content": "Fluent in English and Portuguese, enabling effective communication across borders"
+    }
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "jobTitle": "Job Title",
+    "company": "Company",
+    "period": "Period",
+    "location": "Location",
+    "responsibilities": "Responsibilities",
+    "companies": {
+      "tas": {
+        "title": "Frontend Engineer",
+        "responsibilities": [
+          "Developing new platform features with a focus on frontend",
+          "Creating new components following the company Design System, prioritizing performance, accessibility, unit tests, and Storybook documentation",
+          "Refactoring existing features to use new components, testing, and implementing accessibility improvements",
+          "Working primarily with Web Components using Lit and TypeScript"
+        ],
+        "skills": [
+          "Lit",
+          "Web Components",
+          "TypeScript",
+          "Storybook",
+          "Accessibility"
+        ]
+      },
+      "freelance": {
+        "title": "Frontend Engineer",
+        "responsibilities": [
+          "Developed frontend for a pre-university course application with student management, activities, users, classes, activity models, and exams",
+          "Created landing pages focused on student acquisition with emphasis on performance, responsiveness, and conversion",
+          "Implemented UI using React.js, Ant Design for components, React Query for data fetching and caching, and React Hook Form for forms management",
+          "Documented components using Storybook and applied Domain-Driven Design architecture"
+        ],
+        "skills": [
+          "React.js",
+          "Ant Design",
+          "React Query",
+          "React Hook Form",
+          "Storybook",
+          "CSS",
+          "TypeScript"
+        ]
+      },
+      "bymycell": {
+        "title": "Software Engineer",
+        "responsibilities": [
+          "Worked as a full stack developer at a biotech startup, developing features for a soil sample analysis results project using React.js, Tailwind CSS, and React Query",
+          "Developed the laboratory workflow administration system for analysis, working on both frontend (React.js) and backend (Express.js)",
+          "Refactored and migrated legacy backend to new projects with Domain-Driven Design architecture, resulting in more maintainable and testable code",
+          "Implemented unit and integration tests with Jest and Supertest, and maintained a legacy application developed with Svelte.js"
+        ],
+        "skills": [
+          "React.js",
+          "Express.js",
+          "MySQL",
+          "TypeORM",
+          "Prisma",
+          "Docker",
+          "Tailwind CSS",
+          "Svelte.js",
+          "Jest",
+          "Supertest",
+          "React Query"
+        ]
+      },
+      "take": {
+        "title": "Frontend Engineer",
+        "responsibilities": [
+          "Key contributor to the frontend implementation of the company's backoffice system for managing orders, inventory, users, dashboards, and cooler telemetry using React.js, Material UI, Redux, and Clean Architecture",
+          "Maintained and fixed legacy frontend built with Angular",
+          "Actively participated in developing projects for international clients using React.js, Ant Design, Context API, React Hook Form, and React Query",
+          "Implemented end-to-end tests with Cypress, integrated monitoring tools like Microsoft Clarity, used SVG chart libraries like Recharts, and documented components with Storybook"
+        ],
+        "skills": [
+          "React.js",
+          "AWS Amplify",
+          "Material UI",
+          "Redux",
+          "Angular",
+          "Ant Design",
+          "Cypress",
+          "Recharts",
+          "Clean Architecture",
+          "Context API",
+          "React Hook Form",
+          "React Query",
+          "Storybook"
+        ]
+      },
+      "suave": {
+        "title": "Full Stack Developer",
+        "responsibilities": [
+          "Developed landing pages and implemented new features for client websites using Next.js",
+          "Built a social media link aggregator using Express.js, MySQL, and React.js",
+          "Performed SEO analysis and optimizations on client sites with a focus on performance and conversion rate improvements"
+        ],
+        "skills": [
+          "React.js",
+          "Next.js",
+          "Express.js",
+          "MySQL",
+          "SEO",
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ]
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools",
+    "languages": "Languages"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Check out my latest articles and thoughts on software development",
+    "readMore": "Read More",
+    "publishedOn": "Published on"
+  },
+  "footer": {
+    "about": "About",
+    "aboutText": "A developer passionate about creating user-friendly interfaces and solving complex problems.",
+    "social": "Social",
+    "links": "Quick Links",
+    "aboutLink": "About",
+    "experienceLink": "Experience",
+    "skillsLink": "Skills",
+    "contact": "Contact",
+    "contactText": "Feel free to reach out if you have any questions or opportunities.",
+    "copyright": "All rights reserved."
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "english": "English",
+    "portuguese": "Portuguese"
+  }
+}

@@ -1,0 +1,31 @@
+HOW TO DOWNLOAD COMPANY LOGOS
+
+To use the real company logos from LinkedIn in your portfolio, follow these steps:
+
+1. Download the logos from these LinkedIn URLs by right-clicking and saving the images:
+
+   - Translational Analytics & Statistics:
+     https://media.licdn.com/dms/image/v2/D4D0BAQEqWAFPJH9ZMw/company-logo_200_200/company-logo_200_200/0/1695994679049/translational_analytics_statistics_logo?e=1750896000&v=beta&t=-wLzkp9Gyyi6M9xiv1S0xT7KBLpv8P5k3tYH7wxkZZo
+     Save as: /public/company-logos/tas-logo.jpeg
+
+   - ByMyCell:
+     https://media.licdn.com/dms/image/v2/D4D0BAQGb1YY7k295HA/company-logo_200_200/company-logo_200_200/0/1708536898968/bymycell_logo?e=1750896000&v=beta&t=wXVUAZ-4aNiwoVEbi-DhUBJmIvSYPQvuq79WIXP_JXQ
+     Save as: /public/company-logos/bymycell-logo.jpeg
+
+   - Take:
+     https://media.licdn.com/dms/image/v2/D4D0BAQGc94i7z0CapA/company-logo_200_200/company-logo_200_200/0/1663187393346/takeandgoapp_logo?e=1750896000&v=beta&t=TtxBsT32y02QVbrxEQxS1h9s0G9YwHov4_0YvqlBvUs
+     Save as: /public/company-logos/take-logo.jpeg
+
+   - Suave:
+     https://media.licdn.com/dms/image/v2/D4D0BAQHUO4ycIK6kcg/company-logo_200_200/company-logo_200_200/0/1703067897659/suavecomunicaoemarketing_logo?e=1750896000&v=beta&t=R2hWeDGRzE1gWhjW9JeP3KO9pVSJKPOnctXTEnhM-Bo
+     Save as: /public/company-logos/suave-logo.jpeg
+
+2. Make sure the images are saved with the exact names used in the Experience.tsx file:
+   - tas-logo.jpeg
+   - bymycell-logo.jpeg
+   - take-logo.jpeg
+   - suave-logo.jpeg
+
+3. After downloading the images, the portfolio will automatically display them in the experience section.
+
+Note: LinkedIn image URLs expire over time, so it's important to save these locally in your project. 
