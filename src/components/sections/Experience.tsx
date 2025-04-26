@@ -201,7 +201,7 @@ export function Experience() {
                   {exp.skills.map((skill: string, skillIdx: number) => (
                     <span
                       key={skillIdx}
-                      className="px-3 py-1 bg-purple-300 dark:bg-purple-900/30 text-purple-900 dark:text-purple-300 text-xs rounded-full"
+                      className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs rounded-full font-medium"
                     >
                       {skill}
                     </span>
