@@ -16,25 +16,7 @@ export function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  // Force document to have the theme class
-  useEffect(() => {
-    if (mounted && theme) {
-      document.documentElement.classList.remove("light", "dark");
-      document.documentElement.classList.add(
-        theme === "dark" ? "dark" : "light"
-      );
-
-      // Force all card backgrounds
-      if (theme === "light") {
-        document.documentElement.style.backgroundColor = "#ffffff";
-        document.body.style.backgroundColor = "#ffffff";
-      } else {
-        document.documentElement.style.backgroundColor = "";
-        document.body.style.backgroundColor = "";
-      }
-    }
-  }, [theme, mounted]);
-
+  // Don't render anything until mounted to prevent hydration mismatch
   if (!mounted) {
     return null;
   }

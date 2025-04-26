@@ -2,24 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
 export function Footer() {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const bgStyle = {
-    backgroundColor:
-      mounted && resolvedTheme === "dark" ? "rgba(24, 24, 27, 0.3)" : "#ffffff",
-  };
 
   const scrollToSection = (sectionId: string) => {
     // Handle home section specially (scroll to top)
@@ -39,10 +25,7 @@ export function Footer() {
   };
 
   return (
-    <footer
-      className="py-12 footer-section relative"
-      style={{ ...bgStyle, zIndex: 10 }}
-    >
+    <footer className="py-12 footer-section relative bg-white dark:bg-zinc-900/30 z-10">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
