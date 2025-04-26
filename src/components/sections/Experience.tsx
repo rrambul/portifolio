@@ -105,17 +105,51 @@ export function Experience() {
             {t("title")}
           </motion.h2>
 
-          <div className="space-y-10">
+          <div className="space-y-10 relative">
+            {/* Timeline vertical line */}
+            <motion.div
+              className="absolute left-5 top-0 bottom-0 w-0.5 bg-purple-200 dark:bg-purple-900/50"
+              style={{
+                height: "calc(100% - 50px)",
+                marginTop: "25px",
+              }}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+
             {experiences.map((exp, idx) => (
               <motion.div
                 key={idx}
                 variants={item}
-                className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+                className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer relative ml-10"
                 whileHover={{
                   boxShadow:
                     "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
                 }}
               >
+                {/* Timeline node */}
+                <div className="absolute -left-12 top-6 w-4 h-4 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-400 dark:border-purple-700 flex items-center justify-center z-10">
+                  <motion.div
+                    className="w-1.5 h-1.5 bg-purple-600 dark:bg-purple-400 rounded-full"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + idx * 0.1 }}
+                  />
+                </div>
+
+                {/* Timeline connector line */}
+                <motion.div
+                  className="absolute -left-8 top-8 h-0.5 bg-purple-300 dark:bg-purple-800"
+                  style={{ width: "8px" }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
+                />
+
                 <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-zinc-700 flex items-center justify-center border border-gray-200 dark:border-zinc-600">
