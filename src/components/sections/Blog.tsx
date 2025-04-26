@@ -115,10 +115,12 @@ export function Blog() {
                   </p>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline"
+                    className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline group"
                   >
-                    <span className="mr-1">{t("readMore")}</span>
-                    <FiArrowRight className="h-4 w-4" />
+                    <span className="mr-1 group-hover:mr-2 transition-all duration-300">
+                      {t("readMore")}
+                    </span>
+                    <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </motion.div>

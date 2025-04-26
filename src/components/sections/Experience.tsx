@@ -108,9 +108,10 @@ export function Experience() {
           <div className="space-y-10 relative">
             {/* Timeline vertical line that grows as you scroll */}
             <motion.div
-              className="absolute left-5 top-0 w-0.5 bg-purple-200 dark:bg-purple-900/50 origin-top"
+              className="absolute left-5 top-0 w-1 origin-top shadow-md"
               style={{
                 height: "calc(100% - 40px)",
+                backgroundColor: "#8b5cf6", // Explicit purple color for all themes
               }}
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: [0, 0.3, 0.6, 1] }}
@@ -129,9 +130,13 @@ export function Experience() {
                 }}
               >
                 {/* Timeline node with sequential animation */}
-                <div className="absolute -left-12 top-6 w-4 h-4 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-400 dark:border-purple-700 flex items-center justify-center z-10">
+                <div
+                  className="absolute -left-12 top-6 w-4 h-4 rounded-full bg-white dark:bg-zinc-800 border-2 flex items-center justify-center z-10"
+                  style={{ borderColor: "#8b5cf6" }} // Explicit purple border color
+                >
                   <motion.div
-                    className="w-1.5 h-1.5 bg-purple-600 dark:bg-purple-400 rounded-full"
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: "#8b5cf6" }} // Explicit purple color
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
@@ -141,8 +146,8 @@ export function Experience() {
 
                 {/* Timeline connector line with sequential animation */}
                 <motion.div
-                  className="absolute -left-8 top-8 h-0.5 bg-purple-300 dark:bg-purple-800"
-                  style={{ width: "8px" }}
+                  className="absolute -left-8 top-8 h-1"
+                  style={{ width: "8px", backgroundColor: "#8b5cf6" }} // Explicit purple color
                   initial={{ scaleX: 0, originX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-30% 0px -30% 0px" }}

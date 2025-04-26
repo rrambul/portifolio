@@ -74,7 +74,7 @@ export function CircularCarousel({
     <div className="flex justify-center items-center py-8">
       <div
         ref={containerRef}
-        className="w-[300px] h-[300px] relative touch-none cursor-grab active:cursor-grabbing"
+        className="w-[350px] h-[350px] relative touch-none cursor-grab active:cursor-grabbing"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}

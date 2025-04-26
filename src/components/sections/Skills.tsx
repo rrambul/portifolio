@@ -215,7 +215,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-20 bg-white dark:bg-zinc-900/30 relative overflow-hidden"
+      className="pt-20 bg-white dark:bg-zinc-900/30 relative overflow-hidden"
     >
       {/* Section-specific particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -240,7 +240,7 @@ export function Skills() {
           <div>
             {/* Frontend Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
                 {t("frontend")}
               </h3>
               <CircularCarousel
@@ -253,7 +253,7 @@ export function Skills() {
 
             {/* Backend Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
                 {t("backend")}
               </h3>
               <CircularCarousel
@@ -266,7 +266,7 @@ export function Skills() {
 
             {/* Tools Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
                 {t("tools")}
               </h3>
               <CircularCarousel

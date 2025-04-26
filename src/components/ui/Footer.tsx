@@ -42,11 +42,8 @@ export function Footer() {
                   href="https://github.com/RenanRSilva"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
-                    display: "inline-block",
-                    padding: "8px",
-                    color: "#666",
-                    cursor: "pointer",
                     position: "relative",
                     zIndex: 51,
                   }}
@@ -60,11 +57,8 @@ export function Footer() {
                   href="https://www.linkedin.com/in/renan-rambul/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
-                    display: "inline-block",
-                    padding: "8px",
-                    color: "#666",
-                    cursor: "pointer",
                     position: "relative",
                     zIndex: 51,
                   }}
@@ -76,11 +70,8 @@ export function Footer() {
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
                   href="mailto:renan.rambul@gmail.com"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
-                    display: "inline-block",
-                    padding: "8px",
-                    color: "#666",
-                    cursor: "pointer",
                     position: "relative",
                     zIndex: 51,
                   }}
@@ -97,11 +88,8 @@ export function Footer() {
               <li>
                 <Link
                   href="/#about"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
-                    display: "inline-block",
-                    padding: "4px 0",
-                    color: "#666",
-                    cursor: "pointer",
                     position: "relative",
                     zIndex: 51,
                   }}
@@ -112,11 +100,8 @@ export function Footer() {
               <li>
                 <Link
                   href="/#experience"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
-                    display: "inline-block",
-                    padding: "4px 0",
-                    color: "#666",
-                    cursor: "pointer",
                     position: "relative",
                     zIndex: 51,
                   }}
@@ -127,11 +112,8 @@ export function Footer() {
               <li>
                 <Link
                   href="/#skills"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
-                    display: "inline-block",
-                    padding: "4px 0",
-                    color: "#666",
-                    cursor: "pointer",
                     position: "relative",
                     zIndex: 51,
                   }}
