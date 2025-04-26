@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -20,6 +19,23 @@ export function Footer() {
   const bgStyle = {
     backgroundColor:
       mounted && resolvedTheme === "dark" ? "rgba(24, 24, 27, 0.3)" : "#ffffff",
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    // Handle home section specially (scroll to top)
+    if (sectionId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 80, // Adjust for nav height
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -86,8 +102,8 @@ export function Footer() {
             <h3 className="text-xl font-semibold mb-4">{t("links")}</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/#about"
+                <button
+                  onClick={() => scrollToSection("about")}
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
@@ -95,11 +111,11 @@ export function Footer() {
                   }}
                 >
                   {t("aboutLink")}
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/#experience"
+                <button
+                  onClick={() => scrollToSection("experience")}
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
@@ -107,11 +123,11 @@ export function Footer() {
                   }}
                 >
                   {t("experienceLink")}
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/#skills"
+                <button
+                  onClick={() => scrollToSection("skills")}
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
@@ -119,7 +135,7 @@ export function Footer() {
                   }}
                 >
                   {t("skillsLink")}
-                </Link>
+                </button>
               </li>
             </ul>
           </div>

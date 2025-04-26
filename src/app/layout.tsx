@@ -13,8 +13,18 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Renan Rambul - Portfolio",
-  description: "Software Developer Portfolio",
+  title: "Renan Rambul | Software Developer Portfolio",
+  description:
+    "Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications and solving complex problems.",
+  icons: {
+    icon: [
+      {
+        url: "/favicon/favicon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+  },
+  themeColor: "#9333ea",
 };
 
 export default function RootLayout({
