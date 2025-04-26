@@ -169,10 +169,6 @@ export function LanguageSwitcher() {
     "--button-hover-bg": "rgba(var(--zinc-100-rgb), 0.8)",
   };
 
-  const optionStyle: CustomStyle = {
-    "--option-hover-bg": "rgba(var(--zinc-100-rgb), 1)",
-  };
-
   return (
     <div className="relative" ref={dropdownRef}>
       <motion.button
@@ -222,6 +218,7 @@ export function LanguageSwitcher() {
                 className={`w-full text-left px-4 py-2 text-sm cursor-pointer 
                 flex justify-between items-center
                 transition-all duration-200 
+                hover:bg-zinc-100 dark:hover:bg-zinc-700
                 ${
                   locale === "en"
                     ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
@@ -229,7 +226,6 @@ export function LanguageSwitcher() {
                 }`}
                 onClick={() => switchLocale("en")}
                 role="menuitem"
-                style={optionStyle}
                 disabled={isChangingLocale}
               >
                 <span>{t("english")}</span>
@@ -251,6 +247,7 @@ export function LanguageSwitcher() {
                 className={`w-full text-left px-4 py-2 text-sm cursor-pointer 
                 flex justify-between items-center
                 transition-all duration-200 
+                hover:bg-zinc-100 dark:hover:bg-zinc-700
                 ${
                   locale === "pt"
                     ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
@@ -258,7 +255,6 @@ export function LanguageSwitcher() {
                 }`}
                 onClick={() => switchLocale("pt")}
                 role="menuitem"
-                style={optionStyle}
                 disabled={isChangingLocale}
               >
                 <span>{t("portuguese")}</span>
@@ -319,13 +315,13 @@ export function LanguageSwitcher() {
                   className={`w-full text-left px-4 py-3 text-base cursor-pointer 
                   flex justify-between items-center rounded-md
                   transition-all duration-200
+                  hover:bg-zinc-100 dark:hover:bg-zinc-700
                   ${
                     locale === "en"
                       ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
                       : ""
                   }`}
                   onClick={() => switchLocale("en")}
-                  style={optionStyle}
                   disabled={isChangingLocale}
                 >
                   <span>{t("english")}</span>
@@ -351,13 +347,13 @@ export function LanguageSwitcher() {
                   className={`w-full text-left px-4 py-3 text-base cursor-pointer 
                   flex justify-between items-center rounded-md
                   transition-all duration-200
+                  hover:bg-zinc-100 dark:hover:bg-zinc-700
                   ${
                     locale === "pt"
                       ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
                       : ""
                   }`}
                   onClick={() => switchLocale("pt")}
-                  style={optionStyle}
                   disabled={isChangingLocale}
                 >
                   <span>{t("portuguese")}</span>
