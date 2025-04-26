@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -24,7 +23,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="py-12 footer-section" style={bgStyle}>
+    <footer
+      className="py-12 footer-section relative"
+      style={{ ...bgStyle, zIndex: 10 }}
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -34,37 +36,58 @@ export function Footer() {
 
           <div>
             <h3 className="text-xl font-semibold mb-4">{t("social")}</h3>
-            <div className="flex space-x-4">
-              <motion.a
-                href="https://github.com/RenanRSilva"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors cursor-pointer"
-                aria-label="GitHub"
-                whileHover={{ scale: 1.1 }}
-              >
-                <FiGithub className="h-6 w-6" />
-              </motion.a>
+            <div className="flex space-x-8">
+              <div style={{ position: "relative", zIndex: 50 }}>
+                <a
+                  href="https://github.com/RenanRSilva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    padding: "8px",
+                    color: "#666",
+                    cursor: "pointer",
+                    position: "relative",
+                    zIndex: 51,
+                  }}
+                >
+                  <FiGithub style={{ width: "24px", height: "24px" }} />
+                </a>
+              </div>
 
-              <motion.a
-                href="https://www.linkedin.com/in/renan-rambul/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors cursor-pointer"
-                aria-label="LinkedIn"
-                whileHover={{ scale: 1.1 }}
-              >
-                <FiLinkedin className="h-6 w-6" />
-              </motion.a>
+              <div style={{ position: "relative", zIndex: 50 }}>
+                <a
+                  href="https://www.linkedin.com/in/renan-rambul/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    padding: "8px",
+                    color: "#666",
+                    cursor: "pointer",
+                    position: "relative",
+                    zIndex: 51,
+                  }}
+                >
+                  <FiLinkedin style={{ width: "24px", height: "24px" }} />
+                </a>
+              </div>
 
-              <motion.a
-                href="mailto:contact@example.com"
-                className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors cursor-pointer"
-                aria-label="Email"
-                whileHover={{ scale: 1.1 }}
-              >
-                <FiMail className="h-6 w-6" />
-              </motion.a>
+              <div style={{ position: "relative", zIndex: 50 }}>
+                <a
+                  href="mailto:renan.rambul@gmail.com"
+                  style={{
+                    display: "inline-block",
+                    padding: "8px",
+                    color: "#666",
+                    cursor: "pointer",
+                    position: "relative",
+                    zIndex: 51,
+                  }}
+                >
+                  <FiMail style={{ width: "24px", height: "24px" }} />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -74,7 +97,14 @@ export function Footer() {
               <li>
                 <Link
                   href="/#about"
-                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors cursor-pointer"
+                  style={{
+                    display: "inline-block",
+                    padding: "4px 0",
+                    color: "#666",
+                    cursor: "pointer",
+                    position: "relative",
+                    zIndex: 51,
+                  }}
                 >
                   {t("aboutLink")}
                 </Link>
@@ -82,7 +112,14 @@ export function Footer() {
               <li>
                 <Link
                   href="/#experience"
-                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors cursor-pointer"
+                  style={{
+                    display: "inline-block",
+                    padding: "4px 0",
+                    color: "#666",
+                    cursor: "pointer",
+                    position: "relative",
+                    zIndex: 51,
+                  }}
                 >
                   {t("experienceLink")}
                 </Link>
@@ -90,7 +127,14 @@ export function Footer() {
               <li>
                 <Link
                   href="/#skills"
-                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors cursor-pointer"
+                  style={{
+                    display: "inline-block",
+                    padding: "4px 0",
+                    color: "#666",
+                    cursor: "pointer",
+                    position: "relative",
+                    zIndex: 51,
+                  }}
                 >
                   {t("skillsLink")}
                 </Link>
