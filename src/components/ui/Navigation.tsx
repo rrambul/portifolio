@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -14,13 +14,17 @@ export function Navigation() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const sections = [
-    { id: "home", label: t("home") },
-    { id: "about", label: t("about") },
-    { id: "experience", label: t("experience") },
-    { id: "skills", label: t("skills") },
-    { id: "blog", label: t("blog") },
-  ];
+  // Use useMemo to prevent the sections array from being recreated on every render
+  const sections = useMemo(
+    () => [
+      { id: "home", label: t("home") },
+      { id: "about", label: t("about") },
+      { id: "experience", label: t("experience") },
+      { id: "skills", label: t("skills") },
+      { id: "blog", label: t("blog") },
+    ],
+    [t]
+  );
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);

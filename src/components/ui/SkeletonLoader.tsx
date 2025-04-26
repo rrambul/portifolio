@@ -93,11 +93,14 @@ export function SkeletonText({
 // Card skeleton
 export function SkeletonCard({
   className = "",
-  height = "20rem",
+  height,
   animate = true,
 }: SkeletonProps) {
   return (
-    <div className={`rounded-lg overflow-hidden shadow ${className}`}>
+    <div
+      className={`rounded-lg overflow-hidden shadow ${className}`}
+      style={{ height: height ? height : "20rem" }}
+    >
       <Skeleton height="10rem" animate={animate} />
       <div className="p-4 space-y-3">
         <Skeleton height="1.5rem" width="70%" animate={animate} />
@@ -162,12 +165,20 @@ export function SkeletonGrid({
   );
 }
 
+// Define interface for ContentLoader
+interface ContentLoaderProps {
+  children: React.ReactNode;
+  isLoading: boolean;
+  skeleton: React.ReactNode;
+  className?: string;
+}
+
 // Content loader that shows skeleton while loading
 export function ContentLoader({
   children,
   isLoading,
   skeleton,
   className = "",
-}) {
+}: ContentLoaderProps) {
   return <div className={className}>{isLoading ? skeleton : children}</div>;
 }

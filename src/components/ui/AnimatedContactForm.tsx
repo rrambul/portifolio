@@ -52,7 +52,7 @@ export function AnimatedContactForm() {
 
   // Validate a specific field
   const validateField = (name: string, value: string) => {
-    let fieldErrors: ValidationErrors = { ...errors };
+    const fieldErrors: ValidationErrors = { ...errors };
 
     switch (name) {
       case "name":
@@ -90,7 +90,7 @@ export function AnimatedContactForm() {
 
   // Validate all fields
   const validateForm = (): boolean => {
-    let formErrors: ValidationErrors = {};
+    const formErrors: ValidationErrors = {};
     let isValid = true;
 
     // Validate each field
@@ -126,8 +126,8 @@ export function AnimatedContactForm() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if (!validateForm()) {
       return;

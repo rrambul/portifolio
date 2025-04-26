@@ -11,6 +11,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-outfit)", "sans-serif"],
+      },
       backgroundColor: {
         light: "#ffffff",
       },

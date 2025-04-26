@@ -35,6 +35,20 @@ interface AnimationVariants {
   staggered: Variant & { transition?: { staggerChildren: number } };
 }
 
+// Combined type for variants with transition properties
+interface VariantWithTransition {
+  opacity?: number;
+  y?: number;
+  x?: number;
+  scale?: number;
+  transition?: {
+    staggerChildren?: number;
+    duration?: number;
+    delay?: number;
+    [key: string]: unknown;
+  };
+}
+
 const variants: AnimationVariants = {
   hidden: {
     opacity: 0,
@@ -169,6 +183,7 @@ export function AnimatedItem({
   duration = 0.5,
 }: Omit<AnimatedSectionProps, "threshold" | "once" | "staggerChildren">) {
   const hiddenVariant = getHiddenVariant(variant);
+  const selectedVariant = variants[variant] as unknown as VariantWithTransition;
 
   return (
     <motion.div
@@ -176,9 +191,9 @@ export function AnimatedItem({
       variants={{
         hidden: hiddenVariant,
         [variant]: {
-          ...variants[variant],
+          ...selectedVariant,
           transition: {
-            ...((variants[variant] as any).transition || {}),
+            ...(selectedVariant.transition || {}),
             duration,
             delay,
           },
