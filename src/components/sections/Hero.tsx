@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function Hero() {
   const t = useTranslations("hero");
@@ -107,24 +107,29 @@ export function Hero() {
             </motion.button>
           </motion.div>
 
+          {/* Right side with profile photo */}
           <motion.div
-            className="flex-1 flex justify-center"
+            className="flex-1 flex justify-center items-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
           >
+            {/* Profile photo */}
             <motion.div
-              className="profile-container relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-purple-600 dark:border-purple-400"
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-purple-600 dark:border-purple-400 z-10"
               animate={{
-                x: calculateMovement("x", -10),
-                y: calculateMovement("y", -10),
-                rotateY: calculateMovement("x", 5),
-                rotateX: calculateMovement("y", -5),
+                x: calculateMovement("x", -8),
+                y: calculateMovement("y", -8),
+                rotateY: calculateMovement("x", 3),
+                rotateX: calculateMovement("y", -3),
               }}
               transition={{ type: "spring", damping: 20 }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 10px 30px rgba(147, 51, 234, 0.4)",
+              }}
+              style={{
+                boxShadow: "0 0 25px rgba(147, 51, 234, 0.4)",
               }}
             >
               <Image

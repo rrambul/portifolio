@@ -17,11 +17,23 @@ import {
   SiHtml5,
   SiExpress,
   SiPostgresql,
-  SiMongodb,
-  SiRedis,
   SiFirebase,
   SiAmazon,
+  SiStorybook,
+  SiCypress,
+  SiJest,
+  SiMysql,
+  SiPrisma,
+  SiSvelte,
+  SiLit,
 } from "react-icons/si";
+import { TbApi, TbAccessible, TbTestPipe } from "react-icons/tb";
+import { VscSymbolInterface } from "react-icons/vsc";
+import { MdSpeed } from "react-icons/md";
+import { FaUniversalAccess } from "react-icons/fa";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { CircularCarousel } from "../ui/CircularCarousel";
 
 // Dynamically import the particle component
 const SkillsParticles = dynamic(() => import("../ui/SkillsParticles"), {
@@ -30,6 +42,14 @@ const SkillsParticles = dynamic(() => import("../ui/SkillsParticles"), {
 
 export function Skills() {
   const t = useTranslations("skills");
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const isDarkTheme = mounted && (theme === "dark" || resolvedTheme === "dark");
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const container = {
     hidden: { opacity: 0 },
@@ -46,6 +66,7 @@ export function Skills() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  // Define skill sets
   const skillSets = [
     {
       title: t("frontend"),
@@ -67,11 +88,31 @@ export function Skills() {
           icon: <SiJavascript className="h-8 w-8 text-[#F7DF1E]" />,
         },
         {
+          name: "Svelte",
+          icon: <SiSvelte className="h-8 w-8 text-[#FF3E00]" />,
+        },
+        {
+          name: "Lit",
+          icon: <SiLit className="h-8 w-8 text-[#324FFF]" />,
+        },
+        {
+          name: "Web Components",
+          icon: <VscSymbolInterface className="h-8 w-8 text-[#29ABE2]" />,
+        },
+        {
           name: "Tailwind CSS",
           icon: <SiTailwindcss className="h-8 w-8 text-[#06B6D4]" />,
         },
         { name: "CSS", icon: <SiCss3 className="h-8 w-8 text-[#1572B6]" /> },
         { name: "HTML", icon: <SiHtml5 className="h-8 w-8 text-[#E34F26]" /> },
+        {
+          name: "Accessibility",
+          icon: <FaUniversalAccess className="h-8 w-8 text-[#0072CE]" />,
+        },
+        {
+          name: "Web Performance",
+          icon: <MdSpeed className="h-8 w-8 text-[#FF6B00]" />,
+        },
       ],
     },
     {
@@ -90,10 +131,17 @@ export function Skills() {
           icon: <SiPostgresql className="h-8 w-8 text-[#4169E1]" />,
         },
         {
-          name: "MongoDB",
-          icon: <SiMongodb className="h-8 w-8 text-[#47A248]" />,
+          name: "MySQL",
+          icon: <SiMysql className="h-8 w-8 text-[#4479A1]" />,
         },
-        { name: "Redis", icon: <SiRedis className="h-8 w-8 text-[#DC382D]" /> },
+        {
+          name: "Prisma",
+          icon: isDarkTheme ? (
+            <SiPrisma className="h-8 w-8 text-white" />
+          ) : (
+            <SiPrisma className="h-8 w-8 text-[#2D3748]" />
+          ),
+        },
         {
           name: "Firebase",
           icon: <SiFirebase className="h-8 w-8 text-[#FFCA28]" />,
@@ -109,6 +157,34 @@ export function Skills() {
           icon: <SiDocker className="h-8 w-8 text-[#2496ED]" />,
         },
         {
+          name: "Storybook",
+          icon: <SiStorybook className="h-8 w-8 text-[#FF4785]" />,
+        },
+        {
+          name: "Jest",
+          icon: <SiJest className="h-8 w-8 text-[#C21325]" />,
+        },
+        {
+          name: "Cypress",
+          icon: isDarkTheme ? (
+            <SiCypress className="h-8 w-8 text-white" />
+          ) : (
+            <SiCypress className="h-8 w-8 text-[#17202C]" />
+          ),
+        },
+        {
+          name: "Playwright",
+          icon: <TbTestPipe className="h-8 w-8 text-[#2EAD33]" />,
+        },
+        {
+          name: "Supertest",
+          icon: <TbApi className="h-8 w-8 text-[#00B57B]" />,
+        },
+        {
+          name: "Axe",
+          icon: <TbAccessible className="h-8 w-8 text-[#00739D]" />,
+        },
+        {
           name: "AWS",
           icon: <SiAmazon className="h-8 w-8 text-[#FF9900]" />,
         },
@@ -116,6 +192,25 @@ export function Skills() {
       ],
     },
   ];
+
+  // Convert existing skills to carousel format with IDs
+  const frontendSkills = skillSets[0].skills.map((skill, index) => ({
+    id: index,
+    name: skill.name,
+    icon: skill.icon,
+  }));
+
+  const backendSkills = skillSets[1].skills.map((skill, index) => ({
+    id: index,
+    name: skill.name,
+    icon: skill.icon,
+  }));
+
+  const toolsSkills = skillSets[2].skills.map((skill, index) => ({
+    id: index,
+    name: skill.name,
+    icon: skill.icon,
+  }));
 
   return (
     <section
@@ -133,7 +228,7 @@ export function Skills() {
           whileInView="show"
           viewport={{ once: true }}
           variants={container}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
           <motion.h2
             variants={item}
@@ -142,28 +237,45 @@ export function Skills() {
             {t("title")}
           </motion.h2>
 
-          <div className="space-y-16">
-            {skillSets.map((skillSet, idx) => (
-              <motion.div key={idx} variants={item}>
-                <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400">
-                  {skillSet.title}
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                  {skillSet.skills.map((skill, skillIdx) => (
-                    <motion.div
-                      key={skillIdx}
-                      className="skills-card flex flex-col items-center p-4 bg-white dark:bg-zinc-800 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700"
-                      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                    >
-                      {skill.icon}
-                      <span className="mt-2 text-sm font-medium">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div>
+            {/* Frontend Skills */}
+            <motion.div variants={item}>
+              <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400 text-center">
+                {t("frontend")}
+              </h3>
+              <CircularCarousel
+                items={frontendSkills}
+                radius={150}
+                autoRotate={true}
+                rotationSpeed={0.002}
+              />
+            </motion.div>
+
+            {/* Backend Skills */}
+            <motion.div variants={item}>
+              <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400 text-center">
+                {t("backend")}
+              </h3>
+              <CircularCarousel
+                items={backendSkills}
+                radius={120}
+                autoRotate={true}
+                rotationSpeed={-0.002}
+              />
+            </motion.div>
+
+            {/* Tools Skills */}
+            <motion.div variants={item}>
+              <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400 text-center">
+                {t("tools")}
+              </h3>
+              <CircularCarousel
+                items={toolsSkills}
+                radius={160}
+                autoRotate={true}
+                rotationSpeed={0.0015}
+              />
+            </motion.div>
           </div>
         </motion.div>
       </div>

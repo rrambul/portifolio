@@ -141,7 +141,8 @@
     "frontend": "Frontend",
     "backend": "Backend",
     "tools": "Tools",
-    "languages": "Languages"
+    "languages": "Languages",
+    "specialties": "Specialties"
   },
   "blog": {
     "title": "Blog",
