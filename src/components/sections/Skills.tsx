@@ -258,7 +258,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="pt-20 bg-white dark:bg-zinc-900/30 relative overflow-hidden"
+      className="pt-20 pb-10 bg-white dark:bg-zinc-900/30 relative overflow-hidden"
     >
       {/* Section-specific particles */}
       <div className="absolute inset-0 pointer-events-none">
