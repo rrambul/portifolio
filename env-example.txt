@@ -1,0 +1,13 @@
+# Email configuration for Resend.com
+# Copy this to a .env.local file
+
+# Get this from https://resend.com after signing up (free tier: 100 emails/day)
+RESEND_API_KEY=re_yourKeyHere
+
+# Email used as the sender (required)
+# You can use onboarding@resend.dev while testing 
+# Later you should verify your own domain in Resend
+FROM_EMAIL=your@domain.com
+
+# Your personal email where you'll receive messages
+TO_EMAIL=your-personal@email.com 

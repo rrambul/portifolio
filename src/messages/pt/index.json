@@ -4,7 +4,8 @@
     "about": "Sobre",
     "experience": "Experiência",
     "skills": "Habilidades",
-    "blog": "Blog"
+    "blog": "Blog",
+    "contact": "Contato"
   },
   "hero": {
     "greeting": "Olá, eu sou",
@@ -161,6 +162,33 @@
     "contact": "Contato",
     "contactText": "Sinta-se à vontade para entrar em contato se tiver alguma pergunta ou oportunidade.",
     "copyright": "Todos os direitos reservados."
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "description": "Tem uma pergunta ou quer trabalhar junto? Sinta-se à vontade para entrar em contato usando o formulário abaixo.",
+    "form": {
+      "name": "Seu Nome",
+      "email": "Seu Email",
+      "message": "Mensagem",
+      "placeholder": {
+        "name": "João Silva",
+        "email": "joao@exemplo.com",
+        "message": "Sua mensagem aqui..."
+      },
+      "error": {
+        "nameRequired": "Nome é obrigatório",
+        "emailRequired": "Email é obrigatório",
+        "emailInvalid": "Por favor, insira um email válido",
+        "messageRequired": "Mensagem é obrigatória",
+        "messageShort": "Mensagem é muito curta"
+      },
+      "submit": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem Enviada!",
+      "successMessage": "Obrigado pela sua mensagem. Entrarei em contato em breve!",
+      "error": "Ops!",
+      "errorMessage": "Algo deu errado. Por favor, tente novamente mais tarde."
+    }
   },
   "theme": {
     "light": "Claro",

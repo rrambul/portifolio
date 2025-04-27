@@ -30,6 +30,17 @@ export function Hero() {
     return movement;
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      const offsetTop = contactSection.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 80, // Adjust for nav height
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="py-20 md:py-28 overflow-hidden relative">
       {/* Animated background shapes */}
@@ -83,6 +94,7 @@ export function Hero() {
               {t("subtitle")}
             </motion.p>
             <motion.button
+              onClick={scrollToContact}
               className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all cursor-pointer"
               whileHover={{
                 scale: 1.03,

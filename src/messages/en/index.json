@@ -4,7 +4,8 @@
     "about": "About",
     "experience": "Experience",
     "skills": "Skills",
-    "blog": "Blog"
+    "blog": "Blog",
+    "contact": "Contact"
   },
   "hero": {
     "greeting": "Hello, I'm",
@@ -161,6 +162,33 @@
     "contact": "Contact",
     "contactText": "Feel free to reach out if you have any questions or opportunities.",
     "copyright": "All rights reserved."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Have a question or want to work together? Feel free to reach out using the form below.",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Message",
+      "placeholder": {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "message": "Your message here..."
+      },
+      "error": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "messageRequired": "Message is required",
+        "messageShort": "Message is too short"
+      },
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message Sent!",
+      "successMessage": "Thank you for your message. I'll get back to you soon!",
+      "error": "Oops!",
+      "errorMessage": "Something went wrong. Please try again later."
+    }
   },
   "theme": {
     "light": "Light",

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiCheck, FiAlertCircle } from "react-icons/fi";
+import { useTranslations } from "next-intl";
 
 interface FormState {
   name: string;
@@ -19,6 +20,8 @@ interface ValidationErrors {
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 export function AnimatedContactForm() {
+  const t = useTranslations("contact.form");
+
   const [formState, setFormState] = useState<FormState>({
     name: "",
     email: "",
@@ -57,25 +60,25 @@ export function AnimatedContactForm() {
     switch (name) {
       case "name":
         if (!value.trim()) {
-          fieldErrors.name = "Name is required";
+          fieldErrors.name = t("error.nameRequired");
         } else {
           delete fieldErrors.name;
         }
         break;
       case "email":
         if (!value.trim()) {
-          fieldErrors.email = "Email is required";
+          fieldErrors.email = t("error.emailRequired");
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          fieldErrors.email = "Please enter a valid email";
+          fieldErrors.email = t("error.emailInvalid");
         } else {
           delete fieldErrors.email;
         }
         break;
       case "message":
         if (!value.trim()) {
-          fieldErrors.message = "Message is required";
+          fieldErrors.message = t("error.messageRequired");
         } else if (value.length < 10) {
-          fieldErrors.message = "Message is too short";
+          fieldErrors.message = t("error.messageShort");
         } else {
           delete fieldErrors.message;
         }
@@ -95,22 +98,22 @@ export function AnimatedContactForm() {
 
     // Validate each field
     if (!formState.name.trim()) {
-      formErrors.name = "Name is required";
+      formErrors.name = t("error.nameRequired");
       isValid = false;
     }
 
     if (!formState.email.trim()) {
-      formErrors.email = "Email is required";
+      formErrors.email = t("error.emailRequired");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
-      formErrors.email = "Please enter a valid email";
+      formErrors.email = t("error.emailInvalid");
       isValid = false;
     }
 
     if (!formState.message.trim()) {
-      formErrors.message = "Message is required";
+      formErrors.message = t("error.messageRequired");
       isValid = false;
     } else if (formState.message.length < 10) {
-      formErrors.message = "Message is too short";
+      formErrors.message = t("error.messageShort");
       isValid = false;
     }
 
@@ -136,8 +139,22 @@ export function AnimatedContactForm() {
     setStatus("submitting");
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Send data to API endpoint
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
 
       // On success
       setStatus("success");
@@ -195,9 +212,9 @@ export function AnimatedContactForm() {
             >
               <FiCheck className="text-green-600 dark:text-green-400 text-4xl mb-4" />
             </motion.div>
-            <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
+            <h3 className="text-xl font-bold mb-2">{t("success")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
-              Thank you for your message. I&apos;ll get back to you soon!
+              {t("successMessage")}
             </p>
           </motion.div>
         ) : status === "error" ? (
@@ -215,9 +232,9 @@ export function AnimatedContactForm() {
             >
               <FiAlertCircle className="text-red-600 dark:text-red-400 text-4xl mb-4" />
             </motion.div>
-            <h3 className="text-xl font-bold mb-2">Oops!</h3>
+            <h3 className="text-xl font-bold mb-2">{t("error")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
-              Something went wrong. Please try again later.
+              {t("errorMessage")}
             </p>
           </motion.div>
         ) : (
@@ -239,7 +256,7 @@ export function AnimatedContactForm() {
                   htmlFor="name"
                   className="block text-sm font-medium mb-1"
                 >
-                  Your Name
+                  {t("name")}
                 </label>
                 <input
                   type="text"
@@ -249,7 +266,7 @@ export function AnimatedContactForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={getInputClasses("name")}
-                  placeholder="John Doe"
+                  placeholder={t("placeholder.name")}
                   disabled={status === "submitting"}
                 />
                 {touched.name && errors.name && (
@@ -272,7 +289,7 @@ export function AnimatedContactForm() {
                   htmlFor="email"
                   className="block text-sm font-medium mb-1"
                 >
-                  Your Email
+                  {t("email")}
                 </label>
                 <input
                   type="email"
@@ -282,7 +299,7 @@ export function AnimatedContactForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={getInputClasses("email")}
-                  placeholder="john@example.com"
+                  placeholder={t("placeholder.email")}
                   disabled={status === "submitting"}
                 />
                 {touched.email && errors.email && (
@@ -305,7 +322,7 @@ export function AnimatedContactForm() {
                   htmlFor="message"
                   className="block text-sm font-medium mb-1"
                 >
-                  Message
+                  {t("message")}
                 </label>
                 <textarea
                   id="message"
@@ -316,7 +333,7 @@ export function AnimatedContactForm() {
                   className={`${getInputClasses(
                     "message"
                   )} min-h-[120px] resize-y`}
-                  placeholder="Your message here..."
+                  placeholder={t("placeholder.message")}
                   disabled={status === "submitting"}
                 />
                 {touched.message && errors.message && (
@@ -355,12 +372,12 @@ export function AnimatedContactForm() {
                           ease: "linear",
                         }}
                       />
-                      Sending...
+                      {t("sending")}
                     </>
                   ) : (
                     <>
                       <FiSend className="mr-2" />
-                      Send Message
+                      {t("submit")}
                     </>
                   )}
                 </span>
