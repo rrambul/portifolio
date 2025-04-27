@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiCheck, FiAlertCircle } from "react-icons/fi";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface FormState {
   name: string;
@@ -21,6 +21,7 @@ type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 export function AnimatedContactForm() {
   const t = useTranslations("contact.form");
+  const locale = useLocale();
 
   const [formState, setFormState] = useState<FormState>({
     name: "",
@@ -57,28 +58,50 @@ export function AnimatedContactForm() {
   const validateField = (name: string, value: string) => {
     const fieldErrors: ValidationErrors = { ...errors };
 
+    // Error messages based on locale
+    const errorMessages = {
+      en: {
+        nameRequired: "Name is required",
+        emailRequired: "Email is required",
+        emailInvalid: "Please enter a valid email",
+        messageRequired: "Message is required",
+        messageShort: "Message is too short",
+      },
+      pt: {
+        nameRequired: "Nome é obrigatório",
+        emailRequired: "Email é obrigatório",
+        emailInvalid: "Por favor, insira um email válido",
+        messageRequired: "Mensagem é obrigatória",
+        messageShort: "Mensagem é muito curta",
+      },
+    };
+
+    // Use correct locale or fall back to English
+    const messages =
+      errorMessages[locale as keyof typeof errorMessages] || errorMessages.en;
+
     switch (name) {
       case "name":
         if (!value.trim()) {
-          fieldErrors.name = t("error.nameRequired");
+          fieldErrors.name = messages.nameRequired;
         } else {
           delete fieldErrors.name;
         }
         break;
       case "email":
         if (!value.trim()) {
-          fieldErrors.email = t("error.emailRequired");
+          fieldErrors.email = messages.emailRequired;
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          fieldErrors.email = t("error.emailInvalid");
+          fieldErrors.email = messages.emailInvalid;
         } else {
           delete fieldErrors.email;
         }
         break;
       case "message":
         if (!value.trim()) {
-          fieldErrors.message = t("error.messageRequired");
+          fieldErrors.message = messages.messageRequired;
         } else if (value.length < 10) {
-          fieldErrors.message = t("error.messageShort");
+          fieldErrors.message = messages.messageShort;
         } else {
           delete fieldErrors.message;
         }
@@ -96,24 +119,46 @@ export function AnimatedContactForm() {
     const formErrors: ValidationErrors = {};
     let isValid = true;
 
+    // Error messages based on locale
+    const errorMessages = {
+      en: {
+        nameRequired: "Name is required",
+        emailRequired: "Email is required",
+        emailInvalid: "Please enter a valid email",
+        messageRequired: "Message is required",
+        messageShort: "Message is too short",
+      },
+      pt: {
+        nameRequired: "Nome é obrigatório",
+        emailRequired: "Email é obrigatório",
+        emailInvalid: "Por favor, insira um email válido",
+        messageRequired: "Mensagem é obrigatória",
+        messageShort: "Mensagem é muito curta",
+      },
+    };
+
+    // Use correct locale or fall back to English
+    const messages =
+      errorMessages[locale as keyof typeof errorMessages] || errorMessages.en;
+
     // Validate each field
     if (!formState.name.trim()) {
-      formErrors.name = t("error.nameRequired");
+      formErrors.name = messages.nameRequired;
       isValid = false;
     }
 
     if (!formState.email.trim()) {
-      formErrors.email = t("error.emailRequired");
+      formErrors.email = messages.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
-      formErrors.email = t("error.emailInvalid");
+      formErrors.email = messages.emailInvalid;
       isValid = false;
     }
 
     if (!formState.message.trim()) {
-      formErrors.message = t("error.messageRequired");
+      formErrors.message = messages.messageRequired;
       isValid = false;
     } else if (formState.message.length < 10) {
-      formErrors.message = t("error.messageShort");
+      formErrors.message = messages.messageShort;
       isValid = false;
     }
 
