@@ -82,8 +82,10 @@ export function Skills() {
         },
         {
           name: "Next.js",
-          icon: (
-            <SiNextdotjs className="h-8 w-8 text-[#000000] dark:text-white" />
+          icon: isDarkTheme ? (
+            <SiNextdotjs className="h-8 w-8 text-white" />
+          ) : (
+            <SiNextdotjs className="h-8 w-8 text-black" />
           ),
         },
         {
@@ -104,7 +106,9 @@ export function Skills() {
         },
         {
           name: "Web Components",
-          icon: <VscSymbolInterface className="h-8 w-8 text-[#29ABE2]" />,
+          icon: (
+            <VscSymbolInterface className="h-8 w-8 text-black dark:text-[#29ABE2]" />
+          ),
         },
         {
           name: "Tailwind CSS",
@@ -114,11 +118,13 @@ export function Skills() {
         { name: "HTML", icon: <SiHtml5 className="h-8 w-8 text-[#E34F26]" /> },
         {
           name: "Accessibility",
-          icon: <FaUniversalAccess className="h-8 w-8 text-[#0072CE]" />,
+          icon: (
+            <FaUniversalAccess className="h-8 w-8 text-black dark:text-[#0072CE]" />
+          ),
         },
         {
           name: "Web Performance",
-          icon: <MdSpeed className="h-8 w-8 text-[#FF6B00]" />,
+          icon: <MdSpeed className="h-8 w-8 text-black dark:text-[#FF6B00]" />,
         },
       ],
     },
@@ -131,8 +137,10 @@ export function Skills() {
         },
         {
           name: "Express",
-          icon: (
-            <SiExpress className="h-8 w-8 text-[#000000] dark:text-white" />
+          icon: isDarkTheme ? (
+            <SiExpress className="h-8 w-8 text-white" />
+          ) : (
+            <SiExpress className="h-8 w-8 text-black" />
           ),
         },
         {
@@ -148,7 +156,7 @@ export function Skills() {
           icon: isDarkTheme ? (
             <SiPrisma className="h-8 w-8 text-white" />
           ) : (
-            <SiPrisma className="h-8 w-8 text-[#2D3748]" />
+            <SiPrisma className="h-8 w-8 text-black" />
           ),
         },
         {
@@ -177,20 +185,24 @@ export function Skills() {
           icon: isDarkTheme ? (
             <SiCypress className="h-8 w-8 text-white" />
           ) : (
-            <SiCypress className="h-8 w-8 text-[#17202C]" />
+            <SiCypress className="h-8 w-8 text-black" />
           ),
         },
         {
           name: "Playwright",
-          icon: <TbTestPipe className="h-8 w-8 text-[#2EAD33]" />,
+          icon: (
+            <TbTestPipe className="h-8 w-8 text-black dark:text-[#2EAD33]" />
+          ),
         },
         {
           name: "Supertest",
-          icon: <TbApi className="h-8 w-8 text-[#00B57B]" />,
+          icon: <TbApi className="h-8 w-8 text-black dark:text-[#00B57B]" />,
         },
         {
           name: "Axe",
-          icon: <TbAccessible className="h-8 w-8 text-[#00739D]" />,
+          icon: (
+            <TbAccessible className="h-8 w-8 text-black dark:text-[#00739D]" />
+          ),
         },
       ],
     },
@@ -224,7 +236,11 @@ export function Skills() {
         },
         {
           name: "Vercel",
-          icon: <SiVercel className="h-8 w-8 text-[#000000] dark:text-white" />,
+          icon: isDarkTheme ? (
+            <SiVercel className="h-8 w-8 text-white" />
+          ) : (
+            <SiVercel className="h-8 w-8 text-black" />
+          ),
         },
       ],
     },
@@ -283,7 +299,7 @@ export function Skills() {
           <div>
             {/* Frontend Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
                 {t("frontend")}
               </h3>
               <CircularCarousel
@@ -296,7 +312,7 @@ export function Skills() {
 
             {/* Backend Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
                 {t("backend")}
               </h3>
               <CircularCarousel
@@ -309,7 +325,7 @@ export function Skills() {
 
             {/* Testing Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
                 {t("testing")}
               </h3>
               <CircularCarousel
@@ -322,7 +338,7 @@ export function Skills() {
 
             {/* Tools Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
                 {t("devopsTools")}
               </h3>
               <CircularCarousel
