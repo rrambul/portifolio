@@ -25,6 +25,7 @@ export function CircularCarousel({
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const lastPointerX = useRef(0);
+  const initialTouchY = useRef(0); // To track initial vertical position
 
   // Auto rotation effect
   useEffect(() => {
@@ -40,18 +41,22 @@ export function CircularCarousel({
     return () => cancelAnimationFrame(animationId);
   }, [autoRotate, rotationSpeed, isDragging]);
 
+  // Handle mouse events for desktop
   const handlePointerDown = (e: React.PointerEvent) => {
-    isDragging.current = true;
-    lastPointerX.current = e.clientX;
+    // Only handle mouse events for desktop
+    if (e.pointerType === "mouse") {
+      isDragging.current = true;
+      lastPointerX.current = e.clientX;
 
-    // Capture pointer to receive events even when cursor moves outside element
-    if (containerRef.current) {
-      containerRef.current.setPointerCapture(e.pointerId);
+      if (containerRef.current) {
+        containerRef.current.setPointerCapture(e.pointerId);
+      }
     }
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging.current) return;
+    // Only handle mouse events for desktop
+    if (!isDragging.current || e.pointerType !== "mouse") return;
 
     const deltaX = e.clientX - lastPointerX.current;
     lastPointerX.current = e.clientX;
@@ -62,23 +67,63 @@ export function CircularCarousel({
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
-    isDragging.current = false;
+    // Only handle mouse events for desktop
+    if (e.pointerType === "mouse") {
+      isDragging.current = false;
 
-    // Release pointer capture
-    if (containerRef.current) {
-      containerRef.current.releasePointerCapture(e.pointerId);
+      if (containerRef.current) {
+        containerRef.current.releasePointerCapture(e.pointerId);
+      }
     }
+  };
+
+  // Handle touch events specifically for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      isDragging.current = true;
+      lastPointerX.current = e.touches[0].clientX;
+      initialTouchY.current = e.touches[0].clientY;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging.current || e.touches.length !== 1) return;
+
+    const touch = e.touches[0];
+
+    // Check if this is primarily a horizontal or vertical movement
+    const deltaX = touch.clientX - lastPointerX.current;
+    const totalDeltaY = Math.abs(touch.clientY - initialTouchY.current);
+
+    // If significant vertical movement, let the page scroll naturally
+    if (totalDeltaY > 20) return;
+
+    // For primarily horizontal movements, update carousel and prevent scrolling
+    const sensitivity = 0.003;
+    setRotation((prev) => prev - deltaX * sensitivity);
+    lastPointerX.current = touch.clientX;
+
+    // Prevent default to avoid page scrolling during horizontal swipes
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = () => {
+    isDragging.current = false;
   };
 
   return (
     <div className="flex justify-center items-center">
       <div
         ref={containerRef}
-        className="w-[350px] h-[350px] relative touch-none cursor-grab active:cursor-grabbing"
+        className="w-[350px] h-[350px] relative cursor-grab active:cursor-grabbing"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
       >
         {items.map((item, index) => {
           // Calculate position in circle
