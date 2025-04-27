@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,6 +11,7 @@ export function Navigation() {
   const t = useTranslations("navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const navigationRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -27,29 +28,58 @@ export function Navigation() {
     [t]
   );
 
-  const scrollToSection = (sectionId: string) => {
+  // Mobile-optimized scroll handling
+  const scrollToSection = (sectionId: string, event?: React.MouseEvent) => {
+    // Prevent default behavior to ensure we handle scrolling
+    if (event) {
+      event.preventDefault();
+    }
+
+    // Close the menu first
     setIsMenuOpen(false);
 
-    // Handle home section specially (scroll to top)
-    if (sectionId === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
+    // Delay scrolling to ensure the menu animation completes
+    setTimeout(() => {
+      try {
+        // For home, scroll to top
+        if (sectionId === "home") {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+          return;
+        }
 
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop;
-      window.scrollTo({
-        top: offsetTop - 80, // Adjust for nav height
-        behavior: "smooth",
-      });
-    }
+        // Find target element
+        const targetElement = document.getElementById(sectionId);
+        if (!targetElement) return;
+
+        // Get navigation height for offset
+        const navHeight = navigationRef.current?.offsetHeight || 80;
+
+        // Calculate position
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+        // Perform scroll
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      } catch (error) {
+        console.error("Error scrolling to section:", error);
+      }
+    }, 300); // Longer delay for mobile
   };
 
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100; // Add some offset
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      // Get the nav height for calculations
+      const navHeight = navigationRef.current?.offsetHeight || 80;
 
       // Check if we're at the top of the page
       if (scrollPosition < 300) {
@@ -57,30 +87,65 @@ export function Navigation() {
         return;
       }
 
-      // Check each section's position
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i].id);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
+      // Find which section takes up most of the viewport
+      let maxVisibleSection = null;
+      let maxVisibleArea = 0;
+
+      // Check each section
+      for (const { id } of sections) {
+        const section = document.getElementById(id);
+        if (!section) continue;
+
+        // Get section dimensions and position
+        const rect = section.getBoundingClientRect();
+
+        // Calculate how much of the section is visible in the viewport
+        const visibleTop = Math.max(rect.top, navHeight);
+        const visibleBottom = Math.min(rect.bottom, viewportHeight);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+        // If this section has more visible area than previous maximum, it becomes the active section
+        if (visibleHeight > maxVisibleArea) {
+          maxVisibleArea = visibleHeight;
+          maxVisibleSection = id;
+        }
+
+        // Special case for sections that are smaller than the viewport
+        // If section top is just past the navbar, prioritize it
+        if (rect.top > navHeight && rect.top < viewportHeight * 0.5) {
+          maxVisibleSection = id;
           break;
         }
+      }
+
+      // Update active section if we found one
+      if (maxVisibleSection) {
+        setActiveSection(maxVisibleSection);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    // Use a resize listener as well to handle orientation changes
+    window.addEventListener("resize", handleScroll);
+
+    // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, [sections]);
 
   return (
-    <nav className="sticky top-0 z-50 border-b bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md dark:border-zinc-800 border-gray-200">
+    <nav
+      ref={navigationRef}
+      className="sticky top-0 z-50 border-b bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md dark:border-zinc-800 border-gray-200"
+    >
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <button
-            onClick={() => scrollToSection("home")}
+            onClick={(e) => scrollToSection("home", e)}
             className="text-xl font-bold cursor-pointer"
           >
             Renan Rambul
@@ -91,7 +156,7 @@ export function Navigation() {
             {sections.map((section) => (
               <button
                 key={section.id}
-                onClick={() => scrollToSection(section.id)}
+                onClick={(e) => scrollToSection(section.id, e)}
                 className={`transition-colors hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer ${
                   activeSection === section.id
                     ? "text-purple-600 dark:text-purple-400"
@@ -138,7 +203,7 @@ export function Navigation() {
                 {sections.map((section) => (
                   <button
                     key={section.id}
-                    onClick={() => scrollToSection(section.id)}
+                    onClick={(e) => scrollToSection(section.id, e)}
                     className={`block w-full text-left py-2 transition-colors hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer ${
                       activeSection === section.id
                         ? "text-purple-600 dark:text-purple-400"
