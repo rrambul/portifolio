@@ -95,22 +95,48 @@ export function Hero() {
             </motion.p>
             <motion.button
               onClick={scrollToContact}
-              className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all cursor-pointer"
+              className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all cursor-pointer relative overflow-hidden group"
               whileHover={{
-                scale: 1.03,
-                boxShadow: "0 4px 8px rgba(147, 51, 234, 0.25)",
+                scale: 1.05,
+                boxShadow: "0 8px 16px rgba(147, 51, 234, 0.3)",
               }}
               whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
             >
-              <span>{t("cta")}</span>
+              {/* Background animation */}
+              <motion.div
+                className="absolute inset-0 bg-purple-800 dark:bg-purple-900"
+                initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+                whileHover={{
+                  scale: 1.5,
+                  opacity: 0.3,
+                  transition: { duration: 0.15, ease: "easeOut" },
+                }}
+              />
+
+              {/* Gradient overlay */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/10 to-purple-500/0"
+                initial={{ x: "-100%" }}
+                whileHover={{
+                  x: "100%",
+                  transition: {
+                    repeat: Infinity,
+                    duration: 0.8,
+                    ease: "easeInOut",
+                  },
+                }}
+              />
+
+              <span className="relative z-10">{t("cta")}</span>
               <motion.span
+                className="relative z-10"
                 animate={{ x: [0, 5, 0] }}
                 transition={{
                   repeat: Infinity,
-                  duration: 1.5,
+                  duration: 0.8,
                   ease: "easeInOut",
                 }}
               >

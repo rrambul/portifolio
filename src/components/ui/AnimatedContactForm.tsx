@@ -401,10 +401,39 @@ export function AnimatedContactForm() {
               <motion.button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-md transition-all relative overflow-hidden"
-                whileHover={{ scale: 1.02 }}
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-md transition-all relative overflow-hidden group"
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: "0 6px 12px rgba(147, 51, 234, 0.3)",
+                }}
                 whileTap={{ scale: 0.98 }}
               >
+                {/* Background animation */}
+                <motion.div
+                  className="absolute inset-0 bg-purple-800 dark:bg-purple-900"
+                  initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+                  whileHover={{
+                    scale: 1.5,
+                    opacity: 0.3,
+                    transition: { duration: 0.15, ease: "easeOut" },
+                  }}
+                  style={{ originX: 0.5, originY: 0.5 }}
+                />
+
+                {/* Gradient overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/10 to-purple-500/0"
+                  initial={{ x: "-100%" }}
+                  whileHover={{
+                    x: "100%",
+                    transition: {
+                      repeat: Infinity,
+                      duration: 0.8,
+                      ease: "easeInOut",
+                    },
+                  }}
+                />
+
                 <span className="relative z-10 flex items-center justify-center">
                   {status === "submitting" ? (
                     <>
@@ -413,7 +442,7 @@ export function AnimatedContactForm() {
                         animate={{ rotate: 360 }}
                         transition={{
                           repeat: Infinity,
-                          duration: 1,
+                          duration: 0.6,
                           ease: "linear",
                         }}
                       />
@@ -426,12 +455,6 @@ export function AnimatedContactForm() {
                     </>
                   )}
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-white"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileTap={{ scale: 1, opacity: 0.2 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                />
               </motion.button>
             </motion.div>
           </motion.form>
