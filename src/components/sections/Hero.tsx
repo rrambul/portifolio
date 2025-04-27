@@ -96,10 +96,6 @@ export function Hero() {
             <motion.button
               onClick={scrollToContact}
               className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all cursor-pointer relative overflow-hidden group"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 8px 16px rgba(147, 51, 234, 0.3)",
-              }}
               whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,8 +107,8 @@ export function Hero() {
                 initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
                 whileHover={{
                   scale: 1.5,
-                  opacity: 0.3,
-                  transition: { duration: 0.15, ease: "easeOut" },
+                  opacity: 0.2,
+                  transition: { duration: 0.1, ease: "easeOut" },
                 }}
               />
 
@@ -124,8 +120,8 @@ export function Hero() {
                   x: "100%",
                   transition: {
                     repeat: Infinity,
-                    duration: 0.8,
-                    ease: "easeInOut",
+                    duration: 0.5,
+                    ease: "linear",
                   },
                 }}
               />
@@ -136,7 +132,7 @@ export function Hero() {
                 animate={{ x: [0, 5, 0] }}
                 transition={{
                   repeat: Infinity,
-                  duration: 0.8,
+                  duration: 0.5,
                   ease: "easeInOut",
                 }}
               >

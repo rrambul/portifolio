@@ -141,7 +141,8 @@
     "title": "Skills",
     "frontend": "Frontend",
     "backend": "Backend",
-    "tools": "Tools",
+    "devopsTools": "DevOps & Tools",
+    "testing": "Testing",
     "languages": "Languages",
     "specialties": "Specialties"
   },
