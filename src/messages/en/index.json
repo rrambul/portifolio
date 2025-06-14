@@ -15,10 +15,10 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I am a passionate software developer with 3+ years experience successfully delivering and contributing to projects. I enjoy solving complex problems and creating user-friendly interfaces.",
+    "content": "I am a passionate software developer with a love for programming and over 3 years of experience. I enjoy learning new things and contributing to the community.",
     "personal": {
       "title": "Personal",
-      "content": "Passionate about creating user-friendly interfaces and solving complex problems"
+      "content": "A developer who loves learning, programming computers and keep learning new things. Also open source enthusiast"
     },
     "technical": {
       "title": "Technical",
@@ -157,7 +157,7 @@
   },
   "footer": {
     "about": "About",
-    "aboutText": "A developer passionate about creating user-friendly interfaces and solving complex problems.",
+    "aboutText": "A developer who loves learning, programming computers and keep learning new things. Also open source enthusiast.",
     "social": "Social",
     "links": "Quick Links",
     "aboutLink": "About",

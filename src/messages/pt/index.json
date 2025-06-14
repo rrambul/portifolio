@@ -15,10 +15,10 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "Sou um desenvolvedor de software apaixonado com mais de 3 anos de experiência entregando e contribuindo para projetos com sucesso. Gosto de resolver problemas complexos e criar interfaces amigáveis ao usuário.",
+    "content": "Sou um desenvolvedor de software apaixonado por programação com mais de 3 anos de experiência. Gosto de aprender coisas novas e contribuir com a comunidade.",
     "personal": {
       "title": "Pessoal",
-      "content": "Apaixonado por criar interfaces amigáveis e resolver problemas complexos"
+      "content": "Um desenvolvedor que ama programar, aprender coisas novas e explorar tecnologias. Também entusiasta de código aberto"
     },
     "technical": {
       "title": "Técnico",
@@ -157,7 +157,7 @@
   },
   "footer": {
     "about": "Sobre",
-    "aboutText": "Um desenvolvedor apaixonado por criar interfaces amigáveis e resolver problemas complexos.",
+    "aboutText": "Um desenvolvedor que ama programar, aprender coisas novas e explorar tecnologias. Também entusiasta de código aberto.",
     "social": "Social",
     "links": "Links Rápidos",
     "aboutLink": "Sobre",
