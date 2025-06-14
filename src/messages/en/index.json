@@ -150,7 +150,10 @@
     "title": "Blog",
     "subtitle": "Check out my latest articles and thoughts on software development",
     "readMore": "Read More",
-    "publishedOn": "Published on"
+    "publishedOn": "Published on",
+    "backToBlog": "Back to Blog",
+    "backToAllPosts": "Back to all posts",
+    "articlesCount": "articles"
   },
   "footer": {
     "about": "About",

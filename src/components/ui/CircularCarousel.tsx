@@ -22,14 +22,20 @@ export function CircularCarousel({
   rotationSpeed = 0.001,
 }: CircularCarouselProps) {
   const [rotation, setRotation] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const lastPointerX = useRef(0);
   const initialTouchY = useRef(0); // To track initial vertical position
 
-  // Auto rotation effect
+  // Ensure component is mounted before starting animations
   useEffect(() => {
-    if (!autoRotate || isDragging.current) return;
+    setIsMounted(true);
+  }, []);
+
+  // Auto rotation effect - only after mounting
+  useEffect(() => {
+    if (!autoRotate || isDragging.current || !isMounted) return;
 
     let animationId: number;
     const autoRotateAnimation = () => {
@@ -39,7 +45,7 @@ export function CircularCarousel({
 
     animationId = requestAnimationFrame(autoRotateAnimation);
     return () => cancelAnimationFrame(animationId);
-  }, [autoRotate, rotationSpeed, isDragging]);
+  }, [autoRotate, rotationSpeed, isDragging, isMounted]);
 
   // Handle mouse events for desktop
   const handlePointerDown = (e: React.PointerEvent) => {
@@ -111,6 +117,51 @@ export function CircularCarousel({
     isDragging.current = false;
   };
 
+  // Don't render anything until mounted to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <div className="flex justify-center items-center">
+        <div className="w-[350px] h-[350px] relative">
+          {/* Render static items in initial positions to prevent layout shift */}
+          {items.map((item, index) => {
+            const angle = (index / items.length) * 2 * Math.PI;
+            const x = Math.round(Math.cos(angle) * radius * 100) / 100;
+            const y = Math.round(Math.sin(angle) * radius * 100) / 100;
+            const isInFront = y >= 0;
+            const normalizedY = Math.abs(y) / radius;
+            const scale = Math.round((isInFront
+              ? 0.7 + normalizedY * 0.3
+              : 0.4 + normalizedY * 0.2) * 1000) / 1000;
+            const opacity = Math.round((isInFront
+              ? normalizedY * 0.7 + 0.3
+              : normalizedY * 0.15 + 0.1) * 1000) / 1000;
+
+            return (
+              <div
+                key={item.id}
+                className="absolute left-1/2 top-1/2 flex flex-col items-center justify-center pointer-events-none"
+                style={{
+                  transform: `translate(-50%, -50%) translate(${x}px, ${
+                    Math.round(y * 0.5 * 100) / 100
+                  }px) scale(${scale})`,
+                  opacity: opacity,
+                  zIndex: Math.round((y + radius) * 10),
+                }}
+              >
+                <div className="bg-white dark:bg-zinc-800 p-3 rounded-full shadow-md">
+                  {item.icon}
+                </div>
+                <span className="mt-2 text-sm font-medium opacity-90 whitespace-nowrap">
+                  {item.name}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex justify-center items-center">
       <div
@@ -126,10 +177,10 @@ export function CircularCarousel({
         onTouchCancel={handleTouchEnd}
       >
         {items.map((item, index) => {
-          // Calculate position in circle
+          // Calculate position in circle with proper rounding
           const angle = (index / items.length) * 2 * Math.PI;
-          const x = Math.cos(angle + rotation) * radius;
-          const y = Math.sin(angle + rotation) * radius;
+          const x = Math.round(Math.cos(angle + rotation) * radius * 100) / 100;
+          const y = Math.round(Math.sin(angle + rotation) * radius * 100) / 100;
 
           // Determine if item is in front or back half of circle
           const isInFront = y >= 0;
@@ -137,15 +188,15 @@ export function CircularCarousel({
           // Calculate normalized position (0 to 1)
           const normalizedY = Math.abs(y) / radius;
 
-          // Scale calculation - smaller for back items
-          const scale = isInFront
+          // Scale calculation - smaller for back items (rounded for consistency)
+          const scale = Math.round((isInFront
             ? 0.7 + normalizedY * 0.3 // 0.7 to 1.0 for front items
-            : 0.4 + normalizedY * 0.2; // 0.4 to 0.6 for back items
+            : 0.4 + normalizedY * 0.2) * 1000) / 1000; // 0.4 to 0.6 for back items
 
-          // Opacity calculation - much lower for back items
-          const opacity = isInFront
+          // Opacity calculation - much lower for back items (rounded for consistency)
+          const opacity = Math.round((isInFront
             ? normalizedY * 0.7 + 0.3 // 0.3 to 1.0 for front items
-            : normalizedY * 0.15 + 0.1; // 0.1 to 0.25 for back items
+            : normalizedY * 0.15 + 0.1) * 1000) / 1000; // 0.1 to 0.25 for back items
 
           return (
             <div
@@ -153,7 +204,7 @@ export function CircularCarousel({
               className="absolute left-1/2 top-1/2 flex flex-col items-center justify-center pointer-events-none"
               style={{
                 transform: `translate(-50%, -50%) translate(${x}px, ${
-                  y * 0.5
+                  Math.round(y * 0.5 * 100) / 100
                 }px) scale(${scale})`,
                 opacity: opacity,
                 zIndex: Math.round((y + radius) * 10),

@@ -2,12 +2,23 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import { FiArrowRight, FiClock } from "react-icons/fi";
+import { getBlogPosts } from "@/data/blog-posts";
+import { BlogCard } from "@/components/blog/BlogCard";
+import { FiEdit3, FiBookOpen } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { BlogPost } from "@/types/blog";
 
 export function Blog() {
   const t = useTranslations("blog");
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Ensure posts are loaded on component mount
+    const posts = getBlogPosts();
+    setBlogPosts(posts);
+    setIsLoaded(true);
+  }, []);
 
   const container = {
     hidden: { opacity: 0 },
@@ -24,106 +35,73 @@ export function Blog() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    }).format(date);
-  };
-
-  // Sample blog posts - replace with actual content
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Getting Started with Next.js and TypeScript",
-      excerpt:
-        "Learn how to set up a new project with Next.js and TypeScript, including best practices and common pitfalls to avoid.",
-      date: "2023-08-15",
-      image: "/images/blog/nextjs.jpg",
-      slug: "getting-started-with-nextjs",
-    },
-    {
-      id: 2,
-      title: "Building a Responsive UI with Tailwind CSS",
-      excerpt:
-        "Explore the benefits of utility-first CSS frameworks and learn how to create beautiful, responsive interfaces with Tailwind CSS.",
-      date: "2023-07-28",
-      image: "/images/blog/tailwind.jpg",
-      slug: "building-ui-with-tailwind",
-    },
-    {
-      id: 3,
-      title: "State Management in Modern React Applications",
-      excerpt:
-        "Compare different state management solutions for React applications and learn when to use each approach.",
-      date: "2023-06-10",
-      image: "/images/blog/react-state.jpg",
-      slug: "react-state-management",
-    },
-  ];
+  if (!isLoaded) {
+    return (
+      <section id="blog" className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="animate-pulse">
+              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full mx-auto mb-6"></div>
+              <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded mx-auto mb-6 max-w-md"></div>
+              <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mx-auto mb-8 max-w-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section id="blog" className="py-20 bg-white dark:bg-zinc-900/30">
+    <section id="blog" className="py-20 relative">
       <div className="container mx-auto px-4">
+        {/* Hero Section */}
         <motion.div
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          animate="show"
           variants={container}
-          className="max-w-6xl mx-auto"
+          className="text-center mb-16"
         >
-          <motion.h2
+          <motion.div 
             variants={item}
-            className="text-3xl md:text-4xl font-bold text-center mb-4"
+            className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-6"
+          >
+            <FiEdit3 className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+          </motion.div>
+          
+          <motion.h1
+            variants={item}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-purple-700 to-indigo-600 dark:from-purple-400 dark:to-indigo-400 bg-clip-text text-transparent leading-tight pb-2"
+            style={{ lineHeight: '1.2' }}
           >
             {t("title")}
-          </motion.h2>
+          </motion.h1>
 
           <motion.p
             variants={item}
-            className="text-lg text-center text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto"
+            className="text-xl text-zinc-700 dark:text-zinc-400 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             {t("subtitle")}
           </motion.p>
 
+          <motion.div
+            variants={item}
+            className="flex items-center justify-center gap-2 text-sm text-purple-700 dark:text-purple-400 font-medium"
+          >
+            <FiBookOpen className="w-4 h-4" />
+            <span>{blogPosts.length} articles published</span>
+          </motion.div>
+        </motion.div>
+
+        {/* Blog Posts Grid */}
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={container}
+          className="max-w-7xl mx-auto"
+        >
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <motion.div
-                key={post.id}
-                variants={item}
-                className="blog-card bg-white dark:bg-zinc-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-zinc-700"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center space-x-1 text-sm text-zinc-500 dark:text-zinc-400 mb-3">
-                    <FiClock className="h-4 w-4" />
-                    <span>{formatDate(post.date)}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline group"
-                  >
-                    <span className="mr-1 group-hover:mr-2 transition-all duration-300">
-                      {t("readMore")}
-                    </span>
-                    <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </motion.div>
+            {blogPosts.map((post, index) => (
+              <BlogCard key={post.id} post={post} index={index} />
             ))}
           </div>
         </motion.div>

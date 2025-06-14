@@ -150,7 +150,10 @@
     "title": "Blog",
     "subtitle": "Confira meus artigos e pensamentos mais recentes sobre desenvolvimento de software",
     "readMore": "Leia Mais",
-    "publishedOn": "Publicado em"
+    "publishedOn": "Publicado em",
+    "backToBlog": "Voltar ao Blog",
+    "backToAllPosts": "Voltar para todos os posts",
+    "articlesCount": "artigos"
   },
   "footer": {
     "about": "Sobre",

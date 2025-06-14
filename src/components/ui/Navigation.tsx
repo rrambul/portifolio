@@ -1,14 +1,18 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 
 export function Navigation() {
   const t = useTranslations("navigation");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const navigationRef = useRef<HTMLDivElement>(null);
@@ -22,7 +26,7 @@ export function Navigation() {
       { id: "about", label: t("about") },
       { id: "experience", label: t("experience") },
       { id: "skills", label: t("skills") },
-      // { id: "blog", label: t("blog") },
+      { id: "blog", label: t("blog") },
       { id: "contact", label: t("contact") },
     ],
     [t]
@@ -38,22 +42,30 @@ export function Navigation() {
     // Close the menu first
     setIsMenuOpen(false);
 
+    // Handle blog navigation - redirect to blog page
+    if (sectionId === "blog") {
+      router.push(`/${locale}/blog`);
+      return;
+    }
+
+    // Handle home navigation - go to homepage
+    if (sectionId === "home") {
+      router.push(`/${locale}`);
+      return;
+    }
+
+    // Check if the target section exists on the current page
+    const targetElement = document.getElementById(sectionId);
+    
+    // If section doesn't exist, navigate to homepage with hash
+    if (!targetElement) {
+      router.push(`/${locale}#${sectionId}`);
+      return;
+    }
+
     // Delay scrolling to ensure the menu animation completes
     setTimeout(() => {
       try {
-        // For home, scroll to top
-        if (sectionId === "home") {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-          return;
-        }
-
-        // Find target element
-        const targetElement = document.getElementById(sectionId);
-        if (!targetElement) return;
-
         // Get navigation height for offset
         const navHeight = navigationRef.current?.offsetHeight || 80;
 
@@ -74,6 +86,14 @@ export function Navigation() {
 
   // Update active section based on scroll position
   useEffect(() => {
+    // Check if we're on a blog page
+    const isBlogPage = pathname.includes('/blog');
+    
+    if (isBlogPage) {
+      setActiveSection("blog");
+      return;
+    }
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
@@ -135,7 +155,7 @@ export function Navigation() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [sections]);
+  }, [sections, router, pathname]);
 
   return (
     <nav

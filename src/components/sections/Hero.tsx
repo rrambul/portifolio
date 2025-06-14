@@ -20,6 +20,9 @@ export function Hero() {
   }, []);
 
   const calculateMovement = (axis: "x" | "y", strength = 15) => {
+    // Check if window is available (client-side)
+    if (typeof window === "undefined") return 0;
+    
     const center =
       axis === "x" ? window.innerWidth / 2 : window.innerHeight / 2;
     const position = axis === "x" ? mousePosition.x : mousePosition.y;
@@ -93,52 +96,13 @@ export function Hero() {
             >
               {t("subtitle")}
             </motion.p>
-            <motion.button
+            <button
               onClick={scrollToContact}
-              className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all cursor-pointer relative overflow-hidden group"
-              whileTap={{ scale: 0.98 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all duration-200 cursor-pointer font-medium hover:scale-105 active:scale-95 group"
             >
-              {/* Background animation */}
-              <motion.div
-                className="absolute inset-0 bg-purple-800 dark:bg-purple-900"
-                initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
-                whileHover={{
-                  scale: 1.5,
-                  opacity: 0.2,
-                  transition: { duration: 0.1, ease: "easeOut" },
-                }}
-              />
-
-              {/* Gradient overlay */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/10 to-purple-500/0"
-                initial={{ x: "-100%" }}
-                whileHover={{
-                  x: "100%",
-                  transition: {
-                    repeat: Infinity,
-                    duration: 0.5,
-                    ease: "linear",
-                  },
-                }}
-              />
-
-              <span className="relative z-10">{t("cta")}</span>
-              <motion.span
-                className="relative z-10"
-                animate={{ x: [0, 5, 0] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 0.5,
-                  ease: "easeInOut",
-                }}
-              >
-                <FiArrowRight className="h-5 w-5" />
-              </motion.span>
-            </motion.button>
+              <span>{t("cta")}</span>
+              <FiArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+            </button>
 
             {/* Social Media Icons */}
             <motion.div

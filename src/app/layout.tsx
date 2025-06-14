@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import "../components/ui/theme-fix.css";
 import "../components/ui/mobile-theme-fix.css";
+import "../components/blog/blog-colors.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
 
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

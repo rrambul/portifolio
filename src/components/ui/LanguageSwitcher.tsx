@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { FiGlobe, FiCheck, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,7 +15,6 @@ export function LanguageSwitcher() {
   const t = useTranslations("language");
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -92,19 +91,21 @@ export function LanguageSwitcher() {
     setIsOpen(false);
     setIsChangingLocale(true);
 
-    // Create new path
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    // Create new path - handle both cases where pathname starts with locale or not
+    let newPath;
+    if (pathname.startsWith(`/${locale}`)) {
+      // Replace existing locale
+      newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    } else {
+      // Add locale to beginning of path
+      newPath = `/${newLocale}${pathname}`;
+    }
 
     // Update HTML lang attribute
     document.documentElement.lang = newLocale;
 
-    // Use Next.js router for client-side navigation instead of direct location change
-    router.push(newPath);
-
-    // Reset changing state after navigation
-    setTimeout(() => {
-      setIsChangingLocale(false);
-    }, 500);
+    // Use window.location for immediate language change with full page reload
+    window.location.href = newPath;
   };
 
   // Animation variants

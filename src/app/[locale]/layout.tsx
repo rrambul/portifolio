@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { defaultLocale } from "../../../i18n.config";
-import { ThemeProvider } from "@/providers/ThemeProvider";
+import { locales } from "../../../i18n.config";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,29 +39,23 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  // Fix for the warning about params.locale
-  const resolvedLocale = String(params?.locale || defaultLocale);
+  // Await params before accessing properties (Next.js 15 requirement)
+  const { locale } = await params;
 
-  let messages;
-  try {
-    messages = (await import(`@/messages/${resolvedLocale}/index.json`))
-      .default;
-  } catch {
+  // Ensure that the incoming `locale` is valid
+  if (!locales.includes(locale as "en" | "pt")) {
     notFound();
   }
 
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages({ locale });
+
   return (
-    <NextIntlClientProvider locale={resolvedLocale} messages={messages}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-      </ThemeProvider>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
     </NextIntlClientProvider>
   );
 }

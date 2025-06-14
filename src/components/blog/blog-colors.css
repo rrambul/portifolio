@@ -1,0 +1,77 @@
+/* Blog Color Overrides - Force correct colors in white theme */
+
+/* Fix for gradient text clipping - prevent letters like 'g' from being cut off */
+.bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  padding-bottom: 0.125rem !important; /* 2px padding bottom */
+  line-height: 1.2 !important;
+}
+
+/* Blog card title - force black in white theme */
+.blog-title-force-black {
+  color: #000000 !important;
+}
+
+html.dark .blog-title-force-black,
+.dark .blog-title-force-black {
+  color: #f4f4f5 !important; /* zinc-100 for dark theme */
+}
+
+/* Blog back button (top) - force black in white theme */
+.blog-back-button-force-black {
+  color: #000000 !important;
+}
+
+html.dark .blog-back-button-force-black,
+.dark .blog-back-button-force-black {
+  color: #d4d4d8 !important; /* zinc-300 for dark theme */
+}
+
+/* Blog read more link - force dark purple in white theme */
+.blog-readmore-force-dark {
+  color: #581c87 !important; /* purple-900 */
+}
+
+html.dark .blog-readmore-force-dark,
+.dark .blog-readmore-force-dark {
+  color: #a855f7 !important; /* purple-400 for dark theme */
+}
+
+/* Blog back link - force dark purple in white theme */
+.blog-back-link-force-dark {
+  color: #581c87 !important; /* purple-900 */
+}
+
+html.dark .blog-back-link-force-dark,
+.dark .blog-back-link-force-dark {
+  color: #a855f7 !important; /* purple-400 for dark theme */
+}
+
+/* Hover states */
+.blog-back-button-force-black:hover {
+  color: #374151 !important; /* gray-700 on hover in white theme */
+}
+
+html.dark .blog-back-button-force-black:hover,
+.dark .blog-back-button-force-black:hover {
+  color: #f4f4f5 !important; /* zinc-100 on hover in dark theme */
+}
+
+.blog-readmore-force-dark:hover {
+  color: #000000 !important; /* black on hover in white theme */
+}
+
+html.dark .blog-readmore-force-dark:hover,
+.dark .blog-readmore-force-dark:hover {
+  color: #c084fc !important; /* purple-300 on hover in dark theme */
+}
+
+.blog-back-link-force-dark:hover {
+  color: #000000 !important; /* black on hover in white theme */
+}
+
+html.dark .blog-back-link-force-dark:hover,
+.dark .blog-back-link-force-dark:hover {
+  color: #c084fc !important; /* purple-300 on hover in dark theme */
+} 
