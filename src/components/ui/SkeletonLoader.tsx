@@ -182,3 +182,4 @@ export function ContentLoader({
 }: ContentLoaderProps) {
   return <div className={className}>{isLoading ? skeleton : children}</div>;
 }
+ 

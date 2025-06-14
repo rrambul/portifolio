@@ -154,58 +154,58 @@ export function Experience() {
                   transition={{ duration: 0.3, delay: 0.15 + idx * 0.15 }}
                 />
 
-                <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-zinc-700 flex items-center justify-center border border-gray-200 dark:border-zinc-600">
-                      {exp.logo ? (
-                        <Image
-                          src={exp.logo}
-                          alt={`${exp.company} logo`}
-                          width={48}
-                          height={48}
-                          className="object-contain"
-                          onError={(e) => {
-                            // Fallback if image fails to load
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = "none";
-                          }}
-                        />
-                      ) : (
-                        <FiBriefcase className="h-6 w-6 text-gray-400" />
-                      )}
+                  <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-zinc-700 flex items-center justify-center border border-gray-200 dark:border-zinc-600">
+                        {exp.logo ? (
+                          <Image
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            width={48}
+                            height={48}
+                            className="object-contain"
+                            onError={(e) => {
+                              // Fallback if image fails to load
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = "none";
+                            }}
+                          />
+                        ) : (
+                          <FiBriefcase className="h-6 w-6 text-gray-400" />
+                        )}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">
+                          {exp.jobTitle}
+                        </h3>
+                        <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400">
+                          <span className="font-medium">{exp.company}</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-500 mt-1">
+                          <FiMapPin className="h-3 w-3" />
+                          <span className="text-sm">{exp.location}</span>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">
-                        {exp.jobTitle}
-                      </h3>
-                      <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400">
-                        <span className="font-medium">{exp.company}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-500 mt-1">
-                        <FiMapPin className="h-3 w-3" />
-                        <span className="text-sm">{exp.location}</span>
-                      </div>
+                    <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400 mt-2 md:mt-0">
+                      <FiCalendar className="h-4 w-4" />
+                      <span>{exp.period}</span>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400 mt-2 md:mt-0">
-                    <FiCalendar className="h-4 w-4" />
-                    <span>{exp.period}</span>
-                  </div>
-                </div>
-                <ul className="list-disc list-outside ml-5 space-y-2 text-zinc-600 dark:text-zinc-400 mb-4">
+                  <ul className="list-disc list-outside ml-5 space-y-2 text-zinc-600 dark:text-zinc-400 mb-4">
                   {exp.responsibilities.map((resp: string, respIdx: number) => (
-                    <li key={respIdx}>{resp}</li>
+                        <li key={respIdx}>{resp}</li>
                   ))}
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {exp.skills.map((skill: string, skillIdx: number) => (
-                    <span
-                      key={skillIdx}
+                  </ul>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {exp.skills.map((skill: string, skillIdx: number) => (
+                      <span
+                        key={skillIdx}
                       className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs rounded-full font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                      >
+                        {skill}
+                      </span>
+                    ))}
                 </div>
               </motion.div>
             ))}

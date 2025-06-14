@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -139,6 +139,45 @@ export function Hero() {
                 <FiArrowRight className="h-5 w-5" />
               </motion.span>
             </motion.button>
+
+            {/* Social Media Icons */}
+            <motion.div
+              className="flex items-center space-x-6 mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.7 }}
+            >
+              <motion.a
+                href="https://github.com/RenanRSilva"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FiGithub className="w-6 h-6" />
+              </motion.a>
+
+              <motion.a
+                href="https://www.linkedin.com/in/renan-rambul/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FiLinkedin className="w-6 h-6" />
+              </motion.a>
+
+              <motion.a
+                href="mailto:renan.rambul@gmail.com"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FiMail className="w-6 h-6" />
+              </motion.a>
+            </motion.div>
           </motion.div>
 
           {/* Right side with profile photo */}

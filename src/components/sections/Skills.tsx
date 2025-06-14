@@ -301,7 +301,7 @@ export function Skills() {
             <motion.div variants={item}>
               <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
                 {t("frontend")}
-              </h3>
+                </h3>
               <CircularCarousel
                 items={frontendSkills}
                 radius={150}
@@ -320,7 +320,7 @@ export function Skills() {
                 radius={120}
                 autoRotate={true}
                 rotationSpeed={-0.002}
-              />
+                        />
             </motion.div>
 
             {/* Testing Skills */}
@@ -334,7 +334,7 @@ export function Skills() {
                 autoRotate={true}
                 rotationSpeed={0.0018}
               />
-            </motion.div>
+                    </motion.div>
 
             {/* Tools Skills */}
             <motion.div variants={item}>
@@ -347,7 +347,7 @@ export function Skills() {
                 autoRotate={true}
                 rotationSpeed={-0.0015}
               />
-            </motion.div>
+              </motion.div>
           </div>
         </motion.div>
       </div>
