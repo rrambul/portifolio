@@ -15,9 +15,34 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Renan Rambul | Software Developer Portfolio",
+  title: {
+    template: '%s | Renan Rambul',
+    default: 'Renan Rambul | Software Developer Portfolio',
+  },
   description:
     "Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications and solving complex problems.",
+  metadataBase: new URL('https://renanrambul.com'),
+  keywords: [
+    'Renan Rambul',
+    'Software Developer',
+    'Frontend Developer',
+    'React',
+    'TypeScript',
+    'Next.js',
+    'JavaScript',
+    'Web Development',
+    'Portfolio',
+    'Brazil',
+    'Software Engineer',
+  ],
+  authors: [{ name: 'Renan Rambul', url: 'https://renanrambul.com' }],
+  creator: 'Renan Rambul',
+  publisher: 'Renan Rambul',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       {
@@ -25,11 +50,60 @@ export const metadata: Metadata = {
         type: "image/svg+xml",
       },
     ],
+    apple: [
+      {
+        url: "/favicon/favicon.svg",
+        type: "image/svg+xml",
+      },
+    ],
   },
-  themeColor: "#9333ea",
+  manifest: '/manifest.json',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+  ],
   viewport: {
     width: "device-width",
     initialScale: 1,
+    maximumScale: 5,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://renanrambul.com',
+    siteName: 'Renan Rambul Portfolio',
+    title: 'Renan Rambul | Software Developer Portfolio',
+    description: 'Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications.',
+    images: [
+      {
+        url: '/og-home.png',
+        width: 1200,
+        height: 630,
+        alt: 'Renan Rambul - Software Developer Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Renan Rambul | Software Developer Portfolio',
+    description: 'Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience.',
+    creator: '@renanrambul',
+    images: ['/og-home.png'],
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    // Add other verification codes as needed
   },
 };
 
@@ -76,6 +150,69 @@ export default function RootLayout({
                 }
               })();
             `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Renan Rambul",
+              "url": "https://renanrambul.com",
+              "image": "https://renanrambul.com/profile-picture.jpg",
+              "jobTitle": "Software Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Translational Analytics"
+              },
+              "description": "Passionate software developer with 3+ years of experience in building modern web applications and solving complex problems.",
+              "knowsAbout": [
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Next.js",
+                "Node.js",
+                "Web Development",
+                "Frontend Development",
+                "Software Architecture"
+              ],
+              "sameAs": [
+                "https://github.com/renanrambul",
+                "https://linkedin.com/in/renanrambul",
+                "https://twitter.com/renanrambul"
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "BR"
+              },
+              "alumniOf": {
+                "@type": "Organization",
+                "name": "Your University"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Renan Rambul Portfolio",
+              "url": "https://renanrambul.com",
+              "description": "Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications.",
+              "author": {
+                "@type": "Person",
+                "name": "Renan Rambul"
+              },
+              "inLanguage": ["en", "pt"],
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://renanrambul.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
           }}
         />
       </head>
