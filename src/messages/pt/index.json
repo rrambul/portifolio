@@ -56,10 +56,10 @@
       "freelance": {
         "title": "Engenheiro Frontend",
         "responsibilities": [
-          "Desenvolvimento do frontend de uma aplicação para curso pré-vestibular com gerenciamento de alunos, atividades, usuários, turmas e modelos de atividade",
-          "Criação de landing pages voltadas para captação de alunos, com foco em performance, responsividade e conversão",
-          "Implementação de UI usando React.js, Ant Design para componentes, React Query para data fetching e cache, e React Hook Form para formulários",
-          "Documentação de componentes usando Storybook e aplicação de arquitetura baseada em Domain-Driven Design"
+          "Entreguei o frontend para uma plataforma de curso pré-vestibular, implementando funcionalidades complexas de gerenciamento de alunos, turmas, atividades e simulados, melhorando a organização e a experiência dos usuários",
+          "Desenvolvi landing pages otimizadas para captação de alunos, com foco em alta performance, responsividade e aumento significativo das taxas de conversão",
+          "Apliquei tecnologias modernas como React.js, Ant Design, React Query, React Hook Form e Storybook, garantindo interfaces eficientes, acessíveis e bem documentadas",
+          "Estruturei o projeto utilizando Domain-Driven Design (DDD), promovendo escalabilidade e manutenção facilitada do código"
         ],
         "skills": [
           "React.js",
@@ -74,10 +74,12 @@
       "bymycell": {
         "title": "Engenheiro de Software",
         "responsibilities": [
-          "Atuação como desenvolvedor full stack em startup de biotecnologia, desenvolvendo funcionalidades para projeto de análise de amostras de solo usando React.js, Tailwind CSS e React Query",
-          "Desenvolvimento do sistema de administração de fluxo de trabalho para análises de laboratório, trabalhando tanto no frontend (React.js) quanto no backend (Express.js)",
-          "Refatoração e migração de backend legado para novos projetos com arquitetura baseada em Domain-Driven Design, resultando em código mais manutenível e testável",
-          "Implementação de testes unitários e de integração com Jest e Supertest, e manutenção de aplicação legada desenvolvida com Svelte.js"
+          "Desenvolvi funcionalidades-chave para o sistema de apresentação de resultados de análises de solo, utilizando React.js, Tailwind CSS e React Query, aprimorando a experiência do usuário e a visualização dos dados",
+          "Desenvolvi funcionalidades para o sistema de administração do fluxo de trabalho do laboratório, integrando frontend e backend, o que resultou em melhor rastreabilidade e controle dos processos laboratoriais",
+          "Refatorei e migrei funcionalidades do backend legado para uma arquitetura baseada em Domain-Driven Design (DDD), aumentando a manutenibilidade, escalabilidade e a qualidade do código",
+          "Implementei testes unitários e de integração utilizando Jest e Supertest, elevando a confiabilidade e reduzindo falhas em produção",
+          "Atuei no desenvolvimento backend com Express.js, TypeORM, Prisma, Docker e MySQL, otimizando desempenho e escalabilidade do sistema",
+          "Mantive e dei suporte a uma aplicação legada desenvolvida em Svelte.js, garantindo a continuidade do funcionamento até a migração completa"
         ],
         "skills": [
           "React.js",
@@ -90,16 +92,20 @@
           "Svelte.js",
           "Jest",
           "Supertest",
-          "React Query"
+          "React Query",
+          "TypeScript"
         ]
       },
       "take": {
         "title": "Engenheiro Frontend",
         "responsibilities": [
-          "Contribuição chave na implementação frontend do sistema de backoffice da empresa para gerenciamento de pedidos, estoque, usuários, dashboards e telemetria de coolers usando React.js, Material UI, Redux e Clean Architecture",
-          "Manutenção e correção do frontend legado desenvolvido em Angular",
-          "Participação ativa no desenvolvimento de projetos para clientes internacionais usando React.js, Ant Design, Context API, React Hook Form e React Query",
-          "Implementação de testes end-to-end com Cypress, integração de ferramentas de monitoramento como Microsoft Clarity, uso de bibliotecas de gráficos SVG como Recharts e documentação de componentes com Storybook"
+          "Fui peça-chave na implementação do frontend do sistema de backoffice da Take, startup que desenvolve coolers com tecnologia de venda autônoma de bebidas",
+          "Desenvolvi funcionalidades como gerenciamento de pedidos, estoque, usuários, dashboards e telemetria dos coolers utilizando React.js, Material UI e Redux",
+          "Atuei na criação e evolução do design system interno, promovendo consistência visual e facilitando a reutilização de componentes em diferentes projetos",
+          "Corrigi e mantive o frontend legado, originalmente desenvolvido em Angular",
+          "Participei ativamente do desenvolvimento de projetos para clientes internacionais, usando React.js, Ant Design, Context API, React Hook Form e React Query, do início ao fim da entrega das funcionalidades",
+          "Implementei testes end-to-end com Cypress e integrei ferramentas de monitoramento como o Microsoft Clarity",
+          "Utilizei bibliotecas de gráficos SVG como o Recharts e documentei componentes com o Storybook"
         ],
         "skills": [
           "React.js",
@@ -120,9 +126,10 @@
       "suave": {
         "title": "Desenvolvedor Full Stack",
         "responsibilities": [
-          "Desenvolvimento de landing pages e implementação de novas funcionalidades em sites de clientes usando Next.js",
-          "Construção de agregador de links para redes sociais usando Express.js, MySQL e React.js",
-          "Realização de análises e otimizações de SEO em sites de clientes, com foco em performance e aumento de conversões"
+          "Entreguei diversas landing pages de alta performance para clientes da região de Ribeirão Preto, utilizando Next.js, com foco em tempo de carregamento e responsividade",
+          "Implementei funcionalidades personalizadas em sites institucionais de clientes, melhorando a experiência do usuário e contribuindo para o aumento de conversões",
+          "Desenvolvi do zero uma agregadora de links para redes sociais, utilizando Express.js, MySQL e React.js, atendendo à demanda de personalização para diferentes perfis de clientes",
+          "Conduzi análises técnicas de SEO e performance nos sites dos clientes, aplicando melhorias que resultaram em melhor posicionamento orgânico e maior geração de leads"
         ],
         "skills": [
           "React.js",

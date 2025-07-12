@@ -56,10 +56,10 @@
       "freelance": {
         "title": "Frontend Engineer",
         "responsibilities": [
-          "Developed frontend for a pre-university course application with student management, activities, users, classes, activity models, and exams",
-          "Created landing pages focused on student acquisition with emphasis on performance, responsiveness, and conversion",
-          "Implemented UI using React.js, Ant Design for components, React Query for data fetching and caching, and React Hook Form for forms management",
-          "Documented components using Storybook and applied Domain-Driven Design architecture"
+          "Delivered the frontend for a pre-university course platform, implementing complex features for student, class, activity, and mock test management, enhancing user organization and experience",
+          "Developed high-performance landing pages focused on student acquisition, with emphasis on responsiveness and significant improvements in conversion rates",
+          "Applied modern technologies including React.js, Ant Design, React Query, React Hook Form, and Storybook to ensure efficient, accessible, and well-documented interfaces",
+          "Structured the project using Domain-Driven Design (DDD), fostering scalability and easier code maintenance"
         ],
         "skills": [
           "React.js",
@@ -74,10 +74,12 @@
       "bymycell": {
         "title": "Software Engineer",
         "responsibilities": [
-          "Worked as a full stack developer at a biotech startup, developing features for a soil sample analysis results project using React.js, Tailwind CSS, and React Query",
-          "Developed the laboratory workflow administration system for analysis, working on both frontend (React.js) and backend (Express.js)",
-          "Refactored and migrated legacy backend to new projects with Domain-Driven Design architecture, resulting in more maintainable and testable code",
-          "Implemented unit and integration tests with Jest and Supertest, and maintained a legacy application developed with Svelte.js"
+          "Developed key features for the soil analysis results presentation system using React.js, Tailwind CSS, and React Query, enhancing user experience and data visualization",
+          "Developed features for the laboratory workflow administration system, integrating frontend and backend, resulting in improved traceability and process control",
+          "Refactored and migrated legacy backend features to a Domain-Driven Design (DDD) architecture, increasing maintainability, scalability, and code quality",
+          "Implemented unit and integration testing with Jest and Supertest, boosting reliability and reducing production issues",
+          "Contributed to backend development using Express.js, TypeORM, Prisma, Docker, and MySQL, improving system performance and scalability",
+          "Maintained and supported a legacy Svelte.js application, ensuring continuous operation until full migration"
         ],
         "skills": [
           "React.js",
@@ -90,16 +92,20 @@
           "Svelte.js",
           "Jest",
           "Supertest",
-          "React Query"
+          "React Query",
+          "TypeScript"
         ]
       },
       "take": {
         "title": "Frontend Engineer",
         "responsibilities": [
-          "Key contributor to the frontend implementation of the company's backoffice system for managing orders, inventory, users, dashboards, and cooler telemetry using React.js, Material UI, Redux, and Clean Architecture",
-          "Maintained and fixed legacy frontend built with Angular",
-          "Actively participated in developing projects for international clients using React.js, Ant Design, Context API, React Hook Form, and React Query",
-          "Implemented end-to-end tests with Cypress, integrated monitoring tools like Microsoft Clarity, used SVG chart libraries like Recharts, and documented components with Storybook"
+          "Played a key role in implementing the frontend for Take's backoffice system—a startup that develops coolers with autonomous beverage sales technology",
+          "Developed features such as order management, inventory, user management, dashboards, and cooler telemetry using React.js, Material UI, Redux, and Clean Architecture",
+          "Contributed to the creation and evolution of an internal design system, promoting visual consistency and enabling component reuse across projects",
+          "Maintained and fixed issues in the legacy frontend built with Angular",
+          "Actively participated in the development of international client projects using React.js, Ant Design, Context API, React Hook Form, and React Query, from development to feature delivery",
+          "Implemented end-to-end tests with Cypress and integrated monitoring tools such as Microsoft Clarity",
+          "Worked with SVG chart libraries like Recharts and documented UI components using Storybook"
         ],
         "skills": [
           "React.js",
@@ -120,9 +126,10 @@
       "suave": {
         "title": "Full Stack Developer",
         "responsibilities": [
-          "Developed landing pages and implemented new features for client websites using Next.js",
-          "Built a social media link aggregator using Express.js, MySQL, and React.js",
-          "Performed SEO analysis and optimizations on client sites with a focus on performance and conversion rate improvements"
+          "Delivered multiple high-performance landing pages for clients in the Ribeirão Preto region using Next.js, focusing on fast load times and responsive design",
+          "Implemented custom features on corporate websites, improving user experience and contributing to increased conversion rates",
+          "Developed a custom social media link aggregator from scratch using Express.js, MySQL, and React.js, tailored to clients' branding and usage needs",
+          "Led SEO and performance audits on client websites, applying technical improvements that led to better organic ranking and increased lead generation"
         ],
         "skills": [
           "React.js",
