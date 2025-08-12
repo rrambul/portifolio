@@ -38,7 +38,7 @@ export function Footer() {
             <div className="flex space-x-8">
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
-                  href="https://github.com/RenanRSilva"
+                  href="https://github.com/rrambul"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"

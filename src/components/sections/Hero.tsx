@@ -112,7 +112,7 @@ export function Hero() {
               transition={{ duration: 0.4, delay: 0.7 }}
             >
               <motion.a
-                href="https://github.com/RenanRSilva"
+                href="https://github.com/rrambul"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"

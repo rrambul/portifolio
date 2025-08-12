@@ -178,7 +178,7 @@ export default function RootLayout({
                 "Software Architecture"
               ],
               "sameAs": [
-                "https://github.com/renanrambul",
+                "https://github.com/rrambul",
                 "https://linkedin.com/in/renanrambul",
                 "https://twitter.com/renanrambul"
               ],
