@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1a1a1a"/>
+  
+  <!-- Web Components Logo -->
+  <g transform="translate(400,115) scale(2)">
+    <!-- Custom Elements -->
+    <path d="M160 115l45-80 45 80z" fill="#E44D26"/>
+    <!-- Shadow DOM -->
+    <circle cx="120" cy="145" r="45" fill="#6B4FBB"/>
+    <!-- HTML Templates -->
+    <rect x="190" y="100" width="90" height="90" rx="10" fill="#2196F3"/>
+    <!-- ES Modules -->
+    <polygon points="120,235 165,155 75,155" fill="#4CAF50"/>
+  </g>
+</svg> 

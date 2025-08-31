@@ -376,6 +376,250 @@ Está funcionando muito bem pra mim e não pretendo parar.
       name: "Renan Rambul",
       avatar: "/profile-picture.jpg"
     }
+  },
+  {
+    id: "3",
+    title: {
+      en: "Introduction to Web Components: Current State and Why You Should Care",
+      pt: "Introdução aos Web Components: Estado Atual e Por Que Você Deve se Importar"
+    },
+    excerpt: {
+      en: "Web Components are a set of web standards that allow you to create reusable, native HTML components that are framework-agnostic. Learn about their current state and why they matter.",
+      pt: "Web Components são um conjunto de padrões da Web que permitem criar componentes reutilizáveis e nativos do HTML, independentes de qualquer framework. Entenda seu estado atual e por que são importantes."
+    },
+    content: {
+      en: `
+# Introduction to Web Components: Current State and Why You Should Care
+
+This is the first post in a series of articles I'll be writing about Web Components. The goal of this article is to provide an introduction to the topic and discuss the current state of this technology, explaining its benefits and the problems it solves.
+
+&nbsp;
+
+## What Are Web Components?
+
+Web Components are a set of web standards that allow you to create reusable, native HTML components that are framework-agnostic. In other words, you can build custom elements that work in any project—whether it's built with React, Vue, Angular, or just plain HTML and JavaScript.
+
+&nbsp;
+
+## Why Use Web Components?
+
+With Web Components, you can build a Design System using only native Web APIs, without relying on any external libraries. This brings several benefits:
+
+&nbsp;
+
+* **Longevity:** Your Design System won't be tied to a framework that might become obsolete.
+
+* **Compatibility:** All modern browsers have supported Web Components since January 2020.
+
+* **Performance:** By not depending on large frameworks, you avoid massive JavaScript bundles and improve performance.
+
+&nbsp;
+
+## Core Technologies of Web Components
+
+Web Components are built on three key technologies:
+
+&nbsp;
+
+* **Custom Elements:** Allows you to create and register new custom HTML elements.
+
+* **Shadow DOM:** Provides encapsulation so that HTML and CSS are isolated from the rest of the page.
+
+* **HTML Templates:** Lets you define reusable chunks of HTML that can be cloned without rendering immediately.
+
+&nbsp;
+
+## Key Advantages
+
+&nbsp;
+
+### Interoperability
+
+Define custom elements to create new HTML elements that work with any library or framework.
+
+&nbsp;
+
+### Encapsulation
+
+Leverage Shadow DOM to isolate styles and HTML rendering.
+
+&nbsp;
+
+### Composition
+
+Use slots to natively compose elements and render trees.
+
+&nbsp;
+
+### Semantics vs. Rendering
+
+Separate your semantic/accessible HTML from your render HTML with Shadow DOM.
+
+&nbsp;
+
+### Component-Aware Styling
+
+Declare CSS Parts to teach the browser how your component's style model works.
+
+&nbsp;
+
+## Tools for Working with Web Components
+
+If you want to start working with Web Components efficiently, here are some popular tools:
+
+&nbsp;
+
+* **Lit:** A lightweight library for building Web Components declaratively.
+
+* **Stencil:** Great for creating Design Systems and reusable components.
+
+* **Shoelace:** A collection of ready-to-use components built with Web Components.
+
+&nbsp;
+
+## Industry Adoption
+
+Web Component standards have been supported by all major browsers since January 2020. Some interesting facts:
+
+&nbsp;
+
+* Over 18% of all pages rendered by Chrome use Web Components.
+
+* The number of implemented Web Component standards has doubled since 2020.
+
+&nbsp;
+
+Many major companies and products are already using Web Components, such as:
+
+YouTube, MSN, Photoshop, Salesforce, SpaceX Dashboard
+
+&nbsp;
+
+## What's Next?
+
+In the next post of this series, we'll create a Web Component from scratch, step by step, and learn how to apply these technologies in practice.
+      `,
+      pt: `
+# Introdução aos Web Components: Estado Atual e Por Que Você Deve se Importar
+
+Este é o primeiro post de uma série que irei escrever sobre Web Components. O objetivo deste artigo é dar uma introdução ao assunto e apresentar o estado atual dessa tecnologia, explicando suas vantagens e os problemas que ela resolve.
+
+&nbsp;
+
+## O que são Web Components?
+
+Web Components são um conjunto de padrões da Web que permitem criar componentes reutilizáveis e nativos do HTML, independentes de qualquer framework. Em outras palavras, você pode construir elementos personalizados que funcionam em qualquer projeto, seja ele feito com React, Vue, Angular ou apenas HTML e JavaScript puro.
+
+&nbsp;
+
+## Por que usar Web Components?
+
+Com Web Components, você pode construir um Design System usando apenas APIs nativas da Web, sem depender de bibliotecas externas. Isso traz benefícios como:
+
+&nbsp;
+
+* **Longevidade:** Seu Design System não ficará preso a um framework que pode se tornar obsoleto.
+
+* **Compatibilidade:** Todos os navegadores modernos suportam Web Components (desde janeiro de 2020).
+
+* **Performance:** Por não depender de grandes frameworks, você evita pacotes gigantescos e reduz a quantidade de JavaScript no navegador.
+
+&nbsp;
+
+## Principais Tecnologias dos Web Components
+
+Os Web Components são baseados em três principais tecnologias:
+
+&nbsp;
+
+* **Custom Elements:** Permite criar e registrar novos elementos HTML personalizados.
+
+* **Shadow DOM:** Proporciona encapsulamento para que HTML e CSS sejam isolados do restante da página.
+
+* **HTML Templates:** Permite definir blocos de HTML reutilizáveis que podem ser clonados sem renderização imediata.
+
+&nbsp;
+
+## Principais Vantagens
+
+&nbsp;
+
+### Interoperabilidade
+
+Defina custom elements para criar novos elementos HTML que funcionam com qualquer biblioteca ou framework.
+
+&nbsp;
+
+### Encapsulamento
+
+Utilize Shadow DOM para isolar estilos e renderização de HTML.
+
+&nbsp;
+
+### Composição
+
+Use slots para compor elementos de forma nativa e criar árvores de renderização dinâmicas.
+
+&nbsp;
+
+### Semântica vs. Renderização
+
+Separe o HTML semântico do HTML de renderização com Shadow DOM.
+
+&nbsp;
+
+### Estilização Inteligente
+
+Declare CSS Parts para ensinar ao navegador como o modelo de estilos do seu componente funciona.
+
+&nbsp;
+
+## Ferramentas para Trabalhar com Web Components
+
+Se você deseja começar a usar Web Components de forma prática, aqui estão algumas ferramentas populares:
+
+&nbsp;
+
+* **Lit:** Uma biblioteca leve para criar Web Components de forma declarativa.
+
+* **Stencil:** Voltada para criação de Design Systems e componentes reutilizáveis.
+
+* **Shoelace:** Um conjunto de componentes prontos baseados em Web Components.
+
+&nbsp;
+
+## Adoção pela Indústria
+
+Os padrões de Web Components foram implementados por todos os navegadores modernos desde janeiro de 2020. Aqui estão alguns números:
+
+&nbsp;
+
+* Mais de 18% das páginas renderizadas no Chrome usam Web Components.
+
+* O número de padrões implementados dobrou desde 2020.
+
+&nbsp;
+
+Além disso, grandes empresas e produtos já utilizam essa tecnologia, como:
+
+YouTube, MSN, Photoshop, Salesforce, SpaceX Dashboard
+
+&nbsp;
+
+## O que vem a seguir?
+
+No próximo post desta série, vamos criar um Web Component do zero, passo a passo, e entender como usar essas tecnologias na prática.
+      `
+    },
+    date: "2025-06-16",
+    banner: "/blog/webcomponents.svg",
+    slug: "introduction-to-web-components",
+    tags: ["Web Components", "Frontend", "JavaScript", "Web Development", "Design Systems"],
+    readTime: 5,
+    author: {
+      name: "Renan Rambul",
+      avatar: "/profile-picture.jpg"
+    }
   }
 ];
 
