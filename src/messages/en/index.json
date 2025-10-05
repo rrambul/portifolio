@@ -104,8 +104,10 @@
           "Contributed to the creation and evolution of an internal design system, promoting visual consistency and enabling component reuse across projects",
           "Maintained and fixed issues in the legacy frontend built with Angular",
           "Actively participated in the development of international client projects using React.js, Ant Design, Context API, React Hook Form, and React Query, from development to feature delivery",
-          "Implemented end-to-end tests with Cypress and integrated monitoring tools such as Microsoft Clarity",
-          "Worked with SVG chart libraries like Recharts and documented UI components using Storybook"
+          "Increased reliability and reduced production errors by implementing end-to-end tests with Cypress",
+          "Improved alignment between product and development teams by documenting components with Storybook",
+          "Enhanced user experience through usability insights by implementing monitoring with Microsoft Clarity",
+          "Built interactive and accessible visualizations using Recharts (SVG charts)"
         ],
         "skills": [
           "React.js",
@@ -120,7 +122,8 @@
           "Context API",
           "React Hook Form",
           "React Query",
-          "Storybook"
+          "Storybook",
+          "Microsoft Clarity"
         ]
       },
       "suave": {

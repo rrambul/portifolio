@@ -25,8 +25,8 @@ export function Navigation() {
       { id: "home", label: t("home") },
       { id: "about", label: t("about") },
       { id: "experience", label: t("experience") },
-      { id: "skills", label: t("skills") },
-      { id: "blog", label: t("blog") },
+      // { id: "skills", label: t("skills") },
+      // { id: "blog", label: t("blog") },
       { id: "contact", label: t("contact") },
     ],
     [t]

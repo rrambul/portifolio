@@ -100,12 +100,14 @@
         "title": "Engenheiro Frontend",
         "responsibilities": [
           "Fui peça-chave na implementação do frontend do sistema de backoffice da Take, startup que desenvolve coolers com tecnologia de venda autônoma de bebidas",
-          "Desenvolvi funcionalidades como gerenciamento de pedidos, estoque, usuários, dashboards e telemetria dos coolers utilizando React.js, Material UI e Redux",
-          "Atuei na criação e evolução do design system interno, promovendo consistência visual e facilitando a reutilização de componentes em diferentes projetos",
-          "Corrigi e mantive o frontend legado, originalmente desenvolvido em Angular",
-          "Participei ativamente do desenvolvimento de projetos para clientes internacionais, usando React.js, Ant Design, Context API, React Hook Form e React Query, do início ao fim da entrega das funcionalidades",
-          "Implementei testes end-to-end com Cypress e integrei ferramentas de monitoramento como o Microsoft Clarity",
-          "Utilizei bibliotecas de gráficos SVG como o Recharts e documentei componentes com o Storybook"
+          "Desenvolvi funcionalidades como gerenciamento de pedidos, estoque, usuários, dashboards e telemetria dos coolers utilizando React.js, Material UI, Redux e Clean Architecture",
+          "Contribuí para a criação e evolução do design system interno, promovendo consistência visual e facilitando a reutilização de componentes em diferentes projetos",
+          "Mantive e corrigi problemas no frontend legado desenvolvido em Angular",
+          "Participei ativamente do desenvolvimento de projetos para clientes internacionais usando React.js, Ant Design, Context API, React Hook Form e React Query, do desenvolvimento à entrega das funcionalidades",
+          "Aumentei a confiabilidade e reduzi erros em produção implementando testes end-to-end com Cypress",
+          "Melhorei o alinhamento entre as equipes de produto e desenvolvimento documentando componentes com Storybook",
+          "Aprimorei a experiência do usuário através de insights de usabilidade implementando monitoramento com Microsoft Clarity",
+          "Construí visualizações interativas e acessíveis usando Recharts (gráficos SVG)"
         ],
         "skills": [
           "React.js",
@@ -120,7 +122,8 @@
           "Context API",
           "React Hook Form",
           "React Query",
-          "Storybook"
+          "Storybook",
+          "Microsoft Clarity"
         ]
       },
       "suave": {

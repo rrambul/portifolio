@@ -108,7 +108,7 @@ export function Footer() {
                   {t("experienceLink")}
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button
                   onClick={() => scrollToSection("skills")}
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
@@ -119,7 +119,7 @@ export function Footer() {
                 >
                   {t("skillsLink")}
                 </button>
-              </li>
+              </li> */}
             </ul>
           </div>
 
