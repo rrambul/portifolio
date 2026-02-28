@@ -10,12 +10,12 @@
   "hero": {
     "greeting": "Olá, eu sou",
     "title": "Renan Rambul",
-    "subtitle": "Desenvolvedor de Software",
+    "subtitle": "Engenheiro de Software Frontend",
     "cta": "Entre em contato"
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "Sou um desenvolvedor de software apaixonado, movido pela curiosidade e pelo desejo de criar soluções impactantes. Me realizo aprendendo novas tecnologias e contribuindo com a comunidade de desenvolvedores.",
+    "content": "Engenheiro de Software Frontend com mais de 6 anos de experiência construindo aplicações web escaláveis, acessíveis e de alta performance. Forte expertise em React, Tailwind CSS, arquitetura de UI moderna e design systems. Experiente em colaboração com equipes americanas em ambientes de saúde e SaaS, traduzindo requisitos de produto e protótipos Figma em interfaces performáticas e prontas para produção que geram resultados de negócio.",
     "personal": {
       "title": "Pessoal",
       "content": "Um desenvolvedor que ama programar, aprender coisas novas e explorar tecnologias. Também entusiasta de código aberto"
@@ -38,28 +38,31 @@
     "responsibilities": "Responsabilidades",
     "companies": {
       "tas": {
-        "title": "Engenheiro Frontend",
+        "title": "Engenheiro de Software",
         "responsibilities": [
-          "Desenvolvimento de novas funcionalidades da plataforma, com foco no frontend",
-          "Criação de novos componentes seguindo o Design System da empresa, priorizando performance, acessibilidade, testes unitários e documentação com Storybook",
-          "Refatoração de funcionalidades existentes para utilizar os novos componentes, realização de testes e implementação de melhorias de acessibilidade",
-          "Trabalho principalmente com Web Components, utilizando Lit e TypeScript"
+          "Desenvolver componentes web acessíveis e de alta performance para um design system interno utilizado por múltiplas equipes de produto.",
+          "Construir funcionalidades de UI para uma plataforma SaaS de saúde americana, melhorando a usabilidade e reduzindo o atrito operacional para os usuários finais.",
+          "Aumentar a cobertura de testes de integração frontend com Playwright, melhorando a confiança nos releases e reduzindo o risco de regressão.",
+          "Revisar pull requests para garantir manutenibilidade, consistência arquitetural e fidelidade pixel-perfect aos protótipos do Figma.",
+          "Manter e publicar pacotes npm privados, acelerando a velocidade de desenvolvimento e promovendo consistência visual na plataforma."
         ],
         "skills": [
-          "Lit",
           "Web Components",
           "TypeScript",
+          "Playwright",
           "Storybook",
-          "Acessibilidade"
+          "Acessibilidade",
+          "Figma",
+          "Pacotes npm"
         ]
       },
       "freelance": {
-        "title": "Engenheiro Frontend",
+        "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Entreguei o frontend para uma plataforma de curso pré-vestibular, implementando funcionalidades complexas de gerenciamento de alunos, turmas, atividades e simulados, melhorando a organização e a experiência dos usuários",
-          "Desenvolvi landing pages otimizadas para captação de alunos, com foco em alta performance, responsividade e aumento significativo das taxas de conversão",
-          "Apliquei tecnologias modernas como React.js, Ant Design, React Query, React Hook Form e Storybook, garantindo interfaces eficientes, acessíveis e bem documentadas",
-          "Estruturei o projeto utilizando Domain-Driven Design (DDD), promovendo escalabilidade e manutenção facilitada do código"
+          "Desenvolvi landing pages de alta performance e interfaces de aplicação que melhoraram a aquisição e engajamento de usuários.",
+          "Otimizei fluxos de trabalho de alunos e administrativos através de interfaces intuitivas, reduzindo esforço manual e aumentando a eficiência operacional.",
+          "Implementei arquitetura frontend moderna usando React, React Query e React Hook Form para garantir escalabilidade e manutenibilidade a longo prazo.",
+          "Colaborei de perto com stakeholders de produto para traduzir requisitos de negócio em soluções centradas no usuário que apoiaram o crescimento da empresa."
         ],
         "skills": [
           "React.js",
@@ -74,40 +77,31 @@
       "bymycell": {
         "title": "Engenheiro de Software",
         "responsibilities": [
-          "Desenvolvi funcionalidades-chave para o sistema de apresentação de resultados de análises de solo, utilizando React.js, Tailwind CSS e React Query, aprimorando a experiência do usuário e a visualização dos dados",
-          "Desenvolvi funcionalidades para o sistema de administração do fluxo de trabalho do laboratório, integrando frontend e backend, o que resultou em melhor rastreabilidade e controle dos processos laboratoriais",
-          "Refatorei e migrei funcionalidades do backend legado para uma arquitetura baseada em Domain-Driven Design (DDD), aumentando a manutenibilidade, escalabilidade e a qualidade do código",
-          "Implementei testes unitários e de integração utilizando Jest e Supertest, elevando a confiabilidade e reduzindo falhas em produção",
-          "Atuei no desenvolvimento backend com Express.js, TypeORM, Prisma, Docker e MySQL, otimizando desempenho e escalabilidade do sistema",
-          "Mantive e dei suporte a uma aplicação legada desenvolvida em Svelte.js, garantindo a continuidade do funcionamento até a migração completa"
+          "Construí funcionalidades de visualização de dados e relatórios usando React e Tailwind CSS, melhorando a clareza dos resultados de análises laboratoriais.",
+          "Integrei sistemas frontend e backend para melhorar a rastreabilidade do fluxo de trabalho e reduzir erros manuais de processo.",
+          "Refatorei módulos backend legados para uma arquitetura baseada em DDD, melhorando a escalabilidade e manutenibilidade a longo prazo.",
+          "Implementei testes unitários e de integração para aumentar a confiabilidade e reduzir incidentes em produção.",
+          "Mantive sistemas legados durante a migração arquitetural para garantir operações de negócio ininterruptas."
         ],
         "skills": [
           "React.js",
-          "Express.js",
-          "MySQL",
-          "TypeORM",
-          "Prisma",
-          "Docker",
           "Tailwind CSS",
-          "Svelte.js",
+          "TypeScript",
+          "DDD",
           "Jest",
-          "Supertest",
-          "React Query",
-          "TypeScript"
+          "Express.js",
+          "Docker",
+          "MySQL"
         ]
       },
       "take": {
-        "title": "Engenheiro Frontend",
+        "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Fui peça-chave na implementação do frontend do sistema de backoffice da Take, startup que desenvolve coolers com tecnologia de venda autônoma de bebidas",
-          "Desenvolvi funcionalidades como gerenciamento de pedidos, estoque, usuários, dashboards e telemetria dos coolers utilizando React.js, Material UI, Redux e Clean Architecture",
-          "Contribuí para a criação e evolução do design system interno, promovendo consistência visual e facilitando a reutilização de componentes em diferentes projetos",
-          "Mantive e corrigi problemas no frontend legado desenvolvido em Angular",
-          "Participei ativamente do desenvolvimento de projetos para clientes internacionais usando React.js, Ant Design, Context API, React Hook Form e React Query, do desenvolvimento à entrega das funcionalidades",
-          "Aumentei a confiabilidade e reduzi erros em produção implementando testes end-to-end com Cypress",
-          "Melhorei o alinhamento entre as equipes de produto e desenvolvimento documentando componentes com Storybook",
-          "Aprimorei a experiência do usuário através de insights de usabilidade implementando monitoramento com Microsoft Clarity",
-          "Construí visualizações interativas e acessíveis usando Recharts (gráficos SVG)"
+          "Desenvolvi funcionalidades de backoffice incluindo gerenciamento de pedidos, controle de estoque e dashboards para coolers inteligentes de varejo.",
+          "Contribuí para o design system interno, aumentando a reutilização de componentes e acelerando a entrega de funcionalidades.",
+          "Implementei testes end-to-end com Cypress, reduzindo bugs em produção e aumentando a confiança nos deploys.",
+          "Construí dashboards interativos e visualizações de dados acessíveis para apoiar a tomada de decisão baseada em dados.",
+          "Colaborei com clientes internacionais, entregando funcionalidades prontas para produção do planejamento ao deploy."
         ],
         "skills": [
           "React.js",
@@ -127,12 +121,12 @@
         ]
       },
       "suave": {
-        "title": "Desenvolvedor Full Stack",
+        "title": "Desenvolvedor Full-stack",
         "responsibilities": [
-          "Entreguei diversas landing pages de alta performance para clientes da região de Ribeirão Preto, utilizando Next.js, com foco em tempo de carregamento e responsividade",
-          "Implementei funcionalidades personalizadas em sites institucionais de clientes, melhorando a experiência do usuário e contribuindo para o aumento de conversões",
-          "Desenvolvi do zero uma agregadora de links para redes sociais, utilizando Express.js, MySQL e React.js, atendendo à demanda de personalização para diferentes perfis de clientes",
-          "Conduzi análises técnicas de SEO e performance nos sites dos clientes, aplicando melhorias que resultaram em melhor posicionamento orgânico e maior geração de leads"
+          "Entreguei landing pages Next.js de alta performance focadas em velocidade, responsividade e otimização de conversão.",
+          "Desenvolvi funcionalidades personalizadas para websites que melhoraram a experiência do usuário e aumentaram a geração de leads.",
+          "Construí uma plataforma multi-tenant de agregação de links sociais usando React e Express para atender diversas necessidades de clientes.",
+          "Realizei otimizações de SEO e performance que melhoraram a visibilidade orgânica e o ROI de marketing."
         ],
         "skills": [
           "React.js",

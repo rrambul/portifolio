@@ -134,7 +134,7 @@ export function Hero() {
               </motion.a>
 
               <motion.a
-                href="mailto:renan.rambul@gmail.com"
+                href="mailto:renanrambuls@gmail.com"
                 className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
