@@ -144,14 +144,14 @@ html:not(.dark) .md\:hidden {
 }
 
 /* Enhanced card fixes */
-html:not(.dark) [class*="rounded-lg"]:not(.project-card):not(.project-card *) {
+html:not(.dark) [class*="rounded-lg"]:not(.project-card):not(.project-card *):not(.interest-item):not(.interest-item *) {
   background-color: #ffffff !important;
   border: 1px solid #e5e7eb !important;
 }
 
-.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *),
-html.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *),
-:root.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *) {
+.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *):not(.interest-item):not(.interest-item *),
+html.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *):not(.interest-item):not(.interest-item *),
+:root.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *):not(.interest-item):not(.interest-item *) {
   background-color: #27272a !important;
   border: 1px solid #3f3f46 !important;
 }
@@ -213,4 +213,29 @@ html.dark .project-tag,
 .project-link {
   cursor: pointer !important;
   pointer-events: auto !important;
+}
+
+/* Interest section items */
+.interest-item {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.dark .interest-item,
+html.dark .interest-item,
+:root.dark .interest-item {
+  background-color: rgba(39, 39, 42, 0.8) !important;
+  border: 1px solid rgba(63, 63, 70, 0.6) !important;
+}
+
+.interest-item .rounded-lg {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.dark .interest-item .rounded-lg,
+html.dark .interest-item .rounded-lg,
+:root.dark .interest-item .rounded-lg {
+  background-color: transparent !important;
+  border: none !important;
 }

@@ -2,6 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import {
   FiLayers,
   FiBox,
@@ -26,6 +28,14 @@ const interests = [
 
 export function Interests() {
   const t = useTranslations("interests");
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && (theme === "dark" || resolvedTheme === "dark");
 
   const container = {
     hidden: { opacity: 0 },
@@ -71,10 +81,18 @@ export function Interests() {
         >
           {/* Section heading */}
           <motion.div variants={item} className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 text-sm font-medium text-teal-600 dark:text-teal-400 mb-3 tracking-wide uppercase">
+            <span
+              className="inline-flex items-center gap-2 text-sm font-medium mb-3 tracking-wide uppercase"
+              style={{ color: isDark ? "#2dd4bf" : "#0d9488" }}
+            >
               {t("subtitle")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold">{t("title")}</h2>
+            <h2
+              className="text-3xl md:text-4xl font-bold"
+              style={{ color: isDark ? "#ffffff" : "#18181b" }}
+            >
+              {t("title")}
+            </h2>
           </motion.div>
 
           {/* Interest cards */}
@@ -90,7 +108,7 @@ export function Interests() {
                   y: -4,
                   transition: { type: "spring", stiffness: 400, damping: 17 },
                 }}
-                className="group relative flex items-center gap-4 p-5 rounded-xl
+                className="group interest-item relative flex items-center gap-4 p-5 rounded-xl
                   bg-white dark:bg-zinc-800/80
                   border border-zinc-200 dark:border-zinc-700/60
                   shadow-sm hover:shadow-md
@@ -111,7 +129,10 @@ export function Interests() {
                 </div>
 
                 {/* Text */}
-                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200 leading-snug">
+                <span
+                  className="text-sm font-medium leading-snug"
+                  style={{ color: isDark ? "#f4f4f5" : "#27272a" }}
+                >
                   {t(`items.${key}`)}
                 </span>
 
