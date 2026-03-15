@@ -42,7 +42,7 @@ export async function POST(request: Request) {
         `,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #6d28d9;">New Contact Form Message</h2>
+            <h2 style="color: #0f766e;">New Contact Form Message</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Message:</strong></p>

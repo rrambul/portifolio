@@ -41,21 +41,21 @@ export function AnimatedButton({
     // Variant styles
     switch (variant) {
       case "primary":
-        classes += " bg-purple-600 hover:bg-purple-700 text-white";
+        classes += " bg-teal-600 hover:bg-teal-700 text-white";
         break;
       case "secondary":
         classes += " bg-blue-600 hover:bg-blue-700 text-white";
         break;
       case "outline":
         classes +=
-          " bg-transparent border-2 border-purple-600 text-purple-600 hover:bg-purple-600/10";
+          " bg-transparent border-2 border-teal-600 text-teal-600 hover:bg-teal-600/10";
         break;
       case "ghost":
         classes +=
           " bg-transparent hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200";
         break;
       default:
-        classes += " bg-purple-600 hover:bg-purple-700 text-white";
+        classes += " bg-teal-600 hover:bg-teal-700 text-white";
     }
 
     // Size styles

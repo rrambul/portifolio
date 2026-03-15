@@ -40,7 +40,7 @@ export function Experience() {
       jobTitle: t(`companies.tas.title`),
       company: "Translational Analytics & Statistics",
       companyId: "tas",
-      logo: "/company-logos/tas-logo.jpeg",
+      logo: "/company-logos/tas-logo.png",
       period: "Jan 2025 - Present",
       location: "Arizona, United States · Remote",
       responsibilities: t.raw(`companies.tas.responsibilities`),
@@ -111,7 +111,7 @@ export function Experience() {
               className="absolute left-5 top-0 w-1 origin-top shadow-md"
               style={{
                 height: "calc(100% - 40px)",
-                backgroundColor: "#8b5cf6", // Explicit purple color for all themes
+                backgroundColor: "#14b8a6", // Explicit teal color for all themes
               }}
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: [0, 0.3, 0.6, 1] }}
@@ -132,11 +132,11 @@ export function Experience() {
                 {/* Timeline node with sequential animation */}
                 <div
                   className="absolute -left-12 top-6 w-4 h-4 rounded-full bg-white dark:bg-zinc-800 border-2 flex items-center justify-center z-10"
-                  style={{ borderColor: "#8b5cf6" }} // Explicit purple border color
+                  style={{ borderColor: "#14b8a6" }} // Explicit teal border color
                 >
                   <motion.div
                     className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: "#8b5cf6" }} // Explicit purple color
+                    style={{ backgroundColor: "#14b8a6" }} // Explicit teal color
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
@@ -147,7 +147,7 @@ export function Experience() {
                 {/* Timeline connector line with sequential animation */}
                 <motion.div
                   className="absolute -left-8 top-8 h-1"
-                  style={{ width: "8px", backgroundColor: "#8b5cf6" }} // Explicit purple color
+                  style={{ width: "8px", backgroundColor: "#14b8a6" }} // Explicit teal color
                   initial={{ scaleX: 0, originX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
@@ -175,7 +175,7 @@ export function Experience() {
                         )}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">
+                        <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400">
                           {exp.jobTitle}
                         </h3>
                         <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400">
@@ -201,7 +201,7 @@ export function Experience() {
                     {exp.skills.map((skill: string, skillIdx: number) => (
                       <span
                         key={skillIdx}
-                      className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs rounded-full font-medium"
+                      className="px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-xs rounded-full font-medium"
                       >
                         {skill}
                       </span>

@@ -41,7 +41,7 @@ export function Footer() {
                   href="https://github.com/rrambul"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -56,7 +56,7 @@ export function Footer() {
                   href="https://www.linkedin.com/in/renan-rambul/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -69,7 +69,7 @@ export function Footer() {
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
                   href="mailto:renan.rambul@gmail.com"
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:scale-110"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -87,7 +87,7 @@ export function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("about")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -99,7 +99,7 @@ export function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("experience")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -108,10 +108,22 @@ export function Footer() {
                   {t("experienceLink")}
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("projects")}
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
+                  style={{
+                    position: "relative",
+                    zIndex: 51,
+                  }}
+                >
+                  {t("projectsLink")}
+                </button>
+              </li>
               {/* <li>
                 <button
                   onClick={() => scrollToSection("skills")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 transform hover:translate-x-1"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
                     zIndex: 51,

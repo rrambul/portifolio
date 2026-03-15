@@ -48,7 +48,8 @@ export function Hero() {
     <section className="py-20 md:py-28 overflow-hidden relative">
       {/* Animated background shapes */}
       <motion.div
-        className="absolute top-20 left-10 w-60 h-60 rounded-full bg-purple-200 dark:bg-purple-900 opacity-20 blur-3xl"
+        className="absolute top-20 left-10 w-60 h-60 rounded-full bg-teal-200 dark:bg-teal-900 opacity-20 blur-3xl"
+        aria-hidden="true"
         animate={{
           x: calculateMovement("x", 30),
           y: calculateMovement("y", 30),
@@ -56,7 +57,8 @@ export function Hero() {
         transition={{ type: "spring", damping: 15 }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-indigo-200 dark:bg-indigo-900 opacity-20 blur-3xl"
+        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-cyan-200 dark:bg-cyan-900 opacity-20 blur-3xl"
+        aria-hidden="true"
         animate={{
           x: calculateMovement("x", -30),
           y: calculateMovement("y", -30),
@@ -73,7 +75,7 @@ export function Hero() {
             transition={{ duration: 0.7 }}
           >
             <motion.h2
-              className="text-xl md:text-2xl text-purple-600 dark:text-purple-400 font-medium mb-2"
+              className="text-xl md:text-2xl text-teal-600 dark:text-teal-400 font-medium mb-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
@@ -98,7 +100,7 @@ export function Hero() {
             </motion.p>
             <button
               onClick={scrollToContact}
-              className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md transition-all duration-200 cursor-pointer font-medium hover:scale-105 active:scale-95 group"
+              className="inline-flex items-center space-x-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-md transition-all duration-200 cursor-pointer font-medium hover:scale-105 active:scale-95 group"
             >
               <span>{t("cta")}</span>
               <FiArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -115,7 +117,7 @@ export function Hero() {
                 href="https://github.com/rrambul"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -126,7 +128,7 @@ export function Hero() {
                 href="https://www.linkedin.com/in/renan-rambul/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -135,7 +137,7 @@ export function Hero() {
 
               <motion.a
                 href="mailto:renanrambuls@gmail.com"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -153,7 +155,7 @@ export function Hero() {
           >
             {/* Profile photo */}
             <motion.div
-              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-purple-600 dark:border-purple-400 z-10"
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-teal-600 dark:border-teal-400 z-10"
               animate={{
                 x: calculateMovement("x", -8),
                 y: calculateMovement("y", -8),
@@ -163,10 +165,10 @@ export function Hero() {
               transition={{ type: "spring", damping: 20 }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 10px 30px rgba(147, 51, 234, 0.4)",
+                boxShadow: "0 10px 30px rgba(13, 148, 136, 0.4)",
               }}
               style={{
-                boxShadow: "0 0 25px rgba(147, 51, 234, 0.4)",
+                boxShadow: "0 0 25px rgba(13, 148, 136, 0.4)",
               }}
             >
               <Image

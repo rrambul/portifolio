@@ -85,7 +85,7 @@ export function ProjectCard({
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full"
+              className="px-2 py-1 text-xs font-medium bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full"
             >
               {tag}
             </span>
@@ -98,7 +98,7 @@ export function ProjectCard({
               href={demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-sm text-purple-600 dark:text-purple-400 hover:underline"
+              className="flex items-center gap-1 text-sm text-teal-600 dark:text-teal-400 hover:underline"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -111,7 +111,7 @@ export function ProjectCard({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-sm text-purple-600 dark:text-purple-400 hover:underline"
+              className="flex items-center gap-1 text-sm text-teal-600 dark:text-teal-400 hover:underline"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >

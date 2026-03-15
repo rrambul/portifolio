@@ -24,6 +24,7 @@ export default function AboutParticles() {
   return (
     <Particles
       id="about-particles"
+      aria-hidden="true"
       init={particlesInit}
       options={{
         particles: {
@@ -35,7 +36,7 @@ export default function AboutParticles() {
             },
           },
           color: {
-            value: isDark ? "#9333ea" : "#a855f7",
+            value: isDark ? "#0d9488" : "#14b8a6",
           },
           shape: {
             type: "circle",

@@ -37,8 +37,8 @@ export function Contact() {
           className="max-w-4xl mx-auto"
         >
           <motion.div className="text-center mb-12" variants={item}>
-            <motion.div className="inline-block bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full mb-4">
-              <FiMail className="text-purple-600 dark:text-purple-400 h-8 w-8" />
+            <motion.div className="inline-block bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full mb-4">
+              <FiMail className="text-teal-600 dark:text-teal-400 h-8 w-8" />
             </motion.div>
             <motion.h2 className="text-3xl md:text-4xl font-bold mb-4">
               {t("title")}

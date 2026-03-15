@@ -232,7 +232,7 @@ export function AnimatedContactForm() {
         " border-green-500 focus:border-green-500 focus:ring-green-500/30";
     } else {
       classes +=
-        " border-zinc-300 dark:border-zinc-700 focus:border-purple-500 focus:ring-purple-500/30";
+        " border-zinc-300 dark:border-zinc-700 focus:border-teal-500 focus:ring-teal-500/30";
     }
 
     classes += " transition-all duration-200 outline-none focus:ring-4";
@@ -401,16 +401,16 @@ export function AnimatedContactForm() {
               <motion.button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-md transition-all relative overflow-hidden group"
+                className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-4 rounded-md transition-all relative overflow-hidden group"
                 whileHover={{
                   scale: 1.02,
-                  boxShadow: "0 6px 12px rgba(147, 51, 234, 0.3)",
+                  boxShadow: "0 6px 12px rgba(13, 148, 136, 0.3)",
                 }}
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Background animation */}
                 <motion.div
-                  className="absolute inset-0 bg-purple-800 dark:bg-purple-900"
+                  className="absolute inset-0 bg-teal-800 dark:bg-teal-900"
                   initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
                   whileHover={{
                     scale: 1.5,
@@ -422,7 +422,7 @@ export function AnimatedContactForm() {
 
                 {/* Gradient overlay */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/10 to-purple-500/0"
+                  className="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-teal-400/10 to-teal-500/0"
                   initial={{ x: "-100%" }}
                   whileHover={{
                     x: "100%",

@@ -28,24 +28,24 @@ html.dark .blog-back-button-force-black,
   color: #d4d4d8 !important; /* zinc-300 for dark theme */
 }
 
-/* Blog read more link - force dark purple in white theme */
+/* Blog read more link - force dark teal in white theme */
 .blog-readmore-force-dark {
-  color: #581c87 !important; /* purple-900 */
+  color: #134e4a !important; /* teal-900 */
 }
 
 html.dark .blog-readmore-force-dark,
 .dark .blog-readmore-force-dark {
-  color: #a855f7 !important; /* purple-400 for dark theme */
+  color: #2dd4bf !important; /* teal-400 for dark theme */
 }
 
-/* Blog back link - force dark purple in white theme */
+/* Blog back link - force dark teal in white theme */
 .blog-back-link-force-dark {
-  color: #581c87 !important; /* purple-900 */
+  color: #134e4a !important; /* teal-900 */
 }
 
 html.dark .blog-back-link-force-dark,
 .dark .blog-back-link-force-dark {
-  color: #a855f7 !important; /* purple-400 for dark theme */
+  color: #2dd4bf !important; /* teal-400 for dark theme */
 }
 
 /* Hover states */
@@ -64,7 +64,7 @@ html.dark .blog-back-button-force-black:hover,
 
 html.dark .blog-readmore-force-dark:hover,
 .dark .blog-readmore-force-dark:hover {
-  color: #c084fc !important; /* purple-300 on hover in dark theme */
+  color: #5eead4 !important; /* teal-300 on hover in dark theme */
 }
 
 .blog-back-link-force-dark:hover {
@@ -73,5 +73,5 @@ html.dark .blog-readmore-force-dark:hover,
 
 html.dark .blog-back-link-force-dark:hover,
 .dark .blog-back-link-force-dark:hover {
-  color: #c084fc !important; /* purple-300 on hover in dark theme */
+  color: #5eead4 !important; /* teal-300 on hover in dark theme */
 } 

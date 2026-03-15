@@ -25,7 +25,7 @@ export function ThemeSwitcher() {
     <div className="flex items-center space-x-2 rounded-md border p-1 relative overflow-hidden">
       {/* Animated background pill that moves between light/dark */}
       <motion.div
-        className="absolute w-10 h-10 rounded-md bg-purple-100 dark:bg-purple-700/50 z-0"
+        className="absolute w-10 h-10 rounded-md bg-teal-100 dark:bg-teal-700/50 z-0"
         initial={false}
         animate={{
           x: theme === "light" ? 0 : 40,
@@ -66,7 +66,7 @@ export function ThemeSwitcher() {
           <FiMoon
             className={`h-5 w-5 ${
               theme === "dark"
-                ? "text-indigo-400"
+                ? "text-cyan-400"
                 : "text-zinc-600 dark:text-zinc-400"
             }`}
           />

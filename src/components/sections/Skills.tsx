@@ -299,7 +299,7 @@ export function Skills() {
           <div>
             {/* Frontend Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-teal-400 text-center">
                 {t("frontend")}
                 </h3>
               <CircularCarousel
@@ -312,7 +312,7 @@ export function Skills() {
 
             {/* Backend Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-teal-400 text-center">
                 {t("backend")}
               </h3>
               <CircularCarousel
@@ -325,7 +325,7 @@ export function Skills() {
 
             {/* Testing Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-teal-400 text-center">
                 {t("testing")}
               </h3>
               <CircularCarousel
@@ -338,7 +338,7 @@ export function Skills() {
 
             {/* Tools Skills */}
             <motion.div variants={item}>
-              <h3 className="text-2xl font-semibold text-black dark:text-purple-400 text-center">
+              <h3 className="text-2xl font-semibold text-black dark:text-teal-400 text-center">
                 {t("devopsTools")}
               </h3>
               <CircularCarousel

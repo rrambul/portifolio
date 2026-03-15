@@ -178,7 +178,7 @@ export function LanguageSwitcher() {
         whileHover="hover"
         whileTap="tap"
         className={`flex items-center space-x-1 rounded-md border p-2 cursor-pointer
-        focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50
+        focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50
         transition-all duration-300
         ${isOpen ? "bg-zinc-100 dark:bg-zinc-800" : ""}`}
         onClick={toggleDropdown}
@@ -222,7 +222,7 @@ export function LanguageSwitcher() {
                 hover:bg-zinc-100 dark:hover:bg-zinc-700
                 ${
                   locale === "en"
-                    ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
+                    ? "font-medium text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-zinc-700/50"
                     : ""
                 }`}
                 onClick={() => switchLocale("en")}
@@ -251,7 +251,7 @@ export function LanguageSwitcher() {
                 hover:bg-zinc-100 dark:hover:bg-zinc-700
                 ${
                   locale === "pt"
-                    ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
+                    ? "font-medium text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-zinc-700/50"
                     : ""
                 }`}
                 onClick={() => switchLocale("pt")}
@@ -319,7 +319,7 @@ export function LanguageSwitcher() {
                   hover:bg-zinc-100 dark:hover:bg-zinc-700
                   ${
                     locale === "en"
-                      ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
+                      ? "font-medium text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-zinc-700/50"
                       : ""
                   }`}
                   onClick={() => switchLocale("en")}
@@ -351,7 +351,7 @@ export function LanguageSwitcher() {
                   hover:bg-zinc-100 dark:hover:bg-zinc-700
                   ${
                     locale === "pt"
-                      ? "font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-zinc-700/50"
+                      ? "font-medium text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-zinc-700/50"
                       : ""
                   }`}
                   onClick={() => switchLocale("pt")}

@@ -12,7 +12,7 @@
 
 /* Skills cards - different background */
 .skills-card {
-  background-color: #f9f5ff !important; /* Light purple tint */
+  background-color: #f0fdfa !important; /* Light teal tint */
   border-color: #e5e7eb !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
@@ -36,7 +36,7 @@ html.dark .blog-card {
 :root.dark .skills-card,
 .dark .skills-card,
 html.dark .skills-card {
-  background-color: #2e2a36 !important; /* Dark purple tint */
+  background-color: #1a2e2c !important; /* Dark teal tint */
   border-color: #3f3f46 !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
     0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
@@ -74,42 +74,42 @@ html.dark nav {
   background-color: #18181b !important;
 }
 
-/* Fix purple elements */
-button[class*="bg-purple"] {
-  background-color: #9333ea !important;
+/* Fix teal elements */
+button[class*="bg-teal"] {
+  background-color: #0d9488 !important;
 }
 
-div[class*="bg-purple-100"] {
-  background-color: #f3e8ff !important;
+div[class*="bg-teal-100"] {
+  background-color: #ccfbf1 !important;
 }
 
-:root.dark div[class*="dark:bg-purple-900"],
-.dark div[class*="dark:bg-purple-900"],
-html.dark div[class*="dark:bg-purple-900"] {
-  background-color: #581c87 !important;
+:root.dark div[class*="dark:bg-teal-900"],
+.dark div[class*="dark:bg-teal-900"],
+html.dark div[class*="dark:bg-teal-900"] {
+  background-color: #134e4a !important;
 }
 
 /* Card icon containers with proper coloring */
-.rounded-full:not(.profile-container) {
-  background-color: #f3e8ff !important;
+.rounded-full:not(.profile-container):not(.project-badge) {
+  background-color: #ccfbf1 !important;
 }
 
-:root.dark .rounded-full:not(.profile-container),
-.dark .rounded-full:not(.profile-container),
-html.dark .rounded-full:not(.profile-container) {
-  background-color: #581c87 !important;
+:root.dark .rounded-full:not(.profile-container):not(.project-badge),
+.dark .rounded-full:not(.profile-container):not(.project-badge),
+html.dark .rounded-full:not(.profile-container):not(.project-badge) {
+  background-color: #134e4a !important;
 }
 
 /* Profile image specific styles */
 .profile-container {
-  border-color: #9333ea !important;
+  border-color: #0d9488 !important;
   overflow: hidden !important;
 }
 
 :root.dark .profile-container,
 .dark .profile-container,
 html.dark .profile-container {
-  border-color: #a855f7 !important;
+  border-color: #2dd4bf !important;
 }
 
 /* Fix profile image opacity issue */
@@ -144,14 +144,14 @@ html:not(.dark) .md\:hidden {
 }
 
 /* Enhanced card fixes */
-html:not(.dark) [class*="rounded-lg"] {
+html:not(.dark) [class*="rounded-lg"]:not(.project-card):not(.project-card *) {
   background-color: #ffffff !important;
   border: 1px solid #e5e7eb !important;
 }
 
-.dark [class*="rounded-lg"],
-html.dark [class*="rounded-lg"],
-:root.dark [class*="rounded-lg"] {
+.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *),
+html.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *),
+:root.dark [class*="rounded-lg"]:not(.project-card):not(.project-card *) {
   background-color: #27272a !important;
   border: 1px solid #3f3f46 !important;
 }
@@ -164,26 +164,53 @@ html.dark [class*="dark:bg-zinc"],
 }
 
 /* Fix any remaining card elements */
-.card,
-[class*="card"],
-[class*="-card"] {
+.card:not(.project-card),
+[class*="card"]:not(.project-card):not(.project-card *),
+[class*="-card"]:not(.project-card):not(.project-card *) {
   background-color: #ffffff !important;
   border: 1px solid #e5e7eb !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
-.dark .card,
-html.dark .card,
-:root.dark .card,
-.dark [class*="card"],
-html.dark [class*="card"],
-:root.dark [class*="card"],
-.dark [class*="-card"],
-html.dark [class*="-card"],
-:root.dark [class*="-card"] {
+.dark .card:not(.project-card),
+html.dark .card:not(.project-card),
+:root.dark .card:not(.project-card),
+.dark [class*="card"]:not(.project-card):not(.project-card *),
+html.dark [class*="card"]:not(.project-card):not(.project-card *),
+:root.dark [class*="card"]:not(.project-card):not(.project-card *),
+.dark [class*="-card"]:not(.project-card):not(.project-card *),
+html.dark [class*="-card"]:not(.project-card):not(.project-card *),
+:root.dark [class*="-card"]:not(.project-card):not(.project-card *) {
   background-color: #27272a !important;
   border: 1px solid #3f3f46 !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
     0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Project card specific styles */
+.project-card {
+  background-color: #ffffff !important;
+}
+
+.dark .project-card,
+html.dark .project-card,
+:root.dark .project-card {
+  background-color: #27272a !important;
+}
+
+.project-tag {
+  background-color: #f0fdfa !important;
+  border-radius: 9999px !important;
+}
+
+.dark .project-tag,
+html.dark .project-tag,
+:root.dark .project-tag {
+  background-color: rgba(20, 78, 74, 0.3) !important;
+}
+
+.project-link {
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }

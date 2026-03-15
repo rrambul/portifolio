@@ -46,7 +46,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
 
           {/* Title */}
           <h3 
-            className="text-xl font-bold mb-3 group-hover:!text-purple-800 dark:group-hover:!text-purple-400 transition-colors duration-200 blog-title-force-black"
+            className="text-xl font-bold mb-3 group-hover:!text-teal-800 dark:group-hover:!text-teal-400 transition-colors duration-200 blog-title-force-black"
             style={{ color: '#000000 !important' }}
           >
             {post.title[locale]}
@@ -77,7 +77,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
             {/* Read More indicator - no nested link */}
             <span 
               className="font-medium group-hover:underline transition-colors duration-200 blog-readmore-force-dark"
-              style={{ color: '#581c87 !important' }}
+              style={{ color: '#134e4a !important' }}
             >
               {t("readMore")} →
             </span>

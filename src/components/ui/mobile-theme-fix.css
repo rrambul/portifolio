@@ -14,27 +14,27 @@ html.dark body,
 }
 
 /* IMPROVED SKILL CHIPS FOR ALL DEVICES: Better contrast for both desktop and mobile */
-html.dark span.bg-purple-50.dark\:bg-purple-900,
-.dark span.bg-purple-50.dark\:bg-purple-900,
-html.dark span.bg-purple-50.dark\:bg-purple-900\/30,
-.dark span.bg-purple-50.dark\:bg-purple-900\/30,
-html.dark span.text-purple-800.dark\:text-purple-300,
-.dark span.text-purple-800.dark\:text-purple-300 {
-  color: #d8b4fe !important; /* Tailwind purple-300 - ensure high contrast */
+html.dark span.bg-teal-50.dark\:bg-teal-900,
+.dark span.bg-teal-50.dark\:bg-teal-900,
+html.dark span.bg-teal-50.dark\:bg-teal-900\/30,
+.dark span.bg-teal-50.dark\:bg-teal-900\/30,
+html.dark span.text-teal-800.dark\:text-teal-300,
+.dark span.text-teal-800.dark\:text-teal-300 {
+  color: #5eead4 !important; /* Tailwind teal-300 - ensure high contrast */
   background-color: rgba(
-    88,
-    28,
-    135,
+    19,
+    78,
+    74,
     0.3
-  ) !important; /* purple-900 with 30% opacity */
+  ) !important; /* teal-900 with 30% opacity */
 }
 
 /* WHITE THEME SKILL CHIPS: Apply consistent styling for all devices */
-html:not(.dark) span.bg-purple-50,
-:root:not(.dark) span.bg-purple-50,
-body:not(.dark) span.bg-purple-50 {
-  background-color: #f3e8ff !important; /* Tailwind purple-100 - better contrast */
-  color: #6b21a8 !important; /* Tailwind purple-800 - better contrast */
+html:not(.dark) span.bg-teal-50,
+:root:not(.dark) span.bg-teal-50,
+body:not(.dark) span.bg-teal-50 {
+  background-color: #ccfbf1 !important; /* Tailwind teal-100 - better contrast */
+  color: #115e59 !important; /* Tailwind teal-800 - better contrast */
 }
 
 /* CRITICAL FIX FOR ERROR MESSAGES: Ensure they're red in dark theme */
@@ -49,31 +49,31 @@ html.dark [class*="dark:text-red-"],
   color: #f87171 !important; /* Tailwind red-400 - good visibility for errors */
 }
 
-/* CRITICAL FIX FOR SKILL CHIPS: Ensure they're using the correct purple-300 color */
-html.dark span.dark\:text-purple-300,
-.dark span.dark\:text-purple-300,
-:root.dark span.dark\:text-purple-300,
-html.dark span.text-purple-800.dark\:text-purple-300,
-.dark span.text-purple-800.dark\:text-purple-300,
-:root.dark span.text-purple-800.dark\:text-purple-300 {
-  color: #d8b4fe !important; /* Tailwind purple-300 - proper contrast for skills */
+/* CRITICAL FIX FOR SKILL CHIPS: Ensure they're using the correct teal-300 color */
+html.dark span.dark\:text-teal-300,
+.dark span.dark\:text-teal-300,
+:root.dark span.dark\:text-teal-300,
+html.dark span.text-teal-800.dark\:text-teal-300,
+.dark span.text-teal-800.dark\:text-teal-300,
+:root.dark span.text-teal-800.dark\:text-teal-300 {
+  color: #5eead4 !important; /* Tailwind teal-300 - proper contrast for skills */
 }
 
 /* FIX FOR NAVIGATION MENU: Ensure default mobile menu items are white in dark mode */
 html.dark
   .md\:hidden
-  button:not([class*="text-purple-600"]):not([class*="dark:text-purple-400"]),
+  button:not([class*="text-teal-600"]):not([class*="dark:text-teal-400"]),
 .dark
   .md\:hidden
-  button:not([class*="text-purple-600"]):not([class*="dark:text-purple-400"]) {
-  color: inherit !important; /* Use the inherited color instead of purple */
+  button:not([class*="text-teal-600"]):not([class*="dark:text-teal-400"]) {
+  color: inherit !important; /* Use the inherited color instead of teal */
 }
 
-/* CRITICAL FIX FOR JOB TITLES: Ensure they're purple on mobile */
-html.dark h3.text-xl.font-semibold.text-purple-600.dark\:text-purple-400,
-.dark h3.text-xl.font-semibold.text-purple-600.dark\:text-purple-400,
-:root.dark h3.text-xl.font-semibold.text-purple-600.dark\:text-purple-400 {
-  color: #a855f7 !important; /* Tailwind purple-400 - crucial override */
+/* CRITICAL FIX FOR JOB TITLES: Ensure they're teal on mobile */
+html.dark h3.text-xl.font-semibold.text-teal-600.dark\:text-teal-400,
+.dark h3.text-xl.font-semibold.text-teal-600.dark\:text-teal-400,
+:root.dark h3.text-xl.font-semibold.text-teal-600.dark\:text-teal-400 {
+  color: #2dd4bf !important; /* Tailwind teal-400 - crucial override */
 }
 
 /* CRITICAL FIX FOR ABOUT CARD: Override the general text color rule for about cards */
@@ -83,11 +83,11 @@ html.dark .about-card p.text-zinc-600.dark\:text-zinc-400,
   color: #a1a1aa !important; /* Tailwind zinc-400 - crucial override */
 }
 
-/* FIX FOR SKILLS SUBTITLES: Ensure purple text appears correctly */
-html.dark h3.text-2xl.font-semibold.text-black.dark\:text-purple-400,
-.dark h3.text-2xl.font-semibold.text-black.dark\:text-purple-400,
-:root.dark h3.text-2xl.font-semibold.text-black.dark\:text-purple-400 {
-  color: #a855f7 !important; /* Tailwind purple-400 */
+/* FIX FOR SKILLS SUBTITLES: Ensure teal text appears correctly */
+html.dark h3.text-2xl.font-semibold.text-black.dark\:text-teal-400,
+.dark h3.text-2xl.font-semibold.text-black.dark\:text-teal-400,
+:root.dark h3.text-2xl.font-semibold.text-black.dark\:text-teal-400 {
+  color: #2dd4bf !important; /* Tailwind teal-400 */
 }
 
 /* Only fix text that should be light in dark mode */
@@ -105,27 +105,27 @@ html.dark [class*="text-zinc-900"],
 
 /* Only fix headings that need contrast in dark mode */
 html.dark
-  h1:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  h1:not([class*="text-teal"]):not([class*="text-primary"]):not(
     [class*="text-red"]
   ),
 .dark
-  h1:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  h1:not([class*="text-teal"]):not([class*="text-primary"]):not(
     [class*="text-red"]
   ),
 html.dark
-  h2:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  h2:not([class*="text-teal"]):not([class*="text-primary"]):not(
     [class*="text-red"]
   ),
 .dark
-  h2:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  h2:not([class*="text-teal"]):not([class*="text-primary"]):not(
     [class*="text-red"]
   ),
 html.dark
-  h3:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  h3:not([class*="text-teal"]):not([class*="text-primary"]):not(
     [class*="text-red"]
   ),
 .dark
-  h3:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  h3:not([class*="text-teal"]):not([class*="text-primary"]):not(
     [class*="text-red"]
   ) {
   color: hsl(0, 0%, 98%) !important; /* Original dark theme heading color */
@@ -133,11 +133,11 @@ html.dark
 
 /* Fix paragraphs that need contrast in dark mode - BUT EXCLUDE SPECIFIC CASES like about cards */
 html.dark
-  p:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  p:not([class*="text-teal"]):not([class*="text-primary"]):not(
     .text-zinc-600
   ):not([class*="text-red"]),
 .dark
-  p:not([class*="text-purple"]):not([class*="text-primary"]):not(
+  p:not([class*="text-teal"]):not([class*="text-primary"]):not(
     .text-zinc-600
   ):not([class*="text-red"]) {
   color: hsl(0, 0%, 98%) !important; /* Original dark theme text color */
@@ -156,11 +156,11 @@ html.dark [class*="text-zinc-500"],
   color: #a1a1aa !important; /* Standard Tailwind zinc-400 color */
 }
 
-/* SPECIFIC FIX: Skills subtitles - preserve original purple-400 color */
-html.dark [class*="dark:text-purple-400"],
-.dark [class*="dark:text-purple-400"],
-:root.dark [class*="dark:text-purple-400"] {
-  color: #a855f7 !important; /* Standard Tailwind purple-400 color */
+/* SPECIFIC FIX: Skills subtitles - preserve original teal-400 color */
+html.dark [class*="dark:text-teal-400"],
+.dark [class*="dark:text-teal-400"],
+:root.dark [class*="dark:text-teal-400"] {
+  color: #2dd4bf !important; /* Standard Tailwind teal-400 color */
 }
 
 /* Media query to target mobile devices - more selective approach */
@@ -184,41 +184,41 @@ html.dark [class*="dark:text-purple-400"],
   }
 
   /* Keep the mobile-specific fix for skill chips for backward compatibility */
-  html.dark span.bg-purple-50.dark\:bg-purple-900,
-  .dark span.bg-purple-50.dark\:bg-purple-900,
-  html.dark span.bg-purple-50.dark\:bg-purple-900\/30,
-  .dark span.bg-purple-50.dark\:bg-purple-900\/30,
-  html.dark span.text-purple-800.dark\:text-purple-300,
-  .dark span.text-purple-800.dark\:text-purple-300 {
-    color: #d8b4fe !important; /* Tailwind purple-300 - ensure high contrast */
+  html.dark span.bg-teal-50.dark\:bg-teal-900,
+  .dark span.bg-teal-50.dark\:bg-teal-900,
+  html.dark span.bg-teal-50.dark\:bg-teal-900\/30,
+  .dark span.bg-teal-50.dark\:bg-teal-900\/30,
+  html.dark span.text-teal-800.dark\:text-teal-300,
+  .dark span.text-teal-800.dark\:text-teal-300 {
+    color: #5eead4 !important; /* Tailwind teal-300 - ensure high contrast */
     background-color: rgba(
-      88,
-      28,
-      135,
+      19,
+      78,
+      74,
       0.3
-    ) !important; /* purple-900 with 30% opacity */
+    ) !important; /* teal-900 with 30% opacity */
   }
 
-  /* NAVIGATION FIX: Ensure mobile menu items are NOT purple by default */
+  /* NAVIGATION FIX: Ensure mobile menu items are NOT teal by default */
   html.dark
     nav
-    button:not(.text-purple-600):not([class*="dark:text-purple-400"]),
-  .dark nav button:not(.text-purple-600):not([class*="dark:text-purple-400"]) {
+    button:not(.text-teal-600):not([class*="dark:text-teal-400"]),
+  .dark nav button:not(.text-teal-600):not([class*="dark:text-teal-400"]) {
     color: hsl(
       0,
       0%,
       98%
-    ) !important; /* Use original text color instead of purple */
+    ) !important; /* Use original text color instead of teal */
   }
 
   /* CRITICAL MOBILE FIX FOR JOB TITLES */
-  html.dark h3.text-xl.font-semibold.text-purple-600.dark\:text-purple-400,
-  .dark h3.text-xl.font-semibold.text-purple-600.dark\:text-purple-400,
-  html.dark h3[class*="text-purple-600"],
-  .dark h3[class*="text-purple-600"],
-  html.dark h3[class*="dark:text-purple-400"],
-  .dark h3[class*="dark:text-purple-400"] {
-    color: #a855f7 !important; /* Tailwind purple-400 - strongest override */
+  html.dark h3.text-xl.font-semibold.text-teal-600.dark\:text-teal-400,
+  .dark h3.text-xl.font-semibold.text-teal-600.dark\:text-teal-400,
+  html.dark h3[class*="text-teal-600"],
+  .dark h3[class*="text-teal-600"],
+  html.dark h3[class*="dark:text-teal-400"],
+  .dark h3[class*="dark:text-teal-400"] {
+    color: #2dd4bf !important; /* Tailwind teal-400 - strongest override */
   }
 
   /* CRITICAL MOBILE FIX FOR ABOUT CARD TEXT */
@@ -227,12 +227,12 @@ html.dark [class*="dark:text-purple-400"],
     color: #a1a1aa !important; /* Tailwind zinc-400 - strongest override */
   }
 
-  /* CRITICAL MOBILE FIX FOR PURPLE SUBTITLES */
-  html.dark h3.dark\:text-purple-400,
-  .dark h3.dark\:text-purple-400,
-  html.dark h3[class*="dark:text-purple"],
-  .dark h3[class*="dark:text-purple"] {
-    color: #a855f7 !important; /* Tailwind purple-400 */
+  /* CRITICAL MOBILE FIX FOR TEAL SUBTITLES */
+  html.dark h3.dark\:text-teal-400,
+  .dark h3.dark\:text-teal-400,
+  html.dark h3[class*="dark:text-teal"],
+  .dark h3[class*="dark:text-teal"] {
+    color: #2dd4bf !important; /* Tailwind teal-400 */
   }
 
   /* Only fix problematic text elements on mobile */
@@ -263,28 +263,28 @@ html.dark [class*="dark:text-purple-400"],
   }
 
   /* CRITICAL FIX FOR SKILL CHIPS TEXT */
-  html.dark span.dark\:text-purple-300,
-  .dark span.dark\:text-purple-300 {
-    color: #d8b4fe !important; /* Tailwind purple-300 - ensures high contrast */
+  html.dark span.dark\:text-teal-300,
+  .dark span.dark\:text-teal-300 {
+    color: #5eead4 !important; /* Tailwind teal-300 - ensures high contrast */
   }
 
-  /* Ensure ONLY the *ACTIVE* menu items are purple */
-  html.dark nav .text-purple-600,
-  .dark nav .text-purple-600,
-  html.dark nav [class*="dark:text-purple-400"],
-  .dark nav [class*="dark:text-purple-400"] {
-    color: #a855f7 !important; /* Tailwind purple-400 */
+  /* Ensure ONLY the *ACTIVE* menu items are teal */
+  html.dark nav .text-teal-600,
+  .dark nav .text-teal-600,
+  html.dark nav [class*="dark:text-teal-400"],
+  .dark nav [class*="dark:text-teal-400"] {
+    color: #2dd4bf !important; /* Tailwind teal-400 */
   }
 
-  /* Apply purple ONLY to specific elements where it should be purple */
-  html.dark h3[class*="text-purple-600"],
-  .dark h3[class*="text-purple-600"],
-  html.dark h3[class*="dark:text-purple-400"],
-  .dark h3[class*="dark:text-purple-400"],
-  html.dark h2[class*="text-purple-600"],
-  .dark h2[class*="text-purple-600"],
-  html.dark h2[class*="dark:text-purple-400"],
-  .dark h2[class*="dark:text-purple-400"] {
-    color: #a855f7 !important; /* Tailwind purple-400 */
+  /* Apply teal ONLY to specific elements where it should be teal */
+  html.dark h3[class*="text-teal-600"],
+  .dark h3[class*="text-teal-600"],
+  html.dark h3[class*="dark:text-teal-400"],
+  .dark h3[class*="dark:text-teal-400"],
+  html.dark h2[class*="text-teal-600"],
+  .dark h2[class*="text-teal-600"],
+  html.dark h2[class*="dark:text-teal-400"],
+  .dark h2[class*="dark:text-teal-400"] {
+    color: #2dd4bf !important; /* Tailwind teal-400 */
   }
 }

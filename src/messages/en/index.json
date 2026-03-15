@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "experience": "Experience",
+    "projects": "Projects",
     "skills": "Skills",
     "blog": "Blog",
     "contact": "Contact"
@@ -166,6 +167,7 @@
     "links": "Quick Links",
     "aboutLink": "About",
     "experienceLink": "Experience",
+    "projectsLink": "Projects & Contributions",
     "skillsLink": "Skills",
     "contact": "Contact",
     "contactText": "Feel free to reach out if you have any questions or opportunities.",
@@ -196,6 +198,29 @@
       "successMessage": "Thank you for your message. I'll get back to you soon!",
       "error": "Oops!",
       "errorMessage": "Something went wrong. Please try again later."
+    }
+  },
+  "projects": {
+    "title": "Projects & Contributions",
+    "subtitle": "Open-source projects I've built and contributed to",
+    "liveDemo": "Live Demo",
+    "sourceCode": "Source Code",
+    "contribution": "Contribution",
+    "modularGameStore": {
+      "title": "Modular Game Store",
+      "description": "A modern, high-performance micro-frontend e-commerce platform built with Rspack and Module Federation, demonstrating scalable frontend architecture for large distributed teams."
+    },
+    "marketPulse": {
+      "title": "Market Pulse",
+      "description": "A real-time financial market monitoring platform built with Lit, Lit Signals, Rspack, and Module Federation, designed to explore high-performance reactive UIs under streaming data loads."
+    },
+    "animavita": {
+      "title": "Animavita",
+      "description": "Trigger life-saving alerts, register animals for adoption and find the closest pet friend to adopt. An open-source project with 739+ stars and 318+ forks on GitHub."
+    },
+    "portfolio": {
+      "title": "Personal Portfolio",
+      "description": "Modern, responsive portfolio website built with Next.js 15, featuring dark/light theme, internationalization (EN/PT), animated sections with Framer Motion, and a contact form."
     }
   },
   "theme": {

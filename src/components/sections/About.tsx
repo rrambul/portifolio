@@ -62,8 +62,8 @@ export function About() {
 
           <motion.div variants={item} className="grid md:grid-cols-3 gap-8">
             <div className="about-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:-translate-y-1.5 transition-transform duration-300">
-              <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full w-fit mb-4">
-                <FiUser className="text-purple-600 dark:text-purple-400 h-6 w-6" />
+              <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
+                <FiUser className="text-teal-600 dark:text-teal-400 h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 {t("personal.title")}
@@ -74,8 +74,8 @@ export function About() {
             </div>
 
             <div className="about-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:-translate-y-1.5 transition-transform duration-300">
-              <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full w-fit mb-4">
-                <FiCode className="text-purple-600 dark:text-purple-400 h-6 w-6" />
+              <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
+                <FiCode className="text-teal-600 dark:text-teal-400 h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 {t("technical.title")}
@@ -86,8 +86,8 @@ export function About() {
             </div>
 
             <div className="about-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:-translate-y-1.5 transition-transform duration-300">
-              <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full w-fit mb-4">
-                <FiGlobe className="text-purple-600 dark:text-purple-400 h-6 w-6" />
+              <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
+                <FiGlobe className="text-teal-600 dark:text-teal-400 h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 {t("languages.title")}

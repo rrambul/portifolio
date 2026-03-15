@@ -3,6 +3,7 @@
     "home": "Início",
     "about": "Sobre",
     "experience": "Experiência",
+    "projects": "Projetos",
     "skills": "Habilidades",
     "blog": "Blog",
     "contact": "Contato"
@@ -166,6 +167,7 @@
     "links": "Links Rápidos",
     "aboutLink": "Sobre",
     "experienceLink": "Experiência",
+    "projectsLink": "Projetos & Contribuições",
     "skillsLink": "Habilidades",
     "contact": "Contato",
     "contactText": "Sinta-se à vontade para entrar em contato se tiver alguma pergunta ou oportunidade.",
@@ -196,6 +198,29 @@
       "successMessage": "Obrigado pela sua mensagem. Entrarei em contato em breve!",
       "error": "Ops!",
       "errorMessage": "Algo deu errado. Por favor, tente novamente mais tarde."
+    }
+  },
+  "projects": {
+    "title": "Projetos & Contribuições",
+    "subtitle": "Projetos open-source que construí e contribuí",
+    "liveDemo": "Demo ao Vivo",
+    "sourceCode": "Código Fonte",
+    "contribution": "Contribuição",
+    "modularGameStore": {
+      "title": "Modular Game Store",
+      "description": "Plataforma e-commerce moderna de alta performance com micro-frontends, construída com Rspack e Module Federation, demonstrando arquitetura frontend escalável para grandes equipes distribuídas."
+    },
+    "marketPulse": {
+      "title": "Market Pulse",
+      "description": "Plataforma de monitoramento financeiro em tempo real construída com Lit, Lit Signals, Rspack e Module Federation, projetada para explorar UIs reativas de alta performance sob cargas de dados em streaming."
+    },
+    "animavita": {
+      "title": "Animavita",
+      "description": "Dispare alertas que salvam vidas, registre animais para adoção e encontre o amigo pet mais próximo para adotar. Projeto open-source com 739+ estrelas e 318+ forks no GitHub."
+    },
+    "portfolio": {
+      "title": "Portfólio Pessoal",
+      "description": "Site de portfólio moderno e responsivo construído com Next.js 15, com tema claro/escuro, internacionalização (EN/PT), seções animadas com Framer Motion e formulário de contato."
     }
   },
   "theme": {

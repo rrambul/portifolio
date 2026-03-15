@@ -25,6 +25,7 @@ export function Navigation() {
       { id: "home", label: t("home") },
       { id: "about", label: t("about") },
       { id: "experience", label: t("experience") },
+      { id: "projects", label: t("projects") },
       // { id: "skills", label: t("skills") },
       // { id: "blog", label: t("blog") },
       { id: "contact", label: t("contact") },
@@ -177,9 +178,9 @@ export function Navigation() {
               <button
                 key={section.id}
                 onClick={(e) => scrollToSection(section.id, e)}
-                className={`transition-colors hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer ${
+                className={`transition-colors hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer ${
                   activeSection === section.id
-                    ? "text-purple-600 dark:text-purple-400"
+                    ? "text-teal-600 dark:text-teal-400"
                     : ""
                 }`}
               >
@@ -224,9 +225,9 @@ export function Navigation() {
                   <button
                     key={section.id}
                     onClick={(e) => scrollToSection(section.id, e)}
-                    className={`block w-full text-left py-2 transition-colors hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer ${
+                    className={`block w-full text-left py-2 transition-colors hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer ${
                       activeSection === section.id
-                        ? "text-purple-600 dark:text-purple-400"
+                        ? "text-teal-600 dark:text-teal-400"
                         : ""
                     }`}
                   >

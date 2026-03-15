@@ -24,6 +24,7 @@ export default function SkillsParticles() {
   return (
     <Particles
       id="skills-particles"
+      aria-hidden="true"
       init={particlesInit}
       options={{
         fullScreen: {
@@ -40,7 +41,7 @@ export default function SkillsParticles() {
             },
           },
           color: {
-            value: isDark ? "#9333ea" : "#9333ea",
+            value: isDark ? "#0d9488" : "#0d9488",
           },
           shape: {
             type: "circle",
@@ -72,7 +73,7 @@ export default function SkillsParticles() {
           line_linked: {
             enable: true,
             distance: 150,
-            color: isDark ? "#a855f7" : "#9333ea",
+            color: isDark ? "#14b8a6" : "#0d9488",
             opacity: isDark ? 0.25 : 0.15,
             width: 1.5,
           },
