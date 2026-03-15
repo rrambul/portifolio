@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -12,6 +12,11 @@ export function TransitionProvider({ children }: TransitionProviderProps) {
   const pathname = usePathname();
   const [isFirstMount, setIsFirstMount] = useState(true);
 
+  // Strip locale prefix so locale changes don't trigger page transition
+  const pathnameWithoutLocale = useMemo(() => {
+    return pathname.replace(/^\/(en|pt)/, "") || "/";
+  }, [pathname]);
+
   // Skip initial animation on first page load
   useEffect(() => {
     if (isFirstMount) {
@@ -22,7 +27,7 @@ export function TransitionProvider({ children }: TransitionProviderProps) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={pathname}
+        key={pathnameWithoutLocale}
         initial={isFirstMount ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
