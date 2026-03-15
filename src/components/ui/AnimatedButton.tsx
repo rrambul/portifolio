@@ -109,7 +109,7 @@ export function AnimatedButton({
     onTapStart: () => setIsPressed(true),
     onTap: () => setIsPressed(false),
     onTapCancel: () => setIsPressed(false),
-    transition: { type: "spring", stiffness: 400, damping: 17 },
+    transition: { type: "spring" as const, stiffness: 400, damping: 17 },
   };
 
   // Combined classes

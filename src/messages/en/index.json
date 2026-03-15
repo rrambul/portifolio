@@ -197,7 +197,7 @@
       "sending": "Sending...",
       "success": "Message Sent!",
       "successMessage": "Thank you for your message. I'll get back to you soon!",
-      "error": "Oops!",
+      "errorTitle": "Oops!",
       "errorMessage": "Something went wrong. Please try again later."
     }
   },

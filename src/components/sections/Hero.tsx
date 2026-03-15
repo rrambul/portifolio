@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
+import { scrollToSection } from "@/lib/scroll";
 
 export function Hero() {
   const t = useTranslations("hero");
@@ -33,16 +35,7 @@ export function Hero() {
     return movement;
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      const offsetTop = contactSection.offsetTop;
-      window.scrollTo({
-        top: offsetTop - 80, // Adjust for nav height
-        behavior: "smooth",
-      });
-    }
-  };
+  const scrollToContact = () => scrollToSection("contact");
 
   return (
     <section className="py-20 md:py-28 overflow-hidden relative">
@@ -114,7 +107,7 @@ export function Hero() {
               transition={{ duration: 0.4, delay: 0.7 }}
             >
               <motion.a
-                href="https://github.com/rrambul"
+                href={siteConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
@@ -125,7 +118,7 @@ export function Hero() {
               </motion.a>
 
               <motion.a
-                href="https://www.linkedin.com/in/renan-rambul/"
+                href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
@@ -136,7 +129,7 @@ export function Hero() {
               </motion.a>
 
               <motion.a
-                href="mailto:renanrambuls@gmail.com"
+                href={`mailto:${siteConfig.links.email}`}
                 className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}

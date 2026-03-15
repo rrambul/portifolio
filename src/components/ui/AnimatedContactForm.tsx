@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiCheck, FiAlertCircle } from "react-icons/fi";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 interface FormState {
   name: string;
@@ -21,7 +21,6 @@ type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 export function AnimatedContactForm() {
   const t = useTranslations("contact.form");
-  const locale = useLocale();
 
   const [formState, setFormState] = useState<FormState>({
     name: "",
@@ -54,54 +53,31 @@ export function AnimatedContactForm() {
     validateField(name, value);
   };
 
-  // Validate a specific field
   const validateField = (name: string, value: string) => {
     const fieldErrors: ValidationErrors = { ...errors };
-
-    // Error messages based on locale
-    const errorMessages = {
-      en: {
-        nameRequired: "Name is required",
-        emailRequired: "Email is required",
-        emailInvalid: "Please enter a valid email",
-        messageRequired: "Message is required",
-        messageShort: "Message is too short",
-      },
-      pt: {
-        nameRequired: "Nome é obrigatório",
-        emailRequired: "Email é obrigatório",
-        emailInvalid: "Por favor, insira um email válido",
-        messageRequired: "Mensagem é obrigatória",
-        messageShort: "Mensagem é muito curta",
-      },
-    };
-
-    // Use correct locale or fall back to English
-    const messages =
-      errorMessages[locale as keyof typeof errorMessages] || errorMessages.en;
 
     switch (name) {
       case "name":
         if (!value.trim()) {
-          fieldErrors.name = messages.nameRequired;
+          fieldErrors.name = t("error.nameRequired");
         } else {
           delete fieldErrors.name;
         }
         break;
       case "email":
         if (!value.trim()) {
-          fieldErrors.email = messages.emailRequired;
+          fieldErrors.email = t("error.emailRequired");
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          fieldErrors.email = messages.emailInvalid;
+          fieldErrors.email = t("error.emailInvalid");
         } else {
           delete fieldErrors.email;
         }
         break;
       case "message":
         if (!value.trim()) {
-          fieldErrors.message = messages.messageRequired;
+          fieldErrors.message = t("error.messageRequired");
         } else if (value.length < 10) {
-          fieldErrors.message = messages.messageShort;
+          fieldErrors.message = t("error.messageShort");
         } else {
           delete fieldErrors.message;
         }
@@ -114,61 +90,32 @@ export function AnimatedContactForm() {
     return Object.keys(fieldErrors).length === 0;
   };
 
-  // Validate all fields
   const validateForm = (): boolean => {
     const formErrors: ValidationErrors = {};
     let isValid = true;
 
-    // Error messages based on locale
-    const errorMessages = {
-      en: {
-        nameRequired: "Name is required",
-        emailRequired: "Email is required",
-        emailInvalid: "Please enter a valid email",
-        messageRequired: "Message is required",
-        messageShort: "Message is too short",
-      },
-      pt: {
-        nameRequired: "Nome é obrigatório",
-        emailRequired: "Email é obrigatório",
-        emailInvalid: "Por favor, insira um email válido",
-        messageRequired: "Mensagem é obrigatória",
-        messageShort: "Mensagem é muito curta",
-      },
-    };
-
-    // Use correct locale or fall back to English
-    const messages =
-      errorMessages[locale as keyof typeof errorMessages] || errorMessages.en;
-
-    // Validate each field
     if (!formState.name.trim()) {
-      formErrors.name = messages.nameRequired;
+      formErrors.name = t("error.nameRequired");
       isValid = false;
     }
 
     if (!formState.email.trim()) {
-      formErrors.email = messages.emailRequired;
+      formErrors.email = t("error.emailRequired");
+      isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
-      formErrors.email = messages.emailInvalid;
+      formErrors.email = t("error.emailInvalid");
       isValid = false;
     }
 
     if (!formState.message.trim()) {
-      formErrors.message = messages.messageRequired;
+      formErrors.message = t("error.messageRequired");
       isValid = false;
     } else if (formState.message.length < 10) {
-      formErrors.message = messages.messageShort;
+      formErrors.message = t("error.messageShort");
       isValid = false;
     }
 
-    // Mark all fields as touched
-    setTouched({
-      name: true,
-      email: true,
-      message: true,
-    });
-
+    setTouched({ name: true, email: true, message: true });
     setErrors(formErrors);
     return isValid;
   };
@@ -223,7 +170,7 @@ export function AnimatedContactForm() {
 
   // Get classes for an input based on touch and error state
   const getInputClasses = (fieldName: keyof FormState) => {
-    let classes = "w-full p-3 rounded-md bg-white/10 backdrop-blur-sm border";
+    let classes = "w-full p-3 rounded-md bg-gray-50 dark:bg-zinc-800 border text-zinc-900 dark:text-zinc-100";
 
     if (touched[fieldName] && errors[fieldName]) {
       classes += " border-red-500 focus:border-red-500 focus:ring-red-500/30";
@@ -277,7 +224,7 @@ export function AnimatedContactForm() {
             >
               <FiAlertCircle className="text-red-600 dark:text-red-400 text-4xl mb-4" />
             </motion.div>
-            <h3 className="text-xl font-bold mb-2">{t("error")}</h3>
+            <h3 className="text-xl font-bold mb-2">{t("errorTitle")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
               {t("errorMessage")}
             </p>

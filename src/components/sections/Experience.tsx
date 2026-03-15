@@ -4,89 +4,26 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
 import Image from "next/image";
-
-interface Experience {
-  jobTitle: string;
-  company: string;
-  companyId: string;
-  logo: string;
-  period: string;
-  location: string;
-  responsibilities: string[];
-  skills: string[];
-}
+import { experiences as experienceData } from "@/data/experiences";
+import { staggerContainer, fadeInUp } from "@/lib/animations";
 
 export function Experience() {
   const t = useTranslations("experience");
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+  // Map i18n keys to match data file companyId → translation key
+  const companyKeyMap: Record<string, string> = {
+    skued: "freelance",
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  // Real work experiences with company logos
-  const experiences: Experience[] = [
-    {
-      jobTitle: t(`companies.tas.title`),
-      company: "Translational Analytics & Statistics",
-      companyId: "tas",
-      logo: "/company-logos/tas-logo.png",
-      period: "Jan 2025 - Present",
-      location: "Arizona, United States · Remote",
-      responsibilities: t.raw(`companies.tas.responsibilities`),
-      skills: t.raw(`companies.tas.skills`),
-    },
-    {
-      jobTitle: t(`companies.freelance.title`),
-      company: "Skued",
-      companyId: "skued",
-      logo: "/company-logos/freelance.svg",
-      period: "Aug 2024 - Feb 2025",
-      location: "Remote",
-      responsibilities: t.raw(`companies.freelance.responsibilities`),
-      skills: t.raw(`companies.freelance.skills`),
-    },
-    {
-      jobTitle: t(`companies.bymycell.title`),
-      company: "ByMyCell - Genomics Made Simple",
-      companyId: "bymycell",
-      logo: "/company-logos/bymycell-logo.jpeg",
-      period: "Sep 2024 - Jan 2025",
-      location: "Ribeirão Preto, São Paulo, Brazil · On-site",
-      responsibilities: t.raw(`companies.bymycell.responsibilities`),
-      skills: t.raw(`companies.bymycell.skills`),
-    },
-    {
-      jobTitle: t(`companies.take.title`),
-      company: "Take",
-      companyId: "take",
-      logo: "/company-logos/take-logo.jpeg",
-      period: "Nov 2022 - Sep 2024",
-      location: "Ribeirão Preto, São Paulo, Brazil · On-site",
-      responsibilities: t.raw(`companies.take.responsibilities`),
-      skills: t.raw(`companies.take.skills`),
-    },
-    {
-      jobTitle: t(`companies.suave.title`),
-      company: "Suave Comunicação e Marketing",
-      companyId: "suave",
-      logo: "/company-logos/suave-logo.jpeg",
-      period: "Jan 2019 - Nov 2022",
-      location: "Ribeirão Preto, São Paulo, Brazil · Hybrid",
-      responsibilities: t.raw(`companies.suave.responsibilities`),
-      skills: t.raw(`companies.suave.skills`),
-    },
-  ];
+  const experiences = experienceData.map((exp) => {
+    const tKey = companyKeyMap[exp.companyId] ?? exp.companyId;
+    return {
+      ...exp,
+      jobTitle: t(`companies.${tKey}.title`),
+      responsibilities: t.raw(`companies.${tKey}.responsibilities`) as string[],
+      skills: t.raw(`companies.${tKey}.skills`) as string[],
+    };
+  });
 
   return (
     <section id="experience" className="py-20 bg-white dark:bg-zinc-900/30">
@@ -95,11 +32,11 @@ export function Experience() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          variants={container}
+          variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
           <motion.h2
-            variants={item}
+            variants={fadeInUp}
             className="text-3xl md:text-4xl font-bold text-center mb-12"
           >
             {t("title")}
@@ -122,7 +59,7 @@ export function Experience() {
             {experiences.map((exp, idx) => (
               <motion.div
                 key={idx}
-                variants={item}
+                variants={fadeInUp}
                 className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer relative ml-10"
                 whileHover={{
                   boxShadow:
@@ -147,8 +84,8 @@ export function Experience() {
                 {/* Timeline connector line with sequential animation */}
                 <motion.div
                   className="absolute -left-8 top-8 h-1"
-                  style={{ width: "8px", backgroundColor: "#14b8a6" }} // Explicit teal color
-                  initial={{ scaleX: 0, originX: 0 }}
+                  style={{ width: "8px", backgroundColor: "#14b8a6", transformOrigin: "left" }}
+                  initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
                   transition={{ duration: 0.3, delay: 0.15 + idx * 0.15 }}

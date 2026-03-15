@@ -197,7 +197,7 @@
       "sending": "Enviando...",
       "success": "Mensagem Enviada!",
       "successMessage": "Obrigado pela sua mensagem. Entrarei em contato em breve!",
-      "error": "Ops!",
+      "errorTitle": "Ops!",
       "errorMessage": "Algo deu errado. Por favor, tente novamente mais tarde."
     }
   },

@@ -4,23 +4,8 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiFolder, FiStar, FiGitPullRequest } from "react-icons/fi";
-
-interface Project {
-  titleKey: string;
-  descriptionKey: string;
-  tags: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-  stars?: number;
-  forks?: number;
-  isContribution?: boolean;
-  banner: {
-    gradient: string;
-    pattern: "grid" | "dots" | "waves" | "circuit";
-    icon: string;
-  };
-  bannerStyle: React.CSSProperties;
-}
+import { projects } from "@/data/projects";
+import { staggerContainer, fadeInUp } from "@/lib/animations";
 
 function BannerPattern({ pattern, className }: { pattern: string; className?: string }) {
   switch (pattern) {
@@ -75,61 +60,6 @@ function BannerPattern({ pattern, className }: { pattern: string; className?: st
 export function Projects() {
   const t = useTranslations("projects");
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const projects: Project[] = [
-    {
-      titleKey: "modularGameStore.title",
-      descriptionKey: "modularGameStore.description",
-      tags: ["TypeScript", "Rspack", "Module Federation", "Micro-frontends", "React"],
-      githubUrl: "https://github.com/rrambul/modular-game-store",
-      demoUrl: "https://renanrambuls-gmail-com-7-mgs-store-modular-game-s-cafcfd99c-ze.zephyrcloud.app/",
-      banner: { gradient: "", pattern: "grid", icon: "🎮" },
-      bannerStyle: { backgroundImage: "linear-gradient(135deg, #0f766e, #0d9488, #14b8a6)" },
-    },
-    {
-      titleKey: "marketPulse.title",
-      descriptionKey: "marketPulse.description",
-      tags: ["TypeScript", "Lit", "Lit Signals", "Rspack", "Module Federation"],
-      githubUrl: "https://github.com/rrambul/market-pulse",
-      banner: { gradient: "", pattern: "waves", icon: "📈" },
-      bannerStyle: { backgroundImage: "linear-gradient(135deg, #134e4a, #0f766e, #14b8a6)" },
-    },
-    {
-      titleKey: "animavita.title",
-      descriptionKey: "animavita.description",
-      tags: ["TypeScript", "React Native", "GraphQL", "MongoDB", "Open Source"],
-      githubUrl: "https://github.com/animavita/animavita",
-      stars: 739,
-      forks: 318,
-      isContribution: true,
-      banner: { gradient: "", pattern: "dots", icon: "🐶" },
-      bannerStyle: { backgroundImage: "linear-gradient(135deg, #164e63, #0e7490, #06b6d4)" },
-    },
-    {
-      titleKey: "portfolio.title",
-      descriptionKey: "portfolio.description",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18n"],
-      githubUrl: "https://github.com/rrambul/portifolio",
-      demoUrl: "https://renanrambul.com",
-      banner: { gradient: "", pattern: "circuit", icon: "💼" },
-      bannerStyle: { backgroundImage: "linear-gradient(135deg, #0c4a6e, #0369a1, #0ea5e9)" },
-    },
-  ];
-
   return (
     <section id="projects" className="py-20 bg-white dark:bg-zinc-900/30">
       <div className="container mx-auto px-4">
@@ -137,10 +67,10 @@ export function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          variants={container}
+          variants={staggerContainer}
           className="max-w-6xl mx-auto"
         >
-          <motion.div className="text-center mb-12" variants={item}>
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <motion.div className="inline-block bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full mb-4">
               <FiFolder className="text-teal-600 dark:text-teal-400 h-8 w-8" />
             </motion.div>
@@ -153,14 +83,14 @@ export function Projects() {
           </motion.div>
 
           <motion.div
-            variants={container}
+            variants={staggerContainer}
             className="grid md:grid-cols-2 gap-8"
           >
             {projects.map((project, idx) => (
               <motion.div
                 key={idx}
-                variants={item}
-                className="project-card group rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                variants={fadeInUp}
+                className="group rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Project Banner */}
                 <div className="relative h-36 w-full overflow-hidden" style={project.bannerStyle}>
@@ -180,13 +110,13 @@ export function Projects() {
                   {/* Badges */}
                   <div className="absolute top-3 right-3 flex gap-2" style={{ zIndex: 5 }}>
                     {project.isContribution && (
-                      <span className="project-badge inline-flex items-center gap-1 px-2.5 py-1 bg-cyan-500/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-cyan-500/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
                         <FiGitPullRequest className="h-3 w-3" />
                         {t("contribution")}
                       </span>
                     )}
                     {project.stars && (
-                      <span className="project-badge inline-flex items-center gap-1 px-2.5 py-1 bg-black/50 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-black/50 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
                         <FiStar className="h-3 w-3" />
                         {project.stars}
                       </span>
@@ -195,7 +125,7 @@ export function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6 flex flex-col" style={{ position: "relative", zIndex: 10 }}>
+                <div className="p-6 flex flex-col bg-white dark:bg-zinc-800" style={{ position: "relative", zIndex: 10 }}>
                   <h3 className="text-xl font-bold mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                     {t(project.titleKey)}
                   </h3>
@@ -208,7 +138,7 @@ export function Projects() {
                     {project.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="project-tag px-3 py-1 text-teal-800 dark:text-teal-300 text-xs font-medium"
+                        className="px-3 py-1 text-teal-800 dark:text-teal-300 text-xs font-medium"
                       >
                         {tag}
                       </span>
@@ -222,7 +152,7 @@ export function Projects() {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="project-link flex items-center gap-1.5 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
+                        className="flex items-center gap-1.5 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
                         style={{ position: "relative", zIndex: 21 }}
                       >
                         <FiExternalLink className="h-4 w-4" />
@@ -234,7 +164,7 @@ export function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="project-link flex items-center gap-1.5 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
+                        className="flex items-center gap-1.5 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
                         style={{ position: "relative", zIndex: 21 }}
                       >
                         <FiGithub className="h-4 w-4" />

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -159,23 +161,4 @@
   .prose p:has(img) {
     @apply text-center;
   }
-}
-
-/* Force white background on cards in light mode */
-:root:not(.dark) {
-  --card-bg: #ffffff;
-}
-
-:root:not(.dark) [class*="bg-white"],
-:root:not(.dark) [class*="bg-gray"],
-:root:not(.dark) [class*="bg-zinc"] {
-  background-color: #ffffff !important;
-}
-
-.dark [class*="dark:bg-zinc"] {
-  background-color: #27272a !important;
-}
-
-.light-mode div[class*="bg-"] {
-  background-color: #ffffff !important;
 }

@@ -2,27 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { siteConfig } from "@/config/site";
+import { scrollToSection } from "@/lib/scroll";
 
 export function Footer() {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
-
-  const scrollToSection = (sectionId: string) => {
-    // Handle home section specially (scroll to top)
-    if (sectionId === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop;
-      window.scrollTo({
-        top: offsetTop - 80, // Adjust for nav height
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <footer className="py-12 footer-section relative bg-white dark:bg-zinc-900/30 z-10">
@@ -38,7 +23,7 @@ export function Footer() {
             <div className="flex space-x-8">
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
-                  href="https://github.com/rrambul"
+                  href={siteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
@@ -53,7 +38,7 @@ export function Footer() {
 
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
-                  href="https://www.linkedin.com/in/renan-rambul/"
+                  href={siteConfig.links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
@@ -68,7 +53,7 @@ export function Footer() {
 
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
-                  href="mailto:renan.rambul@gmail.com"
+                  href={`mailto:${siteConfig.links.email}`}
                   className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
@@ -120,18 +105,6 @@ export function Footer() {
                   {t("projectsLink")}
                 </button>
               </li>
-              {/* <li>
-                <button
-                  onClick={() => scrollToSection("skills")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
-                  style={{
-                    position: "relative",
-                    zIndex: 51,
-                  }}
-                >
-                  {t("skillsLink")}
-                </button>
-              </li> */}
             </ul>
           </div>
 
@@ -145,7 +118,7 @@ export function Footer() {
 
         <div className="border-t border-gray-200 dark:border-zinc-800 mt-12 pt-6 text-center text-zinc-600 dark:text-zinc-400">
           <p>
-            &copy; {currentYear} Renan Rambul. {t("copyright")}
+            &copy; {currentYear} {siteConfig.name}. {t("copyright")}
           </p>
         </div>
       </div>

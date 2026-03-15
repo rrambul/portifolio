@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { getBlogPosts } from "@/data/blog-posts";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { FiEdit3, FiBookOpen } from "react-icons/fi";
@@ -19,21 +20,6 @@ export function Blog() {
     setBlogPosts(posts);
     setIsLoaded(true);
   }, []);
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
 
   if (!isLoaded) {
     return (
@@ -58,18 +44,18 @@ export function Blog() {
         <motion.div
           initial="hidden"
           animate="show"
-          variants={container}
+          variants={staggerContainer}
           className="text-center mb-16"
         >
           <motion.div 
-            variants={item}
+            variants={fadeInUp}
             className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6"
           >
             <FiEdit3 className="w-8 h-8 text-teal-600 dark:text-teal-400" />
           </motion.div>
           
           <motion.h1
-            variants={item}
+            variants={fadeInUp}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-600 via-teal-700 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent leading-tight pb-2"
             style={{ lineHeight: '1.2' }}
           >
@@ -77,14 +63,14 @@ export function Blog() {
           </motion.h1>
 
           <motion.p
-            variants={item}
+            variants={fadeInUp}
             className="text-xl text-zinc-700 dark:text-zinc-400 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             {t("subtitle")}
           </motion.p>
 
           <motion.div
-            variants={item}
+            variants={fadeInUp}
             className="flex items-center justify-center gap-2 text-sm text-teal-700 dark:text-teal-400 font-medium"
           >
             <FiBookOpen className="w-4 h-4" />
@@ -96,7 +82,7 @@ export function Blog() {
         <motion.div
           initial="hidden"
           animate="show"
-          variants={container}
+          variants={staggerContainer}
           className="max-w-7xl mx-auto"
         >
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

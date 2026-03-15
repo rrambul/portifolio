@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import "../components/ui/theme-fix.css";
-import "../components/ui/mobile-theme-fix.css";
 import "../components/blog/blog-colors.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
+import { siteConfig } from "@/config/site";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -16,12 +15,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Renan Rambul',
-    default: 'Renan Rambul | Software Developer Portfolio',
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.title,
   },
-  description:
-    "Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications and solving complex problems.",
-  metadataBase: new URL('https://renanrambul.com'),
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
   keywords: [
     'Renan Rambul',
     'Software Developer',
@@ -35,9 +33,9 @@ export const metadata: Metadata = {
     'Brazil',
     'Software Engineer',
   ],
-  authors: [{ name: 'Renan Rambul', url: 'https://renanrambul.com' }],
-  creator: 'Renan Rambul',
-  publisher: 'Renan Rambul',
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   formatDetection: {
     email: false,
     address: false,
@@ -58,15 +56,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.json',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   robots: {
     index: true,
     follow: true,
@@ -81,30 +70,39 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://renanrambul.com',
-    siteName: 'Renan Rambul Portfolio',
-    title: 'Renan Rambul | Software Developer Portfolio',
-    description: 'Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications.',
+    url: siteConfig.url,
+    siteName: `${siteConfig.name} Portfolio`,
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: [
       {
-        url: '/og-home.png',
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Renan Rambul - Software Developer Portfolio',
+        alt: `${siteConfig.name} - Software Developer Portfolio`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Renan Rambul | Software Developer Portfolio',
-    description: 'Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience.',
-    creator: '@renanrambul',
-    images: ['/og-home.png'],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    creator: siteConfig.links.twitter,
+    images: [siteConfig.ogImage],
   },
   verification: {
     google: 'your-google-verification-code',
-    // Add other verification codes as needed
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+  ],
 };
 
 export default function RootLayout({
@@ -120,33 +118,10 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const storedTheme = localStorage.getItem('theme');
-                  // First check if we have a stored theme preference
-                  let theme = 'dark'; // Default to dark
-                  
-                  if (storedTheme === 'light' || storedTheme === 'dark') {
-                    theme = storedTheme;
-                  }
-                  
-                  // Apply theme to document
-                  document.documentElement.classList.remove('light', 'dark');
+                  var theme = localStorage.getItem('theme') || 'dark';
                   document.documentElement.classList.add(theme);
-                  
-                  // Force text colors to match theme
-                  if (theme === 'dark') {
-                    document.documentElement.style.setProperty('color-scheme', 'dark');
-                    document.documentElement.style.setProperty('--foreground', '0 0% 98%');
-                    document.documentElement.style.setProperty('--card-foreground', '0 0% 98%');
-                  } else {
-                    document.documentElement.style.setProperty('color-scheme', 'light');
-                    document.documentElement.style.setProperty('--foreground', '240 10% 3.9%');
-                    document.documentElement.style.setProperty('--card-foreground', '240 10% 3.9%');
-                  }
                 } catch (e) {
-                  console.error('Theme initialization failed:', e);
-                  // Ensure dark theme is applied by default
                   document.documentElement.classList.add('dark');
-                  document.documentElement.style.setProperty('color-scheme', 'dark');
                 }
               })();
             `,
@@ -158,15 +133,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Renan Rambul",
-              "url": "https://renanrambul.com",
-              "image": "https://renanrambul.com/profile-picture.jpg",
+              "name": siteConfig.name,
+              "url": siteConfig.url,
+              "image": `${siteConfig.url}/profile-picture.jpg`,
               "jobTitle": "Software Developer",
               "worksFor": {
                 "@type": "Organization",
                 "name": "Translational Analytics"
               },
-              "description": "Passionate software developer with 3+ years of experience in building modern web applications and solving complex problems.",
+              "description": siteConfig.description,
               "knowsAbout": [
                 "JavaScript",
                 "TypeScript",
@@ -178,17 +153,12 @@ export default function RootLayout({
                 "Software Architecture"
               ],
               "sameAs": [
-                "https://github.com/rrambul",
-                "https://linkedin.com/in/renanrambul",
-                "https://twitter.com/renanrambul"
+                siteConfig.links.github,
+                siteConfig.links.linkedin,
               ],
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "BR"
-              },
-              "alumniOf": {
-                "@type": "Organization",
-                "name": "Your University"
               }
             })
           }}
@@ -199,19 +169,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Renan Rambul Portfolio",
-              "url": "https://renanrambul.com",
-              "description": "Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in building modern web applications.",
+              "name": `${siteConfig.name} Portfolio`,
+              "url": siteConfig.url,
+              "description": siteConfig.description,
               "author": {
                 "@type": "Person",
-                "name": "Renan Rambul"
+                "name": siteConfig.name
               },
-              "inLanguage": ["en", "pt"],
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://renanrambul.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
+              "inLanguage": siteConfig.locale.supported,
             })
           }}
         />

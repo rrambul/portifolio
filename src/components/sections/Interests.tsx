@@ -2,58 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import {
-  FiLayers,
-  FiBox,
-  FiCpu,
-  FiSmile,
-  FiGrid,
-  FiCheckSquare,
-  FiUsers,
-  FiZap,
-} from "react-icons/fi";
-
-const interests = [
-  { key: "designSystems", icon: FiLayers, color: "#0d9488" },
-  { key: "webComponents", icon: FiBox, color: "#0f766e" },
-  { key: "platformEngineering", icon: FiCpu, color: "#14b8a6" },
-  { key: "dx", icon: FiSmile, color: "#115e59" },
-  { key: "scalableUI", icon: FiGrid, color: "#2dd4bf" },
-  { key: "testing", icon: FiCheckSquare, color: "#0d9488" },
-  { key: "performance", icon: FiZap, color: "#14b8a6" },
-  { key: "openSource", icon: FiUsers, color: "#0f766e" },
-];
+import { interests } from "@/data/interests";
+import { staggerContainer, springFadeIn } from "@/lib/animations";
 
 export function Interests() {
   const t = useTranslations("interests");
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isDark = mounted && (theme === "dark" || resolvedTheme === "dark");
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08 },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 24, scale: 0.95 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: "spring" as const, stiffness: 260, damping: 20 },
-    },
-  };
 
   return (
     <section
@@ -76,39 +29,33 @@ export function Interests() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          variants={container}
+          variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
           {/* Section heading */}
-          <motion.div variants={item} className="text-center mb-14">
-            <span
-              className="inline-flex items-center gap-2 text-sm font-medium mb-3 tracking-wide uppercase"
-              style={{ color: isDark ? "#2dd4bf" : "#0d9488" }}
-            >
+          <motion.div variants={springFadeIn} className="text-center mb-14">
+            <span className="inline-flex items-center gap-2 text-sm font-medium mb-3 tracking-wide uppercase text-teal-600 dark:text-teal-400">
               {t("subtitle")}
             </span>
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ color: isDark ? "#ffffff" : "#18181b" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
               {t("title")}
             </h2>
           </motion.div>
 
           {/* Interest cards */}
           <motion.div
-            variants={container}
+            variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {interests.map(({ key, icon: Icon, color }) => (
               <motion.div
                 key={key}
-                variants={item}
+                variants={springFadeIn}
                 whileHover={{
                   y: -4,
                   transition: { type: "spring", stiffness: 400, damping: 17 },
                 }}
-                className="group interest-item relative flex items-center gap-4 p-5 rounded-xl
+                className="group relative flex items-center gap-4 p-5 rounded-xl
                   bg-white dark:bg-zinc-800/80
                   border border-zinc-200 dark:border-zinc-700/60
                   shadow-sm hover:shadow-md
@@ -118,9 +65,7 @@ export function Interests() {
                 <div
                   className="flex-shrink-0 w-11 h-11 rounded-lg flex items-center justify-center
                     transition-transform duration-300 group-hover:scale-110"
-                  style={{
-                    background: `${color}18`,
-                  }}
+                  style={{ background: `${color}18` }}
                 >
                   <Icon
                     className="w-5 h-5 transition-colors duration-300"
@@ -129,10 +74,7 @@ export function Interests() {
                 </div>
 
                 {/* Text */}
-                <span
-                  className="text-sm font-medium leading-snug"
-                  style={{ color: isDark ? "#f4f4f5" : "#27272a" }}
-                >
+                <span className="text-sm font-medium leading-snug text-zinc-800 dark:text-zinc-100">
                   {t(`items.${key}`)}
                 </span>
 

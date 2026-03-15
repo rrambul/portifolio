@@ -2,26 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { FiMail } from "react-icons/fi";
 import { AnimatedContactForm } from "../ui/AnimatedContactForm";
 
 export function Contact() {
   const t = useTranslations("contact");
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
 
   return (
     <section
@@ -33,10 +19,10 @@ export function Contact() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          variants={container}
+          variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
-          <motion.div className="text-center mb-12" variants={item}>
+          <motion.div className="text-center mb-12" variants={fadeInUp}>
             <motion.div className="inline-block bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full mb-4">
               <FiMail className="text-teal-600 dark:text-teal-400 h-8 w-8" />
             </motion.div>
@@ -48,7 +34,7 @@ export function Contact() {
             </motion.p>
           </motion.div>
 
-          <motion.div variants={item}>
+          <motion.div variants={fadeInUp}>
             <AnimatedContactForm />
           </motion.div>
         </motion.div>
