@@ -20,7 +20,7 @@
     "content": "Frontend Software Engineer with 6+ years of experience building scalable, accessible, and high-performance web applications. Strong expertise in React, Tailwind CSS, modern UI architecture, and design systems. Experienced collaborating with U.S.-based teams in healthcare and SaaS environments, translating product requirements and Figma prototypes into performant, production-ready interfaces that drive business outcomes.",
     "personal": {
       "title": "Personal",
-      "content": "A developer who loves learning, programming computers and keep learning new things. Also open source enthusiast"
+      "content": "A developer passionate about building software, continuous learning, and open source"
     },
     "technical": {
       "title": "Technical",
@@ -163,7 +163,7 @@
   },
   "footer": {
     "about": "About",
-    "aboutText": "A developer who loves learning, programming computers and keep learning new things. Also open source enthusiast.",
+    "aboutText": "A developer passionate about building software, continuous learning, and open source.",
     "social": "Social",
     "links": "Quick Links",
     "aboutLink": "About",
