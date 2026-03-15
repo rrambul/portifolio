@@ -6,6 +6,7 @@
     "projects": "Projects",
     "skills": "Skills",
     "blog": "Blog",
+    "interests": "Interests",
     "contact": "Contact"
   },
   "hero": {
@@ -221,6 +222,20 @@
     "portfolio": {
       "title": "Personal Portfolio",
       "description": "Modern, responsive portfolio website built with Next.js 15, featuring dark/light theme, internationalization (EN/PT), animated sections with Framer Motion, and a contact form."
+    }
+  },
+  "interests": {
+    "title": "Engineering Interests",
+    "subtitle": "What drives me",
+    "items": {
+      "designSystems": "Design Systems",
+      "webComponents": "Web Components Architecture",
+      "platformEngineering": "Frontend Platform Engineering",
+      "dx": "Developer Experience (DX)",
+      "scalableUI": "Scalable UI Platforms",
+      "testing": "Testing Strategies for Large Codebases",
+      "performance": "Web Performance Optimization",
+      "openSource": "Open-Source Collaboration"
     }
   },
   "theme": {

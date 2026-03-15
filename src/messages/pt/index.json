@@ -6,6 +6,7 @@
     "projects": "Projetos",
     "skills": "Habilidades",
     "blog": "Blog",
+    "interests": "Interesses",
     "contact": "Contato"
   },
   "hero": {
@@ -221,6 +222,20 @@
     "portfolio": {
       "title": "Portfólio Pessoal",
       "description": "Site de portfólio moderno e responsivo construído com Next.js 15, com tema claro/escuro, internacionalização (EN/PT), seções animadas com Framer Motion e formulário de contato."
+    }
+  },
+  "interests": {
+    "title": "Interesses em Engenharia",
+    "subtitle": "O que me motiva",
+    "items": {
+      "designSystems": "Design Systems",
+      "webComponents": "Arquitetura de Web Components",
+      "platformEngineering": "Engenharia de Plataforma Frontend",
+      "dx": "Experiência do Desenvolvedor (DX)",
+      "scalableUI": "Plataformas de UI Escaláveis",
+      "testing": "Estratégias de Teste para Grandes Codebases",
+      "performance": "Otimização de Performance Web",
+      "openSource": "Colaboração Open-Source"
     }
   },
   "theme": {
