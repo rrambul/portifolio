@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiFolder, FiStar, FiGitPullRequest } from "react-icons/fi";
 import { projects } from "@/data/projects";
 import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 function BannerPattern({ pattern, className }: { pattern: string; className?: string }) {
   switch (pattern) {
@@ -69,17 +70,11 @@ export function Projects() {
           variants={staggerContainer}
           className="max-w-6xl mx-auto"
         >
-          <motion.div className="text-center mb-12" variants={fadeInUp}>
-            <motion.div className="inline-block bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full mb-4">
-              <FiFolder className="text-teal-600 dark:text-teal-400 h-8 w-8" />
-            </motion.div>
-            <motion.h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("title")}
-            </motion.h2>
-            <motion.p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              {t("subtitle")}
-            </motion.p>
-          </motion.div>
+          <SectionHeading
+            icon={<FiFolder className="text-teal-600 dark:text-teal-400 h-8 w-8" />}
+            title={t("title")}
+            subtitle={t("subtitle")}
+          />
 
           <motion.div
             variants={staggerContainer}
