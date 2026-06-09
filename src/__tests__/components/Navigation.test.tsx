@@ -94,32 +94,18 @@ describe("Navigation", () => {
     expect(screen.getAllByText("about").length).toBe(1);
   });
 
-  it("marks the active section based on scroll position", () => {
-    Object.defineProperty(window, "scrollY", {
-      value: 400,
-      configurable: true,
-      writable: true,
-    });
-
+  it("marks the section currently under the nav as active", () => {
+    // A section whose top has scrolled past the nav becomes active.
     const about = document.createElement("div");
     about.id = "about";
-    about.getBoundingClientRect = () =>
-      ({ top: 100, bottom: 500 } as DOMRect);
+    about.getBoundingClientRect = () => ({ top: 0, bottom: 500 } as DOMRect);
     document.body.appendChild(about);
 
     render(<Navigation />);
-    act(() => {
-      window.dispatchEvent(new Event("scroll"));
-    });
 
     expect(screen.getByText("about").className).toContain("text-teal-600");
 
     document.body.removeChild(about);
-    Object.defineProperty(window, "scrollY", {
-      value: 0,
-      configurable: true,
-      writable: true,
-    });
   });
 
   it("treats blog routes as the active section without attaching a scroll listener", () => {

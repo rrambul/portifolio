@@ -75,78 +75,53 @@ export function Navigation() {
     setTimeout(() => scrollToSectionLib(sectionId), 300);
   };
 
-  // Update active section based on scroll position
+  // Highlight the nav item for whichever section is currently under the nav.
   useEffect(() => {
-    // Check if we're on a blog page
-    const isBlogPage = pathname.includes('/blog');
-    
-    if (isBlogPage) {
+    if (pathname.includes("/blog")) {
       setActiveSection("blog");
       return;
     }
 
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
+    const sectionIds = sections
+      .map((s) => s.id)
+      .filter((id) => id !== "home");
 
-      // Get the nav height for calculations
-      const navHeight = navigationRef.current?.offsetHeight || 80;
-
-      // Check if we're at the top of the page
-      if (scrollPosition < 300) {
-        setActiveSection("home");
-        return;
-      }
-
-      // Find which section takes up most of the viewport
-      let maxVisibleSection = null;
-      let maxVisibleArea = 0;
-
-      // Check each section
-      for (const { id } of sections) {
-        const section = document.getElementById(id);
-        if (!section) continue;
-
-        // Get section dimensions and position
-        const rect = section.getBoundingClientRect();
-
-        // Calculate how much of the section is visible in the viewport
-        const visibleTop = Math.max(rect.top, navHeight);
-        const visibleBottom = Math.min(rect.bottom, viewportHeight);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
-        // If this section has more visible area than previous maximum, it becomes the active section
-        if (visibleHeight > maxVisibleArea) {
-          maxVisibleArea = visibleHeight;
-          maxVisibleSection = id;
-        }
-
-        // Special case for sections that are smaller than the viewport
-        // If section top is just past the navbar, prioritize it
-        if (rect.top > navHeight && rect.top < viewportHeight * 0.5) {
-          maxVisibleSection = id;
-          break;
+    // A section becomes active once its top crosses into the upper third of
+    // the viewport (comfortably below the sticky nav + scroll-margin offset).
+    // The last such section wins; "home" while still above the first.
+    const updateActiveSection = () => {
+      const triggerLine = window.innerHeight * 0.3;
+      let current = "home";
+      for (const id of sectionIds) {
+        const top = document.getElementById(id)?.getBoundingClientRect().top;
+        if (top !== undefined && top <= triggerLine) {
+          current = id;
         }
       }
-
-      // Update active section if we found one
-      if (maxVisibleSection) {
-        setActiveSection(maxVisibleSection);
-      }
+      setActiveSection(current);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    // Use a resize listener as well to handle orientation changes
-    window.addEventListener("resize", handleScroll);
+    // Throttle to at most one measurement per animation frame instead of
+    // recomputing on every individual scroll event.
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        updateActiveSection();
+      });
+    };
 
-    // Initial check
-    handleScroll();
+    updateActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
     };
-  }, [sections, router, pathname]);
+  }, [sections, pathname]);
 
   return (
     <nav
