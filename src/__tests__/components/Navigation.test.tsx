@@ -25,32 +25,7 @@ vi.mock("@/components/ui/LanguageSwitcher", () => ({
   LanguageSwitcher: () => <div data-testid="lang-switcher" />,
 }));
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
-    {},
-    {
-      get: (_t, prop) =>
-        ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-          const Tag = prop as keyof JSX.IntrinsicElements;
-          const htmlProps: Record<string, unknown> = {};
-          for (const [k, v] of Object.entries(props)) {
-            if (
-              !k.startsWith("while") &&
-              !k.startsWith("animate") &&
-              !k.startsWith("initial") &&
-              !["transition", "variants", "viewport", "exit", "layoutId"].includes(k)
-            ) {
-              htmlProps[k] = v;
-            }
-          }
-          return <Tag {...htmlProps}>{children}</Tag>;
-        },
-    }
-  ),
-  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
-  useScroll: () => ({ scrollYProgress: 0 }),
-  useSpring: () => 0,
-}));
+vi.mock("framer-motion");
 
 import { Navigation } from "@/components/ui/Navigation";
 import { scrollToSection } from "@/lib/scroll";

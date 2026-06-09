@@ -16,34 +16,11 @@ vi.mock("next-intl", () => ({
 
 vi.mock("next/image", () => ({
   default: ({ alt, ...props }: Record<string, unknown>) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <img alt={alt as string} {...props} />
   ),
 }));
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
-    {},
-    {
-      get: (_t, prop) =>
-        ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-          const Tag = prop as keyof JSX.IntrinsicElements;
-          const htmlProps: Record<string, unknown> = {};
-          for (const [k, v] of Object.entries(props)) {
-            if (
-              !k.startsWith("while") &&
-              !k.startsWith("animate") &&
-              !k.startsWith("initial") &&
-              !["transition", "variants", "viewport", "exit"].includes(k)
-            ) {
-              htmlProps[k] = v;
-            }
-          }
-          return <Tag {...htmlProps}>{children}</Tag>;
-        },
-    }
-  ),
-}));
+vi.mock("framer-motion");
 
 import { Experience } from "@/components/sections/Experience";
 import { experiences } from "@/data/experiences";

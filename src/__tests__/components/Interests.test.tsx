@@ -5,29 +5,7 @@ vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
 }));
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
-    {},
-    {
-      get: (_t, prop) =>
-        ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-          const Tag = prop as keyof JSX.IntrinsicElements;
-          const htmlProps: Record<string, unknown> = {};
-          for (const [k, v] of Object.entries(props)) {
-            if (
-              !k.startsWith("while") &&
-              !k.startsWith("animate") &&
-              !k.startsWith("initial") &&
-              !["transition", "variants", "viewport", "exit"].includes(k)
-            ) {
-              htmlProps[k] = v;
-            }
-          }
-          return <Tag {...htmlProps}>{children}</Tag>;
-        },
-    }
-  ),
-}));
+vi.mock("framer-motion");
 
 import { Interests } from "@/components/sections/Interests";
 import { interests } from "@/data/interests";

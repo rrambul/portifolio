@@ -13,34 +13,7 @@ vi.mock("next-themes", () => ({
 }));
 
 // Mock framer-motion
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
-    {},
-    {
-      get: (_target, prop) => {
-        return ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-          const Tag = prop as keyof JSX.IntrinsicElements;
-          const htmlProps: Record<string, unknown> = {};
-          for (const [k, v] of Object.entries(props)) {
-            if (
-              !k.startsWith("while") &&
-              !k.startsWith("animate") &&
-              !k.startsWith("initial") &&
-              k !== "transition" &&
-              k !== "variants" &&
-              k !== "viewport" &&
-              k !== "exit"
-            ) {
-              htmlProps[k] = v;
-            }
-          }
-          return <Tag {...htmlProps}>{children}</Tag>;
-        };
-      },
-    }
-  ),
-  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
-}));
+vi.mock("framer-motion");
 
 // Mock dynamic imports
 vi.mock("next/dynamic", () => ({

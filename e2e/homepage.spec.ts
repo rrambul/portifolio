@@ -48,8 +48,6 @@ test.describe("Homepage Sections", () => {
   test("renders Projects section with project cards", async ({ page }) => {
     await page.locator("#projects").scrollIntoViewIfNeeded();
     await expect(page.locator("#projects")).toBeVisible();
-    // Check at least one project card exists
-    const projectCards = page.locator("#projects").locator("article, [class*='card'], [class*='Card']");
     // Projects section should have content
     await expect(page.locator("#projects")).not.toBeEmpty();
   });

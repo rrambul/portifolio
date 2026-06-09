@@ -7,31 +7,7 @@ vi.mock("next/navigation", () => ({
   usePathname: () => h.pathname.current,
 }));
 
-vi.mock("framer-motion", () => ({
-  MotionConfig: ({ children }: React.PropsWithChildren) => <>{children}</>,
-  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
-  motion: new Proxy(
-    {},
-    {
-      get: (_t, prop) =>
-        ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-          const Tag = prop as keyof JSX.IntrinsicElements;
-          const htmlProps: Record<string, unknown> = {};
-          for (const [k, v] of Object.entries(props)) {
-            if (
-              !k.startsWith("while") &&
-              !k.startsWith("animate") &&
-              !k.startsWith("initial") &&
-              !["transition", "variants", "viewport", "exit"].includes(k)
-            ) {
-              htmlProps[k] = v;
-            }
-          }
-          return <Tag {...htmlProps}>{children}</Tag>;
-        },
-    }
-  ),
-}));
+vi.mock("framer-motion");
 
 import { TransitionProvider } from "@/providers/TransitionProvider";
 

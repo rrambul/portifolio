@@ -31,39 +31,7 @@ vi.mock("next/image", () => ({
 }));
 
 // Mock framer-motion
-vi.mock("framer-motion", () => ({
-  useReducedMotion: () => false,
-  useMotionValue: (initial: number) => ({ set: () => {}, get: () => initial }),
-  useSpring: (value: unknown) => value,
-  // Invoke the transform callback so its math is exercised by coverage.
-  useTransform: (_src: unknown, fn: (v: number) => number) =>
-    typeof fn === "function" ? fn(0.25) : 0,
-  motion: new Proxy(
-    {},
-    {
-      get: (_target, prop) => {
-        return ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-          const Tag = prop as keyof JSX.IntrinsicElements;
-          const htmlProps: Record<string, unknown> = {};
-          for (const [k, v] of Object.entries(props)) {
-            if (
-              !k.startsWith("while") &&
-              !k.startsWith("animate") &&
-              !k.startsWith("initial") &&
-              k !== "transition" &&
-              k !== "variants" &&
-              k !== "viewport" &&
-              k !== "exit"
-            ) {
-              htmlProps[k] = v;
-            }
-          }
-          return <Tag {...htmlProps}>{children}</Tag>;
-        };
-      },
-    }
-  ),
-}));
+vi.mock("framer-motion");
 
 import { Hero } from "@/components/sections/Hero";
 

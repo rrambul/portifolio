@@ -18,29 +18,7 @@ vi.mock("next-intl", () => ({
 }));
 
 // Mock framer-motion to render plain elements
-vi.mock("framer-motion", () => ({
-  motion: {
-    button: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-      const htmlProps: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(props)) {
-        if (!k.startsWith("while") && !k.startsWith("animate") && !k.startsWith("initial") && k !== "transition" && k !== "variants") {
-          htmlProps[k] = v;
-        }
-      }
-      return <button {...htmlProps}>{children}</button>;
-    },
-    div: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => {
-      const htmlProps: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(props)) {
-        if (!k.startsWith("while") && !k.startsWith("animate") && !k.startsWith("initial") && k !== "transition" && k !== "variants") {
-          htmlProps[k] = v;
-        }
-      }
-      return <div {...htmlProps}>{children}</div>;
-    },
-  },
-  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
-}));
+vi.mock("framer-motion");
 
 import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 

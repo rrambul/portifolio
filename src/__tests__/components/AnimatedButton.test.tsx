@@ -12,7 +12,7 @@ vi.mock("framer-motion", () => ({
       get: (_t, prop: string) => {
         if (!motionCache.has(prop)) {
           motionCache.set(prop, ({ children, ...props }) => {
-            const Tag = prop as keyof JSX.IntrinsicElements;
+            const Tag = prop as keyof React.JSX.IntrinsicElements;
             const htmlProps: Record<string, unknown> = {};
             for (const [k, v] of Object.entries(props)) {
               if (k === "onTapStart") htmlProps.onMouseDown = v;
