@@ -1,10 +1,16 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 // Mock scrollToSection
 vi.mock("@/lib/scroll", () => ({
   scrollToSection: vi.fn(),
 }));
+
+import { scrollToSection } from "@/lib/scroll";
+
+beforeEach(() => {
+  vi.mocked(scrollToSection).mockClear();
+});
 
 // Mock siteConfig
 vi.mock("@/config/site", () => ({
@@ -54,6 +60,16 @@ describe("Footer", () => {
     expect(screen.getByText("aboutLink")).toBeInTheDocument();
     expect(screen.getByText("experienceLink")).toBeInTheDocument();
     expect(screen.getByText("projectsLink")).toBeInTheDocument();
+  });
+
+  it("scrolls to the matching section when a quick link is clicked", () => {
+    render(<Footer />);
+    fireEvent.click(screen.getByText("aboutLink"));
+    expect(scrollToSection).toHaveBeenCalledWith("about");
+    fireEvent.click(screen.getByText("experienceLink"));
+    expect(scrollToSection).toHaveBeenCalledWith("experience");
+    fireEvent.click(screen.getByText("projectsLink"));
+    expect(scrollToSection).toHaveBeenCalledWith("projects");
   });
 
   it("renders copyright with current year", () => {

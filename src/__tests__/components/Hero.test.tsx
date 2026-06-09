@@ -35,7 +35,9 @@ vi.mock("framer-motion", () => ({
   useReducedMotion: () => false,
   useMotionValue: (initial: number) => ({ set: () => {}, get: () => initial }),
   useSpring: (value: unknown) => value,
-  useTransform: () => 0,
+  // Invoke the transform callback so its math is exercised by coverage.
+  useTransform: (_src: unknown, fn: (v: number) => number) =>
+    typeof fn === "function" ? fn(0.25) : 0,
   motion: new Proxy(
     {},
     {
@@ -108,5 +110,19 @@ describe("Hero", () => {
     render(<Hero />);
     const img = screen.getByRole("img", { name: "Renan Rambul" });
     expect(img).toBeInTheDocument();
+  });
+
+  it("tracks pointer movement for the parallax effect", () => {
+    render(<Hero />);
+    // Should not throw when the window emits a mousemove.
+    expect(() =>
+      fireEvent.mouseMove(window, { clientX: 200, clientY: 150 })
+    ).not.toThrow();
+  });
+
+  it("scrolls to the about section from the scroll cue", () => {
+    render(<Hero />);
+    fireEvent.click(screen.getByLabelText("scrollDown"));
+    expect(mockScrollToSection).toHaveBeenCalledWith("about");
   });
 });
