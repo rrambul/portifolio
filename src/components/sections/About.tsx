@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { FiUser, FiCode, FiGlobe } from "react-icons/fi";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
 
 // Dynamically import the particle component
 const AboutParticles = dynamic(() => import("../ui/AboutParticles"), {
@@ -17,7 +17,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-white dark:bg-zinc-900/30 relative overflow-hidden"
+      className="py-20 bg-zinc-50 dark:bg-zinc-900/40 relative overflow-hidden"
     >
       {/* Section-specific particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -47,7 +47,10 @@ export function About() {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:-translate-y-1.5 transition-transform duration-300">
+            <motion.div
+              whileHover={cardHover}
+              className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
+            >
               <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
                 <FiUser className="text-teal-600 dark:text-teal-400 h-6 w-6" />
               </div>
@@ -57,9 +60,12 @@ export function About() {
               <p className="text-zinc-600 dark:text-zinc-400">
                 {t("personal.content")}
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:-translate-y-1.5 transition-transform duration-300">
+            <motion.div
+              whileHover={cardHover}
+              className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
+            >
               <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
                 <FiCode className="text-teal-600 dark:text-teal-400 h-6 w-6" />
               </div>
@@ -69,9 +75,12 @@ export function About() {
               <p className="text-zinc-600 dark:text-zinc-400">
                 {t("technical.content")}
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:-translate-y-1.5 transition-transform duration-300">
+            <motion.div
+              whileHover={cardHover}
+              className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
+            >
               <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
                 <FiGlobe className="text-teal-600 dark:text-teal-400 h-6 w-6" />
               </div>
@@ -81,7 +90,7 @@ export function About() {
               <p className="text-zinc-600 dark:text-zinc-400">
                 {t("languages.content")}
               </p>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

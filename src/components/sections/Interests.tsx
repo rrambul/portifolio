@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { interests } from "@/data/interests";
-import { staggerContainer, springFadeIn } from "@/lib/animations";
+import { staggerContainer, springFadeIn, cardHover } from "@/lib/animations";
 
 export function Interests() {
   const t = useTranslations("interests");
@@ -11,7 +11,7 @@ export function Interests() {
   return (
     <section
       id="interests"
-      className="py-20 bg-zinc-50 dark:bg-zinc-900/50 relative overflow-hidden"
+      className="py-20 bg-white dark:bg-transparent relative overflow-hidden"
     >
       {/* Subtle background decoration */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -51,10 +51,7 @@ export function Interests() {
               <motion.div
                 key={key}
                 variants={springFadeIn}
-                whileHover={{
-                  y: -4,
-                  transition: { type: "spring", stiffness: 400, damping: 17 },
-                }}
+                whileHover={cardHover}
                 className="group relative flex items-center gap-4 p-5 rounded-xl
                   bg-white dark:bg-zinc-800/80
                   border border-zinc-200 dark:border-zinc-700/60

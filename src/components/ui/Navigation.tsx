@@ -5,8 +5,9 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
+import { scrollToSection as scrollToSectionLib } from "@/lib/scroll";
 
 export function Navigation() {
   const t = useTranslations("navigation");
@@ -16,6 +17,14 @@ export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const navigationRef = useRef<HTMLDivElement>(null);
+
+  // Reading progress bar, smoothed so it eases rather than snaps.
+  const { scrollYProgress } = useScroll();
+  const progressScaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -54,34 +63,16 @@ export function Navigation() {
       return;
     }
 
-    // Check if the target section exists on the current page
-    const targetElement = document.getElementById(sectionId);
-    
-    // If section doesn't exist, navigate to homepage with hash
-    if (!targetElement) {
+    // If section doesn't exist on this page, navigate to homepage with hash
+    if (!document.getElementById(sectionId)) {
       router.push(`/${locale}#${sectionId}`);
       return;
     }
 
-    // Delay scrolling to ensure the menu animation completes
-    setTimeout(() => {
-      try {
-        // Get navigation height for offset
-        const navHeight = navigationRef.current?.offsetHeight || 80;
-
-        // Calculate position
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-        // Perform scroll
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      } catch (error) {
-        console.error("Error scrolling to section:", error);
-      }
-    }, 300); // Longer delay for mobile
+    // Delay scrolling so the mobile menu finishes collapsing first (its height
+    // change would otherwise throw off the final scroll position). The actual
+    // offset is handled by `scroll-margin-top` in globals.css.
+    setTimeout(() => scrollToSectionLib(sectionId), 300);
   };
 
   // Update active section based on scroll position
@@ -162,11 +153,17 @@ export function Navigation() {
       ref={navigationRef}
       className="sticky top-0 z-50 border-b bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md dark:border-zinc-800 border-gray-200"
     >
+      {/* Reading progress bar */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-500 to-cyan-400"
+        style={{ scaleX: progressScaleX }}
+      />
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <button
             onClick={(e) => scrollToSection("home", e)}
-            className="text-xl font-bold cursor-pointer"
+            className="text-xl font-bold cursor-pointer rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
           >
             Renan Rambul
           </button>
@@ -177,13 +174,20 @@ export function Navigation() {
               <button
                 key={section.id}
                 onClick={(e) => scrollToSection(section.id, e)}
-                className={`transition-colors hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer ${
+                className={`relative py-1 rounded-sm transition-colors hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900 ${
                   activeSection === section.id
                     ? "text-teal-600 dark:text-teal-400"
                     : ""
                 }`}
               >
                 {section.label}
+                {activeSection === section.id && (
+                  <motion.span
+                    layoutId="nav-active-indicator"
+                    className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-teal-600 dark:bg-teal-400"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -195,9 +199,10 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-md cursor-pointer"
+            className="md:hidden p-2 rounded-md cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
             onClick={toggleMenu}
             aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
               <FiX className="h-6 w-6" />

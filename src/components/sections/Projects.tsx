@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiFolder, FiStar, FiGitPullRequest } from "react-icons/fi";
 import { projects } from "@/data/projects";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
 
 function BannerPattern({ pattern, className }: { pattern: string; className?: string }) {
   switch (pattern) {
@@ -61,7 +60,7 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-zinc-900/30">
+    <section id="projects" className="py-20 bg-zinc-50 dark:bg-zinc-900/40">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -90,7 +89,8 @@ export function Projects() {
               <motion.div
                 key={idx}
                 variants={fadeInUp}
-                className="group rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                whileHover={cardHover}
+                className="group rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Project Banner */}
                 <div className="relative h-36 w-full overflow-hidden" style={project.bannerStyle}>
@@ -138,7 +138,7 @@ export function Projects() {
                     {project.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-3 py-1 text-teal-800 dark:text-teal-300 text-xs font-medium"
+                        className="px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-xs rounded-full font-medium"
                       >
                         {tag}
                       </span>

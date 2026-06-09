@@ -36,7 +36,7 @@ export function AnimatedButton({
   // Apply base styles based on variant and size
   const getBaseClasses = () => {
     let classes =
-      "relative inline-flex items-center justify-center font-medium transition-all rounded-md";
+      "relative inline-flex items-center justify-center font-medium transition-all rounded-md outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900";
 
     // Variant styles
     switch (variant) {

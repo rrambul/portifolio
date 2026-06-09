@@ -22,3 +22,10 @@ export const springFadeIn: Variants = {
     transition: { type: "spring", stiffness: 260, damping: 20 },
   },
 };
+
+// Shared hover lift so every card across the page reacts the same way.
+// Pair with `hover:shadow-lg transition-shadow` on the element's className.
+export const cardHover = {
+  y: -6,
+  transition: { type: "spring" as const, stiffness: 400, damping: 17 },
+};

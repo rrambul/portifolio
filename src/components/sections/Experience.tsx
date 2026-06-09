@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
 import Image from "next/image";
 import { experiences as experienceData } from "@/data/experiences";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
 
 export function Experience() {
   const t = useTranslations("experience");
@@ -26,7 +26,7 @@ export function Experience() {
   });
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-zinc-900/30">
+    <section id="experience" className="py-20 bg-white dark:bg-transparent">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -60,11 +60,8 @@ export function Experience() {
               <motion.div
                 key={idx}
                 variants={fadeInUp}
-                className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer relative ml-10"
-                whileHover={{
-                  boxShadow:
-                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
-                }}
+                className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-shadow duration-300 hover:shadow-lg cursor-pointer relative ml-10"
+                whileHover={cardHover}
               >
                 {/* Timeline node with sequential animation */}
                 <div
