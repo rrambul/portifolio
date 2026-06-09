@@ -7,11 +7,11 @@ import { getBlogPosts } from "@/data/blog-posts";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { FiEdit3, FiBookOpen } from "react-icons/fi";
 import { useEffect, useState } from "react";
-import { BlogPost } from "@/types/blog";
+import { BlogPostMetadata } from "@/types/blog";
 
 export function Blog() {
   const t = useTranslations("blog");
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPostMetadata[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

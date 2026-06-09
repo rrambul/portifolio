@@ -1,4 +1,5 @@
 import { getBlogPost, getBlogPosts } from "@/data/blog-posts";
+import { getBlogPostContent } from "@/lib/blog-content";
 import { BlogPost } from "@/components/blog/BlogPost";
 import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
@@ -31,17 +32,19 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const post = getBlogPost(slug);
 
   if (!post) {
     notFound();
   }
 
+  const content = getBlogPostContent(slug, locale as "en" | "pt");
+
   return (
     <main>
       <Navigation />
-      <BlogPost post={post} />
+      <BlogPost post={post} content={content} />
       <Footer />
     </main>
   );

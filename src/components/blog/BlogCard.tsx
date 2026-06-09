@@ -1,13 +1,13 @@
 "use client";
 
-import { BlogPost } from "@/types/blog";
+import { BlogPostMetadata } from "@/types/blog";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 
 interface BlogCardProps {
-  post: BlogPost;
+  post: BlogPostMetadata;
   index: number;
 }
 

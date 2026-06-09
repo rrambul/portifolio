@@ -4,15 +4,17 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FiClock, FiCalendar, FiArrowLeft } from "react-icons/fi";
-import { BlogPost as BlogPostType } from "@/types/blog";
+import { BlogPostMetadata } from "@/types/blog";
 import ReactMarkdown from "react-markdown";
 import { useLocale, useTranslations } from "next-intl";
 
 interface BlogPostProps {
-  post: BlogPostType;
+  post: BlogPostMetadata;
+  /** Markdown body for the active locale (loaded server-side). */
+  content: string;
 }
 
-export function BlogPost({ post }: BlogPostProps) {
+export function BlogPost({ post, content }: BlogPostProps) {
   const locale = useLocale() as "en" | "pt";
   const t = useTranslations("blog");
 
@@ -96,9 +98,7 @@ export function BlogPost({ post }: BlogPostProps) {
 
           {/* Article Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-zinc-700 dark:prose-p:text-zinc-300 prose-a:text-teal-600 dark:prose-a:text-teal-400 prose-code:text-teal-600 dark:prose-code:text-teal-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
-            <ReactMarkdown>
-              {post.content[locale]}
-            </ReactMarkdown>
+            <ReactMarkdown>{content}</ReactMarkdown>
           </div>
 
           {/* Back to Blog */}

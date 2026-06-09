@@ -19,8 +19,6 @@ describe("blogPosts", () => {
       expect(post.title.pt).toBeTruthy();
       expect(post.excerpt.en).toBeTruthy();
       expect(post.excerpt.pt).toBeTruthy();
-      expect(post.content.en).toBeTruthy();
-      expect(post.content.pt).toBeTruthy();
       expect(post.date).toBeTruthy();
       expect(post.tags.length).toBeGreaterThan(0);
       expect(post.readTime).toBeGreaterThan(0);

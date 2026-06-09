@@ -29,13 +29,12 @@ vi.mock("react-markdown", () => ({
 vi.mock("framer-motion");
 
 import { BlogPost } from "@/components/blog/BlogPost";
-import type { BlogPost as BlogPostType } from "@/types/blog";
+import type { BlogPostMetadata } from "@/types/blog";
 
-const post: BlogPostType = {
+const post: BlogPostMetadata = {
   id: "1",
   title: { en: "English Title", pt: "Título PT" },
   excerpt: { en: "English excerpt", pt: "Resumo PT" },
-  content: { en: "English **content**", pt: "Conteúdo PT" },
   date: "2025-01-15",
   banner: "/blog/banner.jpg",
   slug: "my-post",
@@ -49,21 +48,21 @@ beforeEach(() => {
 });
 
 describe("BlogPost", () => {
-  it("renders the title, excerpt, and content in English", () => {
-    render(<BlogPost post={post} />);
+  it("renders the title, excerpt, and content body", () => {
+    render(<BlogPost post={post} content="English **content**" />);
     expect(screen.getByText("English Title")).toBeInTheDocument();
     expect(screen.getByText("English excerpt")).toBeInTheDocument();
     expect(screen.getByText("English **content**")).toBeInTheDocument();
   });
 
   it("renders author name and read time", () => {
-    render(<BlogPost post={post} />);
+    render(<BlogPost post={post} content="body" />);
     expect(screen.getByText("Jane Doe")).toBeInTheDocument();
     expect(screen.getByText("7 min read")).toBeInTheDocument();
   });
 
   it("renders both back-to-blog links pointing to the localized blog index", () => {
-    render(<BlogPost post={post} />);
+    render(<BlogPost post={post} content="body" />);
     const links = screen.getAllByRole("link");
     expect(links.length).toBe(2);
     for (const link of links) {
@@ -71,18 +70,19 @@ describe("BlogPost", () => {
     }
   });
 
-  it("renders Portuguese content and a pt-BR date for the pt locale", () => {
+  it("renders the Portuguese title/excerpt and a pt blog link for the pt locale", () => {
     h.locale.current = "pt";
-    render(<BlogPost post={post} />);
+    render(<BlogPost post={post} content="Conteúdo PT" />);
     expect(screen.getByText("Título PT")).toBeInTheDocument();
     expect(screen.getByText("Resumo PT")).toBeInTheDocument();
+    expect(screen.getByText("Conteúdo PT")).toBeInTheDocument();
     const links = screen.getAllByRole("link");
     expect(links[0]).toHaveAttribute("href", "/pt/blog");
   });
 
   it("falls back to the default avatar when none is provided", () => {
     const noAvatar = { ...post, author: { name: "No Avatar" } };
-    render(<BlogPost post={noAvatar} />);
+    render(<BlogPost post={noAvatar} content="body" />);
     const avatar = screen
       .getAllByRole("img")
       .find((img) => img.getAttribute("alt") === "No Avatar");
