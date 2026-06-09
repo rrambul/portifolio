@@ -30,6 +30,8 @@ export function AnimatedContactForm() {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [status, setStatus] = useState<SubmissionStatus>("idle");
+  // Honeypot: hidden from users, bots tend to fill it. Submitted as `company`.
+  const [honeypot, setHoneypot] = useState("");
 
   // Handle input changes
   const handleChange = (
@@ -141,6 +143,7 @@ export function AnimatedContactForm() {
           name: formState.name,
           email: formState.email,
           message: formState.message,
+          company: honeypot,
         }),
       });
 
@@ -238,6 +241,20 @@ export function AnimatedContactForm() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -20 }}
           >
+            {/* Honeypot: visually hidden, kept out of the tab order. */}
+            <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden">
+              <label htmlFor="company">Company</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
+
             <div className="space-y-2">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}

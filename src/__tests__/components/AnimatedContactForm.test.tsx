@@ -143,6 +143,7 @@ describe("AnimatedContactForm", () => {
         name: "John Doe",
         email: "john@example.com",
         message: "Hello, this is a test message!",
+        company: "",
       }),
     });
   });

@@ -10,10 +10,12 @@ vi.mock("resend", () => ({
 
 // We need to import NextResponse and mock the route
 import { POST } from "@/app/api/contact/route";
+import { resetRateLimit } from "@/lib/rate-limit";
 
 describe("POST /api/contact", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    resetRateLimit();
     process.env.CONTACT_EMAIL = "contact@example.com";
     process.env.FROM_EMAIL = "noreply@example.com";
     process.env.RESEND_API_KEY = "test-key";
@@ -125,6 +127,49 @@ describe("POST /api/contact", () => {
     );
 
     expect(response.status).toBe(500);
+  });
+
+  it("returns 400 when the email is malformed", async () => {
+    const response = await POST(
+      createRequest({ name: "John", email: "not-an-email", message: "Hello" })
+    );
+    expect(response.status).toBe(400);
+    const data = await response.json();
+    expect(data.error).toContain("valid email");
+  });
+
+  it("silently accepts (and ignores) submissions that trip the honeypot", async () => {
+    const response = await POST(
+      createRequest({
+        name: "Bot",
+        email: "bot@example.com",
+        message: "spam spam spam",
+        company: "Evil Corp",
+      })
+    );
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.success).toBe(true);
+    // No email is sent for honeypot hits.
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("rate-limits repeated submissions from the same client", async () => {
+    mockSend.mockResolvedValue({ data: { id: "msg" }, error: null });
+    const send = () =>
+      POST(
+        createRequest({
+          name: "John",
+          email: "john@example.com",
+          message: "Hello there!",
+        })
+      );
+
+    // The limiter allows 5 within the window.
+    for (let i = 0; i < 5; i++) {
+      expect((await send()).status).toBe(200);
+    }
+    expect((await send()).status).toBe(429);
   });
 
   it("uses default from email when FROM_EMAIL is not set", async () => {

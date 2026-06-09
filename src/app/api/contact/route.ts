@@ -1,18 +1,59 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit } from "@/lib/rate-limit";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX = { name: 100, email: 200, message: 5000 };
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
+function clientIp(request: Request): string {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown"
+  );
+}
+
 export async function POST(request: Request) {
   try {
+    if (!rateLimit(clientIp(request))) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { name, email, message } = body;
+
+    // Honeypot: real users never fill this hidden field. Pretend success so
+    // bots don't learn they were filtered.
+    if (typeof body.company === "string" && body.company.trim() !== "") {
+      return NextResponse.json({ success: true });
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Name, email, and message are required" },
+        { status: 400 }
+      );
+    }
+
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json(
+        { error: "A valid email address is required" },
+        { status: 400 }
+      );
+    }
+
+    if (
+      String(name).length > MAX.name ||
+      String(email).length > MAX.email ||
+      String(message).length > MAX.message
+    ) {
+      return NextResponse.json(
+        { error: "Submission exceeds the allowed length" },
         { status: 400 }
       );
     }
