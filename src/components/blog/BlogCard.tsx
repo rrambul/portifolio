@@ -45,10 +45,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h3 
-            className="text-xl font-bold mb-3 group-hover:!text-teal-800 dark:group-hover:!text-teal-400 transition-colors duration-200 blog-title-force-black"
-            style={{ color: '#000000 !important' }}
-          >
+          <h3 className="text-xl font-bold mb-3 text-black dark:text-zinc-100 group-hover:text-teal-800 dark:group-hover:text-teal-400 transition-colors duration-200">
             {post.title[locale]}
           </h3>
 
@@ -75,10 +72,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
             </div>
 
             {/* Read More indicator - no nested link */}
-            <span 
-              className="font-medium group-hover:underline transition-colors duration-200 blog-readmore-force-dark"
-              style={{ color: '#134e4a !important' }}
-            >
+            <span className="font-medium text-teal-900 hover:text-black dark:text-teal-400 dark:hover:text-teal-300 group-hover:underline transition-colors duration-200">
               {t("readMore")} →
             </span>
           </div>

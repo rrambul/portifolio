@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import "../components/blog/blog-colors.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
 import { siteConfig } from "@/config/site";

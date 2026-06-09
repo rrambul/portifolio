@@ -30,8 +30,7 @@ export function BlogPost({ post }: BlogPostProps) {
         <div className="container mx-auto px-4 relative z-10 mb-8">
           <Link
             href={`/${locale}/blog`}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 dark:bg-zinc-800/80 backdrop-blur-sm rounded-full hover:bg-white dark:hover:bg-zinc-800 transition-colors duration-200 border border-zinc-300 dark:border-zinc-700 shadow-sm blog-back-button-force-black"
-            style={{ color: '#000000 !important' }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 dark:bg-zinc-800/80 backdrop-blur-sm rounded-full hover:bg-white dark:hover:bg-zinc-800 transition-colors duration-200 border border-zinc-300 dark:border-zinc-700 shadow-sm text-black hover:text-gray-700 dark:text-zinc-300 dark:hover:text-zinc-100"
           >
             <FiArrowLeft className="w-4 h-4" />
             <span>{t("backToBlog")}</span>
@@ -106,8 +105,7 @@ export function BlogPost({ post }: BlogPostProps) {
           <div className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-700">
             <Link
               href={`/${locale}/blog`}
-              className="inline-flex items-center gap-2 font-medium group transition-colors duration-200 blog-back-link-force-dark"
-              style={{ color: '#134e4a !important' }}
+              className="inline-flex items-center gap-2 font-medium group transition-colors duration-200 text-teal-900 hover:text-black dark:text-teal-400 dark:hover:text-teal-300"
             >
               <FiArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
               <span>{t("backToAllPosts")}</span>

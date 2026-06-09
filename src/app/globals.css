@@ -173,6 +173,13 @@
   }
 }
 
+/* Keep descenders (g, y, p) from being clipped on gradient (bg-clip-text)
+   headings. Unlayered so it reliably applies over Tailwind's utilities. */
+.bg-clip-text {
+  padding-bottom: 0.125rem;
+  line-height: 1.2;
+}
+
 /* Respect users who prefer reduced motion: neutralize transitions/animations
    and disable smooth scrolling so nothing moves more than it has to. */
 @media (prefers-reduced-motion: reduce) {
