@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 interface TransitionProviderProps {
@@ -25,16 +25,20 @@ export function TransitionProvider({ children }: TransitionProviderProps) {
   }, [isFirstMount]);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathnameWithoutLocale}
-        initial={isFirstMount ? false : { opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    // `reducedMotion="user"` makes every Framer Motion animation honor the OS
+    // "reduce motion" setting (transforms/layout are skipped, fades kept).
+    <MotionConfig reducedMotion="user">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={pathnameWithoutLocale}
+          initial={isFirstMount ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+    </MotionConfig>
   );
 }

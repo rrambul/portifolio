@@ -61,11 +61,19 @@
   * {
     border-color: hsl(var(--border));
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
     letter-spacing: -0.01em;
+  }
+
+  /* Offset anchored sections so the sticky nav doesn't cover their heading */
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 
   h1,
@@ -160,5 +168,22 @@
 
   .prose p:has(img) {
     @apply text-center;
+  }
+}
+
+/* Respect users who prefer reduced motion: neutralize transitions/animations
+   and disable smooth scrolling so nothing moves more than it has to. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

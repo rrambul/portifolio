@@ -15,28 +15,17 @@ describe("scrollToSection", () => {
     });
   });
 
-  it("scrolls to element with default nav offset", () => {
-    const mockElement = { offsetTop: 500 } as HTMLElement;
+  it("scrolls the target element into view", () => {
+    const scrollIntoView = vi.fn();
+    const mockElement = { scrollIntoView } as unknown as HTMLElement;
     vi.spyOn(document, "getElementById").mockReturnValue(mockElement);
 
     scrollToSection("about");
 
     expect(document.getElementById).toHaveBeenCalledWith("about");
-    expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 420, // 500 - 80 (default nav height)
+    expect(scrollIntoView).toHaveBeenCalledWith({
       behavior: "smooth",
-    });
-  });
-
-  it("scrolls to element with custom nav height", () => {
-    const mockElement = { offsetTop: 300 } as HTMLElement;
-    vi.spyOn(document, "getElementById").mockReturnValue(mockElement);
-
-    scrollToSection("contact", 100);
-
-    expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 200, // 300 - 100
-      behavior: "smooth",
+      block: "start",
     });
   });
 

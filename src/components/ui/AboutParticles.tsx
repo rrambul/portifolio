@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useReducedMotion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import type { Engine } from "tsparticles-engine";
@@ -9,17 +10,22 @@ import type { Engine } from "tsparticles-engine";
 export default function AboutParticles() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const prefersReducedMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
   }, []);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
-  if (!mounted) return null;
+  // Skip the canvas entirely for reduced-motion users and on small screens,
+  // where it's the most expensive and least visible.
+  if (!mounted || prefersReducedMotion || isMobile) return null;
 
   return (
     <Particles

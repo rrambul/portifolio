@@ -4,22 +4,27 @@ import { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { useTheme } from "next-themes";
+import { useReducedMotion } from "framer-motion";
 import type { Engine } from "tsparticles-engine";
 
 export default function SkillsParticles() {
   const { theme } = useTheme() || { theme: "light" };
   const isDark = theme === "dark";
+  const prefersReducedMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
   }, []);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
-  if (!mounted) return null;
+  // Skip the canvas for reduced-motion users and on small screens.
+  if (!mounted || prefersReducedMotion || isMobile) return null;
 
   return (
     <Particles

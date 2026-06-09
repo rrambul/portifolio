@@ -1,14 +1,12 @@
-const NAV_HEIGHT = 80;
-
-export function scrollToSection(sectionId: string, navHeight = NAV_HEIGHT) {
+export function scrollToSection(sectionId: string) {
   if (sectionId === "home") {
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
 
-  const element = document.getElementById(sectionId);
-  if (element) {
-    const offsetPosition = element.offsetTop - navHeight;
-    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-  }
+  // `scroll-margin-top` on `section[id]` (see globals.css) keeps the heading
+  // clear of the sticky nav, so we no longer need a hardcoded offset here.
+  document
+    .getElementById(sectionId)
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
