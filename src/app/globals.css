@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -31,24 +31,26 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    /* Deep slate-teal base so the teal accents read as part of the scheme
+       rather than fighting a blue-black background. */
+    --background: 185 25% 5%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 195 22% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 195 22% 8%;
     --popover-foreground: 0 0% 98%;
     --primary: 175 80% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 20% 14%;
+    --secondary: 195 20% 13%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 20% 14%;
-    --muted-foreground: 240 10% 70%;
-    --accent: 240 20% 14%;
+    --muted: 195 20% 13%;
+    --muted-foreground: 200 8% 70%;
+    --accent: 195 20% 13%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 20% 14%;
-    --input: 240 20% 14%;
+    --border: 195 18% 13%;
+    --input: 195 18% 13%;
     --ring: 175 80% 55%;
 
     /* Color variables for language selector in dark mode */

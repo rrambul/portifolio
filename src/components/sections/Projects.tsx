@@ -60,7 +60,7 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="py-20 bg-zinc-50 dark:bg-zinc-900/40">
+    <section id="projects" className="py-20 bg-zinc-100 dark:bg-zinc-900/40">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"

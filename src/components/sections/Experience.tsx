@@ -26,7 +26,7 @@ export function Experience() {
   });
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-transparent">
+    <section id="experience" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"

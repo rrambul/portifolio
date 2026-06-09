@@ -11,7 +11,7 @@ export function Interests() {
   return (
     <section
       id="interests"
-      className="py-20 bg-white dark:bg-transparent relative overflow-hidden"
+      className="py-20 bg-transparent relative overflow-hidden"
     >
       {/* Subtle background decoration */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">

@@ -12,7 +12,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-zinc-50 dark:bg-zinc-900/40 relative overflow-hidden"
+      className="py-20 bg-zinc-100 dark:bg-zinc-900/40 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 relative z-10">
         <motion.div

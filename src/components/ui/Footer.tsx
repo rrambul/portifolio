@@ -10,7 +10,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 footer-section relative bg-white dark:bg-zinc-900/30 z-10">
+    <footer className="py-12 footer-section relative bg-transparent z-10">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>

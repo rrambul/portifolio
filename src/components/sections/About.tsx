@@ -17,7 +17,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-zinc-50 dark:bg-zinc-900/40 relative overflow-hidden"
+      className="py-20 bg-zinc-100 dark:bg-zinc-900/40 relative overflow-hidden"
     >
       {/* Section-specific particles */}
       <div className="absolute inset-0 pointer-events-none">
