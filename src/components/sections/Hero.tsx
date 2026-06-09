@@ -1,39 +1,53 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
+import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiChevronDown } from "react-icons/fi";
+import { useEffect } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { scrollToSection } from "@/lib/scroll";
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 
 export function Hero() {
   const t = useTranslations("hero");
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const prefersReducedMotion = useReducedMotion();
+
+  // Pointer position as a normalized [-0.5, 0.5] motion value. Using motion
+  // values (not state) means the parallax updates without re-rendering React.
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+
+  const springX = useSpring(pointerX, { stiffness: 100, damping: 15 });
+  const springY = useSpring(pointerY, { stiffness: 100, damping: 15 });
+
+  // Derive each element's offset from the smoothed pointer value.
+  const blobAX = useTransform(springX, (v) => v * 30);
+  const blobAY = useTransform(springY, (v) => v * 30);
+  const blobBX = useTransform(springX, (v) => v * -30);
+  const blobBY = useTransform(springY, (v) => v * -30);
+  const photoX = useTransform(springX, (v) => v * -8);
+  const photoY = useTransform(springY, (v) => v * -8);
+  const photoRotateY = useTransform(springX, (v) => v * 3);
+  const photoRotateX = useTransform(springY, (v) => v * -3);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      pointerX.set(e.clientX / window.innerWidth - 0.5);
+      pointerY.set(e.clientY / window.innerHeight - 0.5);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const calculateMovement = (axis: "x" | "y", strength = 15) => {
-    // Check if window is available (client-side)
-    if (typeof window === "undefined") return 0;
-    
-    const center =
-      axis === "x" ? window.innerWidth / 2 : window.innerHeight / 2;
-    const position = axis === "x" ? mousePosition.x : mousePosition.y;
-    const movement =
-      ((position - center) /
-        (axis === "x" ? window.innerWidth : window.innerHeight)) *
-      strength;
-    return movement;
-  };
+  }, [prefersReducedMotion, pointerX, pointerY]);
 
   const scrollToContact = () => scrollToSection("contact");
 
@@ -43,20 +57,12 @@ export function Hero() {
       <motion.div
         className="absolute top-20 left-10 w-60 h-60 rounded-full bg-teal-200 dark:bg-teal-900 opacity-20 blur-3xl"
         aria-hidden="true"
-        animate={{
-          x: calculateMovement("x", 30),
-          y: calculateMovement("y", 30),
-        }}
-        transition={{ type: "spring", damping: 15 }}
+        style={{ x: blobAX, y: blobAY }}
       />
       <motion.div
         className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-cyan-200 dark:bg-cyan-900 opacity-20 blur-3xl"
         aria-hidden="true"
-        animate={{
-          x: calculateMovement("x", -30),
-          y: calculateMovement("y", -30),
-        }}
-        transition={{ type: "spring", damping: 15 }}
+        style={{ x: blobBX, y: blobBY }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -76,7 +82,7 @@ export function Hero() {
               {t("greeting")}
             </motion.h2>
             <motion.h1
-              className="text-4xl md:text-6xl font-bold mb-4"
+              className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 via-teal-600 to-cyan-600 dark:from-white dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent pb-1"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
@@ -91,13 +97,13 @@ export function Hero() {
             >
               {t("subtitle")}
             </motion.p>
-            <button
+            <AnimatedButton
               onClick={scrollToContact}
-              className="inline-flex items-center space-x-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-md transition-all duration-200 cursor-pointer font-medium hover:scale-105 active:scale-95 group"
+              size="lg"
+              icon={<FiArrowRight className="h-5 w-5" />}
             >
-              <span>{t("cta")}</span>
-              <FiArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-            </button>
+              {t("cta")}
+            </AnimatedButton>
 
             {/* Social Media Icons */}
             <motion.div
@@ -110,7 +116,8 @@ export function Hero() {
                 href={siteConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                aria-label="GitHub"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -121,7 +128,8 @@ export function Hero() {
                 href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                aria-label="LinkedIn"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -130,7 +138,8 @@ export function Hero() {
 
               <motion.a
                 href={`mailto:${siteConfig.links.email}`}
-                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                aria-label="Email"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -149,19 +158,16 @@ export function Hero() {
             {/* Profile photo */}
             <motion.div
               className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-teal-600 dark:border-teal-400 z-10"
-              animate={{
-                x: calculateMovement("x", -8),
-                y: calculateMovement("y", -8),
-                rotateY: calculateMovement("x", 3),
-                rotateX: calculateMovement("y", -3),
+              style={{
+                x: photoX,
+                y: photoY,
+                rotateY: photoRotateY,
+                rotateX: photoRotateX,
+                boxShadow: "0 0 25px rgba(13, 148, 136, 0.4)",
               }}
-              transition={{ type: "spring", damping: 20 }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 10px 30px rgba(13, 148, 136, 0.4)",
-              }}
-              style={{
-                boxShadow: "0 0 25px rgba(13, 148, 136, 0.4)",
               }}
             >
               <Image
@@ -174,6 +180,23 @@ export function Hero() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll-down cue */}
+        <motion.button
+          onClick={() => scrollToSection("about")}
+          aria-label={t("scrollDown")}
+          className="hidden md:flex mx-auto mt-16 items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors rounded-full outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
+        >
+          <motion.span
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          >
+            <FiChevronDown className="h-7 w-7" />
+          </motion.span>
+        </motion.button>
       </div>
     </section>
   );

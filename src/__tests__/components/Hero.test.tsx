@@ -32,6 +32,10 @@ vi.mock("next/image", () => ({
 
 // Mock framer-motion
 vi.mock("framer-motion", () => ({
+  useReducedMotion: () => false,
+  useMotionValue: (initial: number) => ({ set: () => {}, get: () => initial }),
+  useSpring: (value: unknown) => value,
+  useTransform: () => 0,
   motion: new Proxy(
     {},
     {

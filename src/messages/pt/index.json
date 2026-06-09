@@ -13,7 +13,8 @@
     "greeting": "Olá, eu sou",
     "title": "Renan Rambul",
     "subtitle": "Engenheiro de Software Frontend",
-    "cta": "Entre em contato"
+    "cta": "Entre em contato",
+    "scrollDown": "Rolar para a seção sobre"
   },
   "about": {
     "title": "Sobre Mim",

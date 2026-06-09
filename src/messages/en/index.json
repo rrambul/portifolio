@@ -13,7 +13,8 @@
     "greeting": "Hello, I'm",
     "title": "Renan Rambul",
     "subtitle": "Frontend Software Engineer",
-    "cta": "Get in touch"
+    "cta": "Get in touch",
+    "scrollDown": "Scroll to about section"
   },
   "about": {
     "title": "About Me",
