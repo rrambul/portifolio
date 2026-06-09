@@ -3,6 +3,7 @@ import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { buildMetadata } from "@/lib/metadata";
 
 interface BlogPageProps {
   params: Promise<{ locale: string }>;
@@ -10,44 +11,15 @@ interface BlogPageProps {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'blog' });
-  
-  const title = `${t('title')} | Renan Rambul`;
-  const description = t('subtitle');
-  
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'website',
-      locale: locale === 'pt' ? 'pt_BR' : 'en_US',
-      url: `https://renanrambul.com/${locale}/blog`,
-      siteName: 'Renan Rambul Portfolio',
-      images: [
-        {
-          url: '/og-blog.png',
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: ['/og-blog.png'],
-    },
-    alternates: {
-      canonical: `https://renanrambul.com/${locale}/blog`,
-      languages: {
-        'en': 'https://renanrambul.com/en/blog',
-        'pt': 'https://renanrambul.com/pt/blog',
-      },
-    },
-  };
+  const t = await getTranslations({ locale, namespace: "blog" });
+
+  return buildMetadata({
+    locale,
+    path: "/blog",
+    image: "/og-blog.png",
+    title: `${t("title")} | Renan Rambul`,
+    description: t("subtitle"),
+  });
 }
 
 export default function BlogPage() {

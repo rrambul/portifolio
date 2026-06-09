@@ -4,6 +4,7 @@ import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -57,56 +58,30 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const title = `${post.title[locale as 'en' | 'pt']} | Renan Rambul`;
-  const description = post.excerpt[locale as 'en' | 'pt'];
+  const typedLocale = locale as "en" | "pt";
   const publishedTime = new Date(post.date).toISOString();
-  const modifiedTime = new Date(post.date).toISOString();
 
-  return {
-    title,
-    description,
+  return buildMetadata({
+    locale,
+    path: `/blog/${slug}`,
+    type: "article",
+    image: post.banner,
+    title: `${post.title[typedLocale]} | Renan Rambul`,
+    description: post.excerpt[typedLocale],
+    keywords: post.tags.join(", "),
     authors: [{ name: post.author.name }],
-    keywords: post.tags.join(', '),
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      locale: locale === 'pt' ? 'pt_BR' : 'en_US',
-      url: `https://renanrambul.com/${locale}/blog/${slug}`,
-      siteName: 'Renan Rambul Portfolio',
+    article: {
       publishedTime,
-      modifiedTime,
+      modifiedTime: publishedTime,
       authors: [post.author.name],
       tags: post.tags,
-      images: [
-        {
-          url: post.banner.startsWith('http') ? post.banner : `https://renanrambul.com${post.banner}`,
-          width: 1200,
-          height: 630,
-          alt: post.title[locale as 'en' | 'pt'],
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [post.banner.startsWith('http') ? post.banner : `https://renanrambul.com${post.banner}`],
-      creator: '@renanrambul',
-    },
-    alternates: {
-      canonical: `https://renanrambul.com/${locale}/blog/${slug}`,
-      languages: {
-        'en': `https://renanrambul.com/en/blog/${slug}`,
-        'pt': `https://renanrambul.com/pt/blog/${slug}`,
-      },
     },
     other: {
-      'article:author': post.author.name,
-      'article:published_time': publishedTime,
-      'article:modified_time': modifiedTime,
-      'article:section': 'Technology',
-      'article:tag': post.tags.join(','),
+      "article:author": post.author.name,
+      "article:published_time": publishedTime,
+      "article:modified_time": publishedTime,
+      "article:section": "Technology",
+      "article:tag": post.tags.join(","),
     },
-  };
+  });
 } 
