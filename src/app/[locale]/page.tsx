@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     : 'Renan Rambul | Software Developer';
   
   const description = locale === 'pt'
-    ? 'Portfolio de Renan Rambul, desenvolvedor de software apaixonado com mais de 3 anos de experiência em desenvolvimento web moderno, React, TypeScript e arquitetura de software.'
-    : 'Portfolio of Renan Rambul, a passionate software developer with 3+ years of experience in modern web development, React, TypeScript, and software architecture.';
+    ? 'Portfolio de Renan Rambul, desenvolvedor de software apaixonado com mais de 6 anos de experiência em desenvolvimento web moderno, React, TypeScript e arquitetura de software.'
+    : 'Portfolio of Renan Rambul, a passionate software developer with 6+ years of experience in modern web development, React, TypeScript, and software architecture.';
 
   return {
     title,

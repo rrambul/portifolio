@@ -90,9 +90,8 @@ export const metadata: Metadata = {
     creator: siteConfig.links.twitter,
     images: [siteConfig.ogImage],
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+  // Add a real Search Console token here when ready:
+  // verification: { google: "..." },
 };
 
 export const viewport: Viewport = {

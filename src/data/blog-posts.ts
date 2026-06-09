@@ -624,7 +624,10 @@ No próximo post desta série, vamos criar um Web Component do zero, passo a pas
 ];
 
 export function getBlogPosts(): BlogPost[] {
-  return blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Copy before sorting so we don't mutate the shared module-level array.
+  return [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 }
 
 export function getBlogPost(slug: string): BlogPost | undefined {
