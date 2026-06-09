@@ -53,11 +53,12 @@ test.describe("Homepage Sections", () => {
   });
 
   test("renders Contact section with form", async ({ page }) => {
-    await page.locator("#contact").scrollIntoViewIfNeeded();
-    await expect(page.getByLabel("Name")).toBeVisible();
-    await expect(page.getByLabel("Email")).toBeVisible();
-    await expect(page.getByLabel("Message")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Send Message" })).toBeVisible();
+    const contact = page.locator("#contact");
+    await contact.scrollIntoViewIfNeeded();
+    await expect(contact.getByLabel("Name")).toBeVisible();
+    await expect(contact.getByLabel("Email")).toBeVisible();
+    await expect(contact.getByLabel("Message")).toBeVisible();
+    await expect(contact.getByRole("button", { name: "Send Message" })).toBeVisible();
   });
 
   test("renders Footer with navigation links", async ({ page }) => {

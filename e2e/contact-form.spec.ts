@@ -14,17 +14,17 @@ test.describe("Contact Form", () => {
   });
 
   test("shows email validation error for invalid email", async ({ page }) => {
-    await page.getByLabel("Name").fill("John Doe");
-    await page.getByLabel("Email").fill("not-an-email");
-    await page.getByLabel("Message").fill("This is a valid test message");
+    await page.locator("#contact").getByLabel("Name").fill("John Doe");
+    await page.locator("#contact").getByLabel("Email").fill("not-an-email");
+    await page.locator("#contact").getByLabel("Message").fill("This is a valid test message");
     await page.getByRole("button", { name: "Send Message" }).click();
     await expect(page.getByText("Please enter a valid email")).toBeVisible();
   });
 
   test("shows error for short message", async ({ page }) => {
-    await page.getByLabel("Name").fill("John Doe");
-    await page.getByLabel("Email").fill("john@example.com");
-    await page.getByLabel("Message").fill("short");
+    await page.locator("#contact").getByLabel("Name").fill("John Doe");
+    await page.locator("#contact").getByLabel("Email").fill("john@example.com");
+    await page.locator("#contact").getByLabel("Message").fill("short");
     await page.getByRole("button", { name: "Send Message" }).click();
     await expect(page.getByText("Message is too short")).toBeVisible();
   });
@@ -35,19 +35,19 @@ test.describe("Contact Form", () => {
     await expect(page.getByText("Name is required")).toBeVisible();
 
     // Fill name to clear error
-    await page.getByLabel("Name").fill("John Doe");
+    await page.locator("#contact").getByLabel("Name").fill("John Doe");
     await expect(page.getByText("Name is required")).not.toBeVisible();
   });
 
   test("input fields receive green border on valid input after blur", async ({ page }) => {
-    const nameInput = page.getByLabel("Name");
+    const nameInput = page.locator("#contact").getByLabel("Name");
     await nameInput.fill("John Doe");
     await nameInput.blur();
     await expect(nameInput).toHaveClass(/border-green-500/);
   });
 
   test("input fields receive red border on invalid input after blur", async ({ page }) => {
-    const nameInput = page.getByLabel("Name");
+    const nameInput = page.locator("#contact").getByLabel("Name");
     await nameInput.focus();
     await nameInput.blur();
     await expect(nameInput).toHaveClass(/border-red-500/);
@@ -60,15 +60,15 @@ test.describe("Contact Form", () => {
       await route.fulfill({ status: 200, json: { success: true } });
     });
 
-    await page.getByLabel("Name").fill("John Doe");
-    await page.getByLabel("Email").fill("john@example.com");
-    await page.getByLabel("Message").fill("This is a valid test message");
+    await page.locator("#contact").getByLabel("Name").fill("John Doe");
+    await page.locator("#contact").getByLabel("Email").fill("john@example.com");
+    await page.locator("#contact").getByLabel("Message").fill("This is a valid test message");
     await page.getByRole("button", { name: "Send Message" }).click();
 
     // Inputs should be disabled during submission
-    await expect(page.getByLabel("Name")).toBeDisabled();
-    await expect(page.getByLabel("Email")).toBeDisabled();
-    await expect(page.getByLabel("Message")).toBeDisabled();
+    await expect(page.locator("#contact").getByLabel("Name")).toBeDisabled();
+    await expect(page.locator("#contact").getByLabel("Email")).toBeDisabled();
+    await expect(page.locator("#contact").getByLabel("Message")).toBeDisabled();
   });
 
   test("shows success message after successful submission", async ({ page }) => {
@@ -81,9 +81,9 @@ test.describe("Contact Form", () => {
       });
     });
 
-    await page.getByLabel("Name").fill("John Doe");
-    await page.getByLabel("Email").fill("john@example.com");
-    await page.getByLabel("Message").fill("This is a valid test message");
+    await page.locator("#contact").getByLabel("Name").fill("John Doe");
+    await page.locator("#contact").getByLabel("Email").fill("john@example.com");
+    await page.locator("#contact").getByLabel("Message").fill("This is a valid test message");
     await page.getByRole("button", { name: "Send Message" }).click();
 
     await expect(page.getByText("Message Sent!")).toBeVisible();
@@ -99,9 +99,9 @@ test.describe("Contact Form", () => {
       });
     });
 
-    await page.getByLabel("Name").fill("John Doe");
-    await page.getByLabel("Email").fill("john@example.com");
-    await page.getByLabel("Message").fill("This is a valid test message");
+    await page.locator("#contact").getByLabel("Name").fill("John Doe");
+    await page.locator("#contact").getByLabel("Email").fill("john@example.com");
+    await page.locator("#contact").getByLabel("Message").fill("This is a valid test message");
     await page.getByRole("button", { name: "Send Message" }).click();
 
     await expect(page.getByText("Oops!")).toBeVisible();
