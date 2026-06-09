@@ -1,6 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
+const redirect = vi.fn();
+vi.mock("next/navigation", () => ({ redirect: (...a: unknown[]) => redirect(...a) }));
+
 // Stub the composed client components so the page tests focus on composition.
 vi.mock("@/components/ui/Navigation", () => ({ Navigation: () => <nav data-testid="nav" /> }));
 vi.mock("@/components/ui/Footer", () => ({ Footer: () => <footer data-testid="footer" /> }));
@@ -40,21 +43,23 @@ describe("Home page", () => {
   });
 });
 
-describe("Static section pages", () => {
-  it("renders the about page", () => {
-    render(<AboutPage />);
-    expect(screen.getByTestId("nav")).toBeInTheDocument();
-    expect(screen.getByTestId("about")).toBeInTheDocument();
-    expect(screen.getByTestId("footer")).toBeInTheDocument();
+describe("Duplicate section routes redirect to homepage anchors", () => {
+  it("redirects /about to the homepage anchor", async () => {
+    await AboutPage({ params: Promise.resolve({ locale: "en" }) });
+    expect(redirect).toHaveBeenCalledWith("/en#about");
   });
 
-  it("renders the experience page", () => {
-    render(<ExperiencePage />);
-    expect(screen.getByTestId("experience")).toBeInTheDocument();
+  it("redirects /experience to the homepage anchor", async () => {
+    await ExperiencePage({ params: Promise.resolve({ locale: "pt" }) });
+    expect(redirect).toHaveBeenCalledWith("/pt#experience");
   });
+});
 
-  it("renders the skills page", () => {
+describe("Unique section pages", () => {
+  it("renders the skills page (Skills has no homepage section)", () => {
     render(<SkillsPage />);
+    expect(screen.getByTestId("nav")).toBeInTheDocument();
     expect(screen.getByTestId("skills")).toBeInTheDocument();
+    expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 });

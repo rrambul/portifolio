@@ -1,13 +1,12 @@
-import { Experience } from "@/components/sections/Experience";
-import { Navigation } from "@/components/ui/Navigation";
-import { Footer } from "@/components/ui/Footer";
+import { redirect } from "next/navigation";
 
-export default function ExperiencePage() {
-  return (
-    <main>
-      <Navigation />
-      <Experience />
-      <Footer />
-    </main>
-  );
+// The Experience section lives on the homepage; this route only existed as a
+// duplicate. Redirect to the canonical anchor instead of serving it twice.
+export default async function ExperiencePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  redirect(`/${locale}#experience`);
 }
