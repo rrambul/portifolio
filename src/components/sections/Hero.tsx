@@ -197,28 +197,34 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
           >
-            {/* Profile photo */}
+            {/* Profile photo with a teal-to-violet gradient ring (a padded
+                gradient wrapper, since CSS borders can't be gradients on a
+                rounded element) */}
             <motion.div
-              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-teal-600 dark:border-teal-400 z-10"
+              className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full p-1 bg-gradient-to-br from-teal-500 via-cyan-400 to-violet-500 dark:from-teal-400 dark:via-cyan-300 dark:to-violet-400 z-10"
               style={{
                 x: photoX,
                 y: photoY,
                 rotateY: photoRotateY,
                 rotateX: photoRotateX,
-                boxShadow: "0 0 25px rgba(13, 148, 136, 0.4)",
+                boxShadow:
+                  "0 0 25px rgba(13, 148, 136, 0.35), 0 0 25px rgba(139, 92, 246, 0.25)",
               }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 10px 30px rgba(13, 148, 136, 0.4)",
+                boxShadow:
+                  "0 10px 30px rgba(13, 148, 136, 0.35), 0 10px 30px rgba(139, 92, 246, 0.35)",
               }}
             >
-              <Image
-                src="/profile-picture.jpg"
-                alt="Renan Rambul"
-                fill
-                className="object-cover profile-image"
-                priority
-              />
+              <div className="relative w-full h-full rounded-full overflow-hidden">
+                <Image
+                  src="/profile-picture.jpg"
+                  alt="Renan Rambul"
+                  fill
+                  className="object-cover profile-image"
+                  priority
+                />
+              </div>
             </motion.div>
           </motion.div>
         </div>
