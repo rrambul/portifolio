@@ -105,7 +105,7 @@ export function Projects() {
                   {/* Badges */}
                   <div className="absolute top-3 right-3 flex gap-2" style={{ zIndex: 5 }}>
                     {project.isContribution && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-cyan-500/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-violet-500/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
                         <FiGitPullRequest className="h-3 w-3" />
                         {t("contribution")}
                       </span>

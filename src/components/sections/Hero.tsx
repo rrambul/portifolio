@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   motion,
   useMotionValue,
@@ -8,7 +8,14 @@ import {
   useTransform,
   useReducedMotion,
 } from "framer-motion";
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiChevronDown } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiChevronDown,
+  FiDownload,
+} from "react-icons/fi";
 import { useEffect } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
@@ -17,6 +24,7 @@ import { AnimatedButton } from "@/components/ui/AnimatedButton";
 
 export function Hero() {
   const t = useTranslations("hero");
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
   // Pointer position as a normalized [-0.5, 0.5] motion value. Using motion
@@ -73,6 +81,20 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
+            {/* Current-role status badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full text-xs font-medium bg-violet-50 text-violet-700 border border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/25"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500 dark:bg-violet-400" />
+              </span>
+              {t("currentlyAt")}
+            </motion.div>
+
             <motion.h2
               className="text-xl md:text-2xl text-teal-600 dark:text-teal-400 font-medium mb-2"
               initial={{ opacity: 0, x: -20 }}
@@ -82,7 +104,7 @@ export function Hero() {
               {t("greeting")}
             </motion.h2>
             <motion.h1
-              className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 via-teal-600 to-cyan-600 dark:from-white dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent pb-1"
+              className="w-fit text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 via-teal-600 to-violet-600 dark:from-white dark:via-teal-300 dark:to-violet-400 bg-clip-text text-transparent pb-1"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
@@ -90,20 +112,40 @@ export function Hero() {
               {t("title")}
             </motion.h1>
             <motion.p
-              className="text-2xl md:text-3xl text-zinc-600 dark:text-zinc-400 mb-8"
+              className="text-2xl md:text-3xl text-zinc-600 dark:text-zinc-400 mb-3"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
             >
               {t("subtitle")}
             </motion.p>
-            <AnimatedButton
-              onClick={scrollToContact}
-              size="lg"
-              icon={<FiArrowRight className="h-5 w-5" />}
+            <motion.p
+              className="text-base md:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.7 }}
             >
-              {t("cta")}
-            </AnimatedButton>
+              {t("tagline")}
+            </motion.p>
+            <div className="flex flex-wrap items-center gap-4">
+              <AnimatedButton
+                onClick={scrollToContact}
+                size="lg"
+                icon={<FiArrowRight className="h-5 w-5" />}
+              >
+                {t("cta")}
+              </AnimatedButton>
+              <AnimatedButton
+                href={`/api/cv?locale=${locale}`}
+                download
+                variant="outline"
+                size="lg"
+                icon={<FiDownload className="h-5 w-5" />}
+                iconPosition="left"
+              >
+                {t("downloadCV")}
+              </AnimatedButton>
+            </div>
 
             {/* Social Media Icons */}
             <motion.div

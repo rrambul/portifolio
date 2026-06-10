@@ -10,20 +10,12 @@ import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
 export function Experience() {
   const t = useTranslations("experience");
 
-  // Map i18n keys to match data file companyId → translation key
-  const companyKeyMap: Record<string, string> = {
-    skued: "freelance",
-  };
-
-  const experiences = experienceData.map((exp) => {
-    const tKey = companyKeyMap[exp.companyId] ?? exp.companyId;
-    return {
-      ...exp,
-      jobTitle: t(`companies.${tKey}.title`),
-      responsibilities: t.raw(`companies.${tKey}.responsibilities`) as string[],
-      skills: t.raw(`companies.${tKey}.skills`) as string[],
-    };
-  });
+  const experiences = experienceData.map((exp) => ({
+    ...exp,
+    jobTitle: t(`companies.${exp.i18nKey}.title`),
+    responsibilities: t.raw(`companies.${exp.i18nKey}.responsibilities`) as string[],
+    skills: t.raw(`companies.${exp.i18nKey}.skills`) as string[],
+  }));
 
   return (
     <section id="experience" className="py-20 bg-transparent">

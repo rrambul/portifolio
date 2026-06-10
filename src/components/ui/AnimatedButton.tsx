@@ -16,6 +16,9 @@ interface AnimatedButtonProps {
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   isExternal?: boolean;
+  /** Render a plain same-tab anchor (e.g. file downloads served with
+   *  Content-Disposition) instead of a Next.js Link, which would prefetch. */
+  download?: boolean;
 }
 
 export function AnimatedButton({
@@ -30,6 +33,7 @@ export function AnimatedButton({
   disabled = false,
   type = "button",
   isExternal = false,
+  download = false,
 }: AnimatedButtonProps) {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -117,6 +121,14 @@ export function AnimatedButton({
 
   // If href is provided, render as Link
   if (href) {
+    if (download) {
+      return (
+        <motion.a href={href} className={combinedClasses} {...motionProps}>
+          {buttonContent}
+        </motion.a>
+      );
+    }
+
     if (isExternal) {
       return (
         <motion.a

@@ -13,23 +13,26 @@
     "greeting": "Olá, eu sou",
     "title": "Renan Rambul",
     "subtitle": "Engenheiro de Software Frontend",
+    "tagline": "Transformo designs em interfaces rápidas e acessíveis que dão gosto de usar.",
+    "currentlyAt": "Atualmente na Translational Analytics & Statistics",
+    "downloadCV": "Baixar CV",
     "cta": "Entre em contato",
     "scrollDown": "Rolar para a seção sobre"
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "Engenheiro de Software Frontend com mais de 6 anos de experiência construindo aplicações web escaláveis, acessíveis e de alta performance. Forte expertise em React, Tailwind CSS, arquitetura de UI moderna e design systems. Experiente em colaboração com equipes americanas em ambientes de saúde e SaaS, traduzindo requisitos de produto e protótipos Figma em interfaces performáticas e prontas para produção que geram resultados de negócio.",
+    "content": "Sou um engenheiro frontend que passou os últimos 6+ anos transformando designs em aplicações web rápidas e acessíveis, que as pessoas realmente gostam de usar. A maior parte do meu trabalho acontece em React e TypeScript: construindo design systems, cuidando de performance e acessibilidade, e entregando UI em produção junto a times americanos nas áreas de saúde e SaaS. Me importo com arquitetura limpa, boa experiência de desenvolvimento e com os pequenos detalhes que fazem uma interface parecer certa.",
     "personal": {
       "title": "Pessoal",
-      "content": "Um desenvolvedor que ama programar, aprender coisas novas e explorar tecnologias. Também entusiasta de código aberto"
+      "content": "Amo construir coisas, aprender em público e contribuir com open source. Quando não estou programando, provavelmente estou lendo ou na academia."
     },
     "technical": {
       "title": "Técnico",
-      "content": "Experiente em tecnologias web modernas e melhores práticas"
+      "content": "React, TypeScript e arquitetura frontend moderna, com um carinho especial por design systems, performance e acessibilidade."
     },
     "languages": {
       "title": "Idiomas",
-      "content": "Inglês avançado e português nativo, com experiência trabalhando em ambientes internacionais e equipes no exterior"
+      "content": "Português nativo e inglês avançado. Trabalho no dia a dia com times internacionais há anos."
     }
   },
   "experience": {
@@ -222,7 +225,7 @@
     },
     "portfolio": {
       "title": "Portfólio Pessoal",
-      "description": "Site de portfólio moderno e responsivo construído com Next.js 15, com tema claro/escuro, internacionalização (EN/PT), seções animadas com Framer Motion e formulário de contato."
+      "description": "Site de portfólio moderno e responsivo construído com Next.js 16, com tema claro/escuro, internacionalização (EN/PT), seções animadas com Framer Motion e formulário de contato."
     }
   },
   "interests": {

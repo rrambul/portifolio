@@ -21,6 +21,7 @@ vi.mock("@/config/site", () => ({
 // Mock next-intl
 vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
+  useLocale: () => "en",
 }));
 
 // Mock next/image
@@ -92,5 +93,19 @@ describe("Hero", () => {
     render(<Hero />);
     fireEvent.click(screen.getByLabelText("scrollDown"));
     expect(mockScrollToSection).toHaveBeenCalledWith("about");
+  });
+
+  it("renders the current-role badge and tagline", () => {
+    render(<Hero />);
+    expect(screen.getByText("currentlyAt")).toBeInTheDocument();
+    expect(screen.getByText("tagline")).toBeInTheDocument();
+  });
+
+  it("renders a CV download link for the active locale", () => {
+    render(<Hero />);
+    const link = screen.getByText("downloadCV").closest("a");
+    expect(link).toHaveAttribute("href", "/api/cv?locale=en");
+    // Same-tab download: must not be a new-tab link.
+    expect(link).not.toHaveAttribute("target");
   });
 });

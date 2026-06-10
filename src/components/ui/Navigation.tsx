@@ -131,7 +131,7 @@ export function Navigation() {
       {/* Reading progress bar */}
       <motion.div
         aria-hidden="true"
-        className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-500 to-cyan-400"
+        className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-500 via-cyan-400 to-violet-500"
         style={{ scaleX: progressScaleX }}
       />
       <div className="container mx-auto px-4 py-3">
