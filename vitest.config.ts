@@ -20,7 +20,7 @@ export default defineConfig({
         // Non-unit-testable infra: html/body shells, async server components,
         // server data-fetching pages, and next-intl runtime glue that requires
         // the Next server runtime (all covered by Playwright e2e instead).
-        "src/app/layout.tsx",
+        "src/app/(redirect)/layout.tsx",
         "src/app/[locale]/layout.tsx",
         "src/app/[locale]/blog/**",
         "src/i18n/**",

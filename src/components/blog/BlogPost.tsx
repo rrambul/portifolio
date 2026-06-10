@@ -97,8 +97,11 @@ export function BlogPost({ post, content }: BlogPostProps) {
           </div>
 
           {/* Article Content */}
-          <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-zinc-700 dark:prose-p:text-zinc-300 prose-a:text-teal-600 dark:prose-a:text-teal-400 prose-code:text-teal-600 dark:prose-code:text-teal-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
-            <ReactMarkdown>{content}</ReactMarkdown>
+          <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-zinc-700 dark:prose-p:text-zinc-300 prose-a:text-teal-700 dark:prose-a:text-teal-400 prose-code:text-teal-700 dark:prose-code:text-teal-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
+            {/* The page already renders the post title as the h1, so demote the
+                markdown's own "# title" to h2 to keep a single h1 and a valid
+                heading order. */}
+            <ReactMarkdown components={{ h1: "h2" }}>{content}</ReactMarkdown>
           </div>
 
           {/* Back to Blog */}

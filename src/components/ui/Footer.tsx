@@ -26,7 +26,8 @@ export function Footer() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
+                  aria-label="GitHub"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -41,7 +42,8 @@ export function Footer() {
                   href={siteConfig.links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
+                  aria-label="LinkedIn"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -54,7 +56,8 @@ export function Footer() {
               <div style={{ position: "relative", zIndex: 50 }}>
                 <a
                   href={`mailto:${siteConfig.links.email}`}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
+                  aria-label="Email"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 transform hover:scale-110"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -72,7 +75,7 @@ export function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("about")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -84,7 +87,7 @@ export function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("experience")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
                     zIndex: 51,
@@ -96,7 +99,7 @@ export function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("projects")}
-                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
+                  className="inline-block p-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 transform hover:translate-x-1"
                   style={{
                     position: "relative",
                     zIndex: 51,

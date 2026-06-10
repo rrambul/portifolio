@@ -52,7 +52,7 @@ export function About() {
               className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
-                <FiUser className="text-teal-600 dark:text-teal-400 h-6 w-6" />
+                <FiUser className="text-teal-700 dark:text-teal-400 h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 {t("personal.title")}
@@ -67,7 +67,7 @@ export function About() {
               className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
-                <FiCode className="text-teal-600 dark:text-teal-400 h-6 w-6" />
+                <FiCode className="text-teal-700 dark:text-teal-400 h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 {t("technical.title")}
@@ -82,7 +82,7 @@ export function About() {
               className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full w-fit mb-4">
-                <FiGlobe className="text-teal-600 dark:text-teal-400 h-6 w-6" />
+                <FiGlobe className="text-teal-700 dark:text-teal-400 h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 {t("languages.title")}

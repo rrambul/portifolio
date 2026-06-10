@@ -71,7 +71,7 @@ export function Projects() {
           className="max-w-6xl mx-auto"
         >
           <SectionHeading
-            icon={<FiFolder className="text-teal-600 dark:text-teal-400 h-8 w-8" />}
+            icon={<FiFolder className="text-teal-700 dark:text-teal-400 h-8 w-8" />}
             title={t("title")}
             subtitle={t("subtitle")}
           />
@@ -121,7 +121,7 @@ export function Projects() {
 
                 {/* Project Content */}
                 <div className="p-6 flex flex-col bg-white dark:bg-zinc-800" style={{ position: "relative", zIndex: 10 }}>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">
                     {t(project.titleKey)}
                   </h3>
                   <p className="text-zinc-600 dark:text-zinc-400 mb-4">
@@ -147,7 +147,7 @@ export function Projects() {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
+                        className="flex items-center gap-1.5 text-sm font-medium text-teal-700 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
                         style={{ position: "relative", zIndex: 21 }}
                       >
                         <FiExternalLink className="h-4 w-4" />
@@ -159,7 +159,7 @@ export function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
+                        className="flex items-center gap-1.5 text-sm font-medium text-teal-700 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline transition-colors"
                         style={{ position: "relative", zIndex: 21 }}
                       >
                         <FiGithub className="h-4 w-4" />

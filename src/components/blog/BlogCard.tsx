@@ -45,9 +45,10 @@ export function BlogCard({ post, index }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-bold mb-3 text-black dark:text-zinc-100 group-hover:text-teal-800 dark:group-hover:text-teal-400 transition-colors duration-200">
+          {/* h2: the blog index h1 is the page title, so cards are the next level */}
+          <h2 className="text-xl font-bold mb-3 text-black dark:text-zinc-100 group-hover:text-teal-800 dark:group-hover:text-teal-400 transition-colors duration-200">
             {post.title[locale]}
-          </h3>
+          </h2>
 
           {/* Excerpt */}
           <p className="!text-zinc-800 dark:!text-zinc-400 mb-4 line-clamp-3">

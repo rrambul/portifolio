@@ -1,33 +1,110 @@
+import type { Metadata, Viewport } from "next";
+import { Outfit } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales } from "../../../i18n.config";
-import { Metadata } from "next";
+import "../globals.css";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import { TransitionProvider } from "@/providers/TransitionProvider";
+import { siteConfig } from "@/config/site";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "Renan Rambul | Portfolio",
-  description: "Renan Rambul - Software Developer Portfolio",
+  title: {
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.title,
+  },
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
+  keywords: [
+    'Renan Rambul',
+    'Software Developer',
+    'Frontend Developer',
+    'React',
+    'TypeScript',
+    'Next.js',
+    'JavaScript',
+    'Web Development',
+    'Portfolio',
+    'Brazil',
+    'Software Engineer',
+  ],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
       {
-        url: "/favicon/favicon-16x16.png.svg",
-        sizes: "16x16",
-        type: "image/svg+xml",
-      },
-      {
-        url: "/favicon/favicon-32x32.png.svg",
-        sizes: "32x32",
-        type: "image/svg+xml",
-      },
-      {
-        url: "/favicon/favicon-48x48.png.svg",
-        sizes: "48x48",
+        url: "/favicon/favicon.svg",
         type: "image/svg+xml",
       },
     ],
-    apple: "/favicon/favicon.svg",
+    apple: [
+      {
+        url: "/favicon/favicon.svg",
+        type: "image/svg+xml",
+      },
+    ],
   },
+  manifest: '/manifest.json',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    siteName: `${siteConfig.name} Portfolio`,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - Software Developer Portfolio`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    creator: siteConfig.links.twitter,
+    images: [siteConfig.ogImage],
+  },
+  // Add a real Search Console token here when ready:
+  // verification: { google: "..." },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0f10' },
+  ],
 };
 
 export function generateStaticParams() {
@@ -41,7 +118,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // Await params before accessing properties (Next.js 15 requirement)
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
@@ -54,8 +130,83 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      {children}
-    </NextIntlClientProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.classList.add(theme);
+                } catch (e) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": siteConfig.name,
+              "url": siteConfig.url,
+              "image": `${siteConfig.url}/profile-picture.jpg`,
+              "jobTitle": "Software Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Translational Analytics"
+              },
+              "description": siteConfig.description,
+              "knowsAbout": [
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Next.js",
+                "Node.js",
+                "Web Development",
+                "Frontend Development",
+                "Software Architecture"
+              ],
+              "sameAs": [
+                siteConfig.links.github,
+                siteConfig.links.linkedin,
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "BR"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": `${siteConfig.name} Portfolio`,
+              "url": siteConfig.url,
+              "description": siteConfig.description,
+              "author": {
+                "@type": "Person",
+                "name": siteConfig.name
+              },
+              "inLanguage": siteConfig.locale.supported,
+            })
+          }}
+        />
+      </head>
+      <body className={outfit.className}>
+        <ThemeProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <TransitionProvider>{children}</TransitionProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

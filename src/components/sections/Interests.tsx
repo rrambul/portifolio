@@ -34,7 +34,7 @@ export function Interests() {
         >
           {/* Section heading */}
           <motion.div variants={springFadeIn} className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 text-sm font-medium mb-3 tracking-wide uppercase text-teal-600 dark:text-teal-400">
+            <span className="inline-flex items-center gap-2 text-sm font-medium mb-3 tracking-wide uppercase text-teal-700 dark:text-teal-400">
               {t("subtitle")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">

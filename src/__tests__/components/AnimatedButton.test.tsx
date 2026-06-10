@@ -55,9 +55,9 @@ describe("AnimatedButton", () => {
   });
 
   it.each([
-    ["primary", "bg-teal-600"],
+    ["primary", "bg-teal-700"],
     ["secondary", "bg-blue-600"],
-    ["outline", "border-teal-600"],
+    ["outline", "border-teal-700"],
     ["ghost", "hover:bg-zinc-200"],
   ] as const)("applies the %s variant styles", (variant, expectedClass) => {
     const { container } = render(

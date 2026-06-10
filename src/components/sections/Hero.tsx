@@ -95,14 +95,16 @@ export function Hero() {
               {t("currentlyAt")}
             </motion.div>
 
-            <motion.h2
-              className="text-xl md:text-2xl text-teal-600 dark:text-teal-400 font-medium mb-2"
+            {/* Not a heading: it precedes the h1 and is purely decorative copy,
+                so a heading element here breaks the document outline. */}
+            <motion.p
+              className="text-xl md:text-2xl text-teal-700 dark:text-teal-400 font-medium mb-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               {t("greeting")}
-            </motion.h2>
+            </motion.p>
             <motion.h1
               className="w-fit text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 via-teal-600 to-violet-600 dark:from-white dark:via-teal-300 dark:to-violet-400 bg-clip-text text-transparent pb-1"
               initial={{ opacity: 0, x: -20 }}
@@ -120,7 +122,7 @@ export function Hero() {
               {t("subtitle")}
             </motion.p>
             <motion.p
-              className="text-base md:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl"
+              className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-xl"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.7 }}
@@ -159,7 +161,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -171,7 +173,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -181,7 +183,7 @@ export function Hero() {
               <motion.a
                 href={`mailto:${siteConfig.links.email}`}
                 aria-label="Email"
-                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+                className="text-zinc-500 dark:text-zinc-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-200 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -233,7 +235,7 @@ export function Hero() {
         <motion.button
           onClick={() => scrollToSection("about")}
           aria-label={t("scrollDown")}
-          className="hidden md:flex mx-auto mt-16 items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-teal-600 dark:hover:text-teal-400 transition-colors rounded-full outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+          className="hidden md:flex mx-auto mt-16 items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors rounded-full outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.6 }}

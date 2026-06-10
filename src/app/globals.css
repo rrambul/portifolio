@@ -73,14 +73,14 @@
 @layer components {
   .prose a {
     @apply relative font-medium transition-all duration-300 ease-in-out;
-    color: #0d9488 !important; /* Teal-600 */
+    color: #0f766e !important; /* Teal-700: keeps WCAG AA contrast on light */
     text-decoration: none;
-    background: linear-gradient(to right, #0d9488, #2dd4bf) no-repeat right bottom / 0 2px;
+    background: linear-gradient(to right, #0f766e, #2dd4bf) no-repeat right bottom / 0 2px;
     transition: background-size 300ms ease-in-out, color 300ms ease-in-out;
   }
 
   .prose a:hover {
-    color: #0f766e !important; /* Teal-700 */
+    color: #115e59 !important; /* Teal-800 */
     background-size: 100% 2px;
     background-position-x: left;
   }

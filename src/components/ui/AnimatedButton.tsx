@@ -42,17 +42,18 @@ export function AnimatedButton({
     let classes =
       "relative inline-flex items-center justify-center font-medium transition-all rounded-md outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900";
 
-    // Variant styles
+    // Variant styles. Teal-700 (not 600) against white text and teal-400 on
+    // the dark base keep the WCAG AA 4.5:1 contrast ratio.
     switch (variant) {
       case "primary":
-        classes += " bg-teal-600 hover:bg-teal-700 text-white";
+        classes += " bg-teal-700 hover:bg-teal-800 text-white";
         break;
       case "secondary":
         classes += " bg-blue-600 hover:bg-blue-700 text-white";
         break;
       case "outline":
         classes +=
-          " bg-transparent border-2 border-teal-600 text-teal-600 hover:bg-teal-600/10";
+          " bg-transparent border-2 border-teal-700 text-teal-700 dark:border-teal-400 dark:text-teal-400 hover:bg-teal-600/10";
         break;
       case "ghost":
         classes +=

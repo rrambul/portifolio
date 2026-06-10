@@ -101,7 +101,7 @@ export function Experience() {
                         )}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400">
+                        <h3 className="text-xl font-semibold text-teal-700 dark:text-teal-400">
                           {exp.jobTitle}
                         </h3>
                         <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400">

@@ -24,7 +24,7 @@ export function Contact() {
           className="max-w-4xl mx-auto"
         >
           <SectionHeading
-            icon={<FiMail className="text-teal-600 dark:text-teal-400 h-8 w-8" />}
+            icon={<FiMail className="text-teal-700 dark:text-teal-400 h-8 w-8" />}
             title={t("title")}
             subtitle={t("description")}
           />

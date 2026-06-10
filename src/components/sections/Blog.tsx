@@ -51,7 +51,7 @@ export function Blog() {
             variants={fadeInUp}
             className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6"
           >
-            <FiEdit3 className="w-8 h-8 text-teal-600 dark:text-teal-400" />
+            <FiEdit3 className="w-8 h-8 text-teal-700 dark:text-teal-400" />
           </motion.div>
           
           <motion.h1

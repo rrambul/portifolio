@@ -149,9 +149,9 @@ export function Navigation() {
               <button
                 key={section.id}
                 onClick={(e) => scrollToSection(section.id, e)}
-                className={`relative py-1 rounded-sm transition-colors hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900 ${
+                className={`relative py-1 rounded-sm transition-colors hover:text-teal-700 dark:hover:text-teal-400 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900 ${
                   activeSection === section.id
-                    ? "text-teal-600 dark:text-teal-400"
+                    ? "text-teal-700 dark:text-teal-400"
                     : ""
                 }`}
               >
@@ -204,9 +204,9 @@ export function Navigation() {
                   <button
                     key={section.id}
                     onClick={(e) => scrollToSection(section.id, e)}
-                    className={`block w-full text-left py-2 transition-colors hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer ${
+                    className={`block w-full text-left py-2 transition-colors hover:text-teal-700 dark:hover:text-teal-400 cursor-pointer ${
                       activeSection === section.id
-                        ? "text-teal-600 dark:text-teal-400"
+                        ? "text-teal-700 dark:text-teal-400"
                         : ""
                     }`}
                   >
