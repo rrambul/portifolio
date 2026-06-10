@@ -46,11 +46,10 @@
       "tas": {
         "title": "Engenheiro de Software",
         "responsibilities": [
-          "Desenvolver componentes web acessíveis e de alta performance para um design system interno utilizado por múltiplas equipes de produto.",
-          "Construir funcionalidades de UI para uma plataforma SaaS de saúde americana, melhorando a usabilidade e reduzindo o atrito operacional para os usuários finais.",
-          "Aumentar a cobertura de testes de integração frontend com Playwright, melhorando a confiança nos releases e reduzindo o risco de regressão.",
-          "Revisar pull requests para garantir manutenibilidade, consistência arquitetural e fidelidade pixel-perfect aos protótipos do Figma.",
-          "Manter e publicar pacotes npm privados, acelerando a velocidade de desenvolvimento e promovendo consistência visual na plataforma."
+          "Construo e mantenho o design system de web components em que várias equipes de produto entregam, com acessibilidade e performance tratadas como requisito, não como detalhe.",
+          "Desenvolvo funcionalidades de UI para uma plataforma SaaS de saúde americana, levando protótipos do Figma até interfaces de produção fiéis ao pixel.",
+          "Escrevo testes de integração com Playwright que pegam regressões antes de chegarem a um release.",
+          "Sou responsável pelo pipeline de publicação dos pacotes npm privados e reviso PRs de frontend com foco em arquitetura e fidelidade ao design."
         ],
         "skills": [
           "Web Components",
@@ -65,10 +64,10 @@
       "freelance": {
         "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Desenvolvi landing pages de alta performance e interfaces de aplicação que melhoraram a aquisição e engajamento de usuários.",
-          "Otimizei fluxos de trabalho de alunos e administrativos através de interfaces intuitivas, reduzindo esforço manual e aumentando a eficiência operacional.",
-          "Implementei arquitetura frontend moderna usando React, React Query e React Hook Form para garantir escalabilidade e manutenibilidade a longo prazo.",
-          "Colaborei de perto com stakeholders de produto para traduzir requisitos de negócio em soluções centradas no usuário que apoiaram o crescimento da empresa."
+          "Construí as landing pages e a interface da aplicação de uma plataforma de educação, com foco em carregamento rápido e caminhos claros de conversão.",
+          "Simplifiquei fluxos de alunos e administrativos, eliminando etapas manuais da operação do dia a dia.",
+          "Estruturei a arquitetura frontend com React, React Query e React Hook Form para o código se manter saudável conforme o produto cresce.",
+          "Trabalhei direto com stakeholders de produto, transformando requisitos de negócio em features prontas para uso."
         ],
         "skills": [
           "React.js",
@@ -83,11 +82,10 @@
       "bymycell": {
         "title": "Engenheiro de Software",
         "responsibilities": [
-          "Construí funcionalidades de visualização de dados e relatórios usando React e Tailwind CSS, melhorando a clareza dos resultados de análises laboratoriais.",
-          "Integrei sistemas frontend e backend para melhorar a rastreabilidade do fluxo de trabalho e reduzir erros manuais de processo.",
-          "Refatorei módulos backend legados para uma arquitetura baseada em DDD, melhorando a escalabilidade e manutenibilidade a longo prazo.",
-          "Implementei testes unitários e de integração para aumentar a confiabilidade e reduzir incidentes em produção.",
-          "Mantive sistemas legados durante a migração arquitetural para garantir operações de negócio ininterruptas."
+          "Construí os dashboards e relatórios em React que transformam resultados brutos de análises genômicas em algo que pesquisadores conseguem ler.",
+          "Integrei frontend e backend para dar rastreabilidade de ponta a ponta aos fluxos do laboratório, com menos passos manuais e menos erros.",
+          "Refatorei módulos legados do backend para uma arquitetura DDD mantendo o sistema antigo no ar, sem interromper a operação do laboratório.",
+          "Adicionei as suítes de testes unitários e de integração que faltavam no código."
         ],
         "skills": [
           "React.js",
@@ -103,36 +101,30 @@
       "take": {
         "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Desenvolvi funcionalidades de backoffice incluindo gerenciamento de pedidos, controle de estoque e dashboards para coolers inteligentes de varejo.",
-          "Contribuí para o design system interno, aumentando a reutilização de componentes e acelerando a entrega de funcionalidades.",
-          "Implementei testes end-to-end com Cypress, reduzindo bugs em produção e aumentando a confiança nos deploys.",
-          "Construí dashboards interativos e visualizações de dados acessíveis para apoiar a tomada de decisão baseada em dados.",
-          "Colaborei com clientes internacionais, entregando funcionalidades prontas para produção do planejamento ao deploy."
+          "Construí o backoffice que opera uma rede de coolers inteligentes de varejo: gestão de pedidos, controle de estoque e dashboards operacionais em tempo real.",
+          "Ajudei a evoluir o design system interno, aumentando o reuso de componentes entre times e acelerando a entrega de features.",
+          "Introduzi testes end-to-end com Cypress, pegando bugs antes do deploy, não depois.",
+          "Criei visualizações de dados acessíveis e interativas para as decisões operacionais do dia a dia.",
+          "Trabalhei direto com clientes internacionais, cuidando de features do planejamento ao deploy."
         ],
         "skills": [
           "React.js",
+          "Angular",
           "AWS Amplify",
           "Material UI",
           "Redux",
-          "Angular",
-          "Ant Design",
           "Cypress",
           "Recharts",
-          "Clean Architecture",
-          "Context API",
-          "React Hook Form",
-          "React Query",
-          "Storybook",
-          "Microsoft Clarity"
+          "Storybook"
         ]
       },
       "suave": {
         "title": "Desenvolvedor Full-stack",
         "responsibilities": [
-          "Entreguei landing pages Next.js de alta performance focadas em velocidade, responsividade e otimização de conversão.",
-          "Desenvolvi funcionalidades personalizadas para websites que melhoraram a experiência do usuário e aumentaram a geração de leads.",
-          "Construí uma plataforma multi-tenant de agregação de links sociais usando React e Express para atender diversas necessidades de clientes.",
-          "Realizei otimizações de SEO e performance que melhoraram a visibilidade orgânica e o ROI de marketing."
+          "Entreguei landing pages em Next.js para clientes da agência em que velocidade de carregamento e conversão eram o briefing inteiro.",
+          "Projetei e construí uma plataforma multi-tenant de agregação de links (React + Express), servindo várias marcas a partir de um único código.",
+          "Desenvolvi funcionalidades sob medida que transformaram sites de clientes em canais de geração de leads.",
+          "Fiz otimizações de SEO e performance que aumentaram a visibilidade orgânica dos clientes."
         ],
         "skills": [
           "React.js",

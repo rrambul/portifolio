@@ -46,11 +46,10 @@
       "tas": {
         "title": "Software Engineer",
         "responsibilities": [
-          "Develop accessible, high-performance web components for an internal design system used across multiple product teams.",
-          "Build UI features for a U.S. healthcare SaaS platform, improving usability and reducing operational friction for end users.",
-          "Increase frontend integration test coverage with Playwright, improving release confidence and reducing regression risk.",
-          "Review pull requests to ensure maintainability, architectural consistency, and pixel-perfect fidelity to Figma prototypes.",
-          "Maintain and publish private npm packages, accelerating development speed and promoting UI consistency across the platform."
+          "Build and maintain the web-component design system that multiple product teams ship on, with accessibility and performance treated as requirements, not nice-to-haves.",
+          "Develop UI features for a U.S. healthcare SaaS platform, taking Figma prototypes all the way to pixel-accurate production interfaces.",
+          "Write Playwright integration tests that catch regressions before they reach a release.",
+          "Own the private npm release pipeline for shared packages and review frontend PRs for architecture and design fidelity."
         ],
         "skills": [
           "Web Components",
@@ -65,10 +64,10 @@
       "freelance": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Developed high-performance landing pages and application interfaces that improved user acquisition and engagement.",
-          "Optimized student and administrative workflows through intuitive UI flows, reducing manual effort and increasing operational efficiency.",
-          "Implemented modern frontend architecture using React, React Query, and React Hook Form to ensure scalability and long-term maintainability.",
-          "Collaborated closely with product stakeholders to translate business requirements into user-centered solutions that supported company growth."
+          "Built the landing pages and application UI for an ed-tech platform, focused on fast loads and clear conversion paths.",
+          "Streamlined student and admin workflows, removing manual steps from day-to-day operations.",
+          "Established the frontend architecture around React, React Query, and React Hook Form so the codebase stays maintainable as the product grows.",
+          "Worked directly with product stakeholders to turn business requirements into shippable, user-centered features."
         ],
         "skills": [
           "React.js",
@@ -83,11 +82,10 @@
       "bymycell": {
         "title": "Software Engineer",
         "responsibilities": [
-          "Built data visualization and reporting features using React and Tailwind CSS, enhancing clarity of laboratory analysis results.",
-          "Integrated frontend and backend systems to improve workflow traceability and reduce manual process errors.",
-          "Refactored legacy backend modules into a DDD-based architecture, improving scalability and long-term maintainability.",
-          "Implemented unit and integration tests to increase reliability and reduce production incidents.",
-          "Maintained legacy systems during architectural migration to ensure uninterrupted business operations."
+          "Built the React dashboards and reports that turn raw genomics lab results into something researchers can actually read.",
+          "Connected frontend and backend systems to make lab workflows traceable end to end, with fewer manual handoffs and errors.",
+          "Refactored legacy backend modules into a DDD architecture while keeping the old system running, without interrupting lab operations.",
+          "Added the unit and integration test suites the codebase was missing."
         ],
         "skills": [
           "React.js",
@@ -103,36 +101,30 @@
       "take": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Developed backoffice features including order management, inventory control, and dashboards for smart retail coolers.",
-          "Contributed to the internal design system, increasing component reuse and accelerating feature delivery.",
-          "Implemented end-to-end testing with Cypress, reducing production bugs and increasing deployment confidence.",
-          "Built interactive dashboards and accessible data visualizations to support data-driven decision-making.",
-          "Collaborated with international clients, delivering production-ready features from planning to deployment."
+          "Built the backoffice that runs a network of smart retail coolers: order management, inventory control, and live operational dashboards.",
+          "Helped grow the internal design system, raising component reuse across teams and speeding up feature delivery.",
+          "Introduced end-to-end testing with Cypress, catching bugs before deploys instead of after.",
+          "Created accessible, interactive data visualizations for day-to-day operational decisions.",
+          "Worked directly with international clients, owning features from planning through deployment."
         ],
         "skills": [
           "React.js",
+          "Angular",
           "AWS Amplify",
           "Material UI",
           "Redux",
-          "Angular",
-          "Ant Design",
           "Cypress",
           "Recharts",
-          "Clean Architecture",
-          "Context API",
-          "React Hook Form",
-          "React Query",
-          "Storybook",
-          "Microsoft Clarity"
+          "Storybook"
         ]
       },
       "suave": {
         "title": "Full-stack Developer",
         "responsibilities": [
-          "Delivered high-performance Next.js landing pages focused on speed, responsiveness, and conversion optimization.",
-          "Developed custom website features that improved user experience and increased lead generation.",
-          "Built a multi-tenant social link aggregator platform using React and Express to support diverse client needs.",
-          "Performed SEO and performance optimizations that improved organic visibility and marketing ROI."
+          "Shipped Next.js landing pages for agency clients where load speed and conversion were the whole brief.",
+          "Designed and built a multi-tenant link-aggregator platform (React + Express) serving multiple client brands from a single codebase.",
+          "Developed custom site features that turned client websites into lead-generation channels.",
+          "Ran SEO and performance work that lifted clients' organic visibility."
         ],
         "skills": [
           "React.js",
