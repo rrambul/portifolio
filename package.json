@@ -2,6 +2,18 @@
   "name": "portifolio",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.13.1",
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "@tailwindcss/oxide",
+      "react-tsparticles",
+      "sharp",
+      "tsparticles-engine",
+      "unrs-resolver"
+    ]
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
