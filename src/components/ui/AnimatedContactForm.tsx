@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { FiSend, FiCheck, FiAlertCircle } from "react-icons/fi";
 import { useTranslations } from "next-intl";
 
@@ -193,47 +193,47 @@ export function AnimatedContactForm() {
     <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden">
       <AnimatePresence mode="wait">
         {status === "success" ? (
-          <motion.div
+          <m.div
             key="success"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="bg-green-100 dark:bg-green-900/30 p-6 rounded-lg flex flex-col items-center text-center"
           >
-            <motion.div
+            <m.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", damping: 10, stiffness: 200 }}
             >
               <FiCheck className="text-green-600 dark:text-green-400 text-4xl mb-4" />
-            </motion.div>
+            </m.div>
             <h3 className="text-xl font-bold mb-2">{t("success")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
               {t("successMessage")}
             </p>
-          </motion.div>
+          </m.div>
         ) : status === "error" ? (
-          <motion.div
+          <m.div
             key="error"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="bg-red-100 dark:bg-red-900/30 p-6 rounded-lg flex flex-col items-center text-center"
           >
-            <motion.div
+            <m.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", damping: 10, stiffness: 200 }}
             >
               <FiAlertCircle className="text-red-600 dark:text-red-400 text-4xl mb-4" />
-            </motion.div>
+            </m.div>
             <h3 className="text-xl font-bold mb-2">{t("errorTitle")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
               {t("errorMessage")}
             </p>
-          </motion.div>
+          </m.div>
         ) : (
-          <motion.form
+          <m.form
             key="form"
             onSubmit={handleSubmit}
             className="space-y-6 p-6"
@@ -256,7 +256,7 @@ export function AnimatedContactForm() {
             </div>
 
             <div className="space-y-2">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -279,17 +279,17 @@ export function AnimatedContactForm() {
                   disabled={status === "submitting"}
                 />
                 {touched.name && errors.name && (
-                  <motion.p
+                  <m.p
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     className="text-sm text-red-500 mt-1"
                   >
                     {errors.name}
-                  </motion.p>
+                  </m.p>
                 )}
-              </motion.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -312,17 +312,17 @@ export function AnimatedContactForm() {
                   disabled={status === "submitting"}
                 />
                 {touched.email && errors.email && (
-                  <motion.p
+                  <m.p
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     className="text-sm text-red-500 mt-1"
                   >
                     {errors.email}
-                  </motion.p>
+                  </m.p>
                 )}
-              </motion.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -346,23 +346,23 @@ export function AnimatedContactForm() {
                   disabled={status === "submitting"}
                 />
                 {touched.message && errors.message && (
-                  <motion.p
+                  <m.p
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     className="text-sm text-red-500 mt-1"
                   >
                     {errors.message}
-                  </motion.p>
+                  </m.p>
                 )}
-              </motion.div>
+              </m.div>
             </div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <motion.button
+              <m.button
                 type="submit"
                 disabled={status === "submitting"}
                 className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-4 rounded-md transition-all relative overflow-hidden group"
@@ -373,7 +373,7 @@ export function AnimatedContactForm() {
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Background animation */}
-                <motion.div
+                <m.div
                   className="absolute inset-0 bg-teal-800 dark:bg-teal-900"
                   initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
                   whileHover={{
@@ -385,7 +385,7 @@ export function AnimatedContactForm() {
                 />
 
                 {/* Gradient overlay */}
-                <motion.div
+                <m.div
                   className="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-teal-400/10 to-teal-500/0"
                   initial={{ x: "-100%" }}
                   whileHover={{
@@ -401,7 +401,7 @@ export function AnimatedContactForm() {
                 <span className="relative z-10 flex items-center justify-center">
                   {status === "submitting" ? (
                     <>
-                      <motion.div
+                      <m.div
                         className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
                         animate={{ rotate: 360 }}
                         transition={{
@@ -419,9 +419,9 @@ export function AnimatedContactForm() {
                     </>
                   )}
                 </span>
-              </motion.button>
-            </motion.div>
-          </motion.form>
+              </m.button>
+            </m.div>
+          </m.form>
         )}
       </AnimatePresence>
     </div>

@@ -4,9 +4,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 // Remap tap gestures to mouse events so the press-state logic is exercisable.
 // Components are memoized per tag so their identity is stable across renders
 // (a state update shouldn't remount and detach the node under test).
-const motionCache = new Map<string, React.FC<React.PropsWithChildren<Record<string, unknown>>>>();
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
+vi.mock("framer-motion", () => {
+  const motionCache = new Map<
+    string,
+    React.FC<React.PropsWithChildren<Record<string, unknown>>>
+  >();
+  const proxy = new Proxy(
     {},
     {
       get: (_t, prop: string) => {
@@ -33,8 +36,9 @@ vi.mock("framer-motion", () => ({
         return motionCache.get(prop);
       },
     }
-  ),
-}));
+  );
+  return { motion: proxy, m: proxy };
+});
 
 vi.mock("next/link", () => ({
   default: ({ children, href, ...props }: React.PropsWithChildren<{ href: string }>) => (

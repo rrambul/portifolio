@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { interests } from "@/data/interests";
 import { staggerContainer, springFadeIn, cardHover } from "@/lib/animations";
 
@@ -25,7 +25,7 @@ export function Interests() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -33,22 +33,22 @@ export function Interests() {
           className="max-w-4xl mx-auto"
         >
           {/* Section heading */}
-          <motion.div variants={springFadeIn} className="text-center mb-14">
+          <m.div variants={springFadeIn} className="text-center mb-14">
             <span className="inline-flex items-center gap-2 text-sm font-medium mb-3 tracking-wide uppercase text-teal-700 dark:text-teal-400">
               {t("subtitle")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
               {t("title")}
             </h2>
-          </motion.div>
+          </m.div>
 
           {/* Interest cards */}
-          <motion.div
+          <m.div
             variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {interests.map(({ key, icon: Icon, color }) => (
-              <motion.div
+              <m.div
                 key={key}
                 variants={springFadeIn}
                 whileHover={cardHover}
@@ -76,17 +76,17 @@ export function Interests() {
                 </span>
 
                 {/* Hover accent line */}
-                <motion.div
+                <m.div
                   className="absolute bottom-0 left-5 right-5 h-[2px] rounded-full origin-left"
                   style={{ backgroundColor: color }}
                   initial={{ scaleX: 0, opacity: 0 }}
                   whileHover={{ scaleX: 1, opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 />
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

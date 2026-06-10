@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 
 interface AnimatedButtonProps {
@@ -94,7 +94,7 @@ export function AnimatedButton({
 
       {/* Background animation circle */}
       {!disabled && (
-        <motion.span
+        <m.span
           className="absolute inset-0 bg-white rounded-md pointer-events-none"
           initial={{ scale: 0, opacity: 0 }}
           animate={{
@@ -124,15 +124,15 @@ export function AnimatedButton({
   if (href) {
     if (download) {
       return (
-        <motion.a href={href} className={combinedClasses} {...motionProps}>
+        <m.a href={href} className={combinedClasses} {...motionProps}>
           {buttonContent}
-        </motion.a>
+        </m.a>
       );
     }
 
     if (isExternal) {
       return (
-        <motion.a
+        <m.a
           href={href}
           className={combinedClasses}
           target="_blank"
@@ -140,22 +140,22 @@ export function AnimatedButton({
           {...motionProps}
         >
           {buttonContent}
-        </motion.a>
+        </m.a>
       );
     }
 
     return (
-      <motion.div {...motionProps}>
+      <m.div {...motionProps}>
         <Link href={href} className={combinedClasses}>
           {buttonContent}
         </Link>
-      </motion.div>
+      </m.div>
     );
   }
 
   // Otherwise render as button
   return (
-    <motion.button
+    <m.button
       onClick={onClick}
       className={combinedClasses}
       disabled={disabled}
@@ -163,6 +163,6 @@ export function AnimatedButton({
       {...motionProps}
     >
       {buttonContent}
-    </motion.button>
+    </m.button>
   );
 }

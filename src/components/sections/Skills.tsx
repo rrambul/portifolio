@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -33,19 +33,19 @@ export function Skills() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="max-w-5xl mx-auto"
         >
-          <motion.h2
+          <m.h2
             variants={fadeInUp}
             className="text-3xl md:text-4xl font-bold text-center mb-12"
           >
             {t("title")}
-          </motion.h2>
+          </m.h2>
 
           <div>
             {skillCategories.map((category) => {
@@ -56,7 +56,7 @@ export function Skills() {
               }));
 
               return (
-                <motion.div key={category.titleKey} variants={fadeInUp}>
+                <m.div key={category.titleKey} variants={fadeInUp}>
                   <h3 className="text-2xl font-semibold text-black dark:text-teal-400 text-center">
                     {t(category.titleKey)}
                   </h3>
@@ -66,11 +66,11 @@ export function Skills() {
                     autoRotate={true}
                     rotationSpeed={category.rotationSpeed}
                   />
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

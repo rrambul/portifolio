@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
 import Image from "next/image";
 import { experiences as experienceData } from "@/data/experiences";
@@ -20,23 +20,23 @@ export function Experience() {
   return (
     <section id="experience" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
-          <motion.h2
+          <m.h2
             variants={fadeInUp}
             className="text-3xl md:text-4xl font-bold text-center mb-12"
           >
             {t("title")}
-          </motion.h2>
+          </m.h2>
 
           <div className="space-y-10 relative">
             {/* Timeline vertical line that grows as you scroll */}
-            <motion.div
+            <m.div
               className="absolute left-5 top-0 w-1 origin-top shadow-md"
               style={{
                 height: "calc(100% - 40px)",
@@ -49,7 +49,7 @@ export function Experience() {
             />
 
             {experiences.map((exp, idx) => (
-              <motion.div
+              <m.div
                 key={idx}
                 variants={fadeInUp}
                 className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-shadow duration-300 hover:shadow-lg cursor-pointer relative ml-10"
@@ -60,7 +60,7 @@ export function Experience() {
                   className="absolute -left-12 top-6 w-4 h-4 rounded-full bg-white dark:bg-zinc-800 border-2 flex items-center justify-center z-10"
                   style={{ borderColor: "#14b8a6" }} // Explicit teal border color
                 >
-                  <motion.div
+                  <m.div
                     className="w-1.5 h-1.5 rounded-full"
                     style={{ backgroundColor: "#14b8a6" }} // Explicit teal color
                     initial={{ scale: 0 }}
@@ -71,7 +71,7 @@ export function Experience() {
                 </div>
 
                 {/* Timeline connector line with sequential animation */}
-                <motion.div
+                <m.div
                   className="absolute -left-8 top-8 h-1"
                   style={{ width: "8px", backgroundColor: "#14b8a6", transformOrigin: "left" }}
                   initial={{ scaleX: 0 }}
@@ -133,10 +133,10 @@ export function Experience() {
                       </span>
                     ))}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { m, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import { scrollToSection as scrollToSectionLib } from "@/lib/scroll";
 
@@ -129,7 +129,7 @@ export function Navigation() {
       className="sticky top-0 z-50 border-b bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md dark:border-zinc-800 border-gray-200"
     >
       {/* Reading progress bar */}
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-500 via-cyan-400 to-violet-500"
         style={{ scaleX: progressScaleX }}
@@ -157,7 +157,7 @@ export function Navigation() {
               >
                 {section.label}
                 {activeSection === section.id && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-active-indicator"
                     className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-teal-600 dark:bg-teal-400"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -191,7 +191,7 @@ export function Navigation() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -219,7 +219,7 @@ export function Navigation() {
                 <LanguageSwitcher />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </nav>

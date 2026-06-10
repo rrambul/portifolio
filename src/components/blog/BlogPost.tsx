@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FiClock, FiCalendar, FiArrowLeft } from "react-icons/fi";
@@ -41,7 +41,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
 
         {/* Header Content */}
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
+          <m.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,12 +79,12 @@ export function BlogPost({ post, content }: BlogPostProps) {
                 <span>{post.readTime} min read</span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
       {/* Content */}
-      <motion.div
+      <m.div
         className="container mx-auto px-4 py-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -115,7 +115,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </article>
   );
 } 

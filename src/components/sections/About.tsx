@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { FiUser, FiCode, FiGlobe } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import dynamic from "next/dynamic";
 import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
 
@@ -25,29 +25,29 @@ export function About() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
-          <motion.h2
+          <m.h2
             variants={fadeInUp}
             className="text-3xl md:text-4xl font-bold text-center mb-12"
           >
             {t("title")}
-          </motion.h2>
+          </m.h2>
 
-          <motion.div
+          <m.div
             variants={fadeInUp}
             className="prose prose-lg dark:prose-invert mx-auto mb-12"
           >
             <p className="text-lg text-center">{t("content")}</p>
-          </motion.div>
+          </m.div>
 
-          <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-8">
-            <motion.div
+          <m.div variants={fadeInUp} className="grid md:grid-cols-3 gap-8">
+            <m.div
               whileHover={cardHover}
               className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
             >
@@ -60,9 +60,9 @@ export function About() {
               <p className="text-zinc-600 dark:text-zinc-400">
                 {t("personal.content")}
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               whileHover={cardHover}
               className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
             >
@@ -75,9 +75,9 @@ export function About() {
               <p className="text-zinc-600 dark:text-zinc-400">
                 {t("technical.content")}
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               whileHover={cardHover}
               className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 hover:shadow-lg transition-shadow duration-300"
             >
@@ -90,9 +90,9 @@ export function About() {
               <p className="text-zinc-600 dark:text-zinc-400">
                 {t("languages.content")}
               </p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </m.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { FiExternalLink, FiGithub, FiFolder, FiStar, FiGitPullRequest } from "react-icons/fi";
 import { projects } from "@/data/projects";
 import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
@@ -63,7 +63,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-20 bg-zinc-100 dark:bg-zinc-900/40">
       <div className="container mx-auto px-4">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -76,12 +76,12 @@ export function Projects() {
             subtitle={t("subtitle")}
           />
 
-          <motion.div
+          <m.div
             variants={staggerContainer}
             className="grid md:grid-cols-2 gap-8"
           >
             {projects.map((project, idx) => (
-              <motion.div
+              <m.div
                 key={idx}
                 variants={fadeInUp}
                 whileHover={cardHover}
@@ -168,10 +168,10 @@ export function Projects() {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

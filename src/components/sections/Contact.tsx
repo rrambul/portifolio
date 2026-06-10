@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { FiMail } from "react-icons/fi";
 import { AnimatedContactForm } from "../ui/AnimatedContactForm";
@@ -16,7 +16,7 @@ export function Contact() {
       className="py-20 bg-zinc-100 dark:bg-zinc-900/40 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -29,10 +29,10 @@ export function Contact() {
             subtitle={t("description")}
           />
 
-          <motion.div variants={fadeInUp}>
+          <m.div variants={fadeInUp}>
             <AnimatedContactForm />
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

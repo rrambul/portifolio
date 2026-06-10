@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 
 interface SectionHeadingProps {
@@ -17,7 +17,7 @@ interface SectionHeadingProps {
  */
 export function SectionHeading({ icon, title, subtitle }: SectionHeadingProps) {
   return (
-    <motion.div className="text-center mb-12" variants={fadeInUp}>
+    <m.div className="text-center mb-12" variants={fadeInUp}>
       <div className="inline-block bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full mb-4">
         {icon}
       </div>
@@ -25,6 +25,6 @@ export function SectionHeading({ icon, title, subtitle }: SectionHeadingProps) {
       <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
         {subtitle}
       </p>
-    </motion.div>
+    </m.div>
   );
 }

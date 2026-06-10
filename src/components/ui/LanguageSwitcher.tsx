@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTransition } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export function LanguageSwitcher() {
   const locale = useLocale();
@@ -21,7 +21,7 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <motion.div
+    <m.div
       className="relative flex items-center h-9 w-[4.5rem] rounded-full cursor-pointer select-none"
       style={{
         background: isEN
@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
       aria-label="Language selector"
     >
       {/* Sliding knob */}
-      <motion.div
+      <m.div
         className="absolute top-1 left-1 h-7 w-8 rounded-full z-10"
         style={{
           background: "linear-gradient(135deg, #0d9488, #14b8a6)",
@@ -55,7 +55,7 @@ export function LanguageSwitcher() {
         aria-label="English"
         disabled={isPending}
       >
-        <motion.span
+        <m.span
           className="text-xs font-bold"
           animate={{
             color: isEN ? "#ffffff" : "rgba(153, 246, 228, 0.5)",
@@ -63,7 +63,7 @@ export function LanguageSwitcher() {
           transition={{ duration: 0.2 }}
         >
           EN
-        </motion.span>
+        </m.span>
       </button>
 
       {/* PT button */}
@@ -75,7 +75,7 @@ export function LanguageSwitcher() {
         aria-label="Português"
         disabled={isPending}
       >
-        <motion.span
+        <m.span
           className="text-xs font-bold"
           animate={{
             color: !isEN ? "#ffffff" : "rgba(153, 246, 228, 0.5)",
@@ -83,8 +83,8 @@ export function LanguageSwitcher() {
           transition={{ duration: 0.2 }}
         >
           PT
-        </motion.span>
+        </m.span>
       </button>
-    </motion.div>
+    </m.div>
   );
 }

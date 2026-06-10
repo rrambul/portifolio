@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -24,7 +24,7 @@ export function ThemeSwitcher() {
   const toggle = () => setTheme(isDark ? "light" : "dark");
 
   return (
-    <motion.button
+    <m.button
       onClick={toggle}
       className="relative h-9 w-16 rounded-full cursor-pointer border-0 outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
       style={{
@@ -39,7 +39,7 @@ export function ThemeSwitcher() {
       whileTap={{ scale: 0.95 }}
     >
       {/* Sliding knob */}
-      <motion.div
+      <m.div
         className="absolute top-1 left-1 h-7 w-7 rounded-full flex items-center justify-center"
         style={{
           background: isDark
@@ -55,7 +55,7 @@ export function ThemeSwitcher() {
       >
         <AnimatePresence mode="wait">
           {isDark ? (
-            <motion.div
+            <m.div
               key="moon"
               initial={{ scale: 0, rotate: -90, opacity: 0 }}
               animate={{ scale: 1, rotate: 0, opacity: 1 }}
@@ -63,9 +63,9 @@ export function ThemeSwitcher() {
               transition={{ duration: 0.2 }}
             >
               <FiMoon className="h-3.5 w-3.5 text-white" />
-            </motion.div>
+            </m.div>
           ) : (
-            <motion.div
+            <m.div
               key="sun"
               initial={{ scale: 0, rotate: 90, opacity: 0 }}
               animate={{ scale: 1, rotate: 0, opacity: 1 }}
@@ -73,28 +73,28 @@ export function ThemeSwitcher() {
               transition={{ duration: 0.2 }}
             >
               <FiSun className="h-3.5 w-3.5 text-amber-500" />
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
-      </motion.div>
+      </m.div>
 
       {/* Background decorative dots */}
       <div className="absolute inset-0 flex items-center justify-between px-2.5 pointer-events-none">
-        <motion.div
+        <m.div
           animate={{ opacity: isDark ? 0.4 : 0 }}
           className="flex gap-0.5"
         >
           <span className="block w-1 h-1 rounded-full bg-teal-300" />
           <span className="block w-0.5 h-0.5 rounded-full bg-teal-400 mt-1" />
-        </motion.div>
-        <motion.div
+        </m.div>
+        <m.div
           animate={{ opacity: isDark ? 0 : 0.5 }}
           className="flex gap-0.5"
         >
           <span className="block w-0.5 h-0.5 rounded-full bg-teal-600 mt-1" />
           <span className="block w-1 h-1 rounded-full bg-teal-500" />
-        </motion.div>
+        </m.div>
       </div>
-    </motion.button>
+    </m.button>
   );
 }

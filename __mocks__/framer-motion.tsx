@@ -56,6 +56,9 @@ export const motion: Record<
   },
 });
 
+/** LazyMotion's `m` components behave identically to `motion` in tests. */
+export const m = motion;
+
 export const AnimatePresence = ({ children }: React.PropsWithChildren) => (
   <>{children}</>
 );
@@ -63,6 +66,13 @@ export const AnimatePresence = ({ children }: React.PropsWithChildren) => (
 export const MotionConfig = ({ children }: React.PropsWithChildren) => (
   <>{children}</>
 );
+
+export const LazyMotion = ({ children }: React.PropsWithChildren) => (
+  <>{children}</>
+);
+
+export const domMax = {};
+export const domAnimation = {};
 
 export const useReducedMotion = () => false;
 

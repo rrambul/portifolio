@@ -12,7 +12,7 @@ export const blogPosts: BlogPostMetadata[] = [
       pt: "Neste primeiro post do blog, quero fazer uma breve apresentação sobre mim e compartilhar meus objetivos com este espaço. Sou alguém que ama programar, aprender, lidar com computadores, ler, jogar videogames e ir à academia."
     },
     date: "2025-06-14",
-    banner: "/blog/briefintroduction.png",
+    banner: "/blog/briefintroduction.jpg",
     slug: "a-brief-introduction",
     tags: ["Introduction", "Personal", "Software Engineering", "Goals"],
     readTime: 3,
@@ -32,7 +32,7 @@ export const blogPosts: BlogPostMetadata[] = [
       pt: "O método Bullet Journal é uma forma de fazer anotações e organizar tarefas e metas ao longo do tempo. Tenho usado esse método para gerenciar minha vida nos últimos 8 meses e tem sido um divisor de águas."
     },
     date: "2025-06-15",
-    banner: "/blog/bulletjournal.png",
+    banner: "/blog/bulletjournal.jpg",
     slug: "bullet-journal-method-my-adaptation",
     tags: ["Productivity", "Organization", "Personal Development", "Bullet Journal"],
     readTime: 8,

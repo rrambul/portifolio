@@ -1,7 +1,7 @@
 "use client";
 
 import { BlogPostMetadata } from "@/types/blog";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
@@ -16,7 +16,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
   const t = useTranslations("blog");
 
   return (
-    <motion.article
+    <m.article
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -79,6 +79,6 @@ export function BlogCard({ post, index }: BlogCardProps) {
           </div>
         </div>
       </Link>
-    </motion.article>
+    </m.article>
   );
 } 
