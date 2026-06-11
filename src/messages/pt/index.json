@@ -234,7 +234,10 @@
       "scalableUI": "Plataformas de UI Escaláveis",
       "testing": "Estratégias de Teste para Grandes Codebases",
       "performance": "Otimização de Performance Web",
-      "openSource": "Colaboração Open-Source"
+      "openSource": "Colaboração Open-Source",
+      "aiWorkflows": "Workflows de Desenvolvimento com IA",
+      "agentReadyCodebases": "Codebases Prontas para Agentes de IA",
+      "contextEngineering": "Engenharia de Contexto"
     }
   },
   "theme": {

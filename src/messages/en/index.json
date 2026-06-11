@@ -234,7 +234,10 @@
       "scalableUI": "Scalable UI Platforms",
       "testing": "Testing Strategies for Large Codebases",
       "performance": "Web Performance Optimization",
-      "openSource": "Open-Source Collaboration"
+      "openSource": "Open-Source Collaboration",
+      "aiWorkflows": "AI-Assisted Development Workflows",
+      "agentReadyCodebases": "Agent-Ready Codebases",
+      "contextEngineering": "Context Engineering"
     }
   },
   "theme": {
