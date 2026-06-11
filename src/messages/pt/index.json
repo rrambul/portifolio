@@ -67,7 +67,7 @@
       "freelance": {
         "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Construí as landing pages e a interface da aplicação de uma plataforma de educação, com foco em carregamento rápido e caminhos claros de conversão.",
+          "Construí as landing pages e a interface da aplicação de uma plataforma de educação com mais de 1.000 alunos, com páginas que geraram milhares de conversões.",
           "Simplifiquei fluxos de alunos e administrativos, eliminando etapas manuais da operação do dia a dia.",
           "Estruturei a arquitetura frontend com React, React Query e React Hook Form para o código se manter saudável conforme o produto cresce.",
           "Trabalhei direto com stakeholders de produto, transformando requisitos de negócio em features prontas para uso."
@@ -87,7 +87,7 @@
         "responsibilities": [
           "Construí os dashboards e relatórios em React que transformam resultados brutos de análises genômicas em algo que pesquisadores conseguem ler.",
           "Integrei frontend e backend para dar rastreabilidade de ponta a ponta aos fluxos do laboratório, com menos passos manuais e menos erros.",
-          "Refatorei módulos legados do backend para uma arquitetura DDD mantendo o sistema antigo no ar, sem interromper a operação do laboratório.",
+          "Refatorei mais de 6 módulos legados do backend para uma arquitetura DDD mantendo o sistema antigo no ar, sem interromper a operação do laboratório.",
           "Adicionei as suítes de testes unitários e de integração que faltavam no código."
         ],
         "skills": [
@@ -104,11 +104,11 @@
       "take": {
         "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Construí o backoffice que opera uma rede de coolers inteligentes de varejo: gestão de pedidos, controle de estoque e dashboards operacionais em tempo real.",
-          "Ajudei a evoluir o design system interno, aumentando o reuso de componentes entre times e acelerando a entrega de features.",
+          "Construí o backoffice que opera uma rede de mais de 1.000 coolers inteligentes de varejo: gestão de pedidos, controle de estoque e dashboards operacionais em tempo real.",
+          "Contribuí com o design system interno desde a sua fundação, aumentando o reuso de componentes entre times e acelerando a entrega de features.",
           "Introduzi testes end-to-end com Cypress, pegando bugs antes do deploy, não depois.",
           "Criei visualizações de dados acessíveis e interativas para as decisões operacionais do dia a dia.",
-          "Trabalhei direto com clientes internacionais, cuidando de features do planejamento ao deploy."
+          "Trabalhei direto com um cliente americano, cuidando de features do planejamento ao deploy."
         ],
         "skills": [
           "React.js",
@@ -124,7 +124,7 @@
       "suave": {
         "title": "Desenvolvedor Full-stack",
         "responsibilities": [
-          "Entreguei landing pages em Next.js para clientes da agência em que velocidade de carregamento e conversão eram o briefing inteiro.",
+          "Entreguei mais de 10 sites e landing pages em Next.js para clientes da agência, em que velocidade de carregamento e conversão eram o briefing inteiro.",
           "Projetei e construí uma plataforma multi-tenant de agregação de links (React + Express), servindo várias marcas a partir de um único código.",
           "Desenvolvi funcionalidades sob medida que transformaram sites de clientes em canais de geração de leads.",
           "Fiz otimizações de SEO e performance que aumentaram a visibilidade orgânica dos clientes."

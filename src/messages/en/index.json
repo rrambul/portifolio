@@ -67,7 +67,7 @@
       "freelance": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Built the landing pages and application UI for an ed-tech platform, focused on fast loads and clear conversion paths.",
+          "Built the landing pages and application UI for an ed-tech platform serving 1,000+ students, with pages that drove thousands of conversions.",
           "Streamlined student and admin workflows, removing manual steps from day-to-day operations.",
           "Established the frontend architecture around React, React Query, and React Hook Form so the codebase stays maintainable as the product grows.",
           "Worked directly with product stakeholders to turn business requirements into shippable, user-centered features."
@@ -87,7 +87,7 @@
         "responsibilities": [
           "Built the React dashboards and reports that turn raw genomics lab results into something researchers can actually read.",
           "Connected frontend and backend systems to make lab workflows traceable end to end, with fewer manual handoffs and errors.",
-          "Refactored legacy backend modules into a DDD architecture while keeping the old system running, without interrupting lab operations.",
+          "Refactored 6+ legacy backend modules into a DDD architecture while keeping the old system running, without interrupting lab operations.",
           "Added the unit and integration test suites the codebase was missing."
         ],
         "skills": [
@@ -104,11 +104,11 @@
       "take": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Built the backoffice that runs a network of smart retail coolers: order management, inventory control, and live operational dashboards.",
-          "Helped grow the internal design system, raising component reuse across teams and speeding up feature delivery.",
+          "Built the backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, and live operational dashboards.",
+          "Founding contributor to the internal design system, raising component reuse across teams and speeding up feature delivery.",
           "Introduced end-to-end testing with Cypress, catching bugs before deploys instead of after.",
           "Created accessible, interactive data visualizations for day-to-day operational decisions.",
-          "Worked directly with international clients, owning features from planning through deployment."
+          "Worked directly with a U.S. client, owning features from planning through deployment."
         ],
         "skills": [
           "React.js",
@@ -124,7 +124,7 @@
       "suave": {
         "title": "Full-stack Developer",
         "responsibilities": [
-          "Shipped Next.js landing pages for agency clients where load speed and conversion were the whole brief.",
+          "Shipped 10+ client websites and Next.js landing pages where load speed and conversion were the whole brief.",
           "Designed and built a multi-tenant link-aggregator platform (React + Express) serving multiple client brands from a single codebase.",
           "Developed custom site features that turned client websites into lead-generation channels.",
           "Ran SEO and performance work that lifted clients' organic visibility."
