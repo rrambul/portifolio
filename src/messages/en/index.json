@@ -12,8 +12,8 @@
   "hero": {
     "greeting": "Hello, I'm",
     "title": "Renan Rambul",
-    "subtitle": "Frontend Software Engineer",
-    "tagline": "I turn designs into fast, accessible interfaces that feel great to use.",
+    "subtitle": "Software Engineer",
+    "tagline": "I build products end to end, from APIs to fast, accessible interfaces that feel great to use.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
     "downloadCV": "Download CV",
     "cta": "Get in touch",
@@ -21,14 +21,14 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I'm a frontend engineer who has spent the last 6+ years turning designs into fast, accessible web apps that people actually enjoy using. Most of my work happens in React and TypeScript: building design systems, sweating performance and accessibility, and shipping production UI alongside U.S.-based teams in healthcare and SaaS. I care about clean architecture, a good developer experience, and the small details that make an interface feel right.",
+    "content": "I'm a software engineer who has spent the last 6+ years shipping web products end to end. I work across the stack, from API design and data modeling to design systems and accessible UI, and the frontend is where I go deepest. These days I build healthcare SaaS with a U.S.-based team, owning features from the API to the pixel. I care about clean architecture, a good developer experience, and the small details that make a product feel right.",
     "personal": {
       "title": "Personal",
       "content": "I love building things, learning in public, and contributing to open source. When I'm not coding, I'm probably reading or at the gym."
     },
     "technical": {
       "title": "Technical",
-      "content": "React, TypeScript, and modern frontend architecture, with a soft spot for design systems, performance, and accessibility."
+      "content": "React, TypeScript, and Node.js across the stack, going deepest on design systems, accessibility, and performance."
     },
     "languages": {
       "title": "Languages",
@@ -46,19 +46,22 @@
       "tas": {
         "title": "Software Engineer",
         "responsibilities": [
+          "Ship features end to end on a U.S. healthcare SaaS platform, from API endpoints and data-model changes to accessible UI and PDF reporting, across 100+ merged PRs.",
           "Build and maintain the web-component design system that multiple product teams ship on, with accessibility and performance treated as requirements, not nice-to-haves.",
-          "Develop UI features for a U.S. healthcare SaaS platform, taking Figma prototypes all the way to pixel-accurate production interfaces.",
           "Write Playwright integration tests that catch regressions before they reach a release.",
-          "Own the private npm release pipeline for shared packages and review frontend PRs for architecture and design fidelity."
+          "Own the private npm release pipeline for shared packages and review frontend PRs for architecture and fidelity to Figma designs.",
+          "Improve the team's AI-assisted workflows, including a hierarchical knowledge base that keeps coding agents productive across the codebase."
         ],
         "skills": [
-          "Web Components",
           "TypeScript",
+          "Web Components",
+          "Node.js",
+          "REST APIs",
           "Playwright",
-          "Storybook",
           "Accessibility",
-          "Figma",
-          "npm Packages"
+          "AI Workflows",
+          "Storybook",
+          "Figma"
         ]
       },
       "freelance": {

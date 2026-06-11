@@ -4,14 +4,14 @@ test.describe("Internationalization", () => {
   test("English locale shows English content", async ({ page }) => {
     await page.goto("/en");
     await expect(page.getByText("Hello, I'm")).toBeVisible();
-    await expect(page.getByText("Frontend Software Engineer").first()).toBeVisible();
+    await expect(page.getByText("Software Engineer").first()).toBeVisible();
     await expect(page.getByText("Get in touch").first()).toBeVisible();
   });
 
   test("Portuguese locale shows Portuguese content", async ({ page }) => {
     await page.goto("/pt");
     await expect(page.getByText("Olá, eu sou")).toBeVisible();
-    await expect(page.getByText("Engenheiro de Software Frontend").first()).toBeVisible();
+    await expect(page.getByText("Engenheiro de Software").first()).toBeVisible();
     await expect(page.getByText("Entre em contato").first()).toBeVisible();
   });
 

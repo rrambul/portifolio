@@ -7,7 +7,7 @@ test.describe("Homepage Sections", () => {
 
   test("renders Hero section with name and CTA", async ({ page }) => {
     await expect(page.getByText("Renan Rambul").first()).toBeVisible();
-    await expect(page.getByText("Frontend Software Engineer").first()).toBeVisible();
+    await expect(page.getByText("Software Engineer").first()).toBeVisible();
     await expect(page.getByText("Get in touch").first()).toBeVisible();
   });
 

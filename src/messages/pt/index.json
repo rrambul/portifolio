@@ -12,8 +12,8 @@
   "hero": {
     "greeting": "Olá, eu sou",
     "title": "Renan Rambul",
-    "subtitle": "Engenheiro de Software Frontend",
-    "tagline": "Transformo designs em interfaces rápidas e acessíveis que dão gosto de usar.",
+    "subtitle": "Engenheiro de Software",
+    "tagline": "Construo produtos de ponta a ponta, de APIs a interfaces rápidas e acessíveis que dão gosto de usar.",
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
     "downloadCV": "Baixar CV",
     "cta": "Entre em contato",
@@ -21,14 +21,14 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "Sou um engenheiro frontend que passou os últimos 6+ anos transformando designs em aplicações web rápidas e acessíveis, que as pessoas realmente gostam de usar. A maior parte do meu trabalho acontece em React e TypeScript: construindo design systems, cuidando de performance e acessibilidade, e entregando UI em produção junto a times americanos nas áreas de saúde e SaaS. Me importo com arquitetura limpa, boa experiência de desenvolvimento e com os pequenos detalhes que fazem uma interface parecer certa.",
+    "content": "Sou um engenheiro de software que passou os últimos 6+ anos entregando produtos web de ponta a ponta. Trabalho em toda a stack, do design de APIs e modelagem de dados a design systems e UI acessível, e é no frontend que vou mais fundo. Hoje construo um SaaS de saúde com um time americano, cuidando de features da API ao pixel. Me importo com arquitetura limpa, boa experiência de desenvolvimento e com os pequenos detalhes que fazem um produto parecer certo.",
     "personal": {
       "title": "Pessoal",
       "content": "Amo construir coisas, aprender em público e contribuir com open source. Quando não estou programando, provavelmente estou lendo ou na academia."
     },
     "technical": {
       "title": "Técnico",
-      "content": "React, TypeScript e arquitetura frontend moderna, com um carinho especial por design systems, performance e acessibilidade."
+      "content": "React, TypeScript e Node.js em toda a stack, indo mais fundo em design systems, acessibilidade e performance."
     },
     "languages": {
       "title": "Idiomas",
@@ -46,19 +46,22 @@
       "tas": {
         "title": "Engenheiro de Software",
         "responsibilities": [
+          "Entrego features de ponta a ponta em uma plataforma SaaS de saúde americana, de endpoints de API e mudanças no modelo de dados a UI acessível e relatórios em PDF, em mais de 100 PRs integrados.",
           "Construo e mantenho o design system de web components em que várias equipes de produto entregam, com acessibilidade e performance tratadas como requisito, não como detalhe.",
-          "Desenvolvo funcionalidades de UI para uma plataforma SaaS de saúde americana, levando protótipos do Figma até interfaces de produção fiéis ao pixel.",
           "Escrevo testes de integração com Playwright que pegam regressões antes de chegarem a um release.",
-          "Sou responsável pelo pipeline de publicação dos pacotes npm privados e reviso PRs de frontend com foco em arquitetura e fidelidade ao design."
+          "Sou responsável pelo pipeline de publicação dos pacotes npm privados e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
+          "Melhoro os workflows de IA do time, incluindo uma base de conhecimento hierárquica que deixa agentes de codificação produtivos na base de código."
         ],
         "skills": [
-          "Web Components",
           "TypeScript",
+          "Web Components",
+          "Node.js",
+          "APIs REST",
           "Playwright",
-          "Storybook",
           "Acessibilidade",
-          "Figma",
-          "Pacotes npm"
+          "Workflows de IA",
+          "Storybook",
+          "Figma"
         ]
       },
       "freelance": {

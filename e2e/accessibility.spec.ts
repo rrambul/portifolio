@@ -149,6 +149,6 @@ test.describe("Responsive Design", () => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/en");
     await expect(page.getByText("Renan Rambul").first()).toBeVisible();
-    await expect(page.getByText("Frontend Software Engineer").first()).toBeVisible();
+    await expect(page.getByText("Software Engineer").first()).toBeVisible();
   });
 });
