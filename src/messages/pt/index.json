@@ -49,7 +49,7 @@
           "Entrego features de ponta a ponta em uma plataforma SaaS de saúde americana, de endpoints de API e mudanças no modelo de dados a UI acessível e relatórios em PDF, em mais de 100 PRs integrados.",
           "Construo e mantenho o design system de web components em que várias equipes de produto entregam, com acessibilidade e performance tratadas como requisito, não como detalhe.",
           "Escrevo testes de integração com Playwright que pegam regressões antes de chegarem a um release.",
-          "Sou responsável pelo pipeline de publicação dos pacotes npm privados e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
+          "Publico pacotes npm compartilhados que mantêm a UI consistente entre as equipes de produto, e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
           "Melhoro os workflows de IA do time, incluindo uma base de conhecimento hierárquica que deixa agentes de codificação produtivos na base de código."
         ],
         "skills": [
