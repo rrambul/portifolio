@@ -21,15 +21,15 @@ describe("buildMetadata", () => {
     // @ts-expect-error narrow OG union in test
     expect(meta.openGraph?.type).toBe("website");
     expect(meta.openGraph?.locale).toBe("en_US");
-    expect(meta.openGraph?.url).toBe("https://renanrambul.com/en");
-    expect(meta.alternates?.canonical).toBe("https://renanrambul.com/en");
+    expect(meta.openGraph?.url).toBe("https://renanrambul.dev/en");
+    expect(meta.alternates?.canonical).toBe("https://renanrambul.dev/en");
     expect(meta.alternates?.languages).toMatchObject({
-      en: "https://renanrambul.com/en",
-      pt: "https://renanrambul.com/pt",
+      en: "https://renanrambul.dev/en",
+      pt: "https://renanrambul.dev/pt",
     });
     // default image resolved to an absolute URL
     expect(meta.openGraph?.images).toEqual([
-      expect.objectContaining({ url: "https://renanrambul.com/og-home.png" }),
+      expect.objectContaining({ url: "https://renanrambul.dev/og-home.png" }),
     ]);
     // optional fields omitted when not provided
     expect(meta.keywords).toBeUndefined();
@@ -58,12 +58,12 @@ describe("buildMetadata", () => {
     // @ts-expect-error narrow OG union in test
     expect(meta.openGraph?.type).toBe("article");
     expect(meta.openGraph?.locale).toBe("pt_BR");
-    expect(meta.openGraph?.url).toBe("https://renanrambul.com/pt/blog/my-post");
+    expect(meta.openGraph?.url).toBe("https://renanrambul.dev/pt/blog/my-post");
     expect(meta.keywords).toBe("a, b");
     expect(meta.authors).toEqual([{ name: "Renan" }]);
     expect(meta.other).toEqual({ "article:section": "Technology" });
     expect(meta.openGraph?.images).toEqual([
-      expect.objectContaining({ url: "https://renanrambul.com/blog/banner.png" }),
+      expect.objectContaining({ url: "https://renanrambul.dev/blog/banner.png" }),
     ]);
   });
 

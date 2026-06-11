@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Renan Rambul | Software Developer Portfolio",
   description:
     "Portfolio of Renan Rambul, a passionate software developer with 6+ years of experience in building modern web applications and solving complex problems.",
-  url: "https://renanrambul.com",
+  url: "https://renanrambul.dev",
   ogImage: "/og-home.png",
   links: {
     github: "https://github.com/rrambul",

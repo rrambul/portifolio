@@ -26,7 +26,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://renanrambul.com/sitemap.xml',
-    host: 'https://renanrambul.com',
+    sitemap: 'https://renanrambul.dev/sitemap.xml',
+    host: 'https://renanrambul.dev',
   };
 } 

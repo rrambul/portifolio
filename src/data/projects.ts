@@ -51,7 +51,7 @@ export const projects: ProjectData[] = [
     descriptionKey: "portfolio.description",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18n"],
     githubUrl: "https://github.com/rrambul/portifolio",
-    demoUrl: "https://renanrambul.com",
+    demoUrl: "https://renanrambul.dev",
     banner: { pattern: "circuit", icon: "💼" },
     bannerStyle: { backgroundImage: "linear-gradient(135deg, #0c4a6e, #0369a1, #0ea5e9)" },
   },

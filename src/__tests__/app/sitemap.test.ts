@@ -11,10 +11,10 @@ describe("sitemap", () => {
 
   it("includes static pages for both locales", () => {
     const urls = result.map((entry) => entry.url);
-    expect(urls).toContain("https://renanrambul.com/en");
-    expect(urls).toContain("https://renanrambul.com/pt");
-    expect(urls).toContain("https://renanrambul.com/en/blog");
-    expect(urls).toContain("https://renanrambul.com/pt/blog");
+    expect(urls).toContain("https://renanrambul.dev/en");
+    expect(urls).toContain("https://renanrambul.dev/pt");
+    expect(urls).toContain("https://renanrambul.dev/en/blog");
+    expect(urls).toContain("https://renanrambul.dev/pt/blog");
   });
 
   it("includes blog post pages for both locales", () => {
@@ -29,14 +29,14 @@ describe("sitemap", () => {
 
   it("homepage has priority 1", () => {
     const homePage = result.find(
-      (entry) => entry.url === "https://renanrambul.com/en"
+      (entry) => entry.url === "https://renanrambul.dev/en"
     );
     expect(homePage?.priority).toBe(1);
   });
 
   it("blog index has priority 0.8", () => {
     const blogIndex = result.find(
-      (entry) => entry.url === "https://renanrambul.com/en/blog"
+      (entry) => entry.url === "https://renanrambul.dev/en/blog"
     );
     expect(blogIndex?.priority).toBe(0.8);
   });

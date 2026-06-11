@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/data/blog-posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://renanrambul.com';
+  const baseUrl = 'https://renanrambul.dev';
   const blogPosts = getBlogPosts();
   
   // Static pages
