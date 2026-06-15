@@ -1,18 +1,12 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { rateLimit } from "@/lib/rate-limit";
+import { rateLimit, clientIp } from "@/lib/rate-limit";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX = { name: 100, email: 200, message: 5000 };
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
-}
-
-function clientIp(request: Request): string {
-  return (
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown"
-  );
 }
 
 export async function POST(request: Request) {

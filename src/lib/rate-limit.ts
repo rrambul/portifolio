@@ -25,6 +25,13 @@ export function rateLimit(
   return true;
 }
 
+/** Best-effort client identity from proxy headers. */
+export function clientIp(request: Request): string {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown"
+  );
+}
+
 /** Test helper: clear all tracked windows. */
 export function resetRateLimit(): void {
   hits.clear();
