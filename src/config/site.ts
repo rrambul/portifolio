@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Renan Rambul",
-  title: "Renan Rambul | Software Developer Portfolio",
+  title: "Renan Rambul | Software Engineer Portfolio",
   description:
-    "Portfolio of Renan Rambul, a passionate software developer with 6+ years of experience in building modern web applications and solving complex problems.",
+    "Portfolio of Renan Rambul, a software engineer with 6+ years of experience building web products end to end, from APIs to fast, accessible interfaces.",
   url: "https://renanrambul.dev",
   ogImage: "/og-home.png",
   links: {

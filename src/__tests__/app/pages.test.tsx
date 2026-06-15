@@ -30,14 +30,14 @@ describe("Home page", () => {
 
   it("generates English metadata", async () => {
     const meta = await generateMetadata({ params: Promise.resolve({ locale: "en" }) });
-    expect(meta.title).toContain("Software Developer");
+    expect(meta.title).toContain("Software Engineer");
     expect(meta.openGraph?.locale).toBe("en_US");
     expect(meta.alternates?.canonical).toContain("/en");
   });
 
   it("generates Portuguese metadata", async () => {
     const meta = await generateMetadata({ params: Promise.resolve({ locale: "pt" }) });
-    expect(meta.title).toContain("Desenvolvedor");
+    expect(meta.title).toContain("Engenheiro");
     expect(meta.openGraph?.locale).toBe("pt_BR");
     expect(meta.alternates?.canonical).toContain("/pt");
   });

@@ -25,8 +25,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   keywords: [
     'Renan Rambul',
-    'Software Developer',
-    'Frontend Developer',
+    'Software Engineer',
+    'Frontend Engineer',
+    'Full-stack Developer',
     'React',
     'TypeScript',
     'Next.js',
@@ -34,7 +35,6 @@ export const metadata: Metadata = {
     'Web Development',
     'Portfolio',
     'Brazil',
-    'Software Engineer',
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Software Developer Portfolio`,
+        alt: `${siteConfig.name} - Software Engineer Portfolio`,
       },
     ],
   },
@@ -158,7 +158,7 @@ export default async function LocaleLayout({
               "name": siteConfig.name,
               "url": siteConfig.url,
               "image": `${siteConfig.url}/profile-picture.jpg`,
-              "jobTitle": "Software Developer",
+              "jobTitle": "Software Engineer",
               "worksFor": {
                 "@type": "Organization",
                 "name": "Translational Analytics & Statistics"
