@@ -17,14 +17,15 @@ export default defineConfig({
       exclude: [
         "src/__tests__/**",
         "src/**/*.d.ts",
-        // Non-unit-testable infra: html/body shells, async server components,
-        // server data-fetching pages, and next-intl runtime glue that requires
-        // the Next server runtime (all covered by Playwright e2e instead).
+        // Non-unit-testable infra: html/body document shells and next-intl
+        // runtime glue that crashes on import outside the Next server runtime
+        // (the layouts and i18n wiring are exercised by Playwright e2e).
         "src/app/(redirect)/layout.tsx",
         "src/app/[locale]/layout.tsx",
-        "src/app/[locale]/blog/**",
         "src/i18n/**",
         "src/middleware.ts",
+        // Pure type declarations (no runtime).
+        "src/types/**",
         // Canvas drawing has no 2D context in jsdom; verified visually. Its
         // enable/skip guards are still covered by AboutParticles.test.
         "src/components/ui/AboutParticles.tsx",
