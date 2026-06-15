@@ -53,7 +53,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
             </h1>
 
             {/* Meta Information */}
-            <div className="flex flex-wrap items-center justify-center gap-6 !text-zinc-800 dark:!text-zinc-400">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-zinc-800 dark:text-zinc-400">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
                   <Image
@@ -92,7 +92,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
       >
         <div className="max-w-4xl mx-auto">
           {/* Excerpt */}
-          <div className="text-xl !text-zinc-800 dark:!text-zinc-400 mb-12 p-6 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border-l-4 border-teal-600">
+          <div className="text-xl text-zinc-800 dark:text-zinc-400 mb-12 p-6 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border-l-4 border-teal-600">
             {post.excerpt[locale]}
           </div>
 

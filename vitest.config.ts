@@ -25,6 +25,9 @@ export default defineConfig({
         "src/app/[locale]/blog/**",
         "src/i18n/**",
         "src/middleware.ts",
+        // Canvas drawing has no 2D context in jsdom; verified visually. Its
+        // enable/skip guards are still covered by AboutParticles.test.
+        "src/components/ui/AboutParticles.tsx",
       ],
       thresholds: {
         statements: 90,

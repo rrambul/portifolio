@@ -37,7 +37,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
         {/* Content */}
         <div className="p-6">
           {/* Meta Information */}
-          <div className="flex items-center justify-between text-sm !text-zinc-700 dark:!text-zinc-400 mb-3">
+          <div className="flex items-center justify-between text-sm text-zinc-700 dark:text-zinc-400 mb-3">
             <time dateTime={post.date}>
               {t("publishedOn")} {new Date(post.date).toLocaleDateString(locale === "pt" ? "pt-BR" : "en-US")}
             </time>
@@ -51,7 +51,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
           </h2>
 
           {/* Excerpt */}
-          <p className="!text-zinc-800 dark:!text-zinc-400 mb-4 line-clamp-3">
+          <p className="text-zinc-800 dark:text-zinc-400 mb-4 line-clamp-3">
             {post.excerpt[locale]}
           </p>
 
@@ -67,7 +67,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
                   className="object-cover"
                 />
               </div>
-              <span className="text-sm font-medium !text-zinc-800 dark:!text-zinc-300">
+              <span className="text-sm font-medium text-zinc-800 dark:text-zinc-300">
                 {post.author.name}
               </span>
             </div>
