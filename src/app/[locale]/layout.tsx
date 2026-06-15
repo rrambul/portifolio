@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Space_Grotesk, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,11 +9,27 @@ import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
 import { siteConfig } from "@/config/site";
 
+// Body text.
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-outfit",
   weight: ["300", "400", "500", "600", "700"],
+});
+
+// Headings: geometric + slightly technical, distinct from the body.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["500", "600", "700"],
+});
+
+// Monospace accents (status badge, stat numbers): signals "engineer".
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -203,7 +219,9 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className={outfit.className}>
+      <body
+        className={`${outfit.variable} ${spaceGrotesk.variable} ${geistMono.variable}`}
+      >
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <TransitionProvider>{children}</TransitionProvider>

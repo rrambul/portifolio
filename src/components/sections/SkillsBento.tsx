@@ -102,12 +102,12 @@ export function SkillsBento() {
               className="md:col-span-2 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow bg-gradient-to-br from-teal-600 to-violet-600 text-white flex items-center justify-around gap-4"
             >
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold">6+</div>
+                <div className="text-4xl md:text-5xl font-bold font-accent-mono">6+</div>
                 <div className="text-sm text-white/80 mt-1 max-w-[10rem]">{t("stats.years")}</div>
               </div>
               <div className="w-px self-stretch bg-white/20" aria-hidden="true" />
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold">100+</div>
+                <div className="text-4xl md:text-5xl font-bold font-accent-mono">100+</div>
                 <div className="text-sm text-white/80 mt-1 max-w-[10rem]">{t("stats.prs")}</div>
               </div>
             </m.div>

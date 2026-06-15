@@ -84,7 +84,7 @@ export function Hero() {
           <div className="flex-1 animate-enter-fade-up">
             {/* Current-role status badge */}
             <div
-              className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full text-xs font-medium bg-violet-50 text-violet-700 border border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/25 animate-enter-fade-down"
+              className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full text-xs font-medium font-accent-mono bg-violet-50 text-violet-700 border border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/25 animate-enter-fade-down"
               style={{ animationDelay: "0.1s" }}
             >
               <span className="relative flex h-2 w-2" aria-hidden="true">
