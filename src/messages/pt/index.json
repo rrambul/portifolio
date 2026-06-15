@@ -144,12 +144,22 @@
   },
   "skills": {
     "title": "Habilidades",
+    "subtitle": "As ferramentas que uso, organizadas por onde vivem na stack.",
     "frontend": "Frontend",
+    "ai": "IA & Agentes",
     "backend": "Backend",
     "devopsTools": "DevOps & Ferramentas",
     "testing": "Testes",
     "languages": "Linguagens",
-    "specialties": "Especialidades"
+    "specialties": "Especialidades",
+    "stats": {
+      "years": "Anos construindo para a web",
+      "prs": "PRs integrados no trabalho atual"
+    },
+    "community": {
+      "title": "Comunidade",
+      "text": "Contribuidor do RPJS, a comunidade JavaScript de Ribeirão Preto."
+    }
   },
   "blog": {
     "title": "Blog",

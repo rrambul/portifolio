@@ -144,12 +144,22 @@
   },
   "skills": {
     "title": "Skills",
+    "subtitle": "The tools I reach for, grouped by where they live in the stack.",
     "frontend": "Frontend",
+    "ai": "AI & Agents",
     "backend": "Backend",
     "devopsTools": "DevOps & Tools",
     "testing": "Testing",
     "languages": "Languages",
-    "specialties": "Specialties"
+    "specialties": "Specialties",
+    "stats": {
+      "years": "Years shipping for the web",
+      "prs": "PRs merged at my current role"
+    },
+    "community": {
+      "title": "Community",
+      "text": "Contributor to RPJS, the Ribeirão Preto JavaScript community."
+    }
   },
   "blog": {
     "title": "Blog",

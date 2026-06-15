@@ -13,7 +13,7 @@ vi.mock("@/components/sections/Experience", () => ({ Experience: () => <div data
 vi.mock("@/components/sections/Projects", () => ({ Projects: () => <div data-testid="projects" /> }));
 vi.mock("@/components/sections/Interests", () => ({ Interests: () => <div data-testid="interests" /> }));
 vi.mock("@/components/sections/Contact", () => ({ Contact: () => <div data-testid="contact" /> }));
-vi.mock("@/components/sections/Skills", () => ({ Skills: () => <div data-testid="skills" /> }));
+vi.mock("@/components/sections/SkillsBento", () => ({ SkillsBento: () => <div data-testid="skills" /> }));
 
 import Home, { generateMetadata } from "@/app/[locale]/page";
 import AboutPage from "@/app/[locale]/about/page";
@@ -23,7 +23,7 @@ import SkillsPage from "@/app/[locale]/skills/page";
 describe("Home page", () => {
   it("composes all sections", () => {
     render(<Home />);
-    for (const id of ["nav", "hero", "about", "experience", "projects", "interests", "contact", "footer"]) {
+    for (const id of ["nav", "hero", "about", "experience", "skills", "projects", "interests", "contact", "footer"]) {
       expect(screen.getByTestId(id)).toBeInTheDocument();
     }
   });
@@ -53,13 +53,9 @@ describe("Duplicate section routes redirect to homepage anchors", () => {
     await ExperiencePage({ params: Promise.resolve({ locale: "pt" }) });
     expect(redirect).toHaveBeenCalledWith("/pt#experience");
   });
-});
 
-describe("Unique section pages", () => {
-  it("renders the skills page (Skills has no homepage section)", () => {
-    render(<SkillsPage />);
-    expect(screen.getByTestId("nav")).toBeInTheDocument();
-    expect(screen.getByTestId("skills")).toBeInTheDocument();
-    expect(screen.getByTestId("footer")).toBeInTheDocument();
+  it("redirects /skills to the homepage anchor", async () => {
+    await SkillsPage({ params: Promise.resolve({ locale: "en" }) });
+    expect(redirect).toHaveBeenCalledWith("/en#skills");
   });
 });

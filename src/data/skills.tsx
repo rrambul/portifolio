@@ -18,8 +18,6 @@ import {
   SiCypress,
   SiJest,
   SiMysql,
-  SiPrisma,
-  SiSvelte,
   SiLit,
   SiFigma,
   SiVite,
@@ -27,7 +25,7 @@ import {
   SiTestinglibrary,
   SiLinux,
 } from "react-icons/si";
-import { TbApi, TbAccessible, TbTestPipe } from "react-icons/tb";
+import { TbApi, TbAccessible, TbTestPipe, TbRobot, TbSparkles, TbBrain, TbPlugConnected, TbPointer } from "react-icons/tb";
 import { VscSymbolInterface } from "react-icons/vsc";
 import { MdSpeed } from "react-icons/md";
 import { FaUniversalAccess } from "react-icons/fa";
@@ -38,17 +36,17 @@ export interface SkillItem {
 }
 
 export interface SkillCategory {
+  /** Key under `skills` in the message files. */
   titleKey: string;
-  radius: number;
-  rotationSpeed: number;
+  /** Accent color for the category's bento cell. */
+  accent: string;
   skills: (isDark: boolean) => SkillItem[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
     titleKey: "frontend",
-    radius: 150,
-    rotationSpeed: 0.002,
+    accent: "#0d9488",
     skills: (isDark) => [
       { name: "React", icon: <SiReact className="h-8 w-8 text-[#61DAFB]" /> },
       {
@@ -57,7 +55,6 @@ export const skillCategories: SkillCategory[] = [
       },
       { name: "TypeScript", icon: <SiTypescript className="h-8 w-8 text-[#3178C6]" /> },
       { name: "JavaScript", icon: <SiJavascript className="h-8 w-8 text-[#F7DF1E]" /> },
-      { name: "Svelte", icon: <SiSvelte className="h-8 w-8 text-[#FF3E00]" /> },
       { name: "Lit", icon: <SiLit className="h-8 w-8 text-[#324FFF]" /> },
       {
         name: "Web Components",
@@ -77,66 +74,61 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    titleKey: "ai",
+    accent: "#8b5cf6",
+    skills: () => [
+      { name: "Coding Agents", icon: <TbRobot className="h-8 w-8 text-[#8b5cf6]" /> },
+      { name: "Claude", icon: <TbSparkles className="h-8 w-8 text-[#a78bfa]" /> },
+      { name: "Cursor", icon: <TbPointer className="h-8 w-8 text-[#7c3aed]" /> },
+      { name: "MCP", icon: <TbPlugConnected className="h-8 w-8 text-[#8b5cf6]" /> },
+      { name: "Context Engineering", icon: <TbBrain className="h-8 w-8 text-[#a78bfa]" /> },
+    ],
+  },
+  {
     titleKey: "backend",
-    radius: 120,
-    rotationSpeed: -0.002,
+    accent: "#14b8a6",
     skills: (isDark) => [
       { name: "Node.js", icon: <SiNodedotjs className="h-8 w-8 text-[#339933]" /> },
       {
         name: "Express",
         icon: <SiExpress className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
       },
+      { name: "REST APIs", icon: <TbApi className="h-8 w-8 text-black dark:text-[#2dd4bf]" /> },
       { name: "PostgreSQL", icon: <SiPostgresql className="h-8 w-8 text-[#4169E1]" /> },
       { name: "MySQL", icon: <SiMysql className="h-8 w-8 text-[#4479A1]" /> },
-      {
-        name: "Prisma",
-        icon: <SiPrisma className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
-      },
       { name: "Firebase", icon: <SiFirebase className="h-8 w-8 text-[#FFCA28]" /> },
     ],
   },
   {
     titleKey: "testing",
-    radius: 140,
-    rotationSpeed: 0.0018,
+    accent: "#0f766e",
     skills: (isDark) => [
+      { name: "Playwright", icon: <TbTestPipe className="h-8 w-8 text-black dark:text-[#2EAD33]" /> },
+      { name: "Vitest", icon: <SiVitest className="h-8 w-8 text-[#729B1B]" /> },
       { name: "Jest", icon: <SiJest className="h-8 w-8 text-[#C21325]" /> },
       { name: "Testing Library", icon: <SiTestinglibrary className="h-8 w-8 text-[#E33332]" /> },
-      { name: "Vitest", icon: <SiVitest className="h-8 w-8 text-[#729B1B]" /> },
       {
         name: "Cypress",
         icon: <SiCypress className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
       },
-      {
-        name: "Playwright",
-        icon: <TbTestPipe className="h-8 w-8 text-black dark:text-[#2EAD33]" />,
-      },
-      {
-        name: "Supertest",
-        icon: <TbApi className="h-8 w-8 text-black dark:text-[#00B57B]" />,
-      },
-      {
-        name: "Axe",
-        icon: <TbAccessible className="h-8 w-8 text-black dark:text-[#00739D]" />,
-      },
+      { name: "Axe", icon: <TbAccessible className="h-8 w-8 text-black dark:text-[#00739D]" /> },
     ],
   },
   {
     titleKey: "devopsTools",
-    radius: 160,
-    rotationSpeed: -0.0015,
+    accent: "#2dd4bf",
     skills: (isDark) => [
       { name: "Git", icon: <SiGit className="h-8 w-8 text-[#F05032]" /> },
       { name: "Docker", icon: <SiDocker className="h-8 w-8 text-[#2496ED]" /> },
-      { name: "Figma", icon: <SiFigma className="h-8 w-8 text-[#F24E1E]" /> },
-      { name: "Vite", icon: <SiVite className="h-8 w-8 text-[#646CFF]" /> },
-      { name: "Linux", icon: <SiLinux className="h-8 w-8 text-[#FCC624]" /> },
-      { name: "Storybook", icon: <SiStorybook className="h-8 w-8 text-[#FF4785]" /> },
       { name: "AWS", icon: <SiAmazon className="h-8 w-8 text-[#FF9900]" /> },
       {
         name: "Vercel",
         icon: <SiVercel className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
       },
+      { name: "Vite", icon: <SiVite className="h-8 w-8 text-[#646CFF]" /> },
+      { name: "Storybook", icon: <SiStorybook className="h-8 w-8 text-[#FF4785]" /> },
+      { name: "Figma", icon: <SiFigma className="h-8 w-8 text-[#F24E1E]" /> },
+      { name: "Linux", icon: <SiLinux className="h-8 w-8 text-[#FCC624]" /> },
     ],
   },
 ];

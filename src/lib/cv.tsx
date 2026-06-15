@@ -166,7 +166,7 @@ export function createCvDocument(locale: CvLocale) {
         {skillCategories.map((category) => (
           <View key={category.titleKey} style={styles.skillCategoryRow}>
             <Text style={styles.skillCategoryLabel}>
-              {m.skills[category.titleKey as keyof typeof m.skills]}
+              {m.skills[category.titleKey as "frontend"]}
             </Text>
             <Text style={styles.skillCategoryItems}>
               {category

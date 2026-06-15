@@ -45,7 +45,7 @@ describe("Navigation", () => {
   it("renders the brand and all section labels", () => {
     render(<Navigation />);
     expect(screen.getByText("Renan Rambul")).toBeInTheDocument();
-    for (const label of ["home", "about", "experience", "projects", "interests", "contact"]) {
+    for (const label of ["home", "about", "experience", "skills", "projects", "interests", "contact"]) {
       expect(screen.getByText(label)).toBeInTheDocument();
     }
   });

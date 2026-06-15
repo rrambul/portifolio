@@ -34,6 +34,7 @@ export function Navigation() {
       { id: "home", label: t("home") },
       { id: "about", label: t("about") },
       { id: "experience", label: t("experience") },
+      { id: "skills", label: t("skills") },
       { id: "projects", label: t("projects") },
       { id: "interests", label: t("interests") },
       { id: "contact", label: t("contact") },

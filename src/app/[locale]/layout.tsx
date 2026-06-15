@@ -93,8 +93,11 @@ export const metadata: Metadata = {
     creator: siteConfig.links.twitter,
     images: [siteConfig.ogImage],
   },
-  // Add a real Search Console token here when ready:
-  // verification: { google: "..." },
+  // Set GOOGLE_SITE_VERIFICATION in the environment (e.g. Vercel) to the
+  // token from Search Console; rendered only when present.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -158,7 +161,7 @@ export default async function LocaleLayout({
               "jobTitle": "Software Developer",
               "worksFor": {
                 "@type": "Organization",
-                "name": "Translational Analytics"
+                "name": "Translational Analytics & Statistics"
               },
               "description": siteConfig.description,
               "knowsAbout": [

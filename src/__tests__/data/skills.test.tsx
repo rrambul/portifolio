@@ -2,13 +2,14 @@ import { describe, it, expect } from "vitest";
 import { skillCategories } from "@/data/skills";
 
 describe("skillCategories", () => {
-  it("contains 4 categories", () => {
-    expect(skillCategories).toHaveLength(4);
+  it("contains 5 categories", () => {
+    expect(skillCategories).toHaveLength(5);
   });
 
   it("has expected category title keys", () => {
     const titleKeys = skillCategories.map((c) => c.titleKey);
     expect(titleKeys).toContain("frontend");
+    expect(titleKeys).toContain("ai");
     expect(titleKeys).toContain("backend");
     expect(titleKeys).toContain("testing");
     expect(titleKeys).toContain("devopsTools");
@@ -17,9 +18,7 @@ describe("skillCategories", () => {
   it("each category has required fields", () => {
     for (const cat of skillCategories) {
       expect(cat.titleKey).toBeTruthy();
-      expect(cat.radius).toBeGreaterThan(0);
-      expect(typeof cat.rotationSpeed).toBe("number");
-      expect(cat.rotationSpeed).not.toBe(0);
+      expect(cat.accent).toMatch(/^#[0-9a-f]{6}$/i);
       expect(typeof cat.skills).toBe("function");
     }
   });
