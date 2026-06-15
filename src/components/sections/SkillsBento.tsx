@@ -107,7 +107,7 @@ export function SkillsBento() {
               </div>
               <div className="w-px self-stretch bg-white/20" aria-hidden="true" />
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold font-accent-mono">100+</div>
+                <div className="text-4xl md:text-5xl font-bold font-accent-mono">250+</div>
                 <div className="text-sm text-white/80 mt-1 max-w-[10rem]">{t("stats.prs")}</div>
               </div>
             </m.div>
