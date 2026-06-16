@@ -48,7 +48,12 @@ test.describe("Contact Form", () => {
 
   test("input fields receive red border on invalid input after blur", async ({ page }) => {
     const nameInput = page.locator("#contact").getByLabel("Name");
-    await nameInput.focus();
+    // Touch the field via fill/clear first (Playwright waits for it to be
+    // editable, which guarantees React has hydrated and attached onBlur)
+    // before blurring empty — otherwise a bare focus/blur can fire before
+    // hydration and the touched/error state never registers.
+    await nameInput.fill("x");
+    await nameInput.clear();
     await nameInput.blur();
     await expect(nameInput).toHaveClass(/border-red-500/);
   });
