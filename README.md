@@ -1,4 +1,4 @@
-# renanrambul.dev — Portfolio
+# renanrambul.dev · Portfolio
 
 A modern, performant developer portfolio: bilingual (EN/PT), dark/light, accessible, and tested. Live at **[renanrambul.dev](https://renanrambul.dev)**.
 
@@ -23,7 +23,7 @@ A modern, performant developer portfolio: bilingual (EN/PT), dark/light, accessi
 - Animated sections with reduced-motion support
 - **Skills** bento grid, **Experience** timeline, **Projects & Contributions**
 - **Blog** with Markdown posts (EN/PT)
-- **Download CV** — a PDF rendered on demand from the same data that powers the site
+- **Download CV**: a PDF rendered on demand from the same data that powers the site
 - Accessibility enforced in CI (axe-core scans, WCAG 2 AA)
 
 ## Getting Started
@@ -39,7 +39,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-> Uses **pnpm** (pinned via `packageManager`). Avoid `npm install` — the deploy relies on `pnpm-lock.yaml`.
+> Uses **pnpm** (pinned via `packageManager`). Avoid `npm install`; the deploy relies on `pnpm-lock.yaml`.
 
 ## Scripts
 
