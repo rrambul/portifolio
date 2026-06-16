@@ -8,6 +8,8 @@ import "../globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
 import { siteConfig } from "@/config/site";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Body text.
 const outfit = Outfit({
@@ -227,6 +229,9 @@ export default async function LocaleLayout({
             <TransitionProvider>{children}</TransitionProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
+        {/* Cookieless analytics + real-user Web Vitals (production only). */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
