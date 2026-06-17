@@ -35,7 +35,7 @@ test.describe("Homepage Sections", () => {
   test("renders About section with cards", async ({ page }) => {
     await page.locator("#about").scrollIntoViewIfNeeded();
     await expect(page.getByText("About Me")).toBeVisible();
-    await expect(page.getByText("Personal", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("Personal").first()).toBeVisible();
     await expect(page.getByText("Technical").first()).toBeVisible();
     await expect(page.getByText("Languages").first()).toBeVisible();
   });

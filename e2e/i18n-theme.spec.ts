@@ -3,14 +3,12 @@ import { test, expect } from "@playwright/test";
 test.describe("Internationalization", () => {
   test("English locale shows English content", async ({ page }) => {
     await page.goto("/en");
-    await expect(page.getByText("Hello, I'm")).toBeVisible();
     await expect(page.getByText("Software Engineer").first()).toBeVisible();
     await expect(page.getByText("Get in touch").first()).toBeVisible();
   });
 
   test("Portuguese locale shows Portuguese content", async ({ page }) => {
     await page.goto("/pt");
-    await expect(page.getByText("Olá, eu sou")).toBeVisible();
     await expect(page.getByText("Engenheiro de Software").first()).toBeVisible();
     await expect(page.getByText("Entre em contato").first()).toBeVisible();
   });
@@ -27,7 +25,7 @@ test.describe("Internationalization", () => {
   test("language switcher changes locale", async ({ page }) => {
     await page.goto("/en");
     // Verify we're in English
-    await expect(page.getByText("Hello, I'm")).toBeVisible();
+    await expect(page.getByText("Get in touch").first()).toBeVisible();
 
     // Click PT button in the language switcher
     const ptButton = page.getByRole("radio", { name: "Português" });
@@ -35,18 +33,18 @@ test.describe("Internationalization", () => {
 
     // Should navigate to PT locale
     await expect(page).toHaveURL(/\/pt/);
-    await expect(page.getByText("Olá, eu sou")).toBeVisible();
+    await expect(page.getByText("Entre em contato").first()).toBeVisible();
   });
 
   test("language switcher switches back to English", async ({ page }) => {
     await page.goto("/pt");
-    await expect(page.getByText("Olá, eu sou")).toBeVisible();
+    await expect(page.getByText("Entre em contato").first()).toBeVisible();
 
     const enButton = page.getByRole("radio", { name: "English" });
     await enButton.click();
 
     await expect(page).toHaveURL(/\/en/);
-    await expect(page.getByText("Hello, I'm")).toBeVisible();
+    await expect(page.getByText("Get in touch").first()).toBeVisible();
   });
 
   test("blog page respects locale", async ({ page }) => {

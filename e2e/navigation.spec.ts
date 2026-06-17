@@ -41,7 +41,7 @@ test.describe("Navigation", () => {
     await page.locator("#about").scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
     const aboutButton = page.locator("nav").getByRole("button", { name: "About" });
-    await expect(aboutButton).toHaveClass(/text-teal/);
+    await expect(aboutButton).toHaveClass(/text-emerald/);
   });
 
   test("mobile hamburger menu opens and closes", async ({ page }) => {
