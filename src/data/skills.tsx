@@ -43,92 +43,76 @@ export interface SkillCategory {
   skills: () => SkillItem[];
 }
 
+// Monochrome icons: one tonal scheme (neutral, amber for AI) so the grid reads
+// as part of the terminal palette instead of a rainbow of brand colors.
+const ICON = "h-8 w-8 text-zinc-700 dark:text-zinc-300";
+const AI_ICON = "h-8 w-8 text-amber-600 dark:text-amber-400";
+
 export const skillCategories: SkillCategory[] = [
   {
     titleKey: "frontend",
     accent: "#10b981",
     skills: () => [
-      { name: "React", icon: <SiReact className="h-8 w-8 text-[#61DAFB]" /> },
-      {
-        name: "Next.js",
-        icon: <SiNextdotjs className="h-8 w-8 text-black dark:text-white" />,
-      },
-      { name: "TypeScript", icon: <SiTypescript className="h-8 w-8 text-[#3178C6]" /> },
-      { name: "JavaScript", icon: <SiJavascript className="h-8 w-8 text-[#F7DF1E]" /> },
-      { name: "Lit", icon: <SiLit className="h-8 w-8 text-[#324FFF]" /> },
-      {
-        name: "Web Components",
-        icon: <VscSymbolInterface className="h-8 w-8 text-black dark:text-[#29ABE2]" />,
-      },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="h-8 w-8 text-[#06B6D4]" /> },
-      { name: "CSS", icon: <SiCss3 className="h-8 w-8 text-[#1572B6]" /> },
-      { name: "HTML", icon: <SiHtml5 className="h-8 w-8 text-[#E34F26]" /> },
-      {
-        name: "Accessibility",
-        icon: <FaUniversalAccess className="h-8 w-8 text-black dark:text-[#0072CE]" />,
-      },
-      {
-        name: "Web Performance",
-        icon: <MdSpeed className="h-8 w-8 text-black dark:text-[#FF6B00]" />,
-      },
+      { name: "React", icon: <SiReact className={ICON} /> },
+      { name: "Next.js", icon: <SiNextdotjs className={ICON} /> },
+      { name: "TypeScript", icon: <SiTypescript className={ICON} /> },
+      { name: "JavaScript", icon: <SiJavascript className={ICON} /> },
+      { name: "Lit", icon: <SiLit className={ICON} /> },
+      { name: "Web Components", icon: <VscSymbolInterface className={ICON} /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className={ICON} /> },
+      { name: "CSS", icon: <SiCss3 className={ICON} /> },
+      { name: "HTML", icon: <SiHtml5 className={ICON} /> },
+      { name: "Accessibility", icon: <FaUniversalAccess className={ICON} /> },
+      { name: "Web Performance", icon: <MdSpeed className={ICON} /> },
     ],
   },
   {
     titleKey: "ai",
     accent: "#f59e0b",
     skills: () => [
-      { name: "Coding Agents", icon: <TbRobot className="h-8 w-8 text-[#f59e0b]" /> },
-      { name: "Claude", icon: <TbSparkles className="h-8 w-8 text-[#fbbf24]" /> },
-      { name: "Cursor", icon: <TbPointer className="h-8 w-8 text-[#d97706]" /> },
-      { name: "MCP", icon: <TbPlugConnected className="h-8 w-8 text-[#f59e0b]" /> },
-      { name: "Context Engineering", icon: <TbBrain className="h-8 w-8 text-[#fbbf24]" /> },
+      { name: "Coding Agents", icon: <TbRobot className={AI_ICON} /> },
+      { name: "Claude", icon: <TbSparkles className={AI_ICON} /> },
+      { name: "Cursor", icon: <TbPointer className={AI_ICON} /> },
+      { name: "MCP", icon: <TbPlugConnected className={AI_ICON} /> },
+      { name: "Context Engineering", icon: <TbBrain className={AI_ICON} /> },
     ],
   },
   {
     titleKey: "backend",
     accent: "#10b981",
     skills: () => [
-      { name: "Node.js", icon: <SiNodedotjs className="h-8 w-8 text-[#339933]" /> },
-      {
-        name: "Express",
-        icon: <SiExpress className="h-8 w-8 text-black dark:text-white" />,
-      },
-      { name: "REST APIs", icon: <TbApi className="h-8 w-8 text-black dark:text-[#34d399]" /> },
-      { name: "PostgreSQL", icon: <SiPostgresql className="h-8 w-8 text-[#4169E1]" /> },
-      { name: "MySQL", icon: <SiMysql className="h-8 w-8 text-[#4479A1]" /> },
-      { name: "Firebase", icon: <SiFirebase className="h-8 w-8 text-[#FFCA28]" /> },
+      { name: "Node.js", icon: <SiNodedotjs className={ICON} /> },
+      { name: "Express", icon: <SiExpress className={ICON} /> },
+      { name: "REST APIs", icon: <TbApi className={ICON} /> },
+      { name: "PostgreSQL", icon: <SiPostgresql className={ICON} /> },
+      { name: "MySQL", icon: <SiMysql className={ICON} /> },
+      { name: "Firebase", icon: <SiFirebase className={ICON} /> },
     ],
   },
   {
     titleKey: "testing",
     accent: "#059669",
     skills: () => [
-      { name: "Playwright", icon: <TbTestPipe className="h-8 w-8 text-black dark:text-[#2EAD33]" /> },
-      { name: "Vitest", icon: <SiVitest className="h-8 w-8 text-[#729B1B]" /> },
-      { name: "Jest", icon: <SiJest className="h-8 w-8 text-[#C21325]" /> },
-      { name: "Testing Library", icon: <SiTestinglibrary className="h-8 w-8 text-[#E33332]" /> },
-      {
-        name: "Cypress",
-        icon: <SiCypress className="h-8 w-8 text-black dark:text-white" />,
-      },
-      { name: "Axe", icon: <TbAccessible className="h-8 w-8 text-black dark:text-[#00739D]" /> },
+      { name: "Playwright", icon: <TbTestPipe className={ICON} /> },
+      { name: "Vitest", icon: <SiVitest className={ICON} /> },
+      { name: "Jest", icon: <SiJest className={ICON} /> },
+      { name: "Testing Library", icon: <SiTestinglibrary className={ICON} /> },
+      { name: "Cypress", icon: <SiCypress className={ICON} /> },
+      { name: "Axe", icon: <TbAccessible className={ICON} /> },
     ],
   },
   {
     titleKey: "devopsTools",
     accent: "#34d399",
     skills: () => [
-      { name: "Git", icon: <SiGit className="h-8 w-8 text-[#F05032]" /> },
-      { name: "Docker", icon: <SiDocker className="h-8 w-8 text-[#2496ED]" /> },
-      { name: "AWS", icon: <SiAmazon className="h-8 w-8 text-[#FF9900]" /> },
-      {
-        name: "Vercel",
-        icon: <SiVercel className="h-8 w-8 text-black dark:text-white" />,
-      },
-      { name: "Vite", icon: <SiVite className="h-8 w-8 text-[#646CFF]" /> },
-      { name: "Storybook", icon: <SiStorybook className="h-8 w-8 text-[#FF4785]" /> },
-      { name: "Figma", icon: <SiFigma className="h-8 w-8 text-[#F24E1E]" /> },
-      { name: "Linux", icon: <SiLinux className="h-8 w-8 text-[#FCC624]" /> },
+      { name: "Git", icon: <SiGit className={ICON} /> },
+      { name: "Docker", icon: <SiDocker className={ICON} /> },
+      { name: "AWS", icon: <SiAmazon className={ICON} /> },
+      { name: "Vercel", icon: <SiVercel className={ICON} /> },
+      { name: "Vite", icon: <SiVite className={ICON} /> },
+      { name: "Storybook", icon: <SiStorybook className={ICON} /> },
+      { name: "Figma", icon: <SiFigma className={ICON} /> },
+      { name: "Linux", icon: <SiLinux className={ICON} /> },
     ],
   },
 ];
