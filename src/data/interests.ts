@@ -2,6 +2,8 @@ import {
   FiLayers,
   FiBox,
   FiCpu,
+  FiServer,
+  FiPackage,
   FiSmile,
   FiGrid,
   FiCheckSquare,
@@ -11,16 +13,18 @@ import {
 import { TbSparkles, TbRobot, TbBrain } from "react-icons/tb";
 
 export const interests = [
-  { key: "designSystems", icon: FiLayers, color: "#0d9488" },
-  { key: "webComponents", icon: FiBox, color: "#0f766e" },
-  { key: "platformEngineering", icon: FiCpu, color: "#14b8a6" },
-  { key: "dx", icon: FiSmile, color: "#115e59" },
-  { key: "scalableUI", icon: FiGrid, color: "#2dd4bf" },
-  { key: "testing", icon: FiCheckSquare, color: "#0d9488" },
-  { key: "performance", icon: FiZap, color: "#14b8a6" },
-  { key: "openSource", icon: FiUsers, color: "#0f766e" },
-  // AI items carry the violet secondary accent instead of teal.
-  { key: "aiWorkflows", icon: TbSparkles, color: "#8b5cf6" },
-  { key: "agentReadyCodebases", icon: TbRobot, color: "#7c3aed" },
-  { key: "contextEngineering", icon: TbBrain, color: "#a78bfa" },
+  { key: "designSystems", icon: FiLayers, color: "#10b981" },
+  { key: "webComponents", icon: FiBox, color: "#059669" },
+  { key: "softwareArchitecture", icon: FiServer, color: "#10b981" },
+  { key: "ddd", icon: FiPackage, color: "#059669" },
+  { key: "platformEngineering", icon: FiCpu, color: "#34d399" },
+  { key: "dx", icon: FiSmile, color: "#047857" },
+  { key: "scalableUI", icon: FiGrid, color: "#10b981" },
+  { key: "testing", icon: FiCheckSquare, color: "#059669" },
+  { key: "performance", icon: FiZap, color: "#10b981" },
+  { key: "openSource", icon: FiUsers, color: "#34d399" },
+  // AI items carry the amber secondary accent.
+  { key: "aiWorkflows", icon: TbSparkles, color: "#f59e0b" },
+  { key: "agentReadyCodebases", icon: TbRobot, color: "#d97706" },
+  { key: "contextEngineering", icon: TbBrain, color: "#fbbf24" },
 ] as const;

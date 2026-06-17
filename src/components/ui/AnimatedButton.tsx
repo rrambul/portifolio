@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { m } from "framer-motion";
 import Link from "next/link";
 
@@ -35,35 +35,34 @@ export function AnimatedButton({
   isExternal = false,
   download = false,
 }: AnimatedButtonProps) {
-  const [isPressed, setIsPressed] = useState(false);
-
-  // Apply base styles based on variant and size
+  // Mono label + flat fill to match the terminal/spec language; the only
+  // motion is a subtle scale on hover/press.
   const getBaseClasses = () => {
     let classes =
-      "relative inline-flex items-center justify-center font-medium transition-all rounded-md outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900";
+      "inline-flex items-center justify-center font-accent-mono font-medium transition-colors rounded-md outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900";
 
-    // Variant styles. Teal-700 (not 600) against white text and teal-400 on
-    // the dark base keep the WCAG AA 4.5:1 contrast ratio.
+    // Variant styles. Emerald-700 against white text and emerald-400 on the
+    // dark base keep the WCAG AA 4.5:1 contrast ratio.
     switch (variant) {
       case "primary":
-        classes += " bg-teal-700 hover:bg-teal-800 text-white";
+        classes +=
+          " border border-emerald-600/40 bg-emerald-600/10 text-emerald-800 hover:bg-emerald-600/20 hover:border-emerald-600/60 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-300 dark:hover:bg-emerald-400/20";
         break;
       case "secondary":
         classes += " bg-blue-600 hover:bg-blue-700 text-white";
         break;
       case "outline":
         classes +=
-          " bg-transparent border-2 border-teal-700 text-teal-700 dark:border-teal-400 dark:text-teal-400 hover:bg-teal-600/10";
+          " bg-transparent border border-emerald-700 text-emerald-700 dark:border-emerald-400 dark:text-emerald-400 hover:bg-emerald-600/10";
         break;
       case "ghost":
         classes +=
           " bg-transparent hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200";
         break;
       default:
-        classes += " bg-teal-600 hover:bg-teal-700 text-white";
+        classes += " bg-emerald-600 hover:bg-emerald-700 text-white";
     }
 
-    // Size styles
     switch (size) {
       case "sm":
         classes += " px-3 py-1.5 text-sm";
@@ -78,7 +77,6 @@ export function AnimatedButton({
         classes += " px-4 py-2 text-base";
     }
 
-    // Disabled styles
     if (disabled) {
       classes += " opacity-60 cursor-not-allowed";
     }
@@ -91,36 +89,17 @@ export function AnimatedButton({
       {icon && iconPosition === "left" && <span className="mr-2">{icon}</span>}
       {children}
       {icon && iconPosition === "right" && <span className="ml-2">{icon}</span>}
-
-      {/* Background animation circle */}
-      {!disabled && (
-        <m.span
-          className="absolute inset-0 bg-white rounded-md pointer-events-none"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            scale: isPressed ? 1 : 0,
-            opacity: isPressed ? 0.2 : 0,
-          }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        />
-      )}
     </>
   );
 
-  // Animation properties
   const motionProps = {
     whileHover: disabled ? {} : { scale: 1.02 },
     whileTap: disabled ? {} : { scale: 0.98 },
-    onTapStart: () => setIsPressed(true),
-    onTap: () => setIsPressed(false),
-    onTapCancel: () => setIsPressed(false),
     transition: { type: "spring" as const, stiffness: 400, damping: 17 },
   };
 
-  // Combined classes
   const combinedClasses = `${getBaseClasses()} ${className}`;
 
-  // If href is provided, render as Link
   if (href) {
     if (download) {
       return (
@@ -153,7 +132,6 @@ export function AnimatedButton({
     );
   }
 
-  // Otherwise render as button
   return (
     <m.button
       onClick={onClick}

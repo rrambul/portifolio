@@ -3,7 +3,6 @@
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
-import { FiMail } from "react-icons/fi";
 import { AnimatedContactForm } from "../ui/AnimatedContactForm";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -24,7 +23,7 @@ export function Contact() {
           className="max-w-4xl mx-auto"
         >
           <SectionHeading
-            icon={<FiMail className="text-teal-700 dark:text-teal-400 h-8 w-8" />}
+            label="contact"
             title={t("title")}
             subtitle={t("description")}
           />

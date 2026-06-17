@@ -38,12 +38,9 @@ describe("Footer", () => {
     expect(footer).toBeInTheDocument();
   });
 
-  it("renders section headings", () => {
+  it("renders the wordmark", () => {
     render(<Footer />);
-    expect(screen.getByText("about")).toBeInTheDocument();
-    expect(screen.getByText("social")).toBeInTheDocument();
-    expect(screen.getByText("links")).toBeInTheDocument();
-    expect(screen.getByText("contact")).toBeInTheDocument();
+    expect(screen.getByText("renanrambul.dev")).toBeInTheDocument();
   });
 
   it("renders social links with correct hrefs", () => {

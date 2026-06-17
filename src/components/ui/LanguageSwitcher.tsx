@@ -3,7 +3,6 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTransition } from "react";
-import { m } from "framer-motion";
 
 export function LanguageSwitcher() {
   const locale = useLocale();
@@ -20,71 +19,42 @@ export function LanguageSwitcher() {
     });
   };
 
+  const base =
+    "flex h-full items-center px-2.5 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 disabled:cursor-not-allowed";
+  const active = "text-emerald-700 dark:text-emerald-400";
+  const inactive =
+    "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200";
+
   return (
-    <m.div
-      className="relative flex items-center h-9 w-[4.5rem] rounded-full cursor-pointer select-none"
-      style={{
-        background: isEN
-          ? "linear-gradient(135deg, #134e4a, #0f766e)"
-          : "linear-gradient(135deg, #134e4a, #0f766e)",
-        boxShadow:
-          "inset 0 1px 3px rgba(0,0,0,0.3), 0 0 8px rgba(20,184,166,0.15)",
-      }}
-      whileTap={{ scale: 0.95 }}
+    <div
       role="radiogroup"
       aria-label="Language selector"
+      className="inline-flex h-9 items-center overflow-hidden rounded-md border border-zinc-200 font-accent-mono text-xs dark:border-white/10"
     >
-      {/* Sliding knob */}
-      <m.div
-        className="absolute top-1 left-1 h-7 w-8 rounded-full z-10"
-        style={{
-          background: "linear-gradient(135deg, #0d9488, #14b8a6)",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
-        }}
-        initial={false}
-        animate={{ x: isEN ? 0 : 32 }}
-        transition={{ type: "spring", stiffness: 400, damping: 28 }}
-      />
-
-      {/* EN button */}
       <button
         onClick={() => switchLocale("en")}
-        className="relative z-20 flex-1 h-full flex items-center justify-center border-0 bg-transparent cursor-pointer outline-none"
         role="radio"
         aria-checked={isEN}
         aria-label="English"
         disabled={isPending}
+        className={`${base} ${isEN ? active : inactive}`}
       >
-        <m.span
-          className="text-xs font-bold"
-          animate={{
-            color: isEN ? "#ffffff" : "rgba(153, 246, 228, 0.5)",
-          }}
-          transition={{ duration: 0.2 }}
-        >
-          EN
-        </m.span>
+        EN
       </button>
-
-      {/* PT button */}
+      <span
+        className="h-full w-px bg-zinc-200 dark:bg-white/10"
+        aria-hidden="true"
+      />
       <button
         onClick={() => switchLocale("pt")}
-        className="relative z-20 flex-1 h-full flex items-center justify-center border-0 bg-transparent cursor-pointer outline-none"
         role="radio"
         aria-checked={!isEN}
         aria-label="Português"
         disabled={isPending}
+        className={`${base} ${!isEN ? active : inactive}`}
       >
-        <m.span
-          className="text-xs font-bold"
-          animate={{
-            color: !isEN ? "#ffffff" : "rgba(153, 246, 228, 0.5)",
-          }}
-          transition={{ duration: 0.2 }}
-        >
-          PT
-        </m.span>
+        PT
       </button>
-    </m.div>
+    </div>
   );
 }

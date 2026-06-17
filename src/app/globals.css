@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
+    --background: 150 20% 98%;
     --foreground: 240 10% 3.9%;
-    --border: 0 0% 90%;
+    --border: 150 10% 89%;
   }
 
   .dark {
-    /* Deep slate-teal base so the teal accents read as part of the scheme
-       rather than fighting a blue-black background. */
-    --background: 185 25% 5%;
+    /* Near-black with a faint green tint so the terminal-green accents read
+       as part of the scheme rather than floating on neutral black. */
+    --background: 158 24% 4%;
     --foreground: 0 0% 98%;
-    --border: 195 18% 13%;
+    --border: 160 14% 13%;
   }
 }
 
@@ -81,37 +81,37 @@
 @layer components {
   .prose a {
     @apply relative font-medium transition-all duration-300 ease-in-out;
-    color: #0f766e !important; /* Teal-700: keeps WCAG AA contrast on light */
+    color: #047857 !important; /* Teal-700: keeps WCAG AA contrast on light */
     text-decoration: none;
-    background: linear-gradient(to right, #0f766e, #2dd4bf) no-repeat right bottom / 0 2px;
+    background: linear-gradient(to right, #047857, #34d399) no-repeat right bottom / 0 2px;
     transition: background-size 300ms ease-in-out, color 300ms ease-in-out;
   }
 
   .prose a:hover {
-    color: #115e59 !important; /* Teal-800 */
+    color: #065f46 !important; /* Teal-800 */
     background-size: 100% 2px;
     background-position-x: left;
   }
 
   .prose a:focus {
-    outline: 2px solid #0d9488;
+    outline: 2px solid #059669;
     outline-offset: 2px;
     border-radius: 2px;
   }
 
   .dark .prose a {
-    color: #2dd4bf !important; /* Teal-400 */
-    background: linear-gradient(to right, #2dd4bf, #5eead4) no-repeat right bottom / 0 2px;
+    color: #34d399 !important; /* Teal-400 */
+    background: linear-gradient(to right, #34d399, #6ee7b7) no-repeat right bottom / 0 2px;
   }
 
   .dark .prose a:hover {
-    color: #5eead4 !important; /* Teal-300 */
+    color: #6ee7b7 !important; /* Teal-300 */
     background-size: 100% 2px;
     background-position-x: left;
   }
 
   .dark .prose a:focus {
-    outline: 2px solid #2dd4bf;
+    outline: 2px solid #34d399;
   }
 
   /* External link indicator */

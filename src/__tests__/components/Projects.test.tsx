@@ -30,14 +30,12 @@ describe("Projects", () => {
     }
   });
 
-  it("renders all banner pattern variants without crashing", () => {
-    // The data exercises grid, waves, dots, and circuit patterns.
-    const patterns = new Set(projects.map((p) => p.banner.pattern));
-    expect(patterns).toEqual(new Set(["grid", "waves", "dots", "circuit"]));
-    const { container } = render(<Projects />);
-    expect(container.querySelectorAll("svg").length).toBeGreaterThanOrEqual(
-      projects.length
-    );
+  it("renders github repo handles for projects", () => {
+    render(<Projects />);
+    expect(
+      screen.getByText("rrambul/modular-game-store")
+    ).toBeInTheDocument();
+    expect(screen.getByText("animavita/animavita")).toBeInTheDocument();
   });
 
   it("renders the contribution badge and star count for contributed projects", () => {

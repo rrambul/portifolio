@@ -26,7 +26,7 @@ const LABELS: Record<CvLocale, { summary: string; generated: string }> = {
   pt: { summary: "Resumo", generated: "Gerado a partir de" },
 };
 
-const TEAL = "#0d9488";
+const ACCENT = "#047857";
 const INK = "#18181b";
 const MUTED = "#52525b";
 const FAINT = "#a1a1aa";
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.4,
   },
   name: { fontSize: 22, fontFamily: "Helvetica-Bold", lineHeight: 1.2, marginBottom: 4 },
-  role: { fontSize: 11, color: TEAL, marginBottom: 2 },
+  role: { fontSize: 11, color: ACCENT, marginBottom: 2 },
   contactRow: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 10.5,
     fontFamily: "Helvetica-Bold",
-    color: TEAL,
+    color: ACCENT,
     textTransform: "uppercase",
     letterSpacing: 1,
     marginTop: 16,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   entryPeriod: { color: MUTED, fontSize: 9 },
   entryMeta: { color: MUTED, fontSize: 9, marginBottom: 3 },
   bulletRow: { flexDirection: "row", marginBottom: 1.5 },
-  bulletMark: { width: 10, color: TEAL },
+  bulletMark: { width: 10, color: ACCENT },
   bulletText: { flex: 1 },
   entrySkills: { color: MUTED, fontSize: 8.5, marginTop: 3 },
   skillCategoryRow: { flexDirection: "row", marginBottom: 3 },
@@ -170,7 +170,7 @@ export function createCvDocument(locale: CvLocale) {
             </Text>
             <Text style={styles.skillCategoryItems}>
               {category
-                .skills(false)
+                .skills()
                 .map((skill) => skill.name)
                 .join(", ")}
             </Text>

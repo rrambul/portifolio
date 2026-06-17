@@ -5,26 +5,45 @@ import { m } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 
 interface SectionHeadingProps {
-  /** Icon element rendered inside the teal chip (style it at the call site). */
-  icon: ReactNode;
+  /** Mono path-style label, rendered as "// {label}" — the section's namespace. */
+  label: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
+  /** Optional right-aligned mono meta, e.g. a count or filename. */
+  meta?: ReactNode;
 }
 
 /**
- * The centered "icon chip + title + subtitle" header shared by several
- * sections. Animates as a `fadeInUp` item inside a stagger container.
+ * Shared section header in the site's "spec" language: a mono `// label`
+ * eyebrow, a display title, an optional subtitle, and a hairline rule.
+ * Left-aligned and animated as a `fadeInUp` item inside a stagger container.
  */
-export function SectionHeading({ icon, title, subtitle }: SectionHeadingProps) {
+export function SectionHeading({
+  label,
+  title,
+  subtitle,
+  meta,
+}: SectionHeadingProps) {
   return (
-    <m.div className="text-center mb-12" variants={fadeInUp}>
-      <div className="inline-block bg-teal-100 dark:bg-teal-900/30 p-3 rounded-full mb-4">
-        {icon}
+    <m.div className="mb-12" variants={fadeInUp}>
+      <div className="flex items-baseline justify-between gap-4">
+        <span className="font-accent-mono text-sm text-emerald-700 dark:text-emerald-400">
+          {"// "}
+          {label}
+        </span>
+        {meta ? (
+          <span className="shrink-0 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
+            {meta}
+          </span>
+        ) : null}
       </div>
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
-      <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-        {subtitle}
-      </p>
+      <h2 className="mt-3 text-3xl font-bold md:text-4xl">{title}</h2>
+      {subtitle ? (
+        <p className="mt-2 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+          {subtitle}
+        </p>
+      ) : null}
+      <hr className="mt-6 border-zinc-200 dark:border-white/10" />
     </m.div>
   );
 }

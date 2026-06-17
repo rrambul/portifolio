@@ -25,7 +25,7 @@ describe("skillCategories", () => {
 
   it("each category returns skills with light theme", () => {
     for (const cat of skillCategories) {
-      const skills = cat.skills(false);
+      const skills = cat.skills();
       expect(skills.length).toBeGreaterThan(0);
       for (const skill of skills) {
         expect(skill.name).toBeTruthy();
@@ -36,7 +36,7 @@ describe("skillCategories", () => {
 
   it("each category returns skills with dark theme", () => {
     for (const cat of skillCategories) {
-      const skills = cat.skills(true);
+      const skills = cat.skills();
       expect(skills.length).toBeGreaterThan(0);
       for (const skill of skills) {
         expect(skill.name).toBeTruthy();
@@ -48,9 +48,9 @@ describe("skillCategories", () => {
   it("frontend category has the most skills", () => {
     const frontend = skillCategories.find((c) => c.titleKey === "frontend")!;
     const others = skillCategories.filter((c) => c.titleKey !== "frontend");
-    const frontendCount = frontend.skills(false).length;
+    const frontendCount = frontend.skills().length;
     for (const cat of others) {
-      expect(frontendCount).toBeGreaterThanOrEqual(cat.skills(false).length);
+      expect(frontendCount).toBeGreaterThanOrEqual(cat.skills().length);
     }
   });
 });

@@ -5,7 +5,7 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { m, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import { scrollToSection as scrollToSectionLib } from "@/lib/scroll";
 
@@ -17,14 +17,6 @@ export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const navigationRef = useRef<HTMLDivElement>(null);
-
-  // Reading progress bar, smoothed so it eases rather than snaps.
-  const { scrollYProgress } = useScroll();
-  const progressScaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 30,
-    restDelta: 0.001,
-  });
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -127,20 +119,20 @@ export function Navigation() {
   return (
     <nav
       ref={navigationRef}
-      className="sticky top-0 z-50 border-b bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md dark:border-zinc-800 border-gray-200"
+      className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-white/10 dark:bg-zinc-900/80"
     >
-      {/* Reading progress bar */}
-      <m.div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-500 via-cyan-400 to-violet-500"
-        style={{ scaleX: progressScaleX }}
-      />
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <button
             onClick={(e) => scrollToSection("home", e)}
-            className="text-xl font-bold cursor-pointer rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+            className="flex cursor-pointer items-center gap-1.5 rounded-sm font-accent-mono text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
           >
+            <span
+              className="text-emerald-600 dark:text-emerald-400"
+              aria-hidden="true"
+            >
+              ❯
+            </span>
             Renan Rambul
           </button>
 
@@ -150,17 +142,17 @@ export function Navigation() {
               <button
                 key={section.id}
                 onClick={(e) => scrollToSection(section.id, e)}
-                className={`relative py-1 rounded-sm transition-colors hover:text-teal-700 dark:hover:text-teal-400 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900 ${
+                className={`relative rounded-sm py-1 font-accent-mono text-sm transition-colors hover:text-emerald-700 dark:hover:text-emerald-400 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900 ${
                   activeSection === section.id
-                    ? "text-teal-700 dark:text-teal-400"
-                    : ""
+                    ? "text-emerald-700 dark:text-emerald-400"
+                    : "text-zinc-600 dark:text-zinc-400"
                 }`}
               >
                 {section.label}
                 {activeSection === section.id && (
                   <m.span
                     layoutId="nav-active-indicator"
-                    className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-teal-600 dark:bg-teal-400"
+                    className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-emerald-600 dark:bg-emerald-400"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -175,7 +167,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-md cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+            className="md:hidden p-2 rounded-md cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
             onClick={toggleMenu}
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -205,10 +197,10 @@ export function Navigation() {
                   <button
                     key={section.id}
                     onClick={(e) => scrollToSection(section.id, e)}
-                    className={`block w-full text-left py-2 transition-colors hover:text-teal-700 dark:hover:text-teal-400 cursor-pointer ${
+                    className={`block w-full py-2 text-left font-accent-mono transition-colors hover:text-emerald-700 dark:hover:text-emerald-400 cursor-pointer ${
                       activeSection === section.id
-                        ? "text-teal-700 dark:text-teal-400"
-                        : ""
+                        ? "text-emerald-700 dark:text-emerald-400"
+                        : "text-zinc-600 dark:text-zinc-400"
                     }`}
                   >
                     {section.label}

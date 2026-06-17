@@ -2,10 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
-import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
+import { FiBriefcase, FiMapPin } from "react-icons/fi";
 import Image from "next/image";
 import { experiences as experienceData } from "@/data/experiences";
-import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
+import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Experience() {
   const t = useTranslations("experience");
@@ -13,129 +14,138 @@ export function Experience() {
   const experiences = experienceData.map((exp) => ({
     ...exp,
     jobTitle: t(`companies.${exp.i18nKey}.title`),
-    responsibilities: t.raw(`companies.${exp.i18nKey}.responsibilities`) as string[],
+    responsibilities: t.raw(
+      `companies.${exp.i18nKey}.responsibilities`
+    ) as string[],
     skills: t.raw(`companies.${exp.i18nKey}.skills`) as string[],
   }));
 
   return (
-    <section id="experience" className="py-20 bg-transparent">
+    <section id="experience" className="py-20">
       <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-4xl"
         >
-          <m.h2
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-bold text-center mb-12"
-          >
-            {t("title")}
-          </m.h2>
+          <SectionHeading
+            label="experience"
+            title={t("title")}
+            meta={`${experiences.length} releases`}
+          />
 
-          <div className="space-y-10 relative">
-            {/* Timeline vertical line that grows as you scroll */}
-            <m.div
-              className="absolute left-5 top-0 w-1 origin-top shadow-md"
-              style={{
-                height: "calc(100% - 40px)",
-                backgroundColor: "#14b8a6", // Explicit teal color for all themes
-              }}
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: [0, 0.3, 0.6, 1] }}
-              viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 1.8, ease: "easeOut" }}
-            />
+          {/* Roles as a changelog: each is a release on a chronological rail. */}
+          <ol className="relative ml-2 space-y-10 border-l border-zinc-200 pl-8 dark:border-white/10">
+            {experiences.map((exp, idx) => {
+              const current = exp.period.includes("Present");
+              return (
+                <m.li key={idx} variants={fadeInUp} className="relative">
+                  {/* Rail node: the current role pulses, past roles are solid. */}
+                  <span
+                    className="absolute -left-[2.4rem] top-1 flex h-3 w-3 items-center justify-center"
+                    aria-hidden="true"
+                  >
+                    {current && (
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    )}
+                    <span
+                      className={`relative h-3 w-3 rounded-full ring-4 ring-[hsl(var(--background))] ${
+                        current
+                          ? "bg-emerald-500 dark:bg-emerald-400"
+                          : "bg-emerald-500"
+                      }`}
+                    />
+                  </span>
 
-            {experiences.map((exp, idx) => (
-              <m.div
-                key={idx}
-                variants={fadeInUp}
-                className="experience-card bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-shadow duration-300 hover:shadow-lg cursor-pointer relative ml-10"
-                whileHover={cardHover}
-              >
-                {/* Timeline node with sequential animation */}
-                <div
-                  className="absolute -left-12 top-6 w-4 h-4 rounded-full bg-white dark:bg-zinc-800 border-2 flex items-center justify-center z-10"
-                  style={{ borderColor: "#14b8a6" }} // Explicit teal border color
-                >
-                  <m.div
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: "#14b8a6" }} // Explicit teal color
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
-                    transition={{ duration: 0.3, delay: 0.1 + idx * 0.15 }}
-                  />
-                </div>
-
-                {/* Timeline connector line with sequential animation */}
-                <m.div
-                  className="absolute -left-8 top-8 h-1"
-                  style={{ width: "8px", backgroundColor: "#14b8a6", transformOrigin: "left" }}
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
-                  transition={{ duration: 0.3, delay: 0.15 + idx * 0.15 }}
-                />
-
-                  <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-zinc-700 flex items-center justify-center border border-gray-200 dark:border-zinc-600">
+                  {/* Header */}
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md border border-zinc-200 bg-white dark:border-white/10 dark:bg-zinc-800">
                         {exp.logo ? (
                           <Image
                             src={exp.logo}
                             alt={`${exp.company} logo`}
-                            width={48}
-                            height={48}
+                            width={40}
+                            height={40}
                             className="object-contain"
-                            onError={(e) => {
-                              // Fallback if image fails to load
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = "none";
-                            }}
                           />
                         ) : (
-                          <FiBriefcase className="h-6 w-6 text-gray-400" />
+                          <FiBriefcase
+                            className="h-5 w-5 text-zinc-400"
+                            aria-hidden="true"
+                          />
                         )}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-teal-700 dark:text-teal-400">
-                          {exp.jobTitle}
-                        </h3>
-                        <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400">
-                          <span className="font-medium">{exp.company}</span>
-                        </div>
-                        <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-500 mt-1">
-                          <FiMapPin className="h-3 w-3" />
-                          <span className="text-sm">{exp.location}</span>
+                        <h3 className="text-lg font-semibold">{exp.jobTitle}</h3>
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
+                          <span className="font-medium text-zinc-600 dark:text-zinc-300">
+                            {exp.company}
+                          </span>
+                          <span
+                            className="text-zinc-300 dark:text-zinc-700"
+                            aria-hidden="true"
+                          >
+                            ·
+                          </span>
+                          <span className="inline-flex items-center gap-1 text-zinc-500 dark:text-zinc-400">
+                            <FiMapPin className="h-3 w-3" aria-hidden="true" />
+                            {exp.location}
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400 mt-2 md:mt-0">
-                      <FiCalendar className="h-4 w-4" />
-                      <span>{exp.period}</span>
+                    <div className="flex shrink-0 items-center gap-2 font-accent-mono text-xs">
+                      {current && (
+                        <span className="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+                          <span
+                            className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                            aria-hidden="true"
+                          />
+                          shipping
+                        </span>
+                      )}
+                      <span className="rounded-md border border-zinc-200 px-2 py-0.5 text-zinc-500 dark:border-white/10 dark:text-zinc-400">
+                        {exp.period}
+                      </span>
                     </div>
                   </div>
-                  <ul className="list-disc list-outside ml-5 space-y-2 text-zinc-600 dark:text-zinc-400 mb-4">
-                  {exp.responsibilities.map((resp: string, respIdx: number) => (
-                        <li key={respIdx}>{resp}</li>
-                  ))}
+
+                  {/* Release notes */}
+                  <ul className="mt-3 space-y-1.5">
+                    {exp.responsibilities.map((resp, rIdx) => (
+                      <li
+                        key={rIdx}
+                        className="flex gap-2.5 text-zinc-600 dark:text-zinc-400"
+                      >
+                        <span
+                          className="select-none font-accent-mono text-emerald-700 dark:text-emerald-400"
+                          aria-hidden="true"
+                        >
+                          +
+                        </span>
+                        <span>{resp}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {exp.skills.map((skill: string, skillIdx: number) => (
+
+                  {/* Stack */}
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {exp.skills.map((skill, sIdx) => (
                       <span
-                        key={skillIdx}
-                      className="px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-xs rounded-full font-medium"
+                        key={sIdx}
+                        className="rounded border border-zinc-200 px-1.5 py-0.5 font-accent-mono text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400"
                       >
                         {skill}
                       </span>
                     ))}
-                </div>
-              </m.div>
-            ))}
-          </div>
+                  </div>
+                </m.li>
+              );
+            })}
+          </ol>
         </m.div>
       </div>
     </section>

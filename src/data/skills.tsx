@@ -40,18 +40,18 @@ export interface SkillCategory {
   titleKey: string;
   /** Accent color for the category's bento cell. */
   accent: string;
-  skills: (isDark: boolean) => SkillItem[];
+  skills: () => SkillItem[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
     titleKey: "frontend",
-    accent: "#0d9488",
-    skills: (isDark) => [
+    accent: "#10b981",
+    skills: () => [
       { name: "React", icon: <SiReact className="h-8 w-8 text-[#61DAFB]" /> },
       {
         name: "Next.js",
-        icon: <SiNextdotjs className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
+        icon: <SiNextdotjs className="h-8 w-8 text-black dark:text-white" />,
       },
       { name: "TypeScript", icon: <SiTypescript className="h-8 w-8 text-[#3178C6]" /> },
       { name: "JavaScript", icon: <SiJavascript className="h-8 w-8 text-[#F7DF1E]" /> },
@@ -75,25 +75,25 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     titleKey: "ai",
-    accent: "#8b5cf6",
+    accent: "#f59e0b",
     skills: () => [
-      { name: "Coding Agents", icon: <TbRobot className="h-8 w-8 text-[#8b5cf6]" /> },
-      { name: "Claude", icon: <TbSparkles className="h-8 w-8 text-[#a78bfa]" /> },
-      { name: "Cursor", icon: <TbPointer className="h-8 w-8 text-[#7c3aed]" /> },
-      { name: "MCP", icon: <TbPlugConnected className="h-8 w-8 text-[#8b5cf6]" /> },
-      { name: "Context Engineering", icon: <TbBrain className="h-8 w-8 text-[#a78bfa]" /> },
+      { name: "Coding Agents", icon: <TbRobot className="h-8 w-8 text-[#f59e0b]" /> },
+      { name: "Claude", icon: <TbSparkles className="h-8 w-8 text-[#fbbf24]" /> },
+      { name: "Cursor", icon: <TbPointer className="h-8 w-8 text-[#d97706]" /> },
+      { name: "MCP", icon: <TbPlugConnected className="h-8 w-8 text-[#f59e0b]" /> },
+      { name: "Context Engineering", icon: <TbBrain className="h-8 w-8 text-[#fbbf24]" /> },
     ],
   },
   {
     titleKey: "backend",
-    accent: "#14b8a6",
-    skills: (isDark) => [
+    accent: "#10b981",
+    skills: () => [
       { name: "Node.js", icon: <SiNodedotjs className="h-8 w-8 text-[#339933]" /> },
       {
         name: "Express",
-        icon: <SiExpress className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
+        icon: <SiExpress className="h-8 w-8 text-black dark:text-white" />,
       },
-      { name: "REST APIs", icon: <TbApi className="h-8 w-8 text-black dark:text-[#2dd4bf]" /> },
+      { name: "REST APIs", icon: <TbApi className="h-8 w-8 text-black dark:text-[#34d399]" /> },
       { name: "PostgreSQL", icon: <SiPostgresql className="h-8 w-8 text-[#4169E1]" /> },
       { name: "MySQL", icon: <SiMysql className="h-8 w-8 text-[#4479A1]" /> },
       { name: "Firebase", icon: <SiFirebase className="h-8 w-8 text-[#FFCA28]" /> },
@@ -101,29 +101,29 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     titleKey: "testing",
-    accent: "#0f766e",
-    skills: (isDark) => [
+    accent: "#059669",
+    skills: () => [
       { name: "Playwright", icon: <TbTestPipe className="h-8 w-8 text-black dark:text-[#2EAD33]" /> },
       { name: "Vitest", icon: <SiVitest className="h-8 w-8 text-[#729B1B]" /> },
       { name: "Jest", icon: <SiJest className="h-8 w-8 text-[#C21325]" /> },
       { name: "Testing Library", icon: <SiTestinglibrary className="h-8 w-8 text-[#E33332]" /> },
       {
         name: "Cypress",
-        icon: <SiCypress className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
+        icon: <SiCypress className="h-8 w-8 text-black dark:text-white" />,
       },
       { name: "Axe", icon: <TbAccessible className="h-8 w-8 text-black dark:text-[#00739D]" /> },
     ],
   },
   {
     titleKey: "devopsTools",
-    accent: "#2dd4bf",
-    skills: (isDark) => [
+    accent: "#34d399",
+    skills: () => [
       { name: "Git", icon: <SiGit className="h-8 w-8 text-[#F05032]" /> },
       { name: "Docker", icon: <SiDocker className="h-8 w-8 text-[#2496ED]" /> },
       { name: "AWS", icon: <SiAmazon className="h-8 w-8 text-[#FF9900]" /> },
       {
         name: "Vercel",
-        icon: <SiVercel className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />,
+        icon: <SiVercel className="h-8 w-8 text-black dark:text-white" />,
       },
       { name: "Vite", icon: <SiVite className="h-8 w-8 text-[#646CFF]" /> },
       { name: "Storybook", icon: <SiStorybook className="h-8 w-8 text-[#FF4785]" /> },

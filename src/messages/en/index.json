@@ -25,7 +25,15 @@
     "title": "Renan Rambul",
     "subtitle": "Software Engineer",
     "tagline": "I build products end to end, from APIs to fast, accessible interfaces that feel great to use.",
+    "taglineShort": "Products end to end, from the API to the pixel.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
+    "statusShipping": "shipping",
+    "latest": "latest",
+    "logShipped": "Shipped 250+ merged PRs building healthcare SaaS.",
+    "logFortuna": "Shipped Fortuna, an AI co-pilot for personal finance.",
+    "logAgents": "Brought AI coding agents into my daily workflow.",
+    "logLearning": "Learning context engineering and MCP.",
+    "fullLog": "full log",
     "downloadCV": "Download CV",
     "cta": "Get in touch",
     "scrollDown": "Scroll to about section"
@@ -223,10 +231,14 @@
   },
   "projects": {
     "title": "Projects & Contributions",
-    "subtitle": "Open-source projects I've built and contributed to",
+    "subtitle": "Products and open-source work I've built and contributed to",
     "liveDemo": "Live Demo",
     "sourceCode": "Source Code",
     "contribution": "Contribution",
+    "fortuna": {
+      "title": "Fortuna",
+      "description": "A personal finance app that brings spending, cards, parcelas, investments and goals into one calm place, with an AI co-pilot that reads your bank statements, flags surprises, and answers in plain language. Built for Brazil (BRL, CDI, parcelas) and fully bilingual."
+    },
     "modularGameStore": {
       "title": "Modular Game Store",
       "description": "A modern, high-performance micro-frontend e-commerce platform built with Rspack and Module Federation, demonstrating scalable frontend architecture for large distributed teams."
@@ -250,6 +262,8 @@
     "items": {
       "designSystems": "Design Systems",
       "webComponents": "Web Components Architecture",
+      "softwareArchitecture": "Software Architecture",
+      "ddd": "Domain-Driven Design",
       "platformEngineering": "Frontend Platform Engineering",
       "dx": "Developer Experience (DX)",
       "scalableUI": "Scalable UI Platforms",

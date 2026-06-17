@@ -103,7 +103,7 @@ describe("Navigation", () => {
 
     render(<Navigation />);
 
-    expect(screen.getByText("about").className).toContain("text-teal-700");
+    expect(screen.getByText("about").className).toContain("text-emerald-700");
 
     document.body.removeChild(about);
   });

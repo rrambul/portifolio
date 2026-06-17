@@ -1,5 +1,3 @@
-import type React from "react";
-
 export interface ProjectData {
   titleKey: string;
   descriptionKey: string;
@@ -9,14 +7,15 @@ export interface ProjectData {
   stars?: number;
   forks?: number;
   isContribution?: boolean;
-  banner: {
-    pattern: "grid" | "dots" | "waves" | "circuit";
-    icon: string;
-  };
-  bannerStyle: React.CSSProperties;
 }
 
 export const projects: ProjectData[] = [
+  {
+    titleKey: "fortuna.title",
+    descriptionKey: "fortuna.description",
+    tags: ["AI", "Personal Finance", "PWA", "i18n"],
+    demoUrl: "https://fortuna.up.railway.app/",
+  },
   {
     titleKey: "modularGameStore.title",
     descriptionKey: "modularGameStore.description",
@@ -24,16 +23,12 @@ export const projects: ProjectData[] = [
     githubUrl: "https://github.com/rrambul/modular-game-store",
     demoUrl:
       "https://renanrambuls-gmail-com-7-mgs-store-modular-game-s-cafcfd99c-ze.zephyrcloud.app/",
-    banner: { pattern: "grid", icon: "🎮" },
-    bannerStyle: { backgroundImage: "linear-gradient(135deg, #0f766e, #0d9488, #14b8a6)" },
   },
   {
     titleKey: "marketPulse.title",
     descriptionKey: "marketPulse.description",
     tags: ["TypeScript", "Lit", "Lit Signals", "Rspack", "Module Federation"],
     githubUrl: "https://github.com/rrambul/market-pulse",
-    banner: { pattern: "waves", icon: "📈" },
-    bannerStyle: { backgroundImage: "linear-gradient(135deg, #134e4a, #0f766e, #14b8a6)" },
   },
   {
     titleKey: "animavita.title",
@@ -43,8 +38,6 @@ export const projects: ProjectData[] = [
     stars: 739,
     forks: 318,
     isContribution: true,
-    banner: { pattern: "dots", icon: "🐶" },
-    bannerStyle: { backgroundImage: "linear-gradient(135deg, #164e63, #0e7490, #06b6d4)" },
   },
   {
     titleKey: "portfolio.title",
@@ -52,7 +45,5 @@ export const projects: ProjectData[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18n"],
     githubUrl: "https://github.com/rrambul/portifolio",
     demoUrl: "https://renanrambul.dev",
-    banner: { pattern: "circuit", icon: "💼" },
-    bannerStyle: { backgroundImage: "linear-gradient(135deg, #0c4a6e, #0369a1, #0ea5e9)" },
   },
 ];

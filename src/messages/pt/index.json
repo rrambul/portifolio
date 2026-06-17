@@ -25,7 +25,15 @@
     "title": "Renan Rambul",
     "subtitle": "Engenheiro de Software",
     "tagline": "Construo produtos de ponta a ponta, de APIs a interfaces rápidas e acessíveis que dão gosto de usar.",
+    "taglineShort": "Produtos de ponta a ponta, da API ao pixel.",
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
+    "statusShipping": "entregando",
+    "latest": "recentes",
+    "logShipped": "Entreguei 250+ PRs construindo SaaS de saúde.",
+    "logFortuna": "Lancei o Fortuna, um copiloto de IA para finanças pessoais.",
+    "logAgents": "Trouxe agentes de código com IA para o meu fluxo diário.",
+    "logLearning": "Estudando context engineering e MCP.",
+    "fullLog": "log completo",
     "downloadCV": "Baixar CV",
     "cta": "Entre em contato",
     "scrollDown": "Rolar para a seção sobre"
@@ -223,10 +231,14 @@
   },
   "projects": {
     "title": "Projetos & Contribuições",
-    "subtitle": "Projetos open-source que construí e contribuí",
+    "subtitle": "Produtos e trabalhos open-source que construí e contribuí",
     "liveDemo": "Demo ao Vivo",
     "sourceCode": "Código Fonte",
     "contribution": "Contribuição",
+    "fortuna": {
+      "title": "Fortuna",
+      "description": "Um app de finanças pessoais que reúne gastos, cartões, parcelas, investimentos e metas em um só lugar, com um copiloto de IA que lê seus extratos, aponta surpresas e responde em linguagem simples. Feito para o Brasil (BRL, CDI, parcelas) e totalmente bilíngue."
+    },
     "modularGameStore": {
       "title": "Modular Game Store",
       "description": "Plataforma e-commerce moderna de alta performance com micro-frontends, construída com Rspack e Module Federation, demonstrando arquitetura frontend escalável para grandes equipes distribuídas."
@@ -250,6 +262,8 @@
     "items": {
       "designSystems": "Design Systems",
       "webComponents": "Arquitetura de Web Components",
+      "softwareArchitecture": "Arquitetura de Software",
+      "ddd": "Domain-Driven Design",
       "platformEngineering": "Engenharia de Plataforma Frontend",
       "dx": "Experiência do Desenvolvedor (DX)",
       "scalableUI": "Plataformas de UI Escaláveis",

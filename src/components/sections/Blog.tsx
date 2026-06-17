@@ -27,7 +27,7 @@ export function Blog() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="animate-pulse">
-              <div className="w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-full mx-auto mb-6"></div>
+              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full mx-auto mb-6"></div>
               <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded mx-auto mb-6 max-w-md"></div>
               <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mx-auto mb-8 max-w-2xl"></div>
             </div>
@@ -49,14 +49,14 @@ export function Blog() {
         >
           <m.div 
             variants={fadeInUp}
-            className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6"
+            className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full mb-6"
           >
-            <FiEdit3 className="w-8 h-8 text-teal-700 dark:text-teal-400" />
+            <FiEdit3 className="w-8 h-8 text-emerald-700 dark:text-emerald-400" />
           </m.div>
           
           <m.h1
             variants={fadeInUp}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-600 via-teal-700 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent leading-tight pb-2"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-600 dark:from-emerald-400 dark:to-emerald-400 bg-clip-text text-transparent leading-tight pb-2"
             style={{ lineHeight: '1.2' }}
           >
             {t("title")}
@@ -71,7 +71,7 @@ export function Blog() {
 
           <m.div
             variants={fadeInUp}
-            className="flex items-center justify-center gap-2 text-sm text-teal-700 dark:text-teal-400 font-medium"
+            className="flex items-center justify-center gap-2 text-sm text-emerald-700 dark:text-emerald-400 font-medium"
           >
             <FiBookOpen className="w-4 h-4" />
             <span>{blogPosts.length} articles published</span>

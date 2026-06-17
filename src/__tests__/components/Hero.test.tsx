@@ -10,6 +10,7 @@ vi.mock("@/lib/scroll", () => ({
 // Mock siteConfig
 vi.mock("@/config/site", () => ({
   siteConfig: {
+    url: "https://renanrambul.dev",
     links: {
       github: "https://github.com/testuser",
       linkedin: "https://www.linkedin.com/in/testuser/",
@@ -37,9 +38,8 @@ vi.mock("framer-motion");
 import { Hero } from "@/components/sections/Hero";
 
 describe("Hero", () => {
-  it("renders greeting and title", () => {
+  it("renders name and role", () => {
     render(<Hero />);
-    expect(screen.getByText("greeting")).toBeInTheDocument();
     expect(screen.getByText("title")).toBeInTheDocument();
     expect(screen.getByText("subtitle")).toBeInTheDocument();
   });
@@ -95,10 +95,13 @@ describe("Hero", () => {
     expect(mockScrollToSection).toHaveBeenCalledWith("about");
   });
 
-  it("renders the current-role badge and tagline", () => {
+  it("renders the release status and changelog notes", () => {
     render(<Hero />);
     expect(screen.getByText("currentlyAt")).toBeInTheDocument();
-    expect(screen.getByText("tagline")).toBeInTheDocument();
+    expect(screen.getByText("statusShipping")).toBeInTheDocument();
+    expect(screen.getByText("logShipped")).toBeInTheDocument();
+    expect(screen.getByText("logAgents")).toBeInTheDocument();
+    expect(screen.getByText("logLearning")).toBeInTheDocument();
   });
 
   it("renders a CV download link for the active locale", () => {
