@@ -79,13 +79,4 @@ describe("BlogPost", () => {
     const links = screen.getAllByRole("link");
     expect(links[0]).toHaveAttribute("href", "/pt/blog");
   });
-
-  it("falls back to the default avatar when none is provided", () => {
-    const noAvatar = { ...post, author: { name: "No Avatar" } };
-    render(<BlogPost post={noAvatar} content="body" />);
-    const avatar = screen
-      .getAllByRole("img")
-      .find((img) => img.getAttribute("alt") === "No Avatar");
-    expect(avatar).toHaveAttribute("src", "/profile-picture.jpg");
-  });
 });

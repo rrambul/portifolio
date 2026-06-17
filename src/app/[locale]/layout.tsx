@@ -175,7 +175,6 @@ export default async function LocaleLayout({
               "@type": "Person",
               "name": siteConfig.name,
               "url": siteConfig.url,
-              "image": `${siteConfig.url}/profile-picture.jpg`,
               "jobTitle": "Software Engineer",
               "worksFor": {
                 "@type": "Organization",

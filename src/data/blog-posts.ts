@@ -17,8 +17,7 @@ export const blogPosts: BlogPostMetadata[] = [
     tags: ["Introduction", "Personal", "Software Engineering", "Goals"],
     readTime: 3,
     author: {
-      name: "Renan Rambul",
-      avatar: "/profile-picture.jpg"
+      name: "Renan Rambul"
     }
   },
   {
@@ -37,8 +36,7 @@ export const blogPosts: BlogPostMetadata[] = [
     tags: ["Productivity", "Organization", "Personal Development", "Bullet Journal"],
     readTime: 8,
     author: {
-      name: "Renan Rambul",
-      avatar: "/profile-picture.jpg"
+      name: "Renan Rambul"
     }
   },
   {
@@ -57,8 +55,7 @@ export const blogPosts: BlogPostMetadata[] = [
     tags: ["Web Components", "Frontend", "JavaScript", "Web Development", "Design Systems"],
     readTime: 5,
     author: {
-      name: "Renan Rambul",
-      avatar: "/profile-picture.jpg"
+      name: "Renan Rambul"
     }
   }
 ];

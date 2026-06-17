@@ -1,7 +1,6 @@
 "use client";
 
 import { m } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { FiClock, FiCalendar, FiArrowLeft } from "react-icons/fi";
 import { BlogPostMetadata } from "@/types/blog";
@@ -54,16 +53,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
 
             {/* Meta Information */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-zinc-800 dark:text-zinc-400">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden">
-                  <Image
-                    src={post.author.avatar || "/profile-picture.jpg"}
-                    alt={post.author.name}
-                    width={40}
-                    height={40}
-                    className="object-cover"
-                  />
-                </div>
+              <div className="flex items-center gap-2">
                 <span className="font-medium">{post.author.name}</span>
               </div>
               

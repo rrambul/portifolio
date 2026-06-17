@@ -81,13 +81,4 @@ describe("BlogCard", () => {
     render(<BlogCard post={mockPost} index={0} />);
     expect(screen.getByText("5 min")).toBeInTheDocument();
   });
-
-  it("falls back to the default avatar when none is provided", () => {
-    const noAvatar: BlogPost = { ...mockPost, author: { name: "No Avatar" } };
-    render(<BlogCard post={noAvatar} index={1} />);
-    const avatar = screen
-      .getAllByRole("img")
-      .find((img) => img.getAttribute("alt") === "No Avatar");
-    expect(avatar).toHaveAttribute("src", "/profile-picture.jpg");
-  });
 });

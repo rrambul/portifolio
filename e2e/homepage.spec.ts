@@ -67,9 +67,4 @@ test.describe("Homepage Sections", () => {
     await expect(footer).toBeVisible();
     await expect(footer.locator('a[href*="github.com"]')).toBeVisible();
   });
-
-  test("profile image loads in hero", async ({ page }) => {
-    const img = page.locator('img[alt="Renan Rambul"]');
-    await expect(img).toBeVisible();
-  });
 });

@@ -75,12 +75,6 @@ describe("Hero", () => {
     }
   });
 
-  it("renders profile image", () => {
-    render(<Hero />);
-    const img = screen.getByRole("img", { name: "Renan Rambul" });
-    expect(img).toBeInTheDocument();
-  });
-
   it("tracks pointer movement for the parallax effect", () => {
     render(<Hero />);
     // Should not throw when the window emits a mousemove.

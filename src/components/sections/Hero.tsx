@@ -10,7 +10,6 @@ import {
   FiMail,
   FiDownload,
 } from "react-icons/fi";
-import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { scrollToSection } from "@/lib/scroll";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
@@ -52,26 +51,12 @@ export function Hero() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           {/* Identity (kept quiet so the release panel carries the page). */}
           <div>
-            <div className="mb-3 flex items-center gap-4">
-              <div
-                className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-1 ring-emerald-600/20 dark:ring-emerald-400/20 md:h-16 md:w-16 animate-enter-scale"
-                style={{ animationDelay: "0.15s" }}
-              >
-                <Image
-                  src="/profile-picture.jpg"
-                  alt="Renan Rambul"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <h1
-                className="text-4xl font-bold md:text-6xl animate-enter-fade-left"
-                style={{ animationDelay: "0.2s" }}
-              >
-                {t("title")}
-              </h1>
-            </div>
+            <h1
+              className="mb-3 text-4xl font-bold md:text-6xl animate-enter-fade-left"
+              style={{ animationDelay: "0.2s" }}
+            >
+              {t("title")}
+            </h1>
 
             <p
               className="mb-2 text-xl text-zinc-600 dark:text-zinc-400 md:text-2xl animate-enter-fade-left"

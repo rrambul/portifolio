@@ -57,20 +57,9 @@ export function BlogCard({ post, index }: BlogCardProps) {
 
           {/* Author & Read More */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full overflow-hidden">
-                <Image
-                  src={post.author.avatar || "/profile-picture.jpg"}
-                  alt={post.author.name}
-                  width={32}
-                  height={32}
-                  className="object-cover"
-                />
-              </div>
-              <span className="text-sm font-medium text-zinc-800 dark:text-zinc-300">
-                {post.author.name}
-              </span>
-            </div>
+            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-300">
+              {post.author.name}
+            </span>
 
             {/* Read More indicator - no nested link */}
             <span className="font-medium text-emerald-900 hover:text-black dark:text-emerald-400 dark:hover:text-emerald-300 group-hover:underline transition-colors duration-200">
