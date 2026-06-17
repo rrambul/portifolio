@@ -13,7 +13,7 @@ export const projects: ProjectData[] = [
   {
     titleKey: "fortuna.title",
     descriptionKey: "fortuna.description",
-    tags: ["AI", "Personal Finance", "PWA", "i18n"],
+    tags: ["AI", "Next.js", "NestJS", "Personal Finance", "Testing", "PWA", "i18n"],
     demoUrl: "https://fortuna.up.railway.app/",
   },
   {
