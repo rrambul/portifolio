@@ -16,7 +16,6 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   return buildMetadata({
     locale,
     path: "/blog",
-    image: "/og-blog.png",
     title: `${t("title")} | Renan Rambul`,
     description: t("subtitle"),
   });

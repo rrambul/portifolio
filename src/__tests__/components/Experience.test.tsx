@@ -45,8 +45,8 @@ describe("Experience", () => {
 
   it("renders periods and locations", () => {
     render(<Experience />);
-    expect(screen.getByText(experiences[0].period)).toBeInTheDocument();
-    expect(screen.getByText(experiences[0].location)).toBeInTheDocument();
+    expect(screen.getByText(experiences[0]!.period)).toBeInTheDocument();
+    expect(screen.getByText(experiences[0]!.location)).toBeInTheDocument();
   });
 
   it("renders responsibilities and skill pills from t.raw", () => {
@@ -59,6 +59,6 @@ describe("Experience", () => {
     render(<Experience />);
     const logos = screen.getAllByRole("img");
     expect(logos.length).toBe(experiences.length);
-    expect(logos[0]).toHaveAttribute("alt", `${experiences[0].company} logo`);
+    expect(logos[0]).toHaveAttribute("alt", `${experiences[0]!.company} logo`);
   });
 });

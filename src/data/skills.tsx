@@ -40,7 +40,7 @@ export interface SkillCategory {
   titleKey: string;
   /** Accent color for the category's bento cell. */
   accent: string;
-  skills: () => SkillItem[];
+  skills: SkillItem[];
 }
 
 // Monochrome icons: one tonal scheme (neutral, amber for AI) so the grid reads
@@ -52,7 +52,7 @@ export const skillCategories: SkillCategory[] = [
   {
     titleKey: "frontend",
     accent: "#10b981",
-    skills: () => [
+    skills: [
       { name: "React", icon: <SiReact className={ICON} /> },
       { name: "Next.js", icon: <SiNextdotjs className={ICON} /> },
       { name: "TypeScript", icon: <SiTypescript className={ICON} /> },
@@ -69,7 +69,7 @@ export const skillCategories: SkillCategory[] = [
   {
     titleKey: "ai",
     accent: "#f59e0b",
-    skills: () => [
+    skills: [
       { name: "Coding Agents", icon: <TbRobot className={AI_ICON} /> },
       { name: "Claude", icon: <TbSparkles className={AI_ICON} /> },
       { name: "Cursor", icon: <TbPointer className={AI_ICON} /> },
@@ -80,7 +80,7 @@ export const skillCategories: SkillCategory[] = [
   {
     titleKey: "backend",
     accent: "#10b981",
-    skills: () => [
+    skills: [
       { name: "Node.js", icon: <SiNodedotjs className={ICON} /> },
       { name: "Express", icon: <SiExpress className={ICON} /> },
       { name: "REST APIs", icon: <TbApi className={ICON} /> },
@@ -92,7 +92,7 @@ export const skillCategories: SkillCategory[] = [
   {
     titleKey: "testing",
     accent: "#059669",
-    skills: () => [
+    skills: [
       { name: "Playwright", icon: <TbTestPipe className={ICON} /> },
       { name: "Vitest", icon: <SiVitest className={ICON} /> },
       { name: "Jest", icon: <SiJest className={ICON} /> },
@@ -104,7 +104,7 @@ export const skillCategories: SkillCategory[] = [
   {
     titleKey: "devopsTools",
     accent: "#34d399",
-    skills: () => [
+    skills: [
       { name: "Git", icon: <SiGit className={ICON} /> },
       { name: "Docker", icon: <SiDocker className={ICON} /> },
       { name: "AWS", icon: <SiAmazon className={ICON} /> },

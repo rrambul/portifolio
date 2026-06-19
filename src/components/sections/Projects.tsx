@@ -6,6 +6,7 @@ import { FiExternalLink, FiGithub, FiStar, FiGitPullRequest } from "react-icons/
 import { projects } from "@/data/projects";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { cardClass } from "@/lib/ui";
 
 /** "owner/repo" handle from a GitHub URL, e.g. "rrambul/portifolio". */
 function repoHandle(githubUrl?: string) {
@@ -43,14 +44,14 @@ export function Projects() {
             variants={staggerContainer}
             className="grid gap-6 md:grid-cols-2"
           >
-            {projects.map((project, idx) => {
+            {projects.map((project) => {
               const handle =
                 repoHandle(project.githubUrl) ?? siteHandle(project.demoUrl);
               return (
                 <m.article
-                  key={idx}
+                  key={project.titleKey}
                   variants={fadeInUp}
-                  className="group flex flex-col rounded-xl border border-zinc-200 bg-white/70 p-5 shadow-sm backdrop-blur-sm transition-colors hover:border-emerald-500/50 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none sm:p-6"
+                  className={`${cardClass} group flex flex-col backdrop-blur-sm hover:border-emerald-500/50 sm:p-6`}
                 >
                   {/* Header: repo handle + status tags */}
                   <div className="flex items-center justify-between gap-3 font-accent-mono text-sm">
@@ -94,9 +95,9 @@ export function Projects() {
 
                   {/* Dependencies (tech stack) */}
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {project.tags.map((tag, tagIdx) => (
+                    {project.tags.map((tag) => (
                       <span
-                        key={tagIdx}
+                        key={tag}
                         className="rounded border border-zinc-200 px-1.5 py-0.5 font-accent-mono text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400"
                       >
                         {tag}

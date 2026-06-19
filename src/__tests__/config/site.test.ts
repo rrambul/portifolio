@@ -7,7 +7,7 @@ describe("siteConfig", () => {
     expect(siteConfig.title).toContain("Renan Rambul");
     expect(siteConfig.description).toBeTruthy();
     expect(siteConfig.url).toMatch(/^https:\/\//);
-    expect(siteConfig.ogImage).toBeTruthy();
+    expect(siteConfig.keywords.length).toBeGreaterThan(0);
   });
 
   it("has valid social links", () => {

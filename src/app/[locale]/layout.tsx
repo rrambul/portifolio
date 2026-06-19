@@ -3,7 +3,7 @@ import { Outfit, Space_Grotesk, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { locales } from "../../../i18n.config";
+import { isLocale } from "../../../i18n.config";
 import "../globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
@@ -41,19 +41,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
-  keywords: [
-    'Renan Rambul',
-    'Software Engineer',
-    'Frontend Engineer',
-    'Full-stack Developer',
-    'React',
-    'TypeScript',
-    'Next.js',
-    'JavaScript',
-    'Web Development',
-    'Portfolio',
-    'Brazil',
-  ],
+  keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
@@ -62,21 +50,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  icons: {
-    icon: [
-      {
-        url: "/favicon/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: [
-      {
-        url: "/favicon/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-  },
-  manifest: '/manifest.json',
+  // Icons (src/app/icon.svg, src/app/favicon.ico) and the web manifest
+  // (src/app/manifest.ts) are wired automatically by Next's file conventions,
+  // so they are intentionally not declared here (a single source of truth).
   robots: {
     index: true,
     follow: true,
@@ -95,21 +71,14 @@ export const metadata: Metadata = {
     siteName: `${siteConfig.name} Portfolio`,
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} - Software Engineer Portfolio`,
-      },
-    ],
+    // og:image is supplied by the opengraph-image route conventions.
   },
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
     creator: siteConfig.links.twitter,
-    images: [siteConfig.ogImage],
+    // twitter:image falls back to the opengraph-image route conventions.
   },
   // Set GOOGLE_SITE_VERIFICATION in the environment (e.g. Vercel) to the
   // token from Search Console; rendered only when present.
@@ -142,7 +111,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!locales.includes(locale as "en" | "pt")) {
+  if (!isLocale(locale)) {
     notFound();
   }
 
@@ -194,6 +163,7 @@ export default async function LocaleLayout({
               "sameAs": [
                 siteConfig.links.github,
                 siteConfig.links.linkedin,
+                siteConfig.links.x,
               ],
               "address": {
                 "@type": "PostalAddress",

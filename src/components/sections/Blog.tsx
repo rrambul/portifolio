@@ -6,36 +6,13 @@ import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { getBlogPosts } from "@/data/blog-posts";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { FiEdit3, FiBookOpen } from "react-icons/fi";
-import { useEffect, useState } from "react";
-import { BlogPostMetadata } from "@/types/blog";
 
 export function Blog() {
   const t = useTranslations("blog");
-  const [blogPosts, setBlogPosts] = useState<BlogPostMetadata[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Ensure posts are loaded on component mount
-    const posts = getBlogPosts();
-    setBlogPosts(posts);
-    setIsLoaded(true);
-  }, []);
-
-  if (!isLoaded) {
-    return (
-      <section id="blog" className="py-20 relative">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="animate-pulse">
-              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full mx-auto mb-6"></div>
-              <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded mx-auto mb-6 max-w-md"></div>
-              <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mx-auto mb-8 max-w-2xl"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  // Post metadata is static module data, so read it synchronously at render.
+  // This lets the index render its real content during SSR (good for crawlers
+  // and LCP) instead of flashing a skeleton until hydration.
+  const blogPosts = getBlogPosts();
 
   return (
     <section id="blog" className="py-20 relative">

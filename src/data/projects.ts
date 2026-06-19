@@ -5,7 +5,6 @@ export interface ProjectData {
   demoUrl?: string;
   githubUrl?: string;
   stars?: number;
-  forks?: number;
   isContribution?: boolean;
 }
 
@@ -36,7 +35,6 @@ export const projects: ProjectData[] = [
     tags: ["TypeScript", "React Native", "GraphQL", "MongoDB", "Open Source"],
     githubUrl: "https://github.com/animavita/animavita",
     stars: 739,
-    forks: 318,
     isContribution: true,
   },
   {

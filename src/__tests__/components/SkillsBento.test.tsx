@@ -46,7 +46,7 @@ describe("SkillsBento", () => {
 
   it("renders every skill from the data", () => {
     render(<SkillsBento />);
-    const total = skillCategories.reduce((n, c) => n + c.skills().length, 0);
+    const total = skillCategories.reduce((n, c) => n + c.skills.length, 0);
     // each skill name is rendered once
     expect(total).toBeGreaterThan(20);
   });

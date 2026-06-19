@@ -18,9 +18,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm dev",
+    // In CI, exercise the real production build (minified React, prod env,
+    // font preloads) rather than the dev server; use dev locally for speed.
+    command: process.env.CI ? "pnpm build && pnpm start" : "pnpm dev",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 180_000,
   },
 });

@@ -15,7 +15,6 @@ const eslintConfig = [
   ...nextTypeScript,
   {
     rules: {
-      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "warn",
       // The `const [mounted, setMounted] = useState(false); useEffect(() =>
       // setMounted(true), [])` pattern is the documented way to gate

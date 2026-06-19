@@ -10,7 +10,7 @@ export function ogLocale(locale: string): string {
 }
 
 /** Resolve a site-relative or absolute image path to an absolute URL. */
-function absoluteImage(image: string): string {
+export function absoluteImage(image: string): string {
   return image.startsWith("http") ? image : `${BASE_URL}${image}`;
 }
 
@@ -20,7 +20,11 @@ export interface BuildMetadataOptions {
   description: string;
   /** Path after the locale segment, e.g. "" for home, "/blog", "/blog/slug". */
   path?: string;
-  /** OG/Twitter image (site-relative or absolute). Defaults to the site OG image. */
+  /**
+   * Explicit OG/Twitter image (site-relative or absolute). When omitted, no
+   * image fields are emitted so the route's `opengraph-image` file convention
+   * (src/app/.../opengraph-image.tsx) supplies the image instead.
+   */
   image?: string;
   type?: "website" | "article";
   keywords?: string | string[];
@@ -45,7 +49,7 @@ export function buildMetadata({
   title,
   description,
   path = "",
-  image = siteConfig.ogImage,
+  image,
   type = "website",
   keywords,
   authors,
@@ -53,7 +57,7 @@ export function buildMetadata({
   other,
 }: BuildMetadataOptions): Metadata {
   const url = (l: string) => `${BASE_URL}/${l}${path}`;
-  const imageUrl = absoluteImage(image);
+  const imageUrl = image ? absoluteImage(image) : undefined;
 
   return {
     title,
@@ -67,14 +71,16 @@ export function buildMetadata({
       locale: ogLocale(locale),
       url: url(locale),
       siteName: SITE_NAME,
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+      ...(imageUrl
+        ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: title }] }
+        : {}),
       ...(article ?? {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [imageUrl],
+      ...(imageUrl ? { images: [imageUrl] } : {}),
       creator: siteConfig.links.twitter,
     },
     alternates: {

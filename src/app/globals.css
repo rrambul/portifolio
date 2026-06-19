@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -81,14 +82,14 @@
 @layer components {
   .prose a {
     @apply relative font-medium transition-all duration-300 ease-in-out;
-    color: #047857 !important; /* Teal-700: keeps WCAG AA contrast on light */
+    color: #047857 !important; /* Emerald-700: keeps WCAG AA contrast on light */
     text-decoration: none;
     background: linear-gradient(to right, #047857, #34d399) no-repeat right bottom / 0 2px;
     transition: background-size 300ms ease-in-out, color 300ms ease-in-out;
   }
 
   .prose a:hover {
-    color: #065f46 !important; /* Teal-800 */
+    color: #065f46 !important; /* Emerald-800 */
     background-size: 100% 2px;
     background-position-x: left;
   }
@@ -100,12 +101,12 @@
   }
 
   .dark .prose a {
-    color: #34d399 !important; /* Teal-400 */
+    color: #34d399 !important; /* Emerald-400 */
     background: linear-gradient(to right, #34d399, #6ee7b7) no-repeat right bottom / 0 2px;
   }
 
   .dark .prose a:hover {
-    color: #6ee7b7 !important; /* Teal-300 */
+    color: #6ee7b7 !important; /* Emerald-300 */
     background-size: 100% 2px;
     background-position-x: left;
   }

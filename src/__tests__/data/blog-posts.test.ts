@@ -43,8 +43,8 @@ describe("getBlogPosts", () => {
     expect(posts.length).toBe(blogPosts.length);
 
     for (let i = 0; i < posts.length - 1; i++) {
-      const current = new Date(posts[i].date).getTime();
-      const next = new Date(posts[i + 1].date).getTime();
+      const current = new Date(posts[i]!.date).getTime();
+      const next = new Date(posts[i + 1]!.date).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
   });
@@ -52,7 +52,7 @@ describe("getBlogPosts", () => {
 
 describe("getBlogPost", () => {
   it("returns a post by slug", () => {
-    const firstSlug = blogPosts[0].slug;
+    const firstSlug = blogPosts[0]!.slug;
     const post = getBlogPost(firstSlug);
     expect(post).toBeDefined();
     expect(post!.slug).toBe(firstSlug);
@@ -66,7 +66,7 @@ describe("getBlogPost", () => {
 
 describe("getBlogPostsByTag", () => {
   it("returns posts matching a tag (case-insensitive)", () => {
-    const firstTag = blogPosts[0].tags[0];
+    const firstTag = blogPosts[0]!.tags[0]!;
     const posts = getBlogPostsByTag(firstTag);
     expect(posts.length).toBeGreaterThan(0);
     for (const post of posts) {

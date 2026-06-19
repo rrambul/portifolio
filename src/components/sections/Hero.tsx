@@ -13,6 +13,7 @@ import {
 import { siteConfig } from "@/config/site";
 import { scrollToSection } from "@/lib/scroll";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
+import { cardClass, focusRing } from "@/lib/ui";
 
 /*
  * The hero is framed as a release header: the site is treated as a product
@@ -35,6 +36,12 @@ export function Hero() {
 
   // Repo-style handle for the release panel header (e.g. "renanrambul.dev").
   const repo = siteConfig.url.replace(/^https?:\/\//, "");
+
+  const socials = [
+    { href: siteConfig.links.github, label: "GitHub", Icon: FiGithub },
+    { href: siteConfig.links.linkedin, label: "LinkedIn", Icon: FiLinkedin },
+    { href: `mailto:${siteConfig.links.email}`, label: "Email", Icon: FiMail },
+  ];
 
   // Release notes. Marker semantics ("+" shipped, "~" in progress) are
   // structural and live here in code; the copy lives in the message files.
@@ -104,44 +111,31 @@ export function Hero() {
               className="mt-8 flex items-center gap-6 animate-enter-fade"
               style={{ animationDelay: "0.65s" }}
             >
-              <m.a
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="rounded-sm text-zinc-500 outline-none transition-colors duration-200 hover:text-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-400 dark:hover:text-emerald-400 dark:focus-visible:ring-offset-zinc-900"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FiGithub className="h-6 w-6" />
-              </m.a>
-              <m.a
-                href={siteConfig.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="rounded-sm text-zinc-500 outline-none transition-colors duration-200 hover:text-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-400 dark:hover:text-emerald-400 dark:focus-visible:ring-offset-zinc-900"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FiLinkedin className="h-6 w-6" />
-              </m.a>
-              <m.a
-                href={`mailto:${siteConfig.links.email}`}
-                aria-label="Email"
-                className="rounded-sm text-zinc-500 outline-none transition-colors duration-200 hover:text-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-400 dark:hover:text-emerald-400 dark:focus-visible:ring-offset-zinc-900"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FiMail className="h-6 w-6" />
-              </m.a>
+              {socials.map(({ href, label, Icon }) => {
+                const external = href.startsWith("http");
+                return (
+                  <m.a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className={`rounded-sm text-zinc-500 transition-colors duration-200 hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon className="h-6 w-6" />
+                  </m.a>
+                );
+              })}
             </div>
           </div>
 
           {/* Release panel: the signature. A changelog rendered as a release
               card, version tag and live status in the header. */}
           <div
-            className="rounded-xl border border-zinc-200 bg-zinc-50/70 p-5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none sm:p-6 animate-enter-fade-up"
+            className={`${cardClass} backdrop-blur-sm sm:p-6 animate-enter-fade-up`}
             style={{ animationDelay: "0.3s" }}
           >
             <div className="flex items-center justify-between gap-3 font-accent-mono text-sm">
@@ -168,9 +162,9 @@ export function Hero() {
               {t("latest")}
             </p>
             <ul className="space-y-2.5">
-              {log.map((entry, i) => (
+              {log.map((entry) => (
                 <li
-                  key={i}
+                  key={entry.text}
                   className="flex gap-3 text-zinc-700 dark:text-zinc-300"
                 >
                   <span
@@ -193,7 +187,7 @@ export function Hero() {
             <button
               onClick={() => scrollToSection("about")}
               aria-label={t("scrollDown")}
-              className="mt-5 ml-auto flex items-center gap-1.5 rounded-sm font-accent-mono text-xs text-zinc-500 outline-none transition-colors hover:text-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-400 dark:hover:text-emerald-400 dark:focus-visible:ring-offset-zinc-900"
+              className={`mt-5 ml-auto flex items-center gap-1.5 rounded-sm font-accent-mono text-xs text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
             >
               {t("fullLog")}
               <span className="animate-bob inline-flex">

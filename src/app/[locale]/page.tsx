@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 
   return buildMetadata({
     locale,
-    image: "/og-home.png",
     title:
       locale === "pt"
         ? "Renan Rambul | Engenheiro de Software"

@@ -5,6 +5,7 @@ import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import { isLocale } from "../../../i18n.config";
 
 interface BlogCardProps {
   post: BlogPostMetadata;
@@ -12,7 +13,8 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, index }: BlogCardProps) {
-  const locale = useLocale() as "en" | "pt";
+  const rawLocale = useLocale();
+  const locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = useTranslations("blog");
 
   return (

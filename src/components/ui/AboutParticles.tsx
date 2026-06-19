@@ -122,7 +122,7 @@ export default function AboutParticles() {
     // Only animate while the section is on screen — saves CPU/battery when it's
     // scrolled away (and keeps it from competing for the main thread elsewhere).
     const io = new IntersectionObserver(
-      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      ([entry]) => (entry?.isIntersecting ? start() : stop()),
       { threshold: 0 }
     );
     io.observe(canvas);

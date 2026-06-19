@@ -5,7 +5,9 @@ import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { buildMetadata } from "@/lib/metadata";
+import { buildMetadata, absoluteImage } from "@/lib/metadata";
+import { siteConfig } from "@/config/site";
+import { isLocale } from "../../../../../i18n.config";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -35,14 +37,47 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug, locale } = await params;
   const post = getBlogPost(slug);
 
-  if (!post) {
+  if (!post || !isLocale(locale)) {
     notFound();
   }
 
-  const content = getBlogPostContent(slug, locale as "en" | "pt");
+  const content = getBlogPostContent(slug, locale);
+  const publishedTime = new Date(post.date).toISOString();
+
+  // Article structured data: powers Google's article rich results, which the
+  // page-level OpenGraph/Twitter meta alone do not provide.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title[locale],
+    description: post.excerpt[locale],
+    image: absoluteImage(post.banner),
+    datePublished: publishedTime,
+    dateModified: publishedTime,
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteConfig.url}/${locale}/blog/${slug}`,
+    },
+    inLanguage: locale,
+    keywords: post.tags.join(", "),
+  };
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
       <BlogPost post={post} content={content} />
       <Footer />
@@ -61,14 +96,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const typedLocale = locale as "en" | "pt";
+  const typedLocale = isLocale(locale) ? locale : "en";
   const publishedTime = new Date(post.date).toISOString();
 
   return buildMetadata({
     locale,
     path: `/blog/${slug}`,
     type: "article",
-    image: post.banner,
     title: `${post.title[typedLocale]} | Renan Rambul`,
     description: post.excerpt[typedLocale],
     keywords: post.tags.join(", "),

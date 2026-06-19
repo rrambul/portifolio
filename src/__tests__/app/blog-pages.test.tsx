@@ -44,7 +44,7 @@ describe("Blog index page", () => {
 });
 
 describe("Blog post page", () => {
-  const slug = getBlogPosts()[0].slug;
+  const slug = getBlogPosts()[0]!.slug;
 
   it("generateStaticParams returns every post × locale", async () => {
     const params = await generateStaticParams();

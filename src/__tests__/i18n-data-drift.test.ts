@@ -4,6 +4,7 @@ import pt from "@/messages/pt/index.json";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experiences";
 import { skillCategories } from "@/data/skills";
+import { interests } from "@/data/interests";
 
 /**
  * Guards the coupling between the data files (which carry bare string keys)
@@ -49,5 +50,40 @@ describe.each(Object.entries(locales))("%s message keys", (_name, m) => {
     for (const cat of skillCategories) {
       expect(resolve(m.skills, cat.titleKey), `skills.${cat.titleKey}`).toBeTypeOf("string");
     }
+  });
+
+  it("resolves every interest item key", () => {
+    for (const interest of interests) {
+      expect(
+        resolve(m, `interests.items.${interest.key}`),
+        `interests.items.${interest.key}`
+      ).toBeTypeOf("string");
+    }
+  });
+});
+
+/**
+ * Structural parity between the two message trees. The data-key tests above
+ * only cover copy referenced from data files; this catches component-literal
+ * keys (the Hero changelog, contact validation, nav, etc.) and per-locale
+ * array-length drift (e.g. a responsibilities bullet added to one locale only).
+ */
+describe("message tree parity (en <-> pt)", () => {
+  function leafPaths(value: unknown, prefix = ""): string[] {
+    if (Array.isArray(value)) {
+      // Encode the length so arrays of differing size are caught as drift.
+      return [`${prefix}[len=${value.length}]`];
+    }
+    if (value && typeof value === "object") {
+      return Object.entries(value as Record<string, unknown>)
+        .flatMap(([key, v]) =>
+          leafPaths(v, prefix ? `${prefix}.${key}` : key)
+        );
+    }
+    return [prefix];
+  }
+
+  it("en and pt expose the same key paths and array lengths", () => {
+    expect(leafPaths(en).sort()).toEqual(leafPaths(pt).sort());
   });
 });

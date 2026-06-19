@@ -3,13 +3,14 @@
 import { ReactNode } from "react";
 import { m } from "framer-motion";
 import Link from "next/link";
+import { focusRing } from "@/lib/ui";
 
 interface AnimatedButtonProps {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
   className?: string;
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   icon?: ReactNode;
   iconPosition?: "left" | "right";
@@ -38,18 +39,16 @@ export function AnimatedButton({
   // Mono label + flat fill to match the terminal/spec language; the only
   // motion is a subtle scale on hover/press.
   const getBaseClasses = () => {
-    let classes =
-      "inline-flex items-center justify-center font-accent-mono font-medium transition-colors rounded-md outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900";
+    const PRIMARY =
+      " border border-emerald-600/40 bg-emerald-600/10 text-emerald-800 hover:bg-emerald-600/20 hover:border-emerald-600/60 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-300 dark:hover:bg-emerald-400/20";
+
+    let classes = `inline-flex items-center justify-center font-accent-mono font-medium transition-colors rounded-md ${focusRing}`;
 
     // Variant styles. Emerald-700 against white text and emerald-400 on the
     // dark base keep the WCAG AA 4.5:1 contrast ratio.
     switch (variant) {
       case "primary":
-        classes +=
-          " border border-emerald-600/40 bg-emerald-600/10 text-emerald-800 hover:bg-emerald-600/20 hover:border-emerald-600/60 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-300 dark:hover:bg-emerald-400/20";
-        break;
-      case "secondary":
-        classes += " bg-blue-600 hover:bg-blue-700 text-white";
+        classes += PRIMARY;
         break;
       case "outline":
         classes +=
@@ -60,7 +59,7 @@ export function AnimatedButton({
           " bg-transparent hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200";
         break;
       default:
-        classes += " bg-emerald-600 hover:bg-emerald-700 text-white";
+        classes += PRIMARY;
     }
 
     switch (size) {

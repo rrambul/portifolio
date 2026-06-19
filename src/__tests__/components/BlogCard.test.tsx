@@ -27,19 +27,18 @@ vi.mock("next/link", () => ({
 vi.mock("framer-motion");
 
 import { BlogCard } from "@/components/blog/BlogCard";
-import type { BlogPost } from "@/types/blog";
+import type { BlogPostMetadata } from "@/types/blog";
 
-const mockPost: BlogPost = {
+const mockPost: BlogPostMetadata = {
   id: "1",
   title: { en: "Test Post", pt: "Post de Teste" },
   excerpt: { en: "Test excerpt", pt: "Resumo de teste" },
-  content: { en: "Test content", pt: "Conteúdo de teste" },
   date: "2025-01-15",
   banner: "/blog/test-banner.jpg",
   slug: "test-post",
   tags: ["testing", "react"],
   readTime: 5,
-  author: { name: "Test Author", avatar: "/profile.jpg" },
+  author: { name: "Test Author" },
 };
 
 describe("BlogCard", () => {

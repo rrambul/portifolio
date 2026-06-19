@@ -19,26 +19,14 @@ describe("skillCategories", () => {
     for (const cat of skillCategories) {
       expect(cat.titleKey).toBeTruthy();
       expect(cat.accent).toMatch(/^#[0-9a-f]{6}$/i);
-      expect(typeof cat.skills).toBe("function");
+      expect(Array.isArray(cat.skills)).toBe(true);
     }
   });
 
-  it("each category returns skills with light theme", () => {
+  it("each category exposes non-empty skills with a name and icon", () => {
     for (const cat of skillCategories) {
-      const skills = cat.skills();
-      expect(skills.length).toBeGreaterThan(0);
-      for (const skill of skills) {
-        expect(skill.name).toBeTruthy();
-        expect(skill.icon).toBeDefined();
-      }
-    }
-  });
-
-  it("each category returns skills with dark theme", () => {
-    for (const cat of skillCategories) {
-      const skills = cat.skills();
-      expect(skills.length).toBeGreaterThan(0);
-      for (const skill of skills) {
+      expect(cat.skills.length).toBeGreaterThan(0);
+      for (const skill of cat.skills) {
         expect(skill.name).toBeTruthy();
         expect(skill.icon).toBeDefined();
       }
@@ -48,9 +36,9 @@ describe("skillCategories", () => {
   it("frontend category has the most skills", () => {
     const frontend = skillCategories.find((c) => c.titleKey === "frontend")!;
     const others = skillCategories.filter((c) => c.titleKey !== "frontend");
-    const frontendCount = frontend.skills().length;
+    const frontendCount = frontend.skills.length;
     for (const cat of others) {
-      expect(frontendCount).toBeGreaterThanOrEqual(cat.skills().length);
+      expect(frontendCount).toBeGreaterThanOrEqual(cat.skills.length);
     }
   });
 });

@@ -6,15 +6,13 @@ import { FiUsers } from "react-icons/fi";
 import { skillCategories, type SkillCategory } from "@/data/skills";
 import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const CARD =
-  "rounded-xl border border-zinc-200 bg-white/70 p-5 shadow-sm transition-colors dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none";
+import { cardClass } from "@/lib/ui";
 
 /** A category's skills as a grid of labeled icon tiles. */
 function SkillTiles({ category }: { category: SkillCategory }) {
   return (
     <div className="flex flex-wrap gap-x-5 gap-y-4">
-      {category.skills().map((skill) => (
+      {category.skills.map((skill) => (
         <div
           key={skill.name}
           className="flex w-16 flex-col items-center gap-1.5"
@@ -48,7 +46,7 @@ function CategoryCell({
     <m.div
       variants={fadeInUp}
       whileHover={cardHover}
-      className={`${CARD} ${className}`}
+      className={`${cardClass} ${className}`}
     >
       <div className="mb-4 flex items-center gap-2">
         <span
@@ -68,8 +66,13 @@ function CategoryCell({
 export function SkillsBento() {
   const t = useTranslations("skills");
 
-  const byKey = (key: string) =>
-    skillCategories.find((c) => c.titleKey === key) as SkillCategory;
+  const byKey = (key: string): SkillCategory => {
+    const category = skillCategories.find((c) => c.titleKey === key);
+    if (!category) {
+      throw new Error(`Unknown skill category: ${key}`);
+    }
+    return category;
+  };
 
   return (
     <section id="skills" className="bg-transparent py-20">
@@ -112,7 +115,7 @@ export function SkillsBento() {
             <m.div
               variants={fadeInUp}
               whileHover={cardHover}
-              className={`${CARD} flex items-center justify-around gap-4 md:col-span-2`}
+              className={`${cardClass} flex items-center justify-around gap-4 md:col-span-2`}
             >
               <div className="text-center">
                 <div className="font-accent-mono text-4xl font-bold text-emerald-600 dark:text-emerald-400 md:text-5xl">
@@ -140,7 +143,7 @@ export function SkillsBento() {
             <m.div
               variants={fadeInUp}
               whileHover={cardHover}
-              className={`${CARD} flex flex-col justify-center`}
+              className={`${cardClass} flex flex-col justify-center`}
             >
               <div className="mb-2 flex items-center gap-2">
                 <FiUsers

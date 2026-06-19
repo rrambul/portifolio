@@ -27,10 +27,10 @@ describe("buildMetadata", () => {
       en: "https://renanrambul.dev/en",
       pt: "https://renanrambul.dev/pt",
     });
-    // default image resolved to an absolute URL
-    expect(meta.openGraph?.images).toEqual([
-      expect.objectContaining({ url: "https://renanrambul.dev/og-home.png" }),
-    ]);
+    // no explicit image: omit image fields so the route's opengraph-image
+    // file convention supplies the social card instead
+    expect(meta.openGraph?.images).toBeUndefined();
+    expect(meta.twitter?.images).toBeUndefined();
     // optional fields omitted when not provided
     expect(meta.keywords).toBeUndefined();
     expect(meta.authors).toBeUndefined();

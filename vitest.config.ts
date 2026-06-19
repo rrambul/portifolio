@@ -23,12 +23,15 @@ export default defineConfig({
         "src/app/(redirect)/layout.tsx",
         "src/app/[locale]/layout.tsx",
         "src/i18n/**",
-        "src/middleware.ts",
         // Pure type declarations (no runtime).
         "src/types/**",
         // Canvas drawing has no 2D context in jsdom; verified visually. Its
         // enable/skip guards are still covered by AboutParticles.test.
         "src/components/ui/AboutParticles.tsx",
+        // next/og ImageResponse needs the Next server runtime, not jsdom; the
+        // generated social cards are verified via the production build.
+        "src/lib/og.tsx",
+        "src/app/**/opengraph-image.tsx",
       ],
       thresholds: {
         statements: 90,

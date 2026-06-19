@@ -11,8 +11,7 @@ import { experiences } from "@/data/experiences";
 import { skillCategories } from "@/data/skills";
 import enMessages from "@/messages/en/index.json";
 import ptMessages from "@/messages/pt/index.json";
-
-export type CvLocale = "en" | "pt";
+import type { Locale } from "../../i18n.config";
 
 interface CompanyCopy {
   title: string;
@@ -21,7 +20,7 @@ interface CompanyCopy {
 }
 
 /** Labels that don't exist in the site messages. */
-const LABELS: Record<CvLocale, { summary: string; generated: string }> = {
+const LABELS: Record<Locale, { summary: string; generated: string }> = {
   en: { summary: "Summary", generated: "Generated from" },
   pt: { summary: "Resumo", generated: "Gerado a partir de" },
 };
@@ -90,15 +89,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function messagesFor(locale: CvLocale) {
+function messagesFor(locale: Locale) {
   return locale === "pt" ? ptMessages : enMessages;
 }
 
-export function cvFileName(locale: CvLocale): string {
+export function cvFileName(locale: Locale): string {
   return `Renan-Rambul-CV-${locale.toUpperCase()}.pdf`;
 }
 
-export function createCvDocument(locale: CvLocale) {
+export function createCvDocument(locale: Locale) {
   const m = messagesFor(locale);
   const labels = LABELS[locale];
   const companies = m.experience.companies as Record<string, CompanyCopy>;
@@ -169,10 +168,7 @@ export function createCvDocument(locale: CvLocale) {
               {m.skills[category.titleKey as "frontend"]}
             </Text>
             <Text style={styles.skillCategoryItems}>
-              {category
-                .skills()
-                .map((skill) => skill.name)
-                .join(", ")}
+              {category.skills.map((skill) => skill.name).join(", ")}
             </Text>
           </View>
         ))}
