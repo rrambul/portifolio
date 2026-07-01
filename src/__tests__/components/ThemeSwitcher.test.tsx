@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 // Mock next-themes
 const mockSetTheme = vi.fn();
@@ -26,6 +27,12 @@ describe("ThemeSwitcher", () => {
   beforeEach(() => {
     mockTheme = "dark";
     mockSetTheme.mockClear();
+  });
+
+  it("renders nothing before the mount effect runs (hydration guard)", () => {
+    // SSR rendering never runs useEffect, so `mounted` stays false and the
+    // component hits its `if (!mounted) return null` early return.
+    expect(renderToStaticMarkup(<ThemeSwitcher />)).toBe("");
   });
 
   it("renders when mounted", () => {

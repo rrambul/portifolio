@@ -90,4 +90,21 @@ test.describe("Theme Switching", () => {
     await lightButton.click();
     await expect(html).toHaveClass(/dark/);
   });
+
+  test("theme choice persists across a reload", async ({ page }) => {
+    await page.goto("/en");
+    const html = page.locator("html");
+
+    // Start in dark, toggle to light
+    await expect(html).toHaveClass(/dark/);
+    const themeButton = page.locator("nav").getByRole("button", { name: /light|dark/i });
+    await themeButton.click();
+    await expect(html).not.toHaveClass(/dark/);
+
+    // Reload: light mode should survive (persisted in localStorage)
+    await page.reload();
+    await expect(html).not.toHaveClass(/dark/);
+    const stored = await page.evaluate(() => localStorage.getItem("theme"));
+    expect(stored).toBe("light");
+  });
 });

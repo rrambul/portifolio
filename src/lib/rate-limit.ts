@@ -52,3 +52,8 @@ export function clientIp(request: Request): string {
 export function resetRateLimit(): void {
   hits.clear();
 }
+
+/** Test helper: number of keys currently tracked (for sweep assertions). */
+export function _trackedKeyCount(): number {
+  return hits.size;
+}

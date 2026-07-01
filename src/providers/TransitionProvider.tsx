@@ -9,6 +9,7 @@ import {
   m,
 } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { stripLocale } from "@/lib/strip-locale";
 
 interface TransitionProviderProps {
   children: ReactNode;
@@ -20,7 +21,7 @@ export function TransitionProvider({ children }: TransitionProviderProps) {
 
   // Strip locale prefix so locale changes don't trigger page transition
   const pathnameWithoutLocale = useMemo(() => {
-    return pathname.replace(/^\/(en|pt)/, "") || "/";
+    return stripLocale(pathname);
   }, [pathname]);
 
   // Skip initial animation on first page load

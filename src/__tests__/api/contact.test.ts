@@ -190,4 +190,112 @@ describe("POST /api/contact", () => {
       })
     );
   });
+
+  it("returns 500 when RESEND_API_KEY is not configured", async () => {
+    delete process.env.RESEND_API_KEY;
+    const response = await POST(
+      createRequest({
+        name: "John",
+        email: "test@test.com",
+        message: "Hello",
+      })
+    );
+    expect(response.status).toBe(500);
+    const data = await response.json();
+    expect(data.error).toContain("configuration");
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("escapes HTML in the notification email and converts newlines to <br>", async () => {
+    mockSend.mockResolvedValue({ data: { id: "msg_html" }, error: null });
+
+    await POST(
+      createRequest({
+        name: "<script>alert(1)</script>",
+        email: "evil@example.com",
+        message: "Line one\nLine two",
+      })
+    );
+
+    expect(mockSend).toHaveBeenCalledTimes(1);
+    const arg = mockSend.mock.calls[0]![0] as { html: string };
+    expect(arg.html).toContain("&lt;script&gt;");
+    expect(arg.html).not.toContain("<script>");
+    expect(arg.html).toContain("Line one<br>Line two");
+  });
+
+  it("returns 400 when the message exceeds the length cap", async () => {
+    const response = await POST(
+      createRequest({
+        name: "John",
+        email: "john@example.com",
+        message: "a".repeat(5001),
+      })
+    );
+    expect(response.status).toBe(400);
+    const data = await response.json();
+    expect(data.error).toContain("exceeds");
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("accepts a message exactly at the length cap (inclusive)", async () => {
+    mockSend.mockResolvedValue({ data: { id: "msg_max" }, error: null });
+
+    const response = await POST(
+      createRequest({
+        name: "John",
+        email: "john@example.com",
+        message: "a".repeat(5000),
+      })
+    );
+    expect(response.status).toBe(200);
+    expect(mockSend).toHaveBeenCalledTimes(1);
+  });
+
+  it("strips CR/LF from the email subject to block header injection", async () => {
+    mockSend.mockResolvedValue({ data: { id: "msg_crlf" }, error: null });
+
+    await POST(
+      createRequest({
+        name: "Evil\r\nBcc: x@x.com",
+        email: "john@example.com",
+        message: "Hello",
+      })
+    );
+
+    expect(mockSend).toHaveBeenCalledTimes(1);
+    const arg = mockSend.mock.calls[0]![0] as { subject: string };
+    expect(arg.subject).not.toContain("\r");
+    expect(arg.subject).not.toContain("\n");
+  });
+
+  it("returns 400 when the name is whitespace-only", async () => {
+    const response = await POST(
+      createRequest({
+        name: "   ",
+        email: "john@example.com",
+        message: "Hello",
+      })
+    );
+    expect(response.status).toBe(400);
+    const data = await response.json();
+    expect(data.error).toContain("required");
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("trims surrounding whitespace from the name before sending", async () => {
+    mockSend.mockResolvedValue({ data: { id: "msg_trim" }, error: null });
+
+    await POST(
+      createRequest({
+        name: " John ",
+        email: "john@example.com",
+        message: "Hello",
+      })
+    );
+
+    expect(mockSend).toHaveBeenCalledTimes(1);
+    const arg = mockSend.mock.calls[0]![0] as { subject: string };
+    expect(arg.subject).toMatch(/from John$/);
+  });
 });

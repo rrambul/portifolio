@@ -87,4 +87,13 @@ describe("createCvDocument structure", () => {
     const firstBullet = companies[experiences[0]!.i18nKey]!.responsibilities[0]!;
     expect(text).toContain(firstBullet);
   });
+
+  it("uses the Portuguese-only labels for the pt locale", () => {
+    const text = collectText(createCvDocument("pt")).join("\n");
+
+    // "Resumo" / "Summary" are hardcoded labels in cv.tsx (LABELS), not in the
+    // message JSON, so they prove the pt branch of the document was rendered.
+    expect(text).toContain("Resumo");
+    expect(text).not.toContain("Summary");
+  });
 });

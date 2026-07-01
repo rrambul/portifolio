@@ -8,6 +8,7 @@ import "../globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
 import { siteConfig } from "@/config/site";
+import { buildPersonJsonLd, buildWebSiteJsonLd } from "@/lib/structured-data";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -139,54 +140,13 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": siteConfig.name,
-              "url": siteConfig.url,
-              "jobTitle": "Software Engineer",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Translational Analytics & Statistics"
-              },
-              "description": siteConfig.description,
-              "knowsAbout": [
-                "JavaScript",
-                "TypeScript",
-                "React",
-                "Next.js",
-                "Node.js",
-                "Web Development",
-                "Frontend Development",
-                "Software Architecture"
-              ],
-              "sameAs": [
-                siteConfig.links.github,
-                siteConfig.links.linkedin,
-                siteConfig.links.x,
-              ],
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "BR"
-              }
-            })
+            __html: JSON.stringify(buildPersonJsonLd()),
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": `${siteConfig.name} Portfolio`,
-              "url": siteConfig.url,
-              "description": siteConfig.description,
-              "author": {
-                "@type": "Person",
-                "name": siteConfig.name
-              },
-              "inLanguage": siteConfig.locale.supported,
-            })
+            __html: JSON.stringify(buildWebSiteJsonLd()),
           }}
         />
       </head>

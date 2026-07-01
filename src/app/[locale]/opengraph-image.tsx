@@ -1,4 +1,4 @@
-import { renderOgImage, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
+import { renderOgImage, siteOgFields, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 import { siteConfig } from "@/config/site";
 import { locales } from "../../../i18n.config";
 
@@ -16,10 +16,5 @@ export default async function Image({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return renderOgImage({
-    eyebrow: siteConfig.url.replace(/^https?:\/\//, ""),
-    title: siteConfig.name,
-    subtitle: locale === "pt" ? "Engenheiro de Software" : "Software Engineer",
-    footer: "6+ years building web products end to end",
-  });
+  return renderOgImage(siteOgFields(locale));
 }

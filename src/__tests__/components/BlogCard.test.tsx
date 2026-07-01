@@ -1,10 +1,12 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
+
+const h = vi.hoisted(() => ({ locale: { current: "en" as string } }));
 
 // Mock next-intl
 vi.mock("next-intl", () => ({
+  useLocale: () => h.locale.current,
   useTranslations: () => (key: string) => key,
-  useLocale: () => "en",
 }));
 
 // Mock next/image
@@ -40,6 +42,10 @@ const mockPost: BlogPostMetadata = {
   readTime: 5,
   author: { name: "Test Author" },
 };
+
+beforeEach(() => {
+  h.locale.current = "en";
+});
 
 describe("BlogCard", () => {
   it("renders the post title in the current locale", () => {
@@ -79,5 +85,34 @@ describe("BlogCard", () => {
   it("renders read time", () => {
     render(<BlogCard post={mockPost} index={0} />);
     expect(screen.getByText("5 min")).toBeInTheDocument();
+  });
+
+  it("renders the Portuguese title/excerpt, a pt-BR date, and a pt blog link for the pt locale", () => {
+    h.locale.current = "pt";
+    render(<BlogCard post={mockPost} index={0} />);
+
+    expect(screen.getByText("Post de Teste")).toBeInTheDocument();
+    expect(screen.getByText("Resumo de teste")).toBeInTheDocument();
+
+    const link = screen.getByRole("link");
+    expect(link).toHaveAttribute("href", "/pt/blog/test-post");
+
+    // pt-BR formats the date day-first (15/01/2025), unlike en-US (1/15/2025).
+    const enDate = new Date(mockPost.date).toLocaleDateString("en-US");
+    const ptDate = new Date(mockPost.date).toLocaleDateString("pt-BR");
+    expect(ptDate).not.toBe(enDate);
+    const time = screen.getByText(new RegExp(`publishedOn ${ptDate}`));
+    expect(time).toBeInTheDocument();
+  });
+
+  it("falls back to English copy when the locale is not a known locale", () => {
+    h.locale.current = "fr";
+    render(<BlogCard post={mockPost} index={0} />);
+
+    expect(screen.getByText("Test Post")).toBeInTheDocument();
+    expect(screen.getByText("Test excerpt")).toBeInTheDocument();
+
+    const link = screen.getByRole("link");
+    expect(link).toHaveAttribute("href", "/en/blog/test-post");
   });
 });

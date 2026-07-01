@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
-const h = vi.hoisted(() => ({ locale: { current: "en" as "en" | "pt" } }));
+const h = vi.hoisted(() => ({ locale: { current: "en" as string } }));
 
 vi.mock("next-intl", () => ({
   useLocale: () => h.locale.current,
@@ -78,5 +78,18 @@ describe("BlogPost", () => {
     expect(screen.getByText("Conteúdo PT")).toBeInTheDocument();
     const links = screen.getAllByRole("link");
     expect(links[0]).toHaveAttribute("href", "/pt/blog");
+  });
+
+  it("falls back to English copy when the locale is not a known locale", () => {
+    h.locale.current = "fr";
+    render(<BlogPost post={post} content="English **content**" />);
+
+    expect(screen.getByText("English Title")).toBeInTheDocument();
+    expect(screen.getByText("English excerpt")).toBeInTheDocument();
+
+    const links = screen.getAllByRole("link");
+    for (const link of links) {
+      expect(link).toHaveAttribute("href", "/en/blog");
+    }
   });
 });

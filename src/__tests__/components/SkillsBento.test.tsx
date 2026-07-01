@@ -44,10 +44,10 @@ describe("SkillsBento", () => {
     expect(screen.getByText("community.text")).toBeInTheDocument();
   });
 
-  it("renders every skill from the data", () => {
+  it("renders every skill name from the data in the DOM", () => {
     render(<SkillsBento />);
-    const total = skillCategories.reduce((n, c) => n + c.skills.length, 0);
-    // each skill name is rendered once
-    expect(total).toBeGreaterThan(20);
+    for (const skill of skillCategories.flatMap((c) => c.skills)) {
+      expect(screen.getByText(skill.name)).toBeInTheDocument();
+    }
   });
 });

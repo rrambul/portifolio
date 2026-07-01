@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { siteConfig } from "@/config/site";
 
 /**
  * Shared renderer for the `opengraph-image` route conventions. Generating the
@@ -9,6 +10,32 @@ import { ImageResponse } from "next/og";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
+
+export type OgFields = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  footer?: string;
+};
+
+/** Strip the protocol so the eyebrow reads as a bare host (renanrambul.dev). */
+export function ogEyebrow(suffix = ""): string {
+  return `${siteConfig.url.replace(/^https?:\/\//, "")}${suffix}`;
+}
+
+/**
+ * Pure input computation for the site (homepage) OG card. Kept separate from
+ * the ImageResponse render so the per-locale subtitle can be unit tested
+ * without the Next runtime.
+ */
+export function siteOgFields(locale: string): OgFields {
+  return {
+    eyebrow: ogEyebrow(),
+    title: siteConfig.name,
+    subtitle: locale === "pt" ? "Engenheiro de Software" : "Software Engineer",
+    footer: "6+ years building web products end to end",
+  };
+}
 
 const EMERALD = "#34d399";
 const BG = "#0a0f10";

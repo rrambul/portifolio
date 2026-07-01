@@ -38,6 +38,22 @@ test.describe("Axe scans", () => {
     });
   }
 
+  for (const theme of ["dark", "light"] as const) {
+    test(`learning log has no axe violations (${theme})`, async ({ page }) => {
+      await setTheme(page, theme);
+      await page.goto("/en/learning");
+      // Let entrance animations settle so axe doesn't flag still-fading text.
+      await page.waitForTimeout(2500);
+      await expectNoAxeViolations(page);
+    });
+  }
+
+  test("Portuguese homepage has no axe violations", async ({ page }) => {
+    await page.goto("/pt");
+    await page.waitForTimeout(2500);
+    await expectNoAxeViolations(page);
+  });
+
   test("blog index has no axe violations", async ({ page }) => {
     await page.goto("/en/blog");
     await page.waitForTimeout(1000);

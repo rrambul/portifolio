@@ -119,12 +119,16 @@ describe("AnimatedButton", () => {
     expect(button?.className).toContain("opacity-60");
   });
 
-  it("tracks press state through tap gestures", () => {
-    const { container } = render(<AnimatedButton>Press</AnimatedButton>);
-    const button = container.querySelector("button") as HTMLElement;
-    fireEvent.mouseDown(button);
-    fireEvent.mouseUp(button);
-    fireEvent.mouseLeave(button);
-    expect(button).toBeInTheDocument();
+  it("renders the download path as a plain same-tab anchor", () => {
+    render(
+      <AnimatedButton href="/api/cv?locale=en" download>
+        CV
+      </AnimatedButton>
+    );
+    const link = screen.getByText("CV").closest("a");
+    expect(link).toHaveAttribute("href", "/api/cv?locale=en");
+    // Downloads stay in the same tab: no external-link affordances.
+    expect(link).not.toHaveAttribute("target", "_blank");
+    expect(link).not.toHaveAttribute("rel", "noopener noreferrer");
   });
 });

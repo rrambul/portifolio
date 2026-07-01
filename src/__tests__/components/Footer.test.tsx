@@ -52,6 +52,26 @@ describe("Footer", () => {
     expect(hrefs).toContain("mailto:test@example.com");
   });
 
+  it("opens external social links in a new tab but not the mailto", () => {
+    render(<Footer />);
+
+    for (const label of ["GitHub", "LinkedIn"]) {
+      const link = screen.getByLabelText(label);
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    }
+
+    const email = screen.getByLabelText("Email");
+    expect(email).not.toHaveAttribute("target");
+    expect(email).not.toHaveAttribute("rel");
+  });
+
+  it("scrolls to the about section when the wordmark is clicked", () => {
+    render(<Footer />);
+    fireEvent.click(screen.getByText("renanrambul.dev"));
+    expect(scrollToSection).toHaveBeenCalledWith("about");
+  });
+
   it("renders navigation buttons", () => {
     render(<Footer />);
     expect(screen.getByText("aboutLink")).toBeInTheDocument();
