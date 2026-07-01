@@ -29,6 +29,7 @@ export function Navigation() {
       { id: "skills", label: t("skills") },
       { id: "projects", label: t("projects") },
       { id: "interests", label: t("interests") },
+      { id: "learning", label: t("learning") },
       { id: "contact", label: t("contact") },
     ],
     [t]
@@ -47,6 +48,12 @@ export function Navigation() {
     // Handle blog navigation - redirect to blog page
     if (sectionId === "blog") {
       router.push(`/${locale}/blog`);
+      return;
+    }
+
+    // Learning Log is its own page, not a homepage anchor.
+    if (sectionId === "learning") {
+      router.push(`/${locale}/learning`);
       return;
     }
 
@@ -72,6 +79,11 @@ export function Navigation() {
   useEffect(() => {
     if (pathname.includes("/blog")) {
       setActiveSection("blog");
+      return;
+    }
+
+    if (pathname.includes("/learning")) {
+      setActiveSection("learning");
       return;
     }
 

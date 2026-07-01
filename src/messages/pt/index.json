@@ -6,6 +6,7 @@
     "projects": "Projetos",
     "skills": "Habilidades",
     "blog": "Blog",
+    "learning": "Aprendizado",
     "interests": "Interesses",
     "contact": "Contato"
   },
@@ -188,6 +189,20 @@
     "backToBlog": "Voltar ao Blog",
     "backToAllPosts": "Voltar para todos os posts",
     "articlesCount": "artigos"
+  },
+  "learning": {
+    "title": "Registro de Aprendizado",
+    "subtitle": "Artigos, palestras, vídeos, livros e cursos que vale a pena lembrar, organizados pelo mês em que os consumi.",
+    "empty": "Nada registrado aqui ainda. Volte em breve.",
+    "types": {
+      "article": "Artigo",
+      "video": "Vídeo",
+      "talk": "Palestra",
+      "book": "Livro",
+      "course": "Curso",
+      "podcast": "Podcast",
+      "paper": "Artigo científico"
+    }
   },
   "footer": {
     "about": "Sobre",

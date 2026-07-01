@@ -15,6 +15,8 @@ describe("sitemap", () => {
     expect(urls).toContain("https://renanrambul.dev/pt");
     expect(urls).toContain("https://renanrambul.dev/en/blog");
     expect(urls).toContain("https://renanrambul.dev/pt/blog");
+    expect(urls).toContain("https://renanrambul.dev/en/learning");
+    expect(urls).toContain("https://renanrambul.dev/pt/learning");
   });
 
   it("includes blog post pages for both locales", () => {

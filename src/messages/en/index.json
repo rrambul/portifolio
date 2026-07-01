@@ -6,6 +6,7 @@
     "projects": "Projects",
     "skills": "Skills",
     "blog": "Blog",
+    "learning": "Learning",
     "interests": "Interests",
     "contact": "Contact"
   },
@@ -188,6 +189,20 @@
     "backToBlog": "Back to Blog",
     "backToAllPosts": "Back to all posts",
     "articlesCount": "articles"
+  },
+  "learning": {
+    "title": "Learning Log",
+    "subtitle": "Articles, talks, videos, books, and courses worth remembering, logged by the month I got to them.",
+    "empty": "Nothing logged here yet. Check back soon.",
+    "types": {
+      "article": "Article",
+      "video": "Video",
+      "talk": "Talk",
+      "book": "Book",
+      "course": "Course",
+      "podcast": "Podcast",
+      "paper": "Paper"
+    }
   },
   "footer": {
     "about": "About",

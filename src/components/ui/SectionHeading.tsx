@@ -11,6 +11,11 @@ interface SectionHeadingProps {
   subtitle?: string;
   /** Optional right-aligned mono meta, e.g. a count or filename. */
   meta?: ReactNode;
+  /**
+   * Heading level for the title. Defaults to "h2" (homepage sections sit under
+   * the Hero's h1); standalone pages with no other h1 should pass "h1".
+   */
+  as?: "h1" | "h2";
 }
 
 /**
@@ -23,6 +28,7 @@ export function SectionHeading({
   title,
   subtitle,
   meta,
+  as: Heading = "h2",
 }: SectionHeadingProps) {
   return (
     <m.div className="mb-12" variants={fadeInUp}>
@@ -37,7 +43,7 @@ export function SectionHeading({
           </span>
         ) : null}
       </div>
-      <h2 className="mt-3 text-3xl font-bold md:text-4xl">{title}</h2>
+      <Heading className="mt-3 text-3xl font-bold md:text-4xl">{title}</Heading>
       {subtitle ? (
         <p className="mt-2 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
           {subtitle}
