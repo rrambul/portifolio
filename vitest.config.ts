@@ -27,8 +27,8 @@ export default defineConfig({
         // Pure type declarations (no runtime).
         "src/types/**",
         // Canvas drawing has no 2D context in jsdom; verified visually. Its
-        // enable/skip guards are still covered by AboutParticles.test.
-        "src/components/ui/AboutParticles.tsx",
+        // enable/skip guards are still covered by SectionParticles.test.
+        "src/components/ui/SectionParticles.tsx",
         // next/og ImageResponse needs the Next server runtime, not jsdom; the
         // generated social cards are verified via the production build.
         "src/lib/og.tsx",

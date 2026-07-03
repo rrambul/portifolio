@@ -9,6 +9,13 @@ vi.mock("next-intl", () => ({
 // Mock framer-motion
 vi.mock("framer-motion");
 
+// Mock the ambient particles (dynamic canvas) so the test stays deterministic.
+vi.mock("next/dynamic", () => ({
+  default: () => function MockParticles() {
+    return null;
+  },
+}));
+
 // Mock AnimatedContactForm
 vi.mock("@/components/ui/AnimatedContactForm", () => ({
   AnimatedContactForm: () => <div data-testid="contact-form" />,

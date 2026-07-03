@@ -19,7 +19,7 @@ interface Dot {
  * near. Skipped entirely for reduced-motion users and on small screens,
  * where it cost the most and showed the least.
  */
-export default function AboutParticles() {
+export default function SectionParticles() {
   const { resolvedTheme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);

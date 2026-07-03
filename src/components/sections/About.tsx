@@ -7,7 +7,7 @@ import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 // Ambient canvas particles (client-only; no SSR).
-const AboutParticles = dynamic(() => import("../ui/AboutParticles"), {
+const SectionParticles = dynamic(() => import("../ui/SectionParticles"), {
   ssr: false,
 });
 
@@ -23,7 +23,7 @@ export function About() {
       className="relative overflow-hidden bg-zinc-100 py-20 dark:bg-zinc-900/40"
     >
       <div className="pointer-events-none absolute inset-0">
-        <AboutParticles />
+        <SectionParticles />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">

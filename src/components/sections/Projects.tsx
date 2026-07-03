@@ -2,11 +2,17 @@
 
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
+import dynamic from "next/dynamic";
 import { FiExternalLink, FiGithub, FiStar, FiGitPullRequest } from "react-icons/fi";
 import { projects } from "@/data/projects";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cardClass } from "@/lib/ui";
+
+// Ambient canvas particles (client-only; no SSR).
+const SectionParticles = dynamic(() => import("../ui/SectionParticles"), {
+  ssr: false,
+});
 
 /** "owner/repo" handle from a GitHub URL, e.g. "rrambul/portifolio". */
 function repoHandle(githubUrl?: string) {
@@ -24,8 +30,15 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="bg-zinc-100 py-20 dark:bg-zinc-900/40">
-      <div className="container mx-auto px-4">
+    <section
+      id="projects"
+      className="relative overflow-hidden bg-zinc-100 py-20 dark:bg-zinc-900/40"
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <SectionParticles />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"

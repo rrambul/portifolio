@@ -11,29 +11,29 @@ vi.mock("framer-motion", () => ({
   useReducedMotion: () => h.reduced.current,
 }));
 
-import AboutParticles from "@/components/ui/AboutParticles";
+import SectionParticles from "@/components/ui/SectionParticles";
 
 beforeEach(() => {
   h.reduced.current = false;
   window.matchMedia = vi.fn().mockReturnValue({ matches: false }) as never;
 });
 
-describe("AboutParticles", () => {
+describe("SectionParticles", () => {
   it("renders a canvas on desktop without reduced motion", () => {
-    const { container } = render(<AboutParticles />);
+    const { container } = render(<SectionParticles />);
     expect(container.querySelector("canvas")).toBeInTheDocument();
   });
 
   it("renders nothing when the user prefers reduced motion", () => {
     h.reduced.current = true;
-    const { container } = render(<AboutParticles />);
+    const { container } = render(<SectionParticles />);
     expect(container).toBeEmptyDOMElement();
   });
 
   it("renders nothing on small screens", () => {
     cleanup();
     window.matchMedia = vi.fn().mockReturnValue({ matches: true }) as never;
-    const { container } = render(<AboutParticles />);
+    const { container } = render(<SectionParticles />);
     expect(container).toBeEmptyDOMElement();
   });
 });
