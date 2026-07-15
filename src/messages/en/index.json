@@ -66,7 +66,7 @@
       "tas": {
         "title": "Software Engineer",
         "responsibilities": [
-          "Ship features end to end on a U.S. healthcare SaaS platform, from API endpoints and data-model changes to accessible UI and PDF reporting, across 250+ merged PRs.",
+          "Own features end to end on a U.S. healthcare SaaS platform, taking each one from API endpoints and data-model changes through accessible UI to production.",
           "Build and maintain the web-component design system that multiple product teams ship on, with accessibility and performance treated as requirements, not nice-to-haves.",
           "Write Playwright integration tests that catch regressions before they reach a release.",
           "Publish shared npm packages that keep UI consistent across product teams, and review frontend PRs for architecture and fidelity to Figma designs.",
