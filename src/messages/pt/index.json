@@ -67,7 +67,7 @@
         "title": "Engenheiro de Software",
         "responsibilities": [
           "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, levando cada uma de endpoints de API e mudanças no modelo de dados até UI acessível em produção.",
-          "Construo e mantenho o design system de web components em que várias equipes de produto entregam, com acessibilidade e performance tratadas como requisito, não como detalhe.",
+          "Criei a biblioteca de componentes que serve de base ao design system sobre o qual toda a plataforma é construída, e a mantenho com acessibilidade e performance tratadas como requisito, não como detalhe.",
           "Escrevo testes de integração com Playwright que pegam regressões antes de chegarem a um release.",
           "Publico pacotes npm compartilhados que mantêm a UI consistente entre as equipes de produto, e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
           "Melhoro os workflows de IA do time, incluindo uma base de conhecimento hierárquica que deixa agentes de codificação produtivos na base de código."
