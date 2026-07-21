@@ -30,9 +30,9 @@
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
     "statusShipping": "entregando",
     "latest": "recentes",
-    "logShipped": "Entreguei 250+ PRs construindo SaaS de saúde.",
+    "logShipped": "Entreguei 300+ PRs construindo SaaS de saúde.",
     "logFortuna": "Lancei o Fortuna, um copiloto de IA para finanças pessoais.",
-    "logAgents": "Trouxe agentes de código com IA para o meu fluxo diário.",
+    "logAgents": "Coloquei revisão de código com IA automática em cada PR.",
     "logLearning": "Estudando context engineering e MCP.",
     "fullLog": "log completo",
     "downloadCV": "Baixar CV",
@@ -66,11 +66,11 @@
       "tas": {
         "title": "Engenheiro de Software",
         "responsibilities": [
-          "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, levando cada uma de endpoints de API e mudanças no modelo de dados até UI acessível em produção.",
+          "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, de fluxos de logística de inventário a uma suíte completa de faturamento, levando cada uma de endpoints de API e mudanças no modelo de dados até UI acessível em produção.",
           "Criei a biblioteca de componentes que serve de base ao design system sobre o qual toda a plataforma é construída, e a mantenho com acessibilidade e performance tratadas como requisito, não como detalhe.",
           "Escrevo testes de integração com Playwright que pegam regressões antes de chegarem a um release.",
           "Publico pacotes npm compartilhados que mantêm a UI consistente entre as equipes de produto, e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
-          "Melhoro os workflows de IA do time, incluindo uma base de conhecimento hierárquica que deixa agentes de codificação produtivos na base de código."
+          "Melhoro os workflows de IA do time: coloquei revisão de código automática em cada PR e uma base de conhecimento hierárquica que deixa agentes de codificação produtivos na base de código."
         ],
         "skills": [
           "TypeScript",
