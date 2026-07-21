@@ -67,7 +67,7 @@
         "title": "Software Engineer",
         "responsibilities": [
           "Own features end to end on a U.S. healthcare SaaS platform, from inventory-logistics flows to a full billing suite, taking each from API endpoints and data-model changes through accessible UI to production.",
-          "Built the foundational component library of the design system the entire platform ships on, and maintain it with accessibility and performance treated as requirements, not nice-to-haves.",
+          "Built the foundational component library of the design system the entire platform ships on, including virtualized select and grid components that fixed a platform-wide performance ceiling, and maintain it with accessibility and performance treated as requirements, not nice-to-haves.",
           "Write Playwright integration tests that catch regressions before they reach a release.",
           "Publish shared npm packages that keep UI consistent across product teams, and review frontend PRs for architecture and fidelity to Figma designs.",
           "Improve the team's AI-assisted workflows: shipped automated code review on every PR and a hierarchical knowledge base that keeps coding agents productive across the codebase."
