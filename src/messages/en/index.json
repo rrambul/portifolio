@@ -41,7 +41,7 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I'm a software engineer who has spent the last 6+ years shipping web products end to end. I work across the stack, from API design and data modeling to design systems and accessible UI, and the frontend is where I go deepest. These days I build healthcare SaaS with a U.S.-based team, owning features from the API to the pixel. I care about clean architecture, a good developer experience, and the small details that make a product feel right.",
+    "content": "I'm a software engineer who has spent the last 7+ years shipping web products end to end, from API design and data modeling to design systems and accessible UI, and the frontend is where I go deepest. These days I build healthcare SaaS with a U.S.-based team, owning features from the API to the pixel and building the design system and platform tooling other teams ship on. I care about clean architecture, a good developer experience, and the small details that make a product feel right.",
     "personal": {
       "title": "Personal",
       "content": "I love building things, learning in public, and contributing to open source. When I'm not coding, I'm probably reading or at the gym."

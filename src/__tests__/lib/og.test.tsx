@@ -18,7 +18,7 @@ describe("siteOgFields", () => {
   it("carries the site name as the title and a stable footer", () => {
     const fields = siteOgFields("en");
     expect(fields.title).toBe(siteConfig.name);
-    expect(fields.footer).toBe("6+ years building web products end to end");
+    expect(fields.footer).toBe("7+ years building web products end to end");
   });
 
   it("strips the protocol from siteConfig.url for the eyebrow", () => {

@@ -38,8 +38,8 @@ describe("SkillsBento", () => {
 
   it("renders the highlight stats and community cell", () => {
     render(<SkillsBento />);
-    expect(screen.getByText("6+")).toBeInTheDocument();
-    expect(screen.getByText("250+")).toBeInTheDocument();
+    expect(screen.getByText("7+")).toBeInTheDocument();
+    expect(screen.getByText("300+")).toBeInTheDocument();
     expect(screen.getByText("community.title")).toBeInTheDocument();
     expect(screen.getByText("community.text")).toBeInTheDocument();
   });

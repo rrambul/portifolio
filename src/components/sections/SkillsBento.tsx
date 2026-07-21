@@ -119,7 +119,7 @@ export function SkillsBento() {
             >
               <div className="text-center">
                 <div className="font-accent-mono text-4xl font-bold text-emerald-600 dark:text-emerald-400 md:text-5xl">
-                  6+
+                  7+
                 </div>
                 <div className="mt-1 max-w-[10rem] text-sm text-zinc-500 dark:text-zinc-400">
                   {t("stats.years")}
