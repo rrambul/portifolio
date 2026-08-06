@@ -9,7 +9,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/rrambul",
     linkedin: "https://www.linkedin.com/in/renan-rambul/",
-    email: "renan.rambul@gmail.com",
+    email: "renanrambuls@gmail.com",
     twitter: "@renanrambul",
     x: "https://x.com/renanrambul",
   },
