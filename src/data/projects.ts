@@ -16,6 +16,12 @@ export const projects: ProjectData[] = [
     demoUrl: "https://fortuna.up.railway.app/",
   },
   {
+    titleKey: "mindforge.title",
+    descriptionKey: "mindforge.description",
+    tags: ["AI Agents", "TypeScript", "React", "NestJS", "Supabase", "Turborepo", "i18n"],
+    githubUrl: "https://github.com/rrambul/mindforge",
+  },
+  {
     titleKey: "modularGameStore.title",
     descriptionKey: "modularGameStore.description",
     tags: ["TypeScript", "Rspack", "Module Federation", "Micro-frontends", "React"],

@@ -254,6 +254,10 @@
       "title": "Fortuna",
       "description": "A personal finance app that brings spending, cards, parcelas, investments and goals into one calm place, with an AI co-pilot that reads your bank statements, flags surprises, and answers in plain language. Built for Brazil (BRL, CDI, parcelas) and fully bilingual."
     },
+    "mindforge": {
+      "title": "Mindforge",
+      "description": "A learning tool that turns a topic into a fundamentals-first curriculum, then has an agent write each lesson on demand as you work through it. Three trackers report how far, how much, and how often you have studied without inflating progress: no streaks, no fake percentages. Built as a TypeScript monorepo with a React front end, a NestJS API, and a Supabase backend."
+    },
     "modularGameStore": {
       "title": "Modular Game Store",
       "description": "A modern, high-performance micro-frontend e-commerce platform built with Rspack and Module Federation, demonstrating scalable frontend architecture for large distributed teams."
