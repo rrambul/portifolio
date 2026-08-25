@@ -14,6 +14,7 @@ vi.mock("@/components/sections/Projects", () => ({ Projects: () => <div data-tes
 vi.mock("@/components/sections/Interests", () => ({ Interests: () => <div data-testid="interests" /> }));
 vi.mock("@/components/sections/Contact", () => ({ Contact: () => <div data-testid="contact" /> }));
 vi.mock("@/components/sections/SkillsBento", () => ({ SkillsBento: () => <div data-testid="skills" /> }));
+vi.mock("@/components/sections/Writing", () => ({ Writing: () => <div data-testid="writing" /> }));
 
 import Home, { generateMetadata } from "@/app/[locale]/page";
 import AboutPage from "@/app/[locale]/about/page";
@@ -23,7 +24,7 @@ import SkillsPage from "@/app/[locale]/skills/page";
 describe("Home page", () => {
   it("composes all sections", () => {
     render(<Home />);
-    for (const id of ["nav", "hero", "about", "experience", "skills", "projects", "interests", "contact", "footer"]) {
+    for (const id of ["nav", "hero", "about", "experience", "skills", "projects", "writing", "interests", "contact", "footer"]) {
       expect(screen.getByTestId(id)).toBeInTheDocument();
     }
   });

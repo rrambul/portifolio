@@ -5,19 +5,20 @@ import { m } from "framer-motion";
 import { interests } from "@/data/interests";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { sectionCol } from "@/lib/ui";
 
 export function Interests() {
   const t = useTranslations("interests");
 
   return (
-    <section id="interests" className="py-20">
+    <section id="interests" className="py-16">
       <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="mx-auto max-w-4xl"
+          className={sectionCol}
         >
           <SectionHeading
             label="interests"
@@ -26,17 +27,16 @@ export function Interests() {
             meta={`${interests.length} topics`}
           />
 
-          {/* Topics as a mono "tag" cloud: a monochrome marker icon per item. */}
-          <m.div variants={fadeInUp} className="flex flex-wrap gap-2.5">
-            {interests.map(({ key, icon: Icon }) => (
+          {/* Topics as plain mono text, no chips. */}
+          <m.div
+            variants={fadeInUp}
+            className="flex flex-wrap gap-x-5 gap-y-2.5"
+          >
+            {interests.map((key) => (
               <span
                 key={key}
-                className="inline-flex items-center gap-2 rounded-md border border-zinc-200 px-3 py-1.5 font-accent-mono text-sm text-zinc-700 dark:border-white/10 dark:text-zinc-300"
+                className="font-accent-mono text-sm text-zinc-600 dark:text-zinc-300"
               >
-                <Icon
-                  className="h-4 w-4 text-zinc-400 dark:text-zinc-500"
-                  aria-hidden="true"
-                />
                 {t(`items.${key}`)}
               </span>
             ))}

@@ -50,7 +50,7 @@ export function LearningLog() {
           initial="hidden"
           animate="show"
           variants={staggerContainer}
-          className="mx-auto max-w-3xl"
+          className="mx-auto max-w-2xl"
         >
           <SectionHeading
             label="learning"

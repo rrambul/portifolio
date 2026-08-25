@@ -168,7 +168,7 @@ export function createCvDocument(locale: Locale) {
               {m.skills[category.titleKey as "frontend"]}
             </Text>
             <Text style={styles.skillCategoryItems}>
-              {category.skills.map((skill) => skill.name).join(", ")}
+              {category.skills.join(", ")}
             </Text>
           </View>
         ))}

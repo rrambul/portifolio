@@ -41,7 +41,7 @@ export function Footer() {
   return (
     <footer className="footer-section relative z-10 border-t border-zinc-200 py-12 dark:border-white/10">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+        <div className="mx-auto flex max-w-2xl flex-col gap-10">
           {/* Colophon */}
           <div className="max-w-sm">
             <button
@@ -96,7 +96,7 @@ export function Footer() {
         </div>
 
         {/* Bottom line: copyright + the release tag, echoing the hero. */}
-        <div className="mt-10 flex flex-col gap-2 border-t border-zinc-200 pt-6 font-accent-mono text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col gap-2 border-t border-zinc-200 pt-6 font-accent-mono text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
           <span>
             &copy; {currentYear} {siteConfig.name}. {t("copyright")}
           </span>

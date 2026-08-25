@@ -6,7 +6,7 @@ import { FiExternalLink, FiGithub, FiStar, FiGitPullRequest } from "react-icons/
 import { projects } from "@/data/projects";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { cardClass } from "@/lib/ui";
+import { sectionCol } from "@/lib/ui";
 
 /** "owner/repo" handle from a GitHub URL, e.g. "rrambul/portifolio". */
 function repoHandle(githubUrl?: string) {
@@ -24,14 +24,14 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-16">
       <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="mx-auto max-w-5xl"
+          className={sectionCol}
         >
           <SectionHeading
             label="projects"
@@ -40,9 +40,10 @@ export function Projects() {
             meta={`${projects.length} projects`}
           />
 
+          {/* Projects as an editorial list separated by hairline rules. */}
           <m.div
             variants={staggerContainer}
-            className="grid gap-6 md:grid-cols-2"
+            className="divide-y divide-zinc-200 dark:divide-white/10"
           >
             {projects.map((project) => {
               const handle =
@@ -51,70 +52,52 @@ export function Projects() {
                 <m.article
                   key={project.titleKey}
                   variants={fadeInUp}
-                  className={`${cardClass} group flex flex-col hover:border-emerald-500/50 sm:p-6`}
+                  className="py-8 first:pt-0 last:pb-0"
                 >
-                  {/* Header: repo handle + status tags */}
-                  <div className="flex items-center justify-between gap-3 font-accent-mono text-sm">
-                    <span className="truncate text-zinc-700 dark:text-zinc-300">
-                      {handle ?? t(project.titleKey)}
-                    </span>
-                    <div className="flex shrink-0 items-center gap-2">
-                      {project.isContribution && (
-                        <span className="inline-flex items-center gap-1 rounded-md border border-zinc-300/70 px-1.5 py-0.5 text-xs text-zinc-500 dark:border-white/15 dark:text-zinc-400">
-                          <FiGitPullRequest
-                            className="h-3 w-3"
-                            aria-hidden="true"
-                          />
-                          {t("contribution")}
-                        </span>
-                      )}
-                      {project.stars ? (
-                        <span className="inline-flex items-center gap-1 rounded-md border border-zinc-300/70 px-1.5 py-0.5 text-xs text-zinc-500 dark:border-white/15 dark:text-zinc-400">
-                          <FiStar className="h-3 w-3" aria-hidden="true" />
-                          <span>{project.stars}</span>
-                        </span>
-                      ) : null}
-                      {project.demoUrl && !project.isContribution ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-600/30 px-1.5 py-0.5 text-xs text-emerald-700 dark:border-emerald-400/30 dark:text-emerald-400">
-                          <span
-                            className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                            aria-hidden="true"
-                          />
-                          live
-                        </span>
-                      ) : null}
-                    </div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="text-lg font-bold">{t(project.titleKey)}</h3>
+                    {handle ? (
+                      <span className="font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
+                        {handle}
+                      </span>
+                    ) : null}
                   </div>
 
-                  <h3 className="mt-4 text-xl font-bold transition-colors group-hover:text-emerald-700 dark:group-hover:text-emerald-400">
-                    {t(project.titleKey)}
-                  </h3>
                   <p className="mt-2 text-zinc-600 dark:text-zinc-400">
                     {t(project.descriptionKey)}
                   </p>
 
-                  {/* Dependencies (tech stack) */}
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded border border-zinc-200 px-1.5 py-0.5 font-accent-mono text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400"
-                      >
-                        {tag}
+                  {/* Status and links in one mono line. */}
+                  <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 font-accent-mono text-xs">
+                    {project.demoUrl && !project.isContribution ? (
+                      <span className="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+                        <span
+                          className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                          aria-hidden="true"
+                        />
+                        live
                       </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="mt-auto flex gap-4 border-t border-zinc-100 pt-4 dark:border-white/10">
+                    ) : null}
+                    {project.isContribution && (
+                      <span className="inline-flex items-center gap-1 text-zinc-500 dark:text-zinc-400">
+                        <FiGitPullRequest className="h-3 w-3" aria-hidden="true" />
+                        {t("contribution")}
+                      </span>
+                    )}
+                    {project.stars ? (
+                      <span className="inline-flex items-center gap-1 text-zinc-500 dark:text-zinc-400">
+                        <FiStar className="h-3 w-3" aria-hidden="true" />
+                        <span>{project.stars}</span>
+                      </span>
+                    ) : null}
                     {project.demoUrl && (
                       <a
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 font-accent-mono text-xs text-emerald-700 transition-colors hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300"
+                        className="inline-flex items-center gap-1.5 text-emerald-700 transition-colors hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300"
                       >
-                        <FiExternalLink className="h-4 w-4" />
+                        <FiExternalLink className="h-3.5 w-3.5" />
                         {t("liveDemo")}
                       </a>
                     )}
@@ -123,12 +106,24 @@ export function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 font-accent-mono text-xs text-emerald-700 transition-colors hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300"
+                        className="inline-flex items-center gap-1.5 text-emerald-700 transition-colors hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300"
                       >
-                        <FiGithub className="h-4 w-4" />
+                        <FiGithub className="h-3.5 w-3.5" />
                         {t("sourceCode")}
                       </a>
                     )}
+                  </div>
+
+                  {/* Dependencies (tech stack) */}
+                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-accent-mono text-xs text-zinc-500 dark:text-zinc-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </m.article>
               );

@@ -24,16 +24,8 @@ describe("Interests", () => {
 
   it("renders an item for every interest key", () => {
     render(<Interests />);
-    for (const { key } of interests) {
+    for (const key of interests) {
       expect(screen.getByText(`items.${key}`)).toBeInTheDocument();
     }
-  });
-
-  it("renders one icon per interest", () => {
-    const { container } = render(<Interests />);
-    // react-icons render as <svg>; each interest has one icon
-    expect(container.querySelectorAll("svg").length).toBeGreaterThanOrEqual(
-      interests.length
-    );
   });
 });

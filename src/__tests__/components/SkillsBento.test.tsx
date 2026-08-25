@@ -5,10 +5,6 @@ vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
 }));
 
-vi.mock("next-themes", () => ({
-  useTheme: () => ({ resolvedTheme: "dark" }),
-}));
-
 vi.mock("framer-motion");
 
 import { SkillsBento } from "@/components/sections/SkillsBento";
@@ -20,7 +16,7 @@ describe("SkillsBento", () => {
     expect(container.querySelector("#skills")).toBeInTheDocument();
   });
 
-  it("renders a labeled cell for every skill category", () => {
+  it("renders a labeled row for every skill category", () => {
     render(<SkillsBento />);
     // categories are rendered via their i18n key (mock returns the key)
     for (const key of ["frontend", "ai", "backend", "testing", "devopsTools"]) {
@@ -28,26 +24,18 @@ describe("SkillsBento", () => {
     }
   });
 
-  it("renders representative skills including the AI category", () => {
+  it("renders every category's skills as a joined text line", () => {
     render(<SkillsBento />);
-    expect(screen.getByText("React")).toBeInTheDocument();
-    expect(screen.getByText("Node.js")).toBeInTheDocument();
-    expect(screen.getByText("Coding Agents")).toBeInTheDocument();
-    expect(screen.getByText("Playwright")).toBeInTheDocument();
+    for (const category of skillCategories) {
+      expect(screen.getByText(category.skills.join(" · "))).toBeInTheDocument();
+    }
   });
 
-  it("renders the highlight stats and community cell", () => {
+  it("renders the highlight stats and community block", () => {
     render(<SkillsBento />);
     expect(screen.getByText("7+")).toBeInTheDocument();
     expect(screen.getByText("300+")).toBeInTheDocument();
     expect(screen.getByText("community.title")).toBeInTheDocument();
     expect(screen.getByText("community.text")).toBeInTheDocument();
-  });
-
-  it("renders every skill name from the data in the DOM", () => {
-    render(<SkillsBento />);
-    for (const skill of skillCategories.flatMap((c) => c.skills)) {
-      expect(screen.getByText(skill.name)).toBeInTheDocument();
-    }
   });
 });

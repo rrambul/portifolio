@@ -22,12 +22,12 @@ describe("skillCategories", () => {
     }
   });
 
-  it("each category exposes non-empty skills with a name and icon", () => {
+  it("each category exposes non-empty skill names", () => {
     for (const cat of skillCategories) {
       expect(cat.skills.length).toBeGreaterThan(0);
       for (const skill of cat.skills) {
-        expect(skill.name).toBeTruthy();
-        expect(skill.icon).toBeDefined();
+        expect(skill).toBeTruthy();
+        expect(typeof skill).toBe("string");
       }
     }
   });

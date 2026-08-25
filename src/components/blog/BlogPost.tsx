@@ -23,49 +23,48 @@ export function BlogPost({ post, content }: BlogPostProps) {
     <article className="min-h-screen">
       {/* Header Section */}
       <div className="py-16 border-b border-zinc-200 dark:border-white/10">
-        {/* Back Button */}
-        <div className="container mx-auto px-4 mb-8">
-          <Link
-            href={`/${locale}/blog`}
-            className="inline-flex items-center gap-2 font-accent-mono text-sm text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400"
-          >
-            <FiArrowLeft className="w-4 h-4" />
-            <span>{t("backToBlog")}</span>
-          </Link>
-        </div>
-
-        {/* Header Content */}
         <div className="container mx-auto px-4">
-          <m.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-zinc-900 dark:text-zinc-100">
-              {post.title[locale]}
-            </h1>
+          <div className="mx-auto max-w-2xl">
+            {/* Back Button */}
+            <Link
+              href={`/${locale}/blog`}
+              className="mb-10 inline-flex items-center gap-2 font-accent-mono text-sm text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400"
+            >
+              <FiArrowLeft className="w-4 h-4" />
+              <span>{t("backToBlog")}</span>
+            </Link>
 
-            {/* Meta Information */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-zinc-800 dark:text-zinc-400">
-              <div className="flex items-center gap-2">
-                <span className="font-medium">{post.author.name}</span>
+            {/* Header Content */}
+            <m.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              {/* Title */}
+              <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-zinc-900 dark:text-zinc-100">
+                {post.title[locale]}
+              </h1>
+
+              {/* Meta Information */}
+              <div className="flex flex-wrap items-center gap-6 text-sm text-zinc-600 dark:text-zinc-400">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{post.author.name}</span>
+                </div>
+
+                <div className="flex items-center gap-1">
+                  <FiCalendar className="w-4 h-4" />
+                  <time dateTime={post.date}>
+                    {t("publishedOn")} {new Date(post.date).toLocaleDateString(locale === "pt" ? "pt-BR" : "en-US")}
+                  </time>
+                </div>
+
+                <div className="flex items-center gap-1">
+                  <FiClock className="w-4 h-4" />
+                  <span>{post.readTime} min read</span>
+                </div>
               </div>
-              
-              <div className="flex items-center gap-1">
-                <FiCalendar className="w-4 h-4" />
-                <time dateTime={post.date}>
-                  {t("publishedOn")} {new Date(post.date).toLocaleDateString(locale === "pt" ? "pt-BR" : "en-US")}
-                </time>
-              </div>
-              
-              <div className="flex items-center gap-1">
-                <FiClock className="w-4 h-4" />
-                <span>{post.readTime} min read</span>
-              </div>
-            </div>
-          </m.div>
+            </m.div>
+          </div>
         </div>
       </div>
 
@@ -76,7 +75,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.4 }}
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-2xl">
           {/* Excerpt */}
           <div className="text-xl text-zinc-600 dark:text-zinc-400 mb-12 border-l-2 border-emerald-600 pl-5 dark:border-emerald-400">
             {post.excerpt[locale]}

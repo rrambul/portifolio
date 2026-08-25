@@ -3,10 +3,8 @@
  * instead of being hand-copied (and drifting) across components.
  */
 
-/** Card surface used by the homepage section cells (Skills, Projects, Hero):
- *  a flat hairline outline, no fill or shadow. */
-export const cardClass =
-  "rounded-lg border border-zinc-200 p-5 transition-colors dark:border-white/10";
+/** The single editorial column every section aligns to (~42rem measure). */
+export const sectionCol = "mx-auto max-w-2xl";
 
 /** Keyboard focus ring shared by interactive elements (links, buttons). */
 export const focusRing =

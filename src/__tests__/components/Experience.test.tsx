@@ -14,12 +14,6 @@ vi.mock("next-intl", () => ({
   useTranslations: () => t,
 }));
 
-vi.mock("next/image", () => ({
-  default: ({ alt, ...props }: Record<string, unknown>) => (
-    <img alt={alt as string} {...props} />
-  ),
-}));
-
 vi.mock("framer-motion");
 
 import { Experience } from "@/components/sections/Experience";
@@ -49,16 +43,9 @@ describe("Experience", () => {
     expect(screen.getByText(experiences[0]!.location)).toBeInTheDocument();
   });
 
-  it("renders responsibilities and skill pills from t.raw", () => {
+  it("renders responsibilities and skills from t.raw", () => {
     render(<Experience />);
     expect(screen.getAllByText("Built things").length).toBe(experiences.length);
     expect(screen.getAllByText("React").length).toBe(experiences.length);
-  });
-
-  it("renders company logos with alt text", () => {
-    render(<Experience />);
-    const logos = screen.getAllByRole("img");
-    expect(logos.length).toBe(experiences.length);
-    expect(logos[0]).toHaveAttribute("alt", `${experiences[0]!.company} logo`);
   });
 });

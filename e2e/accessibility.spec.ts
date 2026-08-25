@@ -87,14 +87,16 @@ test.describe("Accessibility & SEO", () => {
   });
 
   test("images have alt text", async ({ page }) => {
-    await page.goto("/en");
-    const images = page.locator("img[alt]");
-    const count = await images.count();
-    expect(count).toBeGreaterThan(0);
-
-    for (let i = 0; i < count; i++) {
-      const alt = await images.nth(i).getAttribute("alt");
-      expect(alt).toBeTruthy();
+    // The homepage is image-free by design; blog posts still render markdown
+    // images. Any <img> that exists must carry a non-empty alt.
+    for (const path of ["/en", "/en/blog/introduction-to-web-components"]) {
+      await page.goto(path);
+      const images = page.locator("img");
+      const count = await images.count();
+      for (let i = 0; i < count; i++) {
+        const alt = await images.nth(i).getAttribute("alt");
+        expect(alt, `image ${i} on ${path} is missing alt text`).toBeTruthy();
+      }
     }
   });
 

@@ -190,7 +190,7 @@ export function AnimatedContactForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden">
+    <div className="w-full max-w-md">
       <AnimatePresence mode="wait">
         {status === "success" ? (
           <m.div

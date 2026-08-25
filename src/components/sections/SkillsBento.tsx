@@ -2,76 +2,25 @@
 
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
-import { FiUsers } from "react-icons/fi";
-import { skillCategories, type SkillCategory } from "@/data/skills";
+import { skillCategories } from "@/data/skills";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { cardClass } from "@/lib/ui";
+import { sectionCol } from "@/lib/ui";
 
-/** A category's skills as a grid of labeled icon tiles. */
-function SkillTiles({ category }: { category: SkillCategory }) {
-  return (
-    <div className="flex flex-wrap gap-x-5 gap-y-4">
-      {category.skills.map((skill) => (
-        <div
-          key={skill.name}
-          className="flex w-16 flex-col items-center gap-1.5"
-        >
-          {/* Icons are decorative; the label below is the accessible name. */}
-          <div
-            className="flex h-8 items-center justify-center"
-            aria-hidden="true"
-          >
-            {skill.icon}
-          </div>
-          <span className="text-center text-[11px] leading-tight text-zinc-600 dark:text-zinc-400">
-            {skill.name}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function CategoryCell({
-  category,
-  title,
-  className = "",
-}: {
-  category: SkillCategory;
-  title: string;
-  className?: string;
-}) {
-  return (
-    <m.div variants={fadeInUp} className={`${cardClass} ${className}`}>
-      <h3 className="mb-4 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-        {title}
-      </h3>
-      <SkillTiles category={category} />
-    </m.div>
-  );
-}
-
+/** Skills as an editorial index: a mono category label and a plain text
+ *  line per category, no icon grid or cells. */
 export function SkillsBento() {
   const t = useTranslations("skills");
 
-  const byKey = (key: string): SkillCategory => {
-    const category = skillCategories.find((c) => c.titleKey === key);
-    if (!category) {
-      throw new Error(`Unknown skill category: ${key}`);
-    }
-    return category;
-  };
-
   return (
-    <section id="skills" className="bg-transparent py-20">
+    <section id="skills" className="py-16">
       <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
-          className="mx-auto max-w-6xl"
+          className={sectionCol}
         >
           <SectionHeading
             label="skills"
@@ -79,68 +28,54 @@ export function SkillsBento() {
             subtitle={t("subtitle")}
           />
 
-          <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
-            <CategoryCell
-              category={byKey("frontend")}
-              title={t("frontend")}
-              className="md:col-span-2"
-            />
-
-            <CategoryCell category={byKey("ai")} title={t("ai")} />
-
-            <CategoryCell category={byKey("backend")} title={t("backend")} />
-            <CategoryCell category={byKey("testing")} title={t("testing")} />
-            <CategoryCell
-              category={byKey("devopsTools")}
-              title={t("devopsTools")}
-            />
-
-            {/* Highlight stats: flat mono numbers, no gradient. */}
-            <m.div
-              variants={fadeInUp}
-              className={`${cardClass} flex items-center justify-around gap-4 md:col-span-2`}
-            >
-              <div className="text-center">
-                <div className="font-accent-mono text-4xl font-bold text-emerald-600 dark:text-emerald-400 md:text-5xl">
-                  7+
-                </div>
-                <div className="mt-1 max-w-[10rem] text-sm text-zinc-500 dark:text-zinc-400">
-                  {t("stats.years")}
-                </div>
-              </div>
+          <m.div variants={fadeInUp} className="space-y-5">
+            {skillCategories.map((category) => (
               <div
-                className="h-12 w-px self-center bg-zinc-200 dark:bg-white/10"
-                aria-hidden="true"
-              />
-              <div className="text-center">
-                <div className="font-accent-mono text-4xl font-bold text-emerald-600 dark:text-emerald-400 md:text-5xl">
-                  300+
-                </div>
-                <div className="mt-1 max-w-[10rem] text-sm text-zinc-500 dark:text-zinc-400">
-                  {t("stats.prs")}
-                </div>
-              </div>
-            </m.div>
-
-            {/* Community */}
-            <m.div
-              variants={fadeInUp}
-              className={`${cardClass} flex flex-col justify-center`}
-            >
-              <div className="mb-2 flex items-center gap-2">
-                <FiUsers
-                  className="h-4 w-4 text-zinc-400 dark:text-zinc-500"
-                  aria-hidden="true"
-                />
-                <h3 className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                  {t("community.title")}
+                key={category.titleKey}
+                className="grid gap-1 sm:grid-cols-[9rem_1fr] sm:gap-4"
+              >
+                <h3 className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400 sm:pt-1">
+                  {t(category.titleKey)}
                 </h3>
+                <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  {category.skills.join(" · ")}
+                </p>
               </div>
-              <p className="text-sm leading-snug text-zinc-600 dark:text-zinc-400">
-                {t("community.text")}
-              </p>
-            </m.div>
-          </div>
+            ))}
+          </m.div>
+
+          {/* Highlight stats: flat mono numbers. */}
+          <m.div
+            variants={fadeInUp}
+            className="mt-10 flex flex-wrap gap-x-12 gap-y-4 border-t border-zinc-200 pt-8 dark:border-white/10"
+          >
+            <div>
+              <div className="font-accent-mono text-3xl font-bold text-emerald-700 dark:text-emerald-400">
+                7+
+              </div>
+              <div className="mt-1 max-w-[12rem] text-sm text-zinc-500 dark:text-zinc-400">
+                {t("stats.years")}
+              </div>
+            </div>
+            <div>
+              <div className="font-accent-mono text-3xl font-bold text-emerald-700 dark:text-emerald-400">
+                300+
+              </div>
+              <div className="mt-1 max-w-[12rem] text-sm text-zinc-500 dark:text-zinc-400">
+                {t("stats.prs")}
+              </div>
+            </div>
+          </m.div>
+
+          {/* Community */}
+          <m.div variants={fadeInUp} className="mt-8">
+            <h3 className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+              {t("community.title")}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {t("community.text")}
+            </p>
+          </m.div>
         </m.div>
       </div>
     </section>

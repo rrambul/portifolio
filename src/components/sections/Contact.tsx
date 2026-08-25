@@ -5,19 +5,20 @@ import { m } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { AnimatedContactForm } from "../ui/AnimatedContactForm";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { sectionCol } from "@/lib/ui";
 
 export function Contact() {
   const t = useTranslations("contact");
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-16">
       <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="max-w-4xl mx-auto"
+          className={sectionCol}
         >
           <SectionHeading
             label="contact"

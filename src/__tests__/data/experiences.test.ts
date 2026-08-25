@@ -10,7 +10,6 @@ describe("experiences", () => {
     for (const exp of experiences) {
       expect(exp.companyId).toBeTruthy();
       expect(exp.company).toBeTruthy();
-      expect(exp.logo).toBeTruthy();
       expect(exp.period).toBeTruthy();
       expect(exp.location).toBeTruthy();
     }

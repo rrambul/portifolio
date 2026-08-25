@@ -1,44 +1,27 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import {
-  FiArrowRight,
-  FiArrowDown,
-  FiGithub,
-  FiLinkedin,
-  FiMail,
-  FiDownload,
-} from "react-icons/fi";
+import { FiArrowDown } from "react-icons/fi";
 import { siteConfig } from "@/config/site";
 import { scrollToSection } from "@/lib/scroll";
-import { AnimatedButton } from "@/components/ui/AnimatedButton";
-import { cardClass, focusRing } from "@/lib/ui";
+import { focusRing, sectionCol } from "@/lib/ui";
 
 /*
- * The hero is framed as a release header: the site is treated as a product
- * under active development, with a version, a live status, and recent
- * "release notes", instead of a static brochure. Entrance animations are CSS
- * (animate-enter-*) rather than framer because the hero is the LCP and
- * JS-driven entrances would keep it hidden until hydration finishes.
+ * Editorial hero: one narrow column where the type does the work. Identity,
+ * a row of plain text links, and the release log rendered as a bare list,
+ * no panels or boxes. Entrance animations are CSS (animate-enter-*) rather
+ * than framer because the hero is the LCP and JS-driven entrances would keep
+ * it hidden until hydration finishes.
  */
-
-// Illustrative semver, bumped by hand for now. Wiring it (and the notes
-// below) to real GitHub activity is the planned follow-up.
-const VERSION = "v4.2.0";
 
 export function Hero() {
   const t = useTranslations("hero");
   const locale = useLocale();
 
-  const scrollToContact = () => scrollToSection("contact");
-
-  // Repo-style handle for the release panel header (e.g. "renanrambul.dev").
-  const repo = siteConfig.url.replace(/^https?:\/\//, "");
-
   const socials = [
-    { href: siteConfig.links.github, label: "GitHub", Icon: FiGithub },
-    { href: siteConfig.links.linkedin, label: "LinkedIn", Icon: FiLinkedin },
-    { href: `mailto:${siteConfig.links.email}`, label: "Email", Icon: FiMail },
+    { href: siteConfig.links.github, label: "GitHub" },
+    { href: siteConfig.links.linkedin, label: "LinkedIn" },
+    { href: `mailto:${siteConfig.links.email}`, label: "Email" },
   ];
 
   // Release notes. Marker semantics ("+" shipped, "~" in progress) are
@@ -50,114 +33,88 @@ export function Hero() {
     { kind: "change" as const, text: t("logLearning") },
   ];
 
+  const linkClass = `rounded-sm font-accent-mono text-sm text-zinc-600 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-emerald-700 hover:decoration-emerald-600/50 dark:text-zinc-400 dark:decoration-zinc-700 dark:hover:text-emerald-400 dark:hover:decoration-emerald-400/50 ${focusRing}`;
+
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          {/* Identity (kept quiet so the release panel carries the page). */}
-          <div>
-            <h1
-              className="mb-3 text-4xl font-bold md:text-6xl animate-enter-fade-left"
-              style={{ animationDelay: "0.2s" }}
-            >
-              {t("title")}
-            </h1>
+        <div className={sectionCol}>
+          <h1
+            className="text-4xl font-bold md:text-5xl animate-enter-fade-left"
+            style={{ animationDelay: "0.2s" }}
+          >
+            {t("title")}
+          </h1>
 
-            <p
-              className="mb-2 text-xl text-zinc-600 dark:text-zinc-400 md:text-2xl animate-enter-fade-left"
-              style={{ animationDelay: "0.3s" }}
-            >
-              {t("subtitle")}
-            </p>
-            <p
-              className="mb-3 max-w-md text-base text-zinc-600 dark:text-zinc-400 md:text-lg animate-enter-fade-left"
-              style={{ animationDelay: "0.38s" }}
-            >
-              {t("taglineShort")}
-            </p>
-            <p
-              className="mb-8 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400 animate-enter-fade"
-              style={{ animationDelay: "0.44s" }}
-            >
-              {t("currentlyAt")}
-            </p>
-
-            <div
-              className="flex flex-wrap items-center gap-4 animate-enter-fade-up"
-              style={{ animationDelay: "0.55s" }}
-            >
-              <AnimatedButton
-                onClick={scrollToContact}
-                size="lg"
-                icon={<FiArrowRight className="h-5 w-5" />}
-              >
-                {t("cta")}
-              </AnimatedButton>
-              <AnimatedButton
-                href={`/api/cv?locale=${locale}`}
-                download
-                variant="outline"
-                size="lg"
-                icon={<FiDownload className="h-5 w-5" />}
-                iconPosition="left"
-              >
-                {t("downloadCV")}
-              </AnimatedButton>
-            </div>
-
-            <div
-              className="mt-8 flex items-center gap-6 animate-enter-fade"
-              style={{ animationDelay: "0.65s" }}
-            >
-              {socials.map(({ href, label, Icon }) => {
-                const external = href.startsWith("http");
-                return (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    {...(external
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    className={`rounded-sm text-zinc-500 transition-colors duration-200 hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
-                  >
-                    <Icon className="h-6 w-6" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Release panel: the signature. A changelog rendered as a release
-              card, version tag and live status in the header. */}
-          <div
-            className={`${cardClass} sm:p-6 animate-enter-fade-up`}
+          <p
+            className="mt-3 text-lg text-zinc-600 dark:text-zinc-400 md:text-xl animate-enter-fade-left"
             style={{ animationDelay: "0.3s" }}
           >
-            <div className="flex items-center justify-between gap-3 font-accent-mono text-sm">
-              <span className="truncate text-zinc-700 dark:text-zinc-300">
-                {repo}
-              </span>
-              <span className="shrink-0 rounded border border-zinc-200 px-2 py-0.5 text-zinc-500 dark:border-white/10 dark:text-zinc-400">
-                {VERSION}
+            {t("subtitle")}
+          </p>
+          <p
+            className="mt-1 text-lg text-zinc-600 dark:text-zinc-400 md:text-xl animate-enter-fade-left"
+            style={{ animationDelay: "0.38s" }}
+          >
+            {t("taglineShort")}
+          </p>
+          <p
+            className="mt-4 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400 animate-enter-fade"
+            style={{ animationDelay: "0.44s" }}
+          >
+            {t("currentlyAt")}
+          </p>
+
+          {/* Actions and socials as one row of plain text links. The CTA is a
+              button (it scrolls, it doesn't navigate) styled like the links
+              but in the accent color so it still reads as the primary action. */}
+          <div
+            className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3 animate-enter-fade-up"
+            style={{ animationDelay: "0.55s" }}
+          >
+            <button
+              onClick={() => scrollToSection("contact")}
+              className={`rounded-sm font-accent-mono text-sm text-emerald-700 underline decoration-emerald-600/40 underline-offset-4 transition-colors hover:decoration-emerald-600 dark:text-emerald-400 dark:decoration-emerald-400/40 dark:hover:decoration-emerald-400 ${focusRing}`}
+            >
+              {t("cta")}
+            </button>
+            <a href={`/api/cv?locale=${locale}`} className={linkClass}>
+              {t("downloadCV")}
+            </a>
+            {socials.map(({ href, label }) => {
+              const external = href.startsWith("http");
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className={linkClass}
+                >
+                  {label}
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Release log: the signature, kept as a bare list. */}
+          <div className="mt-16 animate-enter-fade" style={{ animationDelay: "0.65s" }}>
+            <div className="flex items-baseline justify-between gap-4">
+              <p className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                {"// "}
+                {t("latest")}
+              </p>
+              <span className="flex shrink-0 items-center gap-2 font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
+                <span
+                  className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                  aria-hidden="true"
+                />
+                {t("statusShipping")}
               </span>
             </div>
 
-            <div className="mt-2 flex items-center gap-2 font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
-              <span
-                className="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                aria-hidden="true"
-              />
-              {t("statusShipping")}
-            </div>
-
-            <hr className="my-4 border-zinc-200 dark:border-white/10" />
-
-            <p className="mb-3 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              {"// "}
-              {t("latest")}
-            </p>
-            <ul className="space-y-2.5">
+            <ul className="mt-4 space-y-2.5">
               {log.map((entry) => (
                 <li
                   key={entry.text}
@@ -173,9 +130,7 @@ export function Hero() {
                   >
                     {entry.kind === "add" ? "+" : "~"}
                   </span>
-                  <span className="text-base md:text-[1.0625rem]">
-                    {entry.text}
-                  </span>
+                  <span>{entry.text}</span>
                 </li>
               ))}
             </ul>
@@ -183,7 +138,7 @@ export function Hero() {
             <button
               onClick={() => scrollToSection("about")}
               aria-label={t("scrollDown")}
-              className={`mt-5 ml-auto flex items-center gap-1.5 rounded-sm font-accent-mono text-xs text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
+              className={`mt-6 flex items-center gap-1.5 rounded-sm font-accent-mono text-xs text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
             >
               {t("fullLog")}
               <FiArrowDown className="h-4 w-4" />

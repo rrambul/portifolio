@@ -31,7 +31,7 @@ export function SectionHeading({
   as: Heading = "h2",
 }: SectionHeadingProps) {
   return (
-    <m.div className="mb-12" variants={fadeInUp}>
+    <m.div className="mb-10" variants={fadeInUp}>
       <div className="flex items-baseline justify-between gap-4">
         <span className="font-accent-mono text-sm text-emerald-700 dark:text-emerald-400">
           {"// "}
@@ -43,9 +43,9 @@ export function SectionHeading({
           </span>
         ) : null}
       </div>
-      <Heading className="mt-3 text-3xl font-bold md:text-4xl">{title}</Heading>
+      <Heading className="mt-3 text-2xl font-bold md:text-3xl">{title}</Heading>
       {subtitle ? (
-        <p className="mt-2 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+        <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">
           {subtitle}
         </p>
       ) : null}

@@ -6,6 +6,7 @@ import { staggerContainer } from "@/lib/animations";
 import { getBlogPosts } from "@/data/blog-posts";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { sectionCol } from "@/lib/ui";
 
 export function Blog() {
   const t = useTranslations("blog");
@@ -15,13 +16,13 @@ export function Blog() {
   const blogPosts = getBlogPosts();
 
   return (
-    <section id="blog" className="py-20">
+    <section id="blog" className="py-16">
       <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           animate="show"
           variants={staggerContainer}
-          className="mx-auto max-w-6xl"
+          className={sectionCol}
         >
           {/* The blog index has no other h1, so the section heading is it. */}
           <SectionHeading
@@ -32,7 +33,8 @@ export function Blog() {
             meta={`${blogPosts.length} posts`}
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Posts as an editorial list separated by hairline rules. */}
+          <div className="divide-y divide-zinc-200 dark:divide-white/10">
             {blogPosts.map((post, index) => (
               <BlogCard key={post.id} post={post} index={index} />
             ))}

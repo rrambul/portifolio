@@ -6,15 +6,14 @@ describe("interests", () => {
     expect(interests.length).toBeGreaterThan(0);
   });
 
-  it("each interest has a key and an icon", () => {
-    for (const interest of interests) {
-      expect(interest.key).toBeTruthy();
-      expect(typeof interest.icon).toBe("function"); // React icon component
+  it("each interest is a non-empty key", () => {
+    for (const key of interests) {
+      expect(key).toBeTruthy();
+      expect(typeof key).toBe("string");
     }
   });
 
   it("each interest has a unique key", () => {
-    const keys = interests.map((i) => i.key);
-    expect(new Set(keys).size).toBe(keys.length);
+    expect(new Set(interests).size).toBe(interests.length);
   });
 });

@@ -53,10 +53,10 @@ describe.each(Object.entries(locales))("%s message keys", (_name, m) => {
   });
 
   it("resolves every interest item key", () => {
-    for (const interest of interests) {
+    for (const key of interests) {
       expect(
-        resolve(m, `interests.items.${interest.key}`),
-        `interests.items.${interest.key}`
+        resolve(m, `interests.items.${key}`),
+        `interests.items.${key}`
       ).toBeTypeOf("string");
     }
   });
