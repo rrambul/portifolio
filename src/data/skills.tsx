@@ -38,20 +38,16 @@ export interface SkillItem {
 export interface SkillCategory {
   /** Key under `skills` in the message files. */
   titleKey: string;
-  /** Accent color for the category's bento cell. */
-  accent: string;
   skills: SkillItem[];
 }
 
-// Monochrome icons: one tonal scheme (neutral, amber for AI) so the grid reads
-// as part of the terminal palette instead of a rainbow of brand colors.
+// Monochrome icons: one neutral tone so the grid reads as part of the
+// terminal palette instead of a rainbow of brand colors.
 const ICON = "h-8 w-8 text-zinc-700 dark:text-zinc-300";
-const AI_ICON = "h-8 w-8 text-amber-600 dark:text-amber-400";
 
 export const skillCategories: SkillCategory[] = [
   {
     titleKey: "frontend",
-    accent: "#10b981",
     skills: [
       { name: "React", icon: <SiReact className={ICON} /> },
       { name: "Next.js", icon: <SiNextdotjs className={ICON} /> },
@@ -68,18 +64,16 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     titleKey: "ai",
-    accent: "#f59e0b",
     skills: [
-      { name: "Coding Agents", icon: <TbRobot className={AI_ICON} /> },
-      { name: "Claude", icon: <TbSparkles className={AI_ICON} /> },
-      { name: "Cursor", icon: <TbPointer className={AI_ICON} /> },
-      { name: "MCP", icon: <TbPlugConnected className={AI_ICON} /> },
-      { name: "Context Engineering", icon: <TbBrain className={AI_ICON} /> },
+      { name: "Coding Agents", icon: <TbRobot className={ICON} /> },
+      { name: "Claude", icon: <TbSparkles className={ICON} /> },
+      { name: "Cursor", icon: <TbPointer className={ICON} /> },
+      { name: "MCP", icon: <TbPlugConnected className={ICON} /> },
+      { name: "Context Engineering", icon: <TbBrain className={ICON} /> },
     ],
   },
   {
     titleKey: "backend",
-    accent: "#10b981",
     skills: [
       { name: "Node.js", icon: <SiNodedotjs className={ICON} /> },
       { name: "Express", icon: <SiExpress className={ICON} /> },
@@ -91,7 +85,6 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     titleKey: "testing",
-    accent: "#059669",
     skills: [
       { name: "Playwright", icon: <TbTestPipe className={ICON} /> },
       { name: "Vitest", icon: <SiVitest className={ICON} /> },
@@ -103,7 +96,6 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     titleKey: "devopsTools",
-    accent: "#34d399",
     skills: [
       { name: "Git", icon: <SiGit className={ICON} /> },
       { name: "Docker", icon: <SiDocker className={ICON} /> },

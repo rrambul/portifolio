@@ -131,7 +131,7 @@ export function Navigation() {
   return (
     <nav
       ref={navigationRef}
-      className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-white/10 dark:bg-zinc-900/80"
+      className="sticky top-0 z-50 border-b border-zinc-200 bg-[hsl(var(--background))] dark:border-white/10"
     >
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
@@ -201,7 +201,7 @@ export function Navigation() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800"
+            className="md:hidden overflow-hidden bg-[hsl(var(--background))] border-b border-zinc-200 dark:border-white/10"
           >
             <div className="px-4 py-3 space-y-4">
               <div className="space-y-2">

@@ -1,45 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
-// Remap tap gestures to mouse events so the press-state logic is exercisable.
-// Components are memoized per tag so their identity is stable across renders
-// (a state update shouldn't remount and detach the node under test).
-vi.mock("framer-motion", () => {
-  const motionCache = new Map<
-    string,
-    React.FC<React.PropsWithChildren<Record<string, unknown>>>
-  >();
-  const proxy = new Proxy(
-    {},
-    {
-      get: (_t, prop: string) => {
-        if (!motionCache.has(prop)) {
-          motionCache.set(prop, ({ children, ...props }) => {
-            const Tag = prop as keyof React.JSX.IntrinsicElements;
-            const htmlProps: Record<string, unknown> = {};
-            for (const [k, v] of Object.entries(props)) {
-              if (k === "onTapStart") htmlProps.onMouseDown = v;
-              else if (k === "onTap") htmlProps.onMouseUp = v;
-              else if (k === "onTapCancel") htmlProps.onMouseLeave = v;
-              else if (
-                !k.startsWith("while") &&
-                !k.startsWith("animate") &&
-                !k.startsWith("initial") &&
-                !["transition", "variants", "viewport", "exit"].includes(k)
-              ) {
-                htmlProps[k] = v;
-              }
-            }
-            return <Tag {...htmlProps}>{children}</Tag>;
-          });
-        }
-        return motionCache.get(prop);
-      },
-    }
-  );
-  return { motion: proxy, m: proxy };
-});
-
 vi.mock("next/link", () => ({
   default: ({ children, href, ...props }: React.PropsWithChildren<{ href: string }>) => (
     <a href={href} {...props}>
@@ -59,8 +20,8 @@ describe("AnimatedButton", () => {
   });
 
   it.each([
-    ["primary", "bg-emerald-600/10"],
-    ["outline", "border-emerald-700"],
+    ["primary", "bg-zinc-900"],
+    ["outline", "border-zinc-300"],
     ["ghost", "hover:bg-zinc-200"],
   ] as const)("applies the %s variant styles", (variant, expectedClass) => {
     const { container } = render(
@@ -110,7 +71,7 @@ describe("AnimatedButton", () => {
     expect(screen.getByTestId("icon")).toBeInTheDocument();
   });
 
-  it("disables the button and skips animations when disabled", () => {
+  it("disables the button when disabled", () => {
     const { container } = render(
       <AnimatedButton disabled>Disabled</AnimatedButton>
     );

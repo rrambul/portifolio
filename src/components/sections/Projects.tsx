@@ -2,17 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
-import dynamic from "next/dynamic";
 import { FiExternalLink, FiGithub, FiStar, FiGitPullRequest } from "react-icons/fi";
 import { projects } from "@/data/projects";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cardClass } from "@/lib/ui";
-
-// Ambient canvas particles (client-only; no SSR).
-const SectionParticles = dynamic(() => import("../ui/SectionParticles"), {
-  ssr: false,
-});
 
 /** "owner/repo" handle from a GitHub URL, e.g. "rrambul/portifolio". */
 function repoHandle(githubUrl?: string) {
@@ -30,15 +24,8 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section
-      id="projects"
-      className="relative overflow-hidden bg-zinc-100 py-20 dark:bg-zinc-900/40"
-    >
-      <div className="pointer-events-none absolute inset-0">
-        <SectionParticles />
-      </div>
-
-      <div className="container relative z-10 mx-auto px-4">
+    <section id="projects" className="py-20">
+      <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"
@@ -64,7 +51,7 @@ export function Projects() {
                 <m.article
                   key={project.titleKey}
                   variants={fadeInUp}
-                  className={`${cardClass} group flex flex-col backdrop-blur-sm hover:border-emerald-500/50 sm:p-6`}
+                  className={`${cardClass} group flex flex-col hover:border-emerald-500/50 sm:p-6`}
                 >
                   {/* Header: repo handle + status tags */}
                   <div className="flex items-center justify-between gap-3 font-accent-mono text-sm">
@@ -73,7 +60,7 @@ export function Projects() {
                     </span>
                     <div className="flex shrink-0 items-center gap-2">
                       {project.isContribution && (
-                        <span className="inline-flex items-center gap-1 rounded-md border border-amber-500/30 bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700 dark:text-amber-300">
+                        <span className="inline-flex items-center gap-1 rounded-md border border-zinc-300/70 px-1.5 py-0.5 text-xs text-zinc-500 dark:border-white/15 dark:text-zinc-400">
                           <FiGitPullRequest
                             className="h-3 w-3"
                             aria-hidden="true"
@@ -88,7 +75,7 @@ export function Projects() {
                         </span>
                       ) : null}
                       {project.demoUrl && !project.isContribution ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 text-xs text-emerald-700 dark:text-emerald-400">
+                        <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-600/30 px-1.5 py-0.5 text-xs text-emerald-700 dark:border-emerald-400/30 dark:text-emerald-400">
                           <span
                             className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
                             aria-hidden="true"

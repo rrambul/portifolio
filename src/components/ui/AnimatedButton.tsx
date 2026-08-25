@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode } from "react";
-import { m } from "framer-motion";
 import Link from "next/link";
 import { focusRing } from "@/lib/ui";
 
@@ -36,23 +35,21 @@ export function AnimatedButton({
   isExternal = false,
   download = false,
 }: AnimatedButtonProps) {
-  // Mono label + flat fill to match the terminal/spec language; the only
-  // motion is a subtle scale on hover/press.
+  // Mono label, flat monochrome fills and hairline outlines: the emerald
+  // accent stays in the small markers, so buttons only change color on hover.
   const getBaseClasses = () => {
     const PRIMARY =
-      " border border-emerald-600/40 bg-emerald-600/10 text-emerald-800 hover:bg-emerald-600/20 hover:border-emerald-600/60 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-300 dark:hover:bg-emerald-400/20";
+      " bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white";
 
     let classes = `inline-flex items-center justify-center font-accent-mono font-medium transition-colors rounded-md ${focusRing}`;
 
-    // Variant styles. Emerald-700 against white text and emerald-400 on the
-    // dark base keep the WCAG AA 4.5:1 contrast ratio.
     switch (variant) {
       case "primary":
         classes += PRIMARY;
         break;
       case "outline":
         classes +=
-          " bg-transparent border border-emerald-700 text-emerald-700 dark:border-emerald-400 dark:text-emerald-400 hover:bg-emerald-600/10";
+          " bg-transparent border border-zinc-300 text-zinc-800 hover:border-zinc-500 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-400";
         break;
       case "ghost":
         classes +=
@@ -91,55 +88,45 @@ export function AnimatedButton({
     </>
   );
 
-  const motionProps = {
-    whileHover: disabled ? {} : { scale: 1.02 },
-    whileTap: disabled ? {} : { scale: 0.98 },
-    transition: { type: "spring" as const, stiffness: 400, damping: 17 },
-  };
-
   const combinedClasses = `${getBaseClasses()} ${className}`;
 
   if (href) {
     if (download) {
       return (
-        <m.a href={href} className={combinedClasses} {...motionProps}>
+        <a href={href} className={combinedClasses}>
           {buttonContent}
-        </m.a>
+        </a>
       );
     }
 
     if (isExternal) {
       return (
-        <m.a
+        <a
           href={href}
           className={combinedClasses}
           target="_blank"
           rel="noopener noreferrer"
-          {...motionProps}
         >
           {buttonContent}
-        </m.a>
+        </a>
       );
     }
 
     return (
-      <m.div {...motionProps}>
-        <Link href={href} className={combinedClasses}>
-          {buttonContent}
-        </Link>
-      </m.div>
+      <Link href={href} className={combinedClasses}>
+        {buttonContent}
+      </Link>
     );
   }
 
   return (
-    <m.button
+    <button
       onClick={onClick}
       className={combinedClasses}
       disabled={disabled}
       type={type}
-      {...motionProps}
     >
       {buttonContent}
-    </m.button>
+    </button>
   );
 }

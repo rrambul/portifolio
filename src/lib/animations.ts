@@ -13,19 +13,3 @@ export const fadeInUp: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export const springFadeIn: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.95 },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: "spring", stiffness: 260, damping: 20 },
-  },
-};
-
-// Shared hover lift so every card across the page reacts the same way.
-// Pair with `hover:shadow-lg transition-shadow` on the element's className.
-export const cardHover = {
-  y: -6,
-  transition: { type: "spring" as const, stiffness: 400, damping: 17 },
-};

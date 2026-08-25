@@ -35,11 +35,11 @@ describe("Blog section", () => {
     expect(screen.getAllByTestId("blog-card")).toHaveLength(posts.length);
   });
 
-  it("renders the published article count", () => {
+  it("renders the published post count", () => {
     render(<Blog />);
     const count = getBlogPosts().length;
     expect(
-      screen.getByText((text) => text.includes(`${count} articles published`))
+      screen.getByText((text) => text.includes(`${count} posts`))
     ).toBeInTheDocument();
   });
 });

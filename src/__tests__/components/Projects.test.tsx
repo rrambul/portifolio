@@ -7,13 +7,6 @@ vi.mock("next-intl", () => ({
 
 vi.mock("framer-motion");
 
-// Mock the ambient particles (dynamic canvas) so the test stays deterministic.
-vi.mock("next/dynamic", () => ({
-  default: () => function MockParticles() {
-    return null;
-  },
-}));
-
 import { Projects } from "@/components/sections/Projects";
 import { projects } from "@/data/projects";
 

@@ -20,20 +20,14 @@ export function BlogPost({ post, content }: BlogPostProps) {
   const t = useTranslations("blog");
 
   return (
-    <article className="min-h-screen bg-white dark:bg-zinc-900">
+    <article className="min-h-screen">
       {/* Header Section */}
-      <div className="bg-gradient-to-br from-zinc-50/80 via-white to-emerald-50/20 dark:from-zinc-900 dark:via-zinc-900 dark:to-emerald-950 py-16 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-100/30 dark:bg-emerald-900 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-40 dark:opacity-20"></div>
-          <div className="absolute top-20 right-10 w-40 h-40 bg-emerald-100/30 dark:bg-emerald-900 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-40 dark:opacity-20"></div>
-        </div>
-        
+      <div className="py-16 border-b border-zinc-200 dark:border-white/10">
         {/* Back Button */}
-        <div className="container mx-auto px-4 relative z-10 mb-8">
+        <div className="container mx-auto px-4 mb-8">
           <Link
             href={`/${locale}/blog`}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 dark:bg-zinc-800/80 backdrop-blur-sm rounded-full hover:bg-white dark:hover:bg-zinc-800 transition-colors duration-200 border border-zinc-300 dark:border-zinc-700 shadow-sm text-black hover:text-gray-700 dark:text-zinc-300 dark:hover:text-zinc-100"
+            className="inline-flex items-center gap-2 font-accent-mono text-sm text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400"
           >
             <FiArrowLeft className="w-4 h-4" />
             <span>{t("backToBlog")}</span>
@@ -41,7 +35,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
         </div>
 
         {/* Header Content */}
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4">
           <m.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -84,7 +78,7 @@ export function BlogPost({ post, content }: BlogPostProps) {
       >
         <div className="max-w-4xl mx-auto">
           {/* Excerpt */}
-          <div className="text-xl text-zinc-800 dark:text-zinc-400 mb-12 p-6 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border-l-4 border-emerald-600">
+          <div className="text-xl text-zinc-600 dark:text-zinc-400 mb-12 border-l-2 border-emerald-600 pl-5 dark:border-emerald-400">
             {post.excerpt[locale]}
           </div>
 

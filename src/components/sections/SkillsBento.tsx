@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
 import { FiUsers } from "react-icons/fi";
 import { skillCategories, type SkillCategory } from "@/data/skills";
-import { staggerContainer, fadeInUp, cardHover } from "@/lib/animations";
+import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cardClass } from "@/lib/ui";
 
@@ -43,21 +43,10 @@ function CategoryCell({
   className?: string;
 }) {
   return (
-    <m.div
-      variants={fadeInUp}
-      whileHover={cardHover}
-      className={`${cardClass} ${className}`}
-    >
-      <div className="mb-4 flex items-center gap-2">
-        <span
-          className="h-2 w-2 rounded-full"
-          style={{ backgroundColor: category.accent }}
-          aria-hidden="true"
-        />
-        <h3 className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-          {title}
-        </h3>
-      </div>
+    <m.div variants={fadeInUp} className={`${cardClass} ${className}`}>
+      <h3 className="mb-4 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        {title}
+      </h3>
       <SkillTiles category={category} />
     </m.div>
   );
@@ -97,12 +86,7 @@ export function SkillsBento() {
               className="md:col-span-2"
             />
 
-            {/* AI cell carries the amber secondary accent. */}
-            <CategoryCell
-              category={byKey("ai")}
-              title={t("ai")}
-              className="ring-1 ring-amber-300/60 dark:ring-amber-500/30"
-            />
+            <CategoryCell category={byKey("ai")} title={t("ai")} />
 
             <CategoryCell category={byKey("backend")} title={t("backend")} />
             <CategoryCell category={byKey("testing")} title={t("testing")} />
@@ -114,7 +98,6 @@ export function SkillsBento() {
             {/* Highlight stats: flat mono numbers, no gradient. */}
             <m.div
               variants={fadeInUp}
-              whileHover={cardHover}
               className={`${cardClass} flex items-center justify-around gap-4 md:col-span-2`}
             >
               <div className="text-center">
@@ -142,12 +125,11 @@ export function SkillsBento() {
             {/* Community */}
             <m.div
               variants={fadeInUp}
-              whileHover={cardHover}
               className={`${cardClass} flex flex-col justify-center`}
             >
               <div className="mb-2 flex items-center gap-2">
                 <FiUsers
-                  className="h-4 w-4 text-amber-500 dark:text-amber-400"
+                  className="h-4 w-4 text-zinc-400 dark:text-zinc-500"
                   aria-hidden="true"
                 />
                 <h3 className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">

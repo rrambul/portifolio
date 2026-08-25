@@ -3,9 +3,10 @@
  * instead of being hand-copied (and drifting) across components.
  */
 
-/** Card surface used by the homepage section cells (Skills, Projects, Hero). */
+/** Card surface used by the homepage section cells (Skills, Projects, Hero):
+ *  a flat hairline outline, no fill or shadow. */
 export const cardClass =
-  "rounded-xl border border-zinc-200 bg-white/70 p-5 shadow-sm transition-colors dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none";
+  "rounded-lg border border-zinc-200 p-5 transition-colors dark:border-white/10";
 
 /** Keyboard focus ring shared by interactive elements (links, buttons). */
 export const focusRing =

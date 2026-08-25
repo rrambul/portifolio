@@ -6,11 +6,10 @@ describe("interests", () => {
     expect(interests.length).toBeGreaterThan(0);
   });
 
-  it("each interest has key, icon, and color", () => {
+  it("each interest has a key and an icon", () => {
     for (const interest of interests) {
       expect(interest.key).toBeTruthy();
       expect(typeof interest.icon).toBe("function"); // React icon component
-      expect(interest.color).toMatch(/^#[0-9a-fA-F]{6}$/);
     }
   });
 

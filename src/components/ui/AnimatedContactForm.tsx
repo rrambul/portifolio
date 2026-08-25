@@ -173,7 +173,7 @@ export function AnimatedContactForm() {
 
   // Get classes for an input based on touch and error state
   const getInputClasses = (fieldName: keyof FormState) => {
-    let classes = "w-full p-3 rounded-md bg-gray-50 dark:bg-zinc-800 border text-zinc-900 dark:text-zinc-100";
+    let classes = "w-full p-3 rounded-md bg-transparent border text-zinc-900 dark:text-zinc-100";
 
     if (touched[fieldName] && errors[fieldName]) {
       classes += " border-red-500 focus:border-red-500 focus:ring-red-500/30";
@@ -185,7 +185,7 @@ export function AnimatedContactForm() {
         " border-zinc-300 dark:border-zinc-700 focus:border-emerald-500 focus:ring-emerald-500/30";
     }
 
-    classes += " transition-all duration-200 outline-none focus:ring-4";
+    classes += " transition-colors duration-200 outline-none focus:ring-2";
     return classes;
   };
 
@@ -198,15 +198,9 @@ export function AnimatedContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="bg-green-100 dark:bg-green-900/30 p-6 rounded-lg flex flex-col items-center text-center"
+            className="rounded-lg border border-zinc-200 p-6 flex flex-col items-center text-center dark:border-white/10"
           >
-            <m.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", damping: 10, stiffness: 200 }}
-            >
-              <FiCheck className="text-green-600 dark:text-green-400 text-4xl mb-4" />
-            </m.div>
+            <FiCheck className="text-emerald-700 dark:text-emerald-400 text-4xl mb-4" />
             <h3 className="text-xl font-bold mb-2">{t("success")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
               {t("successMessage")}
@@ -218,15 +212,9 @@ export function AnimatedContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="bg-red-100 dark:bg-red-900/30 p-6 rounded-lg flex flex-col items-center text-center"
+            className="rounded-lg border border-zinc-200 p-6 flex flex-col items-center text-center dark:border-white/10"
           >
-            <m.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", damping: 10, stiffness: 200 }}
-            >
-              <FiAlertCircle className="text-red-600 dark:text-red-400 text-4xl mb-4" />
-            </m.div>
+            <FiAlertCircle className="text-red-600 dark:text-red-400 text-4xl mb-4" />
             <h3 className="text-xl font-bold mb-2">{t("errorTitle")}</h3>
             <p className="text-zinc-600 dark:text-zinc-300">
               {t("errorMessage")}
@@ -362,18 +350,16 @@ export function AnimatedContactForm() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <m.button
+              <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full rounded-md border border-emerald-600/40 bg-emerald-600/10 px-4 py-3 font-accent-mono font-medium text-emerald-800 transition-colors hover:border-emerald-600/60 hover:bg-emerald-600/20 disabled:cursor-not-allowed disabled:opacity-70 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-300 dark:hover:bg-emerald-400/20"
-                whileHover={status === "submitting" ? {} : { scale: 1.01 }}
-                whileTap={status === "submitting" ? {} : { scale: 0.99 }}
+                className="w-full rounded-md bg-zinc-900 px-4 py-3 font-accent-mono font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-70 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
               >
                 <span className="flex items-center justify-center">
                   {status === "submitting" ? (
                     <>
                       <m.div
-                        className="w-5 h-5 border-2 border-emerald-800 dark:border-emerald-300 border-t-transparent rounded-full mr-2"
+                        className="w-5 h-5 border-2 border-white dark:border-zinc-900 border-t-transparent rounded-full mr-2"
                         animate={{ rotate: 360 }}
                         transition={{
                           repeat: Infinity,
@@ -390,7 +376,7 @@ export function AnimatedContactForm() {
                     </>
                   )}
                 </span>
-              </m.button>
+              </button>
             </m.div>
           </m.form>
         )}

@@ -2,14 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
-import dynamic from "next/dynamic";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-// Ambient canvas particles (client-only; no SSR).
-const SectionParticles = dynamic(() => import("../ui/SectionParticles"), {
-  ssr: false,
-});
 
 export function About() {
   const t = useTranslations("about");
@@ -18,15 +12,8 @@ export function About() {
   const blocks = ["personal", "technical", "languages"] as const;
 
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden bg-zinc-100 py-20 dark:bg-zinc-900/40"
-    >
-      <div className="pointer-events-none absolute inset-0">
-        <SectionParticles />
-      </div>
-
-      <div className="container relative z-10 mx-auto px-4">
+    <section id="about" className="py-20">
+      <div className="container mx-auto px-4">
         <m.div
           initial="hidden"
           whileInView="show"

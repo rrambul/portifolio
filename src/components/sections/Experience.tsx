@@ -42,22 +42,11 @@ export function Experience() {
               const current = exp.period.includes("Present");
               return (
                 <m.li key={idx} variants={fadeInUp} className="relative">
-                  {/* Rail node: the current role pulses, past roles are solid. */}
+                  {/* Rail node. */}
                   <span
-                    className="absolute -left-[2.4rem] top-1 flex h-3 w-3 items-center justify-center"
+                    className="absolute -left-[2.4rem] top-1 h-3 w-3 rounded-full bg-emerald-500 ring-4 ring-[hsl(var(--background))] dark:bg-emerald-400"
                     aria-hidden="true"
-                  >
-                    {current && (
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                    )}
-                    <span
-                      className={`relative h-3 w-3 rounded-full ring-4 ring-[hsl(var(--background))] ${
-                        current
-                          ? "bg-emerald-500 dark:bg-emerald-400"
-                          : "bg-emerald-500"
-                      }`}
-                    />
-                  </span>
+                  />
 
                   {/* Header */}
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">

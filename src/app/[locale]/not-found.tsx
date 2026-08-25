@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <main className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
       <p
-        className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-emerald-600 to-amber-600 dark:from-emerald-300 dark:to-amber-400 bg-clip-text text-transparent pb-1"
+        className="font-accent-mono text-7xl font-bold text-emerald-700 dark:text-emerald-400 md:text-8xl"
         aria-hidden="true"
       >
         404
@@ -22,7 +22,7 @@ export default function NotFound() {
       </p>
       <Link
         href={`/${locale}`}
-        className="mt-8 inline-flex items-center gap-2 rounded-md bg-emerald-700 hover:bg-emerald-800 px-5 py-2.5 font-medium text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+        className="mt-8 inline-flex items-center gap-2 rounded-md bg-zinc-900 px-5 py-2.5 font-accent-mono font-medium text-white transition-colors hover:bg-zinc-700 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white dark:focus-visible:ring-offset-zinc-900"
       >
         <FiArrowLeft className="h-4 w-4" />
         {t("home")}

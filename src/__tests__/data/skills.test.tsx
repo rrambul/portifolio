@@ -18,7 +18,6 @@ describe("skillCategories", () => {
   it("each category has required fields", () => {
     for (const cat of skillCategories) {
       expect(cat.titleKey).toBeTruthy();
-      expect(cat.accent).toMatch(/^#[0-9a-f]{6}$/i);
       expect(Array.isArray(cat.skills)).toBe(true);
     }
   });

@@ -22,7 +22,7 @@ export function BlogCard({ post, index }: BlogCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+      className="group rounded-lg overflow-hidden border border-zinc-200 transition-colors hover:border-emerald-500/50 dark:border-white/10"
     >
       <Link href={`/${locale}/blog/${post.slug}`} className="block">
         {/* Banner Image */}
@@ -31,9 +31,8 @@ export function BlogCard({ post, index }: BlogCardProps) {
             src={post.banner}
             alt={post.title[locale]}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
 
         {/* Content */}

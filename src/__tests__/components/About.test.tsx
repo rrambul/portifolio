@@ -7,22 +7,8 @@ vi.mock("next-intl", () => ({
   useLocale: () => "en",
 }));
 
-// Mock next-themes
-vi.mock("next-themes", () => ({
-  useTheme: () => ({ theme: "dark", resolvedTheme: "dark" }),
-}));
-
 // Mock framer-motion
 vi.mock("framer-motion");
-
-// Mock dynamic imports
-vi.mock("next/dynamic", () => ({
-  default: () => {
-    return function MockDynamic() {
-      return <div data-testid="mock-particles" />;
-    };
-  },
-}));
 
 import { About } from "@/components/sections/About";
 

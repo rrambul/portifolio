@@ -5,17 +5,16 @@
 
 @layer base {
   :root {
-    --background: 150 20% 98%;
+    /* Neutral canvas: the emerald accent is the only color in the scheme. */
+    --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-    --border: 150 10% 89%;
+    --border: 240 6% 90%;
   }
 
   .dark {
-    /* Near-black with a faint green tint so the terminal-green accents read
-       as part of the scheme rather than floating on neutral black. */
-    --background: 158 24% 4%;
+    --background: 240 10% 4%;
     --foreground: 0 0% 98%;
-    --border: 160 14% 13%;
+    --border: 240 4% 16%;
   }
 }
 
@@ -81,17 +80,17 @@
 /* Custom Blog Post Link Styling */
 @layer components {
   .prose a {
-    @apply relative font-medium transition-all duration-300 ease-in-out;
+    @apply font-medium;
     color: #047857 !important; /* Emerald-700: keeps WCAG AA contrast on light */
-    text-decoration: none;
-    background: linear-gradient(to right, #047857, #34d399) no-repeat right bottom / 0 2px;
-    transition: background-size 300ms ease-in-out, color 300ms ease-in-out;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgb(4 120 87 / 0.4);
+    transition: text-decoration-color 200ms ease-in-out;
   }
 
   .prose a:hover {
-    color: #065f46 !important; /* Emerald-800 */
-    background-size: 100% 2px;
-    background-position-x: left;
+    text-decoration-color: currentColor;
   }
 
   .prose a:focus {
@@ -102,13 +101,7 @@
 
   .dark .prose a {
     color: #34d399 !important; /* Emerald-400 */
-    background: linear-gradient(to right, #34d399, #6ee7b7) no-repeat right bottom / 0 2px;
-  }
-
-  .dark .prose a:hover {
-    color: #6ee7b7 !important; /* Emerald-300 */
-    background-size: 100% 2px;
-    background-position-x: left;
+    text-decoration-color: rgb(52 211 153 / 0.4);
   }
 
   .dark .prose a:focus {
@@ -131,7 +124,8 @@
 
   /* Center images in blog posts */
   .prose img {
-    @apply mx-auto block rounded-lg shadow-md;
+    @apply mx-auto block rounded-md;
+    border: 1px solid hsl(var(--border));
     max-width: 100%;
     height: auto;
   }
@@ -153,37 +147,14 @@
   from { opacity: 0; transform: translateX(-20px); }
   to { opacity: 1; transform: translateX(0); }
 }
-@keyframes enter-fade-down {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 @keyframes enter-fade {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@keyframes enter-scale {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
 
 .animate-enter-fade-up { animation: enter-fade-up 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
 .animate-enter-fade-left { animation: enter-fade-left 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
-.animate-enter-fade-down { animation: enter-fade-down 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
 .animate-enter-fade { animation: enter-fade 0.6s ease-out both; }
-/* Slight overshoot to match the original spring on the photo */
-.animate-enter-scale { animation: enter-scale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
-.animate-bob { animation: bob 1.8s ease-in-out infinite; }
-
-/* Keep descenders (g, y, p) from being clipped on gradient (bg-clip-text)
-   headings. Unlayered so it reliably applies over Tailwind's utilities. */
-.bg-clip-text {
-  padding-bottom: 0.125rem;
-  line-height: 1.2;
-}
 
 /* Respect users who prefer reduced motion: neutralize transitions/animations
    and disable smooth scrolling so nothing moves more than it has to. */

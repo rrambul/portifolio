@@ -28,14 +28,13 @@ export function Interests() {
 
           {/* Topics as a mono "tag" cloud: a monochrome marker icon per item. */}
           <m.div variants={fadeInUp} className="flex flex-wrap gap-2.5">
-            {interests.map(({ key, icon: Icon, color }) => (
+            {interests.map(({ key, icon: Icon }) => (
               <span
                 key={key}
-                className="inline-flex items-center gap-2 rounded-md border border-zinc-200 bg-white/60 px-3 py-1.5 font-accent-mono text-sm text-zinc-700 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-300"
+                className="inline-flex items-center gap-2 rounded-md border border-zinc-200 px-3 py-1.5 font-accent-mono text-sm text-zinc-700 dark:border-white/10 dark:text-zinc-300"
               >
                 <Icon
-                  className="h-4 w-4"
-                  style={{ color }}
+                  className="h-4 w-4 text-zinc-400 dark:text-zinc-500"
                   aria-hidden="true"
                 />
                 {t(`items.${key}`)}
