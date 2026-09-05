@@ -1,16 +1,16 @@
 # Introduction to Web Components: Current State and Why You Should Care
 
-This is the first post in a series of articles I'll be writing about Web Components. The goal of this article is to provide an introduction to the topic and discuss the current state of this technology, explaining its benefits and the problems it solves.
+This is the first post in a series of articles I'll be writing about Web Components. This one covers the basics, where the technology stands today, and the problems it solves.
 
 &nbsp;
 
-## What Are Web Components?
+## What are Web Components?
 
-Web Components are a set of web standards that allow you to create reusable, native HTML components that are framework-agnostic. In other words, you can build custom elements that work in any project—whether it's built with React, Vue, Angular, or just plain HTML and JavaScript.
+Web Components are a set of web standards that allow you to create reusable, native HTML components that are framework-agnostic. In other words, you can build custom elements that work in any project, whether it's built with React, Vue, Angular, or just plain HTML and JavaScript.
 
 &nbsp;
 
-## Why Use Web Components?
+## Why use Web Components?
 
 With Web Components, you can build a Design System using only native Web APIs, without relying on any external libraries. This brings several benefits:
 
@@ -24,9 +24,9 @@ With Web Components, you can build a Design System using only native Web APIs, w
 
 &nbsp;
 
-## Core Technologies of Web Components
+## Core technologies of Web Components
 
-Web Components are built on three key technologies:
+Web Components are built on three technologies:
 
 &nbsp;
 
@@ -38,7 +38,7 @@ Web Components are built on three key technologies:
 
 &nbsp;
 
-## Key Advantages
+## Key advantages
 
 &nbsp;
 
@@ -50,7 +50,7 @@ Define custom elements to create new HTML elements that work with any library or
 
 ### Encapsulation
 
-Leverage Shadow DOM to isolate styles and HTML rendering.
+Use Shadow DOM to isolate styles and HTML rendering.
 
 &nbsp;
 
@@ -60,21 +60,21 @@ Use slots to natively compose elements and render trees.
 
 &nbsp;
 
-### Semantics vs. Rendering
+### Semantics vs. rendering
 
 Separate your semantic/accessible HTML from your render HTML with Shadow DOM.
 
 &nbsp;
 
-### Component-Aware Styling
+### Component-aware styling
 
 Declare CSS Parts to teach the browser how your component's style model works.
 
 &nbsp;
 
-## Tools for Working with Web Components
+## Tools for working with Web Components
 
-If you want to start working with Web Components efficiently, here are some popular tools:
+Some popular tools for building Web Components:
 
 &nbsp;
 
@@ -86,9 +86,9 @@ If you want to start working with Web Components efficiently, here are some popu
 
 &nbsp;
 
-## Industry Adoption
+## Industry adoption
 
-Web Component standards have been supported by all major browsers since January 2020. Some interesting facts:
+Web Component standards have been supported by all major browsers since January 2020. Some numbers:
 
 &nbsp;
 

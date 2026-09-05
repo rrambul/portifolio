@@ -1,8 +1,8 @@
 # Bullet Journal. Gerenciando sua vida como um projeto
 
-O método Bullet Journal é uma forma de fazer anotações e organizar tarefas e metas ao longo do tempo. Ele foi criado por um engenheiro de software, e por isso tem muitas semelhanças com metodologias ágeis de gerenciamento de projetos — como planejamento, execução e retrospectiva.
+O método Bullet Journal é uma forma de fazer anotações e organizar tarefas e metas ao longo do tempo. Ele foi criado por um engenheiro de software, e por isso tem muitas semelhanças com metodologias ágeis de gerenciamento de projetos, como planejamento, execução e retrospectiva.
 
-Esse método é estruturado de forma a permitir uma gestão flexível do tempo. Você começa com um planejamento de longo prazo e vai quebrando em etapas menores: meses, semanas e tarefas diárias. Ele também abraça a mudança e o caos — ou seja, você pode ajustar suas metas conforme a vida muda.
+Esse método é estruturado de forma a permitir uma gestão flexível do tempo. Você começa com um planejamento de longo prazo e vai quebrando em etapas menores: meses, semanas e tarefas diárias. Ele também abraça a mudança e o caos, ou seja, você pode ajustar suas metas conforme a vida muda.
 
 Tenho usado esse método para gerenciar minha vida nos últimos 8 meses e tem sido um divisor de águas. Ele me ajuda a ter mais consciência sobre meus avanços, conquistas e pontos de melhoria.
 
@@ -18,7 +18,7 @@ O Bullet Journal tem suas próprias "regras" e métodos específicos. Mas meu ob
 
 Escrever à mão exige mais foco e intenção. O cérebro trabalha de maneira diferente quando você escreve com uma caneta, em vez de apenas digitar ou clicar para marcar tarefas.
 
-Com um caderno físico, você centraliza toda a gestão da sua vida em um único lugar — offline e sem distrações. O papel em branco te dá liberdade para criar o que quiser. Se quiser desenhar algo na retrospectiva do dia, você pode. Quer personalizar do seu jeito? Sem limites.
+Com um caderno físico, você centraliza toda a gestão da sua vida em um único lugar, offline e sem distrações. O papel em branco te dá liberdade para criar o que quiser. Se quiser desenhar algo na retrospectiva do dia, você pode. Quer personalizar do seu jeito? Sem limites.
 
 Outro benefício é passar um tempo **sem tela**, longe de notificações ou distrações, enquanto você planeja e organiza sua vida.
 
@@ -28,7 +28,7 @@ Outro benefício é passar um tempo **sem tela**, longe de notificações ou dis
 
 &nbsp;
 
-## Primeira página – Sumário
+## Primeira página: sumário
 
 A primeira página do seu journal deve ser o sumário. Nela você lista as páginas importantes com seus títulos e números, para localizar facilmente quando precisar.
 
@@ -50,7 +50,7 @@ O objetivo aqui é **ter uma direção**, não metas rígidas. Não é sobre ati
 
 &nbsp;
 
-## Planejamento Anual
+## Planejamento anual
 
 Agora você transforma suas metas de longo prazo em objetivos para o ano. Crie metas menores e mais alcançáveis dentro de um período de 12 meses. Mas mantenha a mesma filosofia: são **metas flexíveis**, que servem como orientação e não como obrigação.
 
@@ -60,19 +60,9 @@ Agora você transforma suas metas de longo prazo em objetivos para o ano. Crie m
 
 &nbsp;
 
-## Planejamento Mensal
+## Planejamento mensal
 
-Todo começo de mês, revise suas metas do ano e defina o que pode ser feito naquele mês. Anote também feriados, eventos importantes e datas especiais. Você pode monitorar hábitos e metas mensais — como ir à academia 12 vezes, ler 200 páginas ou completar um módulo de um curso.
-
-&nbsp;
-
----
-
-&nbsp;
-
-## Planejamento Semanal
-
-No início da semana, repita o processo de planejamento — agora focado nos objetivos da semana. Exemplos: ir à academia 5 vezes, assistir 2 aulas de um curso, entregar 3 pull requests, contribuir com um projeto open-source, ler 50 páginas de um livro.
+Todo começo de mês, revise suas metas do ano e defina o que pode ser feito naquele mês. Anote também feriados, eventos importantes e datas especiais. Você pode monitorar hábitos e metas mensais, como ir à academia 12 vezes, ler 200 páginas ou completar um módulo de um curso.
 
 &nbsp;
 
@@ -80,9 +70,19 @@ No início da semana, repita o processo de planejamento — agora focado nos obj
 
 &nbsp;
 
-## Planejamento Diário
+## Planejamento semanal
 
-Todo dia, comece anotando a data no topo da página. Abaixo, escreva todas as tarefas do dia — mesmo as pequenas. Exemplo: "Receber encomenda", "Enviar e-mail", "Comprar frutas".
+No início da semana, repita o processo de planejamento, agora focado nos objetivos da semana. Exemplos: ir à academia 5 vezes, assistir 2 aulas de um curso, entregar 3 pull requests, contribuir com um projeto open-source, ler 50 páginas de um livro.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Planejamento diário
+
+Todo dia, comece anotando a data no topo da página. Abaixo, escreva todas as tarefas do dia, mesmo as pequenas. Exemplo: "Receber encomenda", "Enviar e-mail", "Comprar frutas".
 
 Isso libera espaço na memória da sua mente para se concentrar em coisas mais importantes. Eu, pessoalmente, anoto até as refeições: café da manhã, almoço, jantar… tudo.
 
@@ -134,7 +134,7 @@ O método Bullet Journal tem símbolos e estruturas específicos para gerenciar 
 
 ## Melhoria contínua
 
-O ponto-chave aqui é a **melhoria contínua** — assim como nas metodologias ágeis ou no método científico. Você está sempre aprendendo, adaptando e evoluindo. É assim que uso o Bullet Journal para melhorar minha vida, hábitos, produtividade e metas.
+O ponto-chave aqui é a **melhoria contínua**, assim como nas metodologias ágeis ou no método científico. Você está sempre aprendendo, adaptando e evoluindo. É assim que uso o Bullet Journal para melhorar minha vida, hábitos, produtividade e metas.
 
 Está funcionando muito bem pra mim e não pretendo parar.
 

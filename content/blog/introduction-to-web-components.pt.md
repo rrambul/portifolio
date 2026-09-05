@@ -1,6 +1,6 @@
 # Introdução aos Web Components: Estado Atual e Por Que Você Deve se Importar
 
-Este é o primeiro post de uma série que irei escrever sobre Web Components. O objetivo deste artigo é dar uma introdução ao assunto e apresentar o estado atual dessa tecnologia, explicando suas vantagens e os problemas que ela resolve.
+Este é o primeiro post de uma série que irei escrever sobre Web Components. Este cobre o básico, o estado atual da tecnologia e os problemas que ela resolve.
 
 &nbsp;
 
@@ -24,7 +24,7 @@ Com Web Components, você pode construir um Design System usando apenas APIs nat
 
 &nbsp;
 
-## Principais Tecnologias dos Web Components
+## Principais tecnologias dos Web Components
 
 Os Web Components são baseados em três principais tecnologias:
 
@@ -38,7 +38,7 @@ Os Web Components são baseados em três principais tecnologias:
 
 &nbsp;
 
-## Principais Vantagens
+## Principais vantagens
 
 &nbsp;
 
@@ -60,21 +60,21 @@ Use slots para compor elementos de forma nativa e criar árvores de renderizaç�
 
 &nbsp;
 
-### Semântica vs. Renderização
+### Semântica vs. renderização
 
 Separe o HTML semântico do HTML de renderização com Shadow DOM.
 
 &nbsp;
 
-### Estilização Inteligente
+### Estilização inteligente
 
 Declare CSS Parts para ensinar ao navegador como o modelo de estilos do seu componente funciona.
 
 &nbsp;
 
-## Ferramentas para Trabalhar com Web Components
+## Ferramentas para trabalhar com Web Components
 
-Se você deseja começar a usar Web Components de forma prática, aqui estão algumas ferramentas populares:
+Algumas ferramentas populares para construir Web Components:
 
 &nbsp;
 
@@ -86,9 +86,9 @@ Se você deseja começar a usar Web Components de forma prática, aqui estão al
 
 &nbsp;
 
-## Adoção pela Indústria
+## Adoção pela indústria
 
-Os padrões de Web Components foram implementados por todos os navegadores modernos desde janeiro de 2020. Aqui estão alguns números:
+Os padrões de Web Components foram implementados por todos os navegadores modernos desde janeiro de 2020. Alguns números:
 
 &nbsp;
 

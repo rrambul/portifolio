@@ -25,7 +25,7 @@
     "greeting": "Hello, I'm",
     "title": "Renan Rambul",
     "subtitle": "Software Engineer",
-    "tagline": "I build products end to end, from APIs to fast, accessible interfaces that feel great to use.",
+    "tagline": "I build products end to end, from APIs to fast, accessible interfaces.",
     "taglineShort": "Products end to end, from the API to the pixel.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
     "statusShipping": "shipping",
@@ -41,14 +41,14 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I'm a software engineer who has spent the last 7+ years shipping web products end to end, from API design and data modeling to design systems and accessible UI, and the frontend is where I go deepest. These days I build healthcare SaaS with a U.S.-based team, owning features from the API to the pixel and building the design system and platform tooling other teams ship on. I care about clean architecture, a good developer experience, and the small details that make a product feel right.",
+    "content": "I'm a software engineer with 7+ years of shipping web products end to end: API design, data modeling, design systems, accessible UI. The frontend is where I go deepest. These days I build healthcare SaaS with a U.S.-based team, owning whole features and maintaining the design system and platform tooling other teams ship on. I care about clean architecture, a good developer experience, and the small details that make a product feel right.",
     "personal": {
       "title": "Personal",
       "content": "I love building things, learning in public, and contributing to open source. When I'm not coding, I'm probably reading or at the gym."
     },
     "technical": {
       "title": "Technical",
-      "content": "React, TypeScript, and Node.js across the stack, going deepest on design systems, accessibility, and performance."
+      "content": "React, TypeScript, and Node.js across the stack. Design systems, accessibility, and performance are where I've spent the most time."
     },
     "languages": {
       "title": "Languages",
@@ -66,8 +66,8 @@
       "tas": {
         "title": "Software Engineer",
         "responsibilities": [
-          "Own features end to end on a U.S. healthcare SaaS platform, from inventory-logistics flows to a full billing suite, taking each from API endpoints and data-model changes through accessible UI to production.",
-          "Built the foundational component library of the design system the entire platform ships on, including virtualized select and grid components that fixed a platform-wide performance ceiling, and maintain it with accessibility and performance treated as requirements, not nice-to-haves.",
+          "Own features end to end on a U.S. healthcare SaaS platform, including inventory-logistics flows and a full billing suite: the API endpoints, the data-model changes, and the accessible UI on top, through to production.",
+          "Built the foundational component library of the design system the entire platform ships on, including virtualized select and grid components that fixed a platform-wide performance ceiling. I still maintain it, and every component has to meet accessibility and performance requirements before it ships.",
           "Write Playwright integration tests that catch regressions before they reach a release.",
           "Publish shared npm packages that keep UI consistent across product teams, and review frontend PRs for architecture and fidelity to Figma designs.",
           "Improve the team's AI-assisted workflows: shipped automated code review on every PR and a hierarchical knowledge base that keeps coding agents productive across the codebase."
@@ -87,10 +87,10 @@
       "freelance": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Built the landing pages and application UI for an ed-tech platform serving 1,000+ students, with pages that drove thousands of conversions.",
+          "Built the landing pages and application UI for an ed-tech platform with 1,000+ students, and those pages drove thousands of conversions.",
           "Streamlined student and admin workflows, removing manual steps from day-to-day operations.",
           "Established the frontend architecture around React, React Query, and React Hook Form so the codebase stays maintainable as the product grows.",
-          "Worked directly with product stakeholders to turn business requirements into shippable, user-centered features."
+          "Worked directly with product stakeholders to turn business requirements into features we could actually ship."
         ],
         "skills": [
           "React.js",
@@ -125,8 +125,8 @@
         "title": "Frontend Software Engineer",
         "responsibilities": [
           "Built the backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, and live operational dashboards.",
-          "Founding contributor to the internal design system, raising component reuse across teams and speeding up feature delivery.",
-          "Introduced end-to-end testing with Cypress, catching bugs before deploys instead of after.",
+          "Founding contributor to the internal design system, which raised component reuse across teams and sped up feature delivery.",
+          "Introduced end-to-end testing with Cypress, so bugs showed up before a deploy instead of after one.",
           "Created accessible, interactive data visualizations for day-to-day operational decisions.",
           "Worked directly with a U.S. client, owning features from planning through deployment."
         ],
@@ -183,7 +183,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Check out my latest articles and thoughts on software development",
+    "subtitle": "Articles and notes on software development.",
     "readMore": "Read More",
     "publishedOn": "Published on",
     "backToBlog": "Back to Blog",
@@ -193,7 +193,7 @@
   "learning": {
     "title": "Learning Log",
     "subtitle": "Articles, talks, videos, books, and courses worth remembering, logged by the month I got to them.",
-    "empty": "Nothing logged here yet. Check back soon.",
+    "empty": "Nothing logged here yet.",
     "types": {
       "article": "Article",
       "video": "Video",
@@ -206,7 +206,7 @@
   },
   "footer": {
     "about": "About",
-    "aboutText": "A developer passionate about building software, continuous learning, and open source.",
+    "aboutText": "A developer who loves coding, learning new things, and open source.",
     "social": "Social",
     "links": "Quick Links",
     "aboutLink": "About",
@@ -214,12 +214,12 @@
     "projectsLink": "Projects & Contributions",
     "skillsLink": "Skills",
     "contact": "Contact",
-    "contactText": "Feel free to reach out if you have any questions or opportunities.",
+    "contactText": "Reach out if you have a question or an opportunity.",
     "copyright": "All rights reserved."
   },
   "contact": {
     "title": "Get in Touch",
-    "description": "Have a question or want to work together? Feel free to reach out using the form below.",
+    "description": "If you have a question or want to work together, send a message below.",
     "form": {
       "name": "Your Name",
       "email": "Your Email",
@@ -252,32 +252,32 @@
     "contribution": "Contribution",
     "fortuna": {
       "title": "Fortuna",
-      "description": "A personal finance app that brings spending, cards, parcelas, investments and goals into one calm place, with an AI co-pilot that reads your bank statements, flags surprises, and answers in plain language. Built for Brazil (BRL, CDI, parcelas) and fully bilingual."
+      "description": "A personal finance app that keeps spending, cards, parcelas, investments and goals in one place, with an AI co-pilot that reads your bank statements, flags surprises, and answers in plain language. Built for Brazil (BRL, CDI, parcelas) and fully bilingual."
     },
     "mindforge": {
       "title": "Mindforge",
-      "description": "A learning tool that turns a topic into a fundamentals-first curriculum, then has an agent write each lesson on demand as you work through it. Three trackers report how far, how much, and how often you have studied without inflating progress: no streaks, no fake percentages. Built as a TypeScript monorepo with a React front end, a NestJS API, and a Supabase backend."
+      "description": "A learning tool that turns a topic into a fundamentals-first curriculum, then has an agent write each lesson on demand as you work through it. Three trackers report how far, how much, and how often you have studied, without streaks or invented percentages to inflate the numbers. Built as a TypeScript monorepo with a React front end, a NestJS API, and a Supabase backend."
     },
     "modularGameStore": {
       "title": "Modular Game Store",
-      "description": "A modern, high-performance micro-frontend e-commerce platform built with Rspack and Module Federation, demonstrating scalable frontend architecture for large distributed teams."
+      "description": "A micro-frontend e-commerce platform built with Rspack and Module Federation, as a working example of frontend architecture that scales across large distributed teams."
     },
     "marketPulse": {
       "title": "Market Pulse",
-      "description": "A real-time financial market monitoring platform built with Lit, Lit Signals, Rspack, and Module Federation, designed to explore high-performance reactive UIs under streaming data loads."
+      "description": "A real-time financial market monitoring platform using Lit, Lit Signals, Rspack, and Module Federation, written to see how reactive UIs hold up under streaming data loads."
     },
     "animavita": {
       "title": "Animavita",
-      "description": "Trigger life-saving alerts, register animals for adoption and find the closest pet friend to adopt. An open-source project with 739+ stars and 318+ forks on GitHub."
+      "description": "Trigger life-saving alerts, register animals for adoption and find the nearest pet looking for a home. An open-source project with 739+ stars and 318+ forks on GitHub."
     },
     "portfolio": {
       "title": "Personal Portfolio",
-      "description": "Modern, responsive portfolio website built with Next.js 16, featuring dark/light theme, internationalization (EN/PT), animated sections with Framer Motion, and a contact form."
+      "description": "This site: Next.js 16, responsive, with a dark/light theme, EN/PT internationalization, animated sections with Framer Motion, and a contact form."
     }
   },
   "interests": {
     "title": "Engineering Interests",
-    "subtitle": "What drives me",
+    "subtitle": "The topics I keep coming back to.",
     "items": {
       "designSystems": "Design Systems",
       "webComponents": "Web Components Architecture",

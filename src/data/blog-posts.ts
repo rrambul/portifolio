@@ -46,8 +46,8 @@ export const blogPosts: BlogPostMetadata[] = [
       pt: "Introdução aos Web Components: Estado Atual e Por Que Você Deve se Importar"
     },
     excerpt: {
-      en: "Web Components are a set of web standards that allow you to create reusable, native HTML components that are framework-agnostic. Learn about their current state and why they matter.",
-      pt: "Web Components são um conjunto de padrões da Web que permitem criar componentes reutilizáveis e nativos do HTML, independentes de qualquer framework. Entenda seu estado atual e por que são importantes."
+      en: "Web Components are a set of web standards that allow you to create reusable, native HTML components that are framework-agnostic. This post covers where they stand today and the problems they solve.",
+      pt: "Web Components são um conjunto de padrões da Web que permitem criar componentes reutilizáveis e nativos do HTML, independentes de qualquer framework. Este post cobre onde eles estão hoje e os problemas que resolvem."
     },
     date: "2025-06-16",
     banner: "/blog/webcomponents.svg",

@@ -6,7 +6,7 @@ I'm someone who loves coding, learning, computers, reading, video games, and goi
 
 Right now, I'm focusing my studies on software design and architecture. I've been diving into Domain-Driven Design and Clean Architecture to deepen my understanding.
 
-Professionally, I'm currently working at Translational Analytics, where I help build a great product—mainly working on the frontend side.
+Professionally, I'm currently working at Translational Analytics, where I help build a great product, mainly working on the frontend side.
 
 I enjoy reading, although I have a habit of starting many books in parallel and finishing almost none of them 😅. At the moment, I'm reading *The Mythical Man-Month* and *The Pragmatic Programmer*.
 

@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
         : "Renan Rambul | Software Engineer",
     description:
       locale === "pt"
-        ? "Portfolio de Renan Rambul, engenheiro de software apaixonado com mais de 6 anos de experiência construindo produtos web de ponta a ponta com React, TypeScript e Node.js."
-        : "Portfolio of Renan Rambul, a passionate software engineer with 7+ years of experience building web products end to end with React, TypeScript, and Node.js.",
+        ? "Portfolio de Renan Rambul, engenheiro de software com mais de 7 anos de experiência construindo produtos web de ponta a ponta com React, TypeScript e Node.js."
+        : "Portfolio of Renan Rambul, a software engineer with 7+ years of experience building web products end to end with React, TypeScript, and Node.js.",
     keywords:
       locale === "pt"
         ? "Renan Rambul, engenheiro de software, React, TypeScript, Next.js, frontend, backend, portfolio, Brasil"
