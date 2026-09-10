@@ -32,7 +32,7 @@ const FAINT = "#a1a1aa";
 
 const styles = StyleSheet.create({
   page: {
-    paddingVertical: 36,
+    paddingVertical: 32,
     paddingHorizontal: 44,
     fontFamily: "Helvetica",
     fontSize: 9.5,
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     color: ACCENT,
     textTransform: "uppercase",
     letterSpacing: 1,
-    marginTop: 16,
+    marginTop: 13,
     marginBottom: 6,
     paddingBottom: 2,
     borderBottomWidth: 1,
@@ -174,8 +174,10 @@ export function createCvDocument(locale: Locale) {
         ))}
 
         {/* Languages */}
-        <Text style={styles.sectionTitle}>{m.about.languages.title}</Text>
-        <Text style={styles.paragraph}>{m.about.languages.content}</Text>
+        <View wrap={false}>
+          <Text style={styles.sectionTitle}>{m.about.languages.title}</Text>
+          <Text style={styles.paragraph}>{m.about.languages.content}</Text>
+        </View>
 
         <Text style={styles.footer} fixed>
           {labels.generated} {siteHost}

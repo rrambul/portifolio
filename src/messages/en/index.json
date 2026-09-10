@@ -66,11 +66,11 @@
       "tas": {
         "title": "Software Engineer",
         "responsibilities": [
-          "Own features end to end on a U.S. healthcare SaaS platform, including inventory-logistics flows and a full billing suite: the API endpoints, the data-model changes, and the accessible UI on top, through to production.",
-          "Built the foundational component library of the design system the entire platform ships on, including virtualized select and grid components that fixed a platform-wide performance ceiling. I still maintain it, and every component has to meet accessibility and performance requirements before it ships.",
-          "Write Playwright integration tests that catch regressions before they reach a release.",
-          "Publish shared npm packages that keep UI consistent across product teams, and review frontend PRs for architecture and fidelity to Figma designs.",
-          "Improve the team's AI-assisted workflows: shipped automated code review on every PR and a hierarchical knowledge base that keeps coding agents productive across the codebase."
+          "Own features end to end on a U.S. healthcare SaaS platform, including inventory-logistics flows and a full billing suite, writing the Postgres migrations, core-api services, domain events, and API contracts, then carrying each through to accessible production UI.",
+          "Built foundational pieces of the design system the entire platform ships on: the data grid, select, dialogs, and the virtualized select and grid that fixed a platform-wide performance ceiling. Maintain it with accessibility and performance as hard requirements for every component, and I'm currently fitting the platform to a phone.",
+          "Fix reliability holes that only surface under partial failure, including a bug where notification failures could roll back the business writes that triggered them, and an atomicity gap that left orphaned records when PDF generation failed. Made multi-invoice sending all-or-nothing, so a rejected batch changes nothing and names every offender, and tested it by inducing real S3 outages.",
+          "Own testing across the stack: Playwright integration, page, API, and visual-regression suites. Fix the test infrastructure itself, including a monorepo test command that was silently skipping 13 packages.",
+          "Publish the shared npm packages that keep UI consistent across product teams, and review frontend PRs for architecture and fidelity to Figma designs. Improve the team's AI-assisted workflows with automated code review on every PR and a hierarchical knowledge base that keeps coding agents productive, and cut CI time with parallelized monorepo builds."
         ],
         "skills": [
           "TypeScript",
@@ -124,11 +124,13 @@
       "take": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Built the backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, and live operational dashboards.",
-          "Founding contributor to the internal design system, which raised component reuse across teams and sped up feature delivery.",
-          "Introduced end-to-end testing with Cypress, so bugs showed up before a deploy instead of after one.",
-          "Created accessible, interactive data visualizations for day-to-day operational decisions.",
-          "Worked directly with a U.S. client, owning features from planning through deployment."
+          "Built and owned the backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, promotions, fiscal reporting, and live operational dashboards used daily by internal teams and licensed operators.",
+          "Shipped the planogram builder behind a greenfield connected-cooler platform: drag-and-drop shelf composition, stackable product modeling, live door preview, and fleet-wide rollout scored against a computer-vision compliance model.",
+          "Ran releases for both products, reviewing and merging 274 pull requests to trunk, 75% of all merges on the newer platform, and owning the production hotfix path.",
+          "Wrote the frontend architecture standard the team built against: clean architecture with ports and adapters, the engineering conventions, and the definition of done.",
+          "Largest contributor to the shared design system, roughly 70 React and TypeScript components documented in Storybook and reused across teams.",
+          "Introduced end-to-end testing with Cypress, so bugs showed up before a deploy instead of after one, then extended CI to run the suite in parallel through Docker builds to AWS ECR.",
+          "Created accessible, interactive data visualizations for day-to-day operational decisions, covering sales, execution, demographics, and energy consumption."
         ],
         "skills": [
           "React.js",

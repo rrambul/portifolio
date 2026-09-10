@@ -66,11 +66,11 @@
       "tas": {
         "title": "Engenheiro de Software",
         "responsibilities": [
-          "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, incluindo fluxos de logística de inventário e uma suíte completa de faturamento: os endpoints de API, as mudanças no modelo de dados e a UI acessível em cima disso, até produção.",
-          "Criei a biblioteca de componentes que serve de base ao design system sobre o qual toda a plataforma é construída, incluindo componentes de select e grid virtualizados que resolveram um teto de performance de toda a plataforma. Continuo mantendo a biblioteca, e todo componente precisa atender aos requisitos de acessibilidade e performance antes de entrar.",
-          "Escrevo testes de integração com Playwright que pegam regressões antes de chegarem a um release.",
-          "Publico pacotes npm compartilhados que mantêm a UI consistente entre as equipes de produto, e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
-          "Melhoro os workflows de IA do time: coloquei revisão de código automática em cada PR e uma base de conhecimento hierárquica que deixa agentes de codificação produtivos na base de código."
+          "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, incluindo fluxos de logística de inventário e uma suíte completa de faturamento, escrevendo as migrations do Postgres, os serviços da core-api, os eventos de domínio e os contratos de API, e levando cada uma até a UI acessível em produção.",
+          "Construí peças fundamentais do design system sobre o qual toda a plataforma é construída: o data grid, o select, os dialogs e as versões virtualizadas de select e grid que resolveram um teto de performance de toda a plataforma. Mantenho a biblioteca com acessibilidade e performance como requisitos obrigatórios de todo componente, e hoje estou adaptando a plataforma para caber em um celular.",
+          "Corrijo falhas de confiabilidade que só aparecem sob falha parcial, incluindo um bug em que erros de notificação podiam reverter as escritas de negócio que os dispararam, e uma falha de atomicidade que deixava registros órfãos quando a geração de PDF falhava. Deixei o envio de múltiplas faturas tudo-ou-nada, então um lote rejeitado não muda nada e aponta cada culpado, e testei isso provocando quedas reais do S3.",
+          "Cuido dos testes em toda a stack: suítes de integração, de página, de API e de regressão visual com Playwright. Corrijo a própria infraestrutura de testes, incluindo um comando de teste do monorepo que estava pulando 13 pacotes em silêncio.",
+          "Publico os pacotes npm compartilhados que mantêm a UI consistente entre as equipes de produto, e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma. Melhoro os workflows de IA do time com revisão de código automática em cada PR e uma base de conhecimento hierárquica que deixa agentes de codificação produtivos, e reduzi o tempo de CI com builds paralelizados do monorepo."
         ],
         "skills": [
           "TypeScript",
@@ -124,11 +124,13 @@
       "take": {
         "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Construí o backoffice que opera uma rede de mais de 1.000 coolers inteligentes de varejo: gestão de pedidos, controle de estoque e dashboards operacionais em tempo real.",
-          "Contribuí com o design system interno desde a fundação, o que aumentou o reuso de componentes entre times e acelerou a entrega de features.",
-          "Introduzi testes end-to-end com Cypress, então os bugs apareciam antes do deploy e não depois.",
-          "Criei visualizações de dados acessíveis e interativas para as decisões operacionais do dia a dia.",
-          "Trabalhei direto com um cliente americano, cuidando de features do planejamento ao deploy."
+          "Construí e assumi o backoffice que opera uma rede de mais de 1.000 coolers inteligentes de varejo: gestão de pedidos, controle de estoque, promoções, relatórios fiscais e dashboards operacionais em tempo real usados todos os dias por times internos e operadores licenciados.",
+          "Entreguei o construtor de planogramas por trás de uma plataforma greenfield de coolers conectados: composição de prateleiras com drag-and-drop, modelagem de produtos empilháveis, preview da porta em tempo real e rollout para toda a frota avaliado por um modelo de visão computacional de compliance.",
+          "Cuidei dos releases dos dois produtos, revisando e integrando 274 pull requests na trunk, 75% de todos os merges da plataforma mais nova, e assumindo o caminho de hotfix em produção.",
+          "Escrevi o padrão de arquitetura frontend que o time seguia: clean architecture com ports and adapters, as convenções de engenharia e a definition of done.",
+          "Maior contribuidor do design system compartilhado, com cerca de 70 componentes React e TypeScript documentados no Storybook e reusados entre times.",
+          "Introduzi testes end-to-end com Cypress, então os bugs apareciam antes do deploy e não depois, e depois estendi o CI para rodar a suíte em paralelo com builds Docker para o AWS ECR.",
+          "Criei visualizações de dados acessíveis e interativas para as decisões operacionais do dia a dia, cobrindo vendas, execução, demografia e consumo de energia."
         ],
         "skills": [
           "React.js",
