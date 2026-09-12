@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { sectionCol } from "@/lib/ui";
+import { Section } from "@/components/ui/Section";
 
 export function About() {
   const t = useTranslations("about");
@@ -13,44 +13,43 @@ export function About() {
   const blocks = ["personal", "technical", "languages"] as const;
 
   return (
-    <section id="about" className="py-16">
-      <div className="container mx-auto px-4">
-        <m.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className={sectionCol}
+    <Section id="about" spacing="loose">
+      <m.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <SectionHeading label="about" title={t("title")} meta="README.md" />
+
+        {/* The lead runs a step above body size: it is the thesis, and the
+            sub-blocks below it are the footnotes. */}
+        <m.p
+          variants={fadeInUp}
+          className="text-xl leading-relaxed text-zinc-700 dark:text-zinc-200"
         >
-          <SectionHeading label="about" title={t("title")} meta="README.md" />
+          {t("content")}
+        </m.p>
 
-          <m.p
-            variants={fadeInUp}
-            className="text-lg text-zinc-600 dark:text-zinc-300"
-          >
-            {t("content")}
-          </m.p>
-
-          <m.div variants={fadeInUp} className="mt-10 space-y-8">
-            {blocks.map((key) => (
-              <div key={key}>
-                <h3 className="mb-2 font-accent-mono text-sm font-semibold text-zinc-800 dark:text-zinc-200">
-                  <span
-                    className="text-emerald-600 dark:text-emerald-400"
-                    aria-hidden="true"
-                  >
-                    ##{" "}
-                  </span>
-                  {t(`${key}.title`)}
-                </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  {t(`${key}.content`)}
-                </p>
-              </div>
-            ))}
-          </m.div>
+        <m.div variants={fadeInUp} className="mt-12 space-y-8">
+          {blocks.map((key) => (
+            <div key={key}>
+              <h3 className="mb-2 font-accent-mono text-sm font-semibold text-zinc-800 dark:text-zinc-200">
+                <span
+                  className="text-emerald-600 dark:text-emerald-400"
+                  aria-hidden="true"
+                >
+                  ##{" "}
+                </span>
+                {t(`${key}.title`)}
+              </h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                {t(`${key}.content`)}
+              </p>
+            </div>
+          ))}
         </m.div>
-      </div>
-    </section>
+      </m.div>
+    </Section>
   );
 }

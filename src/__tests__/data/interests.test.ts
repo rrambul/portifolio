@@ -1,19 +1,24 @@
 import { describe, it, expect } from "vitest";
-import { interests } from "@/data/interests";
+import { positions, changedMyMind } from "@/data/interests";
 
 describe("interests", () => {
-  it("contains at least one interest", () => {
-    expect(interests.length).toBeGreaterThan(0);
-  });
+  describe.each([
+    ["positions", positions],
+    ["changedMyMind", changedMyMind],
+  ])("%s", (_name, list: readonly string[]) => {
+    it("contains at least one key", () => {
+      expect(list.length).toBeGreaterThan(0);
+    });
 
-  it("each interest is a non-empty key", () => {
-    for (const key of interests) {
-      expect(key).toBeTruthy();
-      expect(typeof key).toBe("string");
-    }
-  });
+    it("every key is a non-empty string", () => {
+      for (const key of list) {
+        expect(key).toBeTruthy();
+        expect(typeof key).toBe("string");
+      }
+    });
 
-  it("each interest has a unique key", () => {
-    expect(new Set(interests).size).toBe(interests.length);
+    it("has no duplicate keys", () => {
+      expect(new Set(list).size).toBe(list.length);
+    });
   });
 });

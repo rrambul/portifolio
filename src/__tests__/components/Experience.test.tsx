@@ -40,7 +40,12 @@ describe("Experience", () => {
   it("renders periods and locations", () => {
     render(<Experience />);
     expect(screen.getByText(experiences[0]!.period)).toBeInTheDocument();
-    expect(screen.getByText(experiences[0]!.location)).toBeInTheDocument();
+    // The rail splits "Place · Mode" onto separate lines so the narrow column
+    // does not break inside a word; each part is its own node.
+    // "Remote" appears in more than one role, so match all occurrences.
+    for (const part of experiences[0]!.location.split("·")) {
+      expect(screen.getAllByText(part.trim()).length).toBeGreaterThan(0);
+    }
   });
 
   it("renders responsibilities and skills from t.raw", () => {

@@ -16,7 +16,6 @@ test.describe("Internationalization", () => {
   test("navigation items change language", async ({ page }) => {
     await page.goto("/pt");
     const nav = page.locator("nav");
-    await expect(nav.getByText("Início")).toBeVisible();
     await expect(nav.getByText("Sobre")).toBeVisible();
     await expect(nav.getByText("Experiência")).toBeVisible();
     await expect(nav.getByText("Contato")).toBeVisible();

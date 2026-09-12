@@ -12,15 +12,22 @@ test.describe("Navigation", () => {
     await expect(nav).toBeVisible();
   });
 
-  test("shows all navigation links on desktop", async ({ page }) => {
+  test("shows the four navigation links on desktop", async ({ page }) => {
     await page.goto("/en");
     const nav = page.locator("nav");
-    await expect(nav.getByText("Home")).toBeVisible();
     await expect(nav.getByText("About")).toBeVisible();
     await expect(nav.getByText("Experience")).toBeVisible();
     await expect(nav.getByText("Projects")).toBeVisible();
-    await expect(nav.getByText("Interests")).toBeVisible();
     await expect(nav.getByText("Contact")).toBeVisible();
+  });
+
+  test("does not list sections reachable by scrolling", async ({ page }) => {
+    await page.goto("/en");
+    const nav = page.locator("nav");
+    // "Home" is the brand button; Skills and Interests are scrolled to.
+    await expect(nav.getByText("Home")).toHaveCount(0);
+    await expect(nav.getByText("Skills")).toHaveCount(0);
+    await expect(nav.getByText("Interests")).toHaveCount(0);
   });
 
   test("scrolls to About section when clicking About link", async ({ page }) => {

@@ -20,8 +20,12 @@ interface SectionHeadingProps {
 
 /**
  * Shared section header in the site's "spec" language: a mono `// label`
- * eyebrow, a display title, an optional subtitle, and a hairline rule.
- * Left-aligned and animated as a `fadeInUp` item inside a stagger container.
+ * eyebrow, a display title and an optional subtitle.
+ *
+ * There is deliberately no rule under this. Seven identical hairlines at seven
+ * identical positions was the page's strongest "template" tell; the eyebrow and
+ * the uneven vertical rhythm (see `sectionSpacing`) do the separating instead.
+ * Rules are reserved for separating *items* within a section.
  */
 export function SectionHeading({
   label,
@@ -43,13 +47,14 @@ export function SectionHeading({
           </span>
         ) : null}
       </div>
-      <Heading className="mt-3 text-2xl font-bold md:text-3xl">{title}</Heading>
+      <Heading className="mt-3 text-3xl font-bold tracking-[-0.03em] md:text-4xl">
+        {title}
+      </Heading>
       {subtitle ? (
-        <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">
+        <p className="mt-3 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
           {subtitle}
         </p>
       ) : null}
-      <hr className="mt-6 border-zinc-200 dark:border-white/10" />
     </m.div>
   );
 }

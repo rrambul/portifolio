@@ -8,7 +8,7 @@ vi.mock("next-intl", () => ({
 vi.mock("framer-motion");
 
 import { Interests } from "@/components/sections/Interests";
-import { interests } from "@/data/interests";
+import { positions, changedMyMind } from "@/data/interests";
 
 describe("Interests", () => {
   it("renders the section with id 'interests'", () => {
@@ -22,10 +22,27 @@ describe("Interests", () => {
     expect(screen.getByText("subtitle")).toBeInTheDocument();
   });
 
-  it("renders an item for every interest key", () => {
+  it("renders a statement for every position key", () => {
     render(<Interests />);
-    for (const key of interests) {
-      expect(screen.getByText(`items.${key}`)).toBeInTheDocument();
+    for (const key of positions) {
+      expect(screen.getByText(`positions.${key}`)).toBeInTheDocument();
+    }
+  });
+
+  it("numbers the positions from 01", () => {
+    render(<Interests />);
+    expect(screen.getByText("01")).toBeInTheDocument();
+    expect(
+      screen.getByText(String(positions.length).padStart(2, "0"))
+    ).toBeInTheDocument();
+  });
+
+  it("renders the changed-my-mind block", () => {
+    render(<Interests />);
+    // Rendered as "// {title}", so the node holds two text children.
+    expect(screen.getByText(/changedMyMindTitle/)).toBeInTheDocument();
+    for (const key of changedMyMind) {
+      expect(screen.getByText(`changedMyMind.${key}`)).toBeInTheDocument();
     }
   });
 });

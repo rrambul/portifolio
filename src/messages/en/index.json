@@ -22,10 +22,8 @@
     "home": "Back home"
   },
   "hero": {
-    "greeting": "Hello, I'm",
     "title": "Renan Rambul",
     "subtitle": "Software Engineer",
-    "tagline": "I build products end to end, from APIs to fast, accessible interfaces.",
     "taglineShort": "Products end to end, from the API to the pixel.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
     "statusShipping": "shipping",
@@ -41,18 +39,18 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I'm a software engineer with 7+ years of shipping web products end to end: API design, data modeling, design systems, accessible UI. The frontend is where I go deepest. These days I build healthcare SaaS with a U.S.-based team, owning whole features and maintaining the design system and platform tooling other teams ship on. I care about clean architecture, a good developer experience, and the small details that make a product feel right.",
+    "content": "Most of what I've shipped, people never see. A virtualized data grid, because the old one folded at a few thousand rows. A billing flow that refuses to send half a batch of invoices. A test command that had been quietly skipping 13 packages. Frontend is my center of gravity, but the interesting bugs live at the seams, so I write the migration and the API contract too. Seven years in, from Ribeirão Preto, currently building healthcare software with a team in the United States.",
     "personal": {
       "title": "Personal",
-      "content": "I love building things, learning in public, and contributing to open source. When I'm not coding, I'm probably reading or at the gym."
+      "content": "I read constantly, mostly other people's postmortems and architecture writeups. I train at the gym on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as things I wanted to exist and could not find."
     },
     "technical": {
       "title": "Technical",
-      "content": "React, TypeScript, and Node.js across the stack. Design systems, accessibility, and performance are where I've spent the most time."
+      "content": "React, TypeScript and Node across the stack, plus Lit and Web Components where a design system has to outlive the framework that created it. I spend most of my time on the parts that are hard to retrofit later: accessibility, render performance, and the shape of the API contract."
     },
     "languages": {
       "title": "Languages",
-      "content": "Native Portuguese and advanced English. I've been working day-to-day with international teams for years."
+      "content": "Portuguese is native. English is how I work: standups, code review and design discussion, daily, with a team split between Brazil and Arizona since the start of 2025."
     }
   },
   "experience": {
@@ -175,8 +173,9 @@
     "languages": "Languages",
     "specialties": "Specialties",
     "stats": {
-      "years": "Years shipping for the web",
-      "prs": "PRs merged at my current role"
+      "prs": "PRs merged building healthcare SaaS at TAS",
+      "trunk": "PRs merged to trunk at Take, 75% of every merge on that platform",
+      "stars": "GitHub stars on Animavita, the open-source project I contribute to"
     },
     "community": {
       "title": "Community",
@@ -208,7 +207,7 @@
   },
   "footer": {
     "about": "About",
-    "aboutText": "A developer who loves coding, learning new things, and open source.",
+    "aboutText": "Software engineer in Ribeirão Preto, Brazil. Currently building healthcare software and the design system it ships on.",
     "social": "Social",
     "links": "Quick Links",
     "aboutLink": "About",
@@ -278,22 +277,20 @@
     }
   },
   "interests": {
-    "title": "Engineering Interests",
-    "subtitle": "The topics I keep coming back to.",
-    "items": {
-      "designSystems": "Design Systems",
-      "webComponents": "Web Components Architecture",
-      "softwareArchitecture": "Software Architecture",
-      "ddd": "Domain-Driven Design",
-      "platformEngineering": "Frontend Platform Engineering",
-      "dx": "Developer Experience (DX)",
-      "scalableUI": "Scalable UI Platforms",
-      "testing": "Testing Strategies for Large Codebases",
-      "performance": "Web Performance Optimization",
-      "openSource": "Open-Source Collaboration",
-      "aiWorkflows": "AI-Assisted Development Workflows",
-      "agentReadyCodebases": "Agent-Ready Codebases",
-      "contextEngineering": "Context Engineering"
+    "title": "Positions",
+    "subtitle": "Things I believe about building software, held with varying confidence.",
+    "positions": {
+      "accessibility": "A component that is not keyboard operable is not done. It is a bug with a nice hover state.",
+      "designSystems": "A design system earns its keep at the second product, not the first. Before that it is a component folder with extra meetings.",
+      "seams": "The interesting bugs live at the seams: between the migration, the domain event and the render. That is why I refuse to own only one side of the stack.",
+      "tests": "The only test I fully trust is one I watched fail before I fixed the bug. I have induced real S3 outages to get that signal.",
+      "agents": "Coding agents are only as good as the context you hand them. Most of \"the AI is bad at this\" is really \"this repo is hard to read\".",
+      "performance": "Performance is a feature with no advocate. Nobody opens a ticket because a page is merely slow."
+    },
+    "changedMyMindTitle": "changed my mind",
+    "changedMyMind": {
+      "consistency": "I used to think a design system's job was visual consistency. It is really to make the accessible, fast choice the easiest one to make.",
+      "coverage": "I used to write end-to-end tests for coverage. Now I write them for the handful of flows that cost real money when they break, and delete the rest."
     }
   },
   "theme": {

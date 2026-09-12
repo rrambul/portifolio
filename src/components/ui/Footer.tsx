@@ -5,18 +5,6 @@ import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { siteConfig } from "@/config/site";
 import { scrollToSection } from "@/lib/scroll";
 
-// Tech I build with.
-const STACK = [
-  "JavaScript",
-  "TypeScript",
-  "Web Components",
-  "Next.js",
-  "Node.js",
-  "React",
-  "Tailwind",
-  "AI",
-];
-
 export function Footer() {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
@@ -58,9 +46,6 @@ export function Footer() {
             </button>
             <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
               {t("aboutText")}
-            </p>
-            <p className="mt-4 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
-              {STACK.join("  ·  ")}
             </p>
           </div>
 

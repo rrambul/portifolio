@@ -42,17 +42,24 @@ afterEach(() => {
 });
 
 describe("Navigation", () => {
-  it("renders the brand and all section labels", () => {
+  it("renders the brand and the four section labels", () => {
     render(<Navigation />);
     expect(screen.getByText("Renan Rambul")).toBeInTheDocument();
-    for (const label of ["home", "about", "experience", "skills", "projects", "interests", "contact"]) {
+    for (const label of ["about", "experience", "projects", "contact"]) {
       expect(screen.getByText(label)).toBeInTheDocument();
     }
   });
 
-  it("navigates to the homepage when 'home' is clicked", () => {
+  it("does not list sections reachable by scrolling", () => {
     render(<Navigation />);
-    fireEvent.click(screen.getByText("home"));
+    for (const label of ["home", "skills", "interests"]) {
+      expect(screen.queryByText(label)).not.toBeInTheDocument();
+    }
+  });
+
+  it("navigates to the homepage when the brand is clicked", () => {
+    render(<Navigation />);
+    fireEvent.click(screen.getByText("Renan Rambul"));
     expect(h.push).toHaveBeenCalledWith("/en");
   });
 
@@ -134,7 +141,7 @@ describe("Navigation", () => {
     document.body.removeChild(projects);
   });
 
-  it("keeps 'home' active when every section top is below the trigger line", () => {
+  it("keeps no section active when every section top is below the trigger line", () => {
     const active = "text-emerald-700 dark:text-emerald-400";
 
     const about = document.createElement("div");
@@ -149,8 +156,11 @@ describe("Navigation", () => {
 
     render(<Navigation />);
 
-    expect(screen.getByText("home").className).toContain(active);
-    expect(screen.getByText("about").className).not.toContain(active);
+    // "home" is the implicit default and has no nav item of its own, so
+    // nothing in the list should be highlighted.
+    for (const label of ["about", "experience", "projects", "contact"]) {
+      expect(screen.getByText(label).className).not.toContain(active);
+    }
 
     document.body.removeChild(about);
     document.body.removeChild(projects);

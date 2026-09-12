@@ -22,10 +22,8 @@
     "home": "Voltar ao início"
   },
   "hero": {
-    "greeting": "Olá, eu sou",
     "title": "Renan Rambul",
     "subtitle": "Engenheiro de Software",
-    "tagline": "Construo produtos de ponta a ponta, de APIs a interfaces rápidas e acessíveis.",
     "taglineShort": "Produtos de ponta a ponta, da API ao pixel.",
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
     "statusShipping": "entregando",
@@ -41,18 +39,18 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "Sou engenheiro de software e passei os últimos 7+ anos entregando produtos web de ponta a ponta: design de APIs, modelagem de dados, design systems, UI acessível. É no frontend que vou mais fundo. Hoje construo um SaaS de saúde com um time americano, cuidando de features inteiras e mantendo o design system e as ferramentas de plataforma sobre os quais outros times entregam. Me importo com arquitetura limpa, boa experiência de desenvolvimento e com os pequenos detalhes que fazem um produto parecer certo.",
+    "content": "A maior parte do que eu entrego ninguém vê. Um data grid virtualizado, porque o antigo derretia com alguns milhares de linhas. Um fluxo de cobrança que se recusa a enviar metade de um lote de faturas. Um comando de teste que vinha pulando 13 pacotes caladinho. Meu centro de gravidade é o frontend, mas os bugs interessantes moram nas costuras, então eu escrevo a migration e o contrato da API também. Sete anos nisso, de Ribeirão Preto, hoje construindo software de saúde com um time nos Estados Unidos.",
     "personal": {
       "title": "Pessoal",
-      "content": "Amo construir coisas, aprender em público e contribuir com open source. Quando não estou programando, provavelmente estou lendo ou na academia."
+      "content": "Leio muito, principalmente postmortem e texto de arquitetura dos outros. Treino numa rotina que eu realmente cumpro. Projeto paralelo é como eu aprendo: Fortuna e Mindforge nasceram de coisas que eu queria que existissem e não achei."
     },
     "technical": {
       "title": "Técnico",
-      "content": "React, TypeScript e Node.js em toda a stack. Design systems, acessibilidade e performance são onde passei mais tempo."
+      "content": "React, TypeScript e Node de ponta a ponta, mais Lit e Web Components quando o design system precisa sobreviver ao framework que o criou. Passo a maior parte do tempo no que é caro de consertar depois: acessibilidade, performance de render e o formato do contrato da API."
     },
     "languages": {
       "title": "Idiomas",
-      "content": "Português nativo e inglês avançado. Trabalho no dia a dia com times internacionais há anos."
+      "content": "Português é nativo. Inglês é como eu trabalho: daily, code review e discussão de design, todo dia, com um time dividido entre Brasil e Arizona desde o começo de 2025."
     }
   },
   "experience": {
@@ -175,8 +173,9 @@
     "languages": "Linguagens",
     "specialties": "Especialidades",
     "stats": {
-      "years": "Anos construindo para a web",
-      "prs": "PRs integrados no trabalho atual"
+      "prs": "PRs mergeados construindo SaaS de saúde na TAS",
+      "trunk": "PRs mergeados na trunk na Take, 75% de todos os merges daquela plataforma",
+      "stars": "estrelas no GitHub no Animavita, o projeto open source em que contribuo"
     },
     "community": {
       "title": "Comunidade",
@@ -208,7 +207,7 @@
   },
   "footer": {
     "about": "Sobre",
-    "aboutText": "Um desenvolvedor que ama programar, aprender coisas novas e código aberto.",
+    "aboutText": "Engenheiro de software em Ribeirão Preto. Hoje construindo software de saúde e o design system em que ele roda.",
     "social": "Social",
     "links": "Links Rápidos",
     "aboutLink": "Sobre",
@@ -278,22 +277,20 @@
     }
   },
   "interests": {
-    "title": "Interesses em Engenharia",
-    "subtitle": "Os temas aos quais eu sempre volto.",
-    "items": {
-      "designSystems": "Design Systems",
-      "webComponents": "Arquitetura de Web Components",
-      "softwareArchitecture": "Arquitetura de Software",
-      "ddd": "Domain-Driven Design",
-      "platformEngineering": "Engenharia de Plataforma Frontend",
-      "dx": "Experiência do Desenvolvedor (DX)",
-      "scalableUI": "Plataformas de UI Escaláveis",
-      "testing": "Estratégias de Teste para Grandes Codebases",
-      "performance": "Otimização de Performance Web",
-      "openSource": "Colaboração Open-Source",
-      "aiWorkflows": "Workflows de Desenvolvimento com IA",
-      "agentReadyCodebases": "Codebases Prontas para Agentes de IA",
-      "contextEngineering": "Engenharia de Contexto"
+    "title": "Posições",
+    "subtitle": "O que eu acredito sobre construir software, com graus variados de convicção.",
+    "positions": {
+      "accessibility": "Componente que não funciona no teclado não está pronto. É um bug com um hover bonito.",
+      "designSystems": "Design system se paga no segundo produto, não no primeiro. Antes disso é uma pasta de componentes com reunião extra.",
+      "seams": "Os bugs interessantes moram nas costuras: entre a migration, o evento de domínio e o render. É por isso que eu me recuso a cuidar de só um lado da stack.",
+      "tests": "O único teste em que eu confio de verdade é o que eu vi falhar antes de eu corrigir o bug. Já derrubei o S3 de propósito para conseguir esse sinal.",
+      "agents": "Agente de código rende o tanto de contexto que você entrega. Boa parte do \"a IA é ruim nisso\" é, na real, \"esse repositório é difícil de ler\".",
+      "performance": "Performance é a feature que não tem advogado. Ninguém abre ticket porque a página está só devagar."
+    },
+    "changedMyMindTitle": "mudei de ideia",
+    "changedMyMind": {
+      "consistency": "Eu achava que o trabalho do design system era consistência visual. Na verdade é fazer da escolha acessível e rápida a escolha mais fácil.",
+      "coverage": "Eu escrevia teste end to end atrás de cobertura. Hoje escrevo para os poucos fluxos que custam dinheiro de verdade quando quebram, e apago o resto."
     }
   },
   "theme": {

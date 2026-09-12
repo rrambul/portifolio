@@ -4,7 +4,7 @@ import pt from "@/messages/pt/index.json";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experiences";
 import { skillCategories } from "@/data/skills";
-import { interests } from "@/data/interests";
+import { positions, changedMyMind } from "@/data/interests";
 
 /**
  * Guards the coupling between the data files (which carry bare string keys)
@@ -52,11 +52,17 @@ describe.each(Object.entries(locales))("%s message keys", (_name, m) => {
     }
   });
 
-  it("resolves every interest item key", () => {
-    for (const key of interests) {
+  it("resolves every position and changed-my-mind key", () => {
+    for (const key of positions) {
       expect(
-        resolve(m, `interests.items.${key}`),
-        `interests.items.${key}`
+        resolve(m, `interests.positions.${key}`),
+        `interests.positions.${key}`
+      ).toBeTypeOf("string");
+    }
+    for (const key of changedMyMind) {
+      expect(
+        resolve(m, `interests.changedMyMind.${key}`),
+        `interests.changedMyMind.${key}`
       ).toBeTypeOf("string");
     }
   });

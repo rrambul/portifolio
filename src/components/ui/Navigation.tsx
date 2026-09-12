@@ -19,15 +19,14 @@ export function Navigation() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Use useMemo to prevent the sections array from being recreated on every render
+  // Four items, not seven. A single-page scroll does not need an index of
+  // itself, and "home" is already the brand button. Skills and Interests are
+  // reachable by scrolling past the sections that introduce them.
   const sections = useMemo(
     () => [
-      { id: "home", label: t("home") },
       { id: "about", label: t("about") },
       { id: "experience", label: t("experience") },
-      { id: "skills", label: t("skills") },
       { id: "projects", label: t("projects") },
-      { id: "interests", label: t("interests") },
       { id: "contact", label: t("contact") },
     ],
     [t]
@@ -63,9 +62,7 @@ export function Navigation() {
 
   // Highlight the nav item for whichever section is currently under the nav.
   useEffect(() => {
-    const sectionIds = sections
-      .map((s) => s.id)
-      .filter((id) => id !== "home");
+    const sectionIds = sections.map((s) => s.id);
 
     // A section becomes active once its top crosses into the upper third of
     // the viewport (comfortably below the sticky nav + scroll-margin offset).
