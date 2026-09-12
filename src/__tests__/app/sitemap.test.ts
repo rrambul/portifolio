@@ -15,10 +15,15 @@ describe("sitemap", () => {
     expect(urls).toContain("https://renanrambul.dev/pt");
   });
 
-  it("omits the temporarily disabled blog and learning routes", () => {
+  it("omits the temporarily disabled blog routes", () => {
     const urls = result.map((entry) => entry.url);
     expect(urls.some((url) => url.includes("/blog"))).toBe(false);
-    expect(urls.some((url) => url.includes("/learning"))).toBe(false);
+  });
+
+  it("includes the learning log for both locales", () => {
+    const urls = result.map((entry) => entry.url);
+    expect(urls).toContain("https://renanrambul.dev/en/learning");
+    expect(urls).toContain("https://renanrambul.dev/pt/learning");
   });
 
   it("homepage has priority 1", () => {

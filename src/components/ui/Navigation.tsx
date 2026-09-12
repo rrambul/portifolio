@@ -19,14 +19,16 @@ export function Navigation() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Four items, not seven. A single-page scroll does not need an index of
-  // itself, and "home" is already the brand button. Skills and Interests are
-  // reachable by scrolling past the sections that introduce them.
+  // Kept short on purpose. A single-page scroll does not need an index of
+  // itself, and "home" is already the brand button; Skills and Interests are
+  // reachable by scrolling past the sections that introduce them. Learning is
+  // here because it is a separate route, so scrolling will never reach it.
   const sections = useMemo(
     () => [
       { id: "about", label: t("about") },
       { id: "experience", label: t("experience") },
       { id: "projects", label: t("projects") },
+      { id: "learning", label: t("learning") },
       { id: "contact", label: t("contact") },
     ],
     [t]
@@ -41,6 +43,12 @@ export function Navigation() {
 
     // Close the menu first
     setIsMenuOpen(false);
+
+    // The learning log is its own page, not a homepage anchor.
+    if (sectionId === "learning") {
+      router.push(`/${locale}/learning`);
+      return;
+    }
 
     // Handle home navigation - go to homepage
     if (sectionId === "home") {
@@ -62,7 +70,9 @@ export function Navigation() {
 
   // Highlight the nav item for whichever section is currently under the nav.
   useEffect(() => {
-    const sectionIds = sections.map((s) => s.id);
+    const sectionIds = sections
+      .map((s) => s.id)
+      .filter((id) => id !== "learning");
 
     // A section becomes active once its top crosses into the upper third of
     // the viewport (comfortably below the sticky nav + scroll-margin offset).

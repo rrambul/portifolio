@@ -12,13 +12,21 @@ test.describe("Navigation", () => {
     await expect(nav).toBeVisible();
   });
 
-  test("shows the four navigation links on desktop", async ({ page }) => {
+  test("shows the navigation links on desktop", async ({ page }) => {
     await page.goto("/en");
     const nav = page.locator("nav");
     await expect(nav.getByText("About")).toBeVisible();
     await expect(nav.getByText("Experience")).toBeVisible();
     await expect(nav.getByText("Projects")).toBeVisible();
+    await expect(nav.getByText("Learning")).toBeVisible();
     await expect(nav.getByText("Contact")).toBeVisible();
+  });
+
+  test("navigates to the learning page from the nav", async ({ page }) => {
+    await page.goto("/en");
+    await page.locator("nav").getByRole("button", { name: "Learning" }).first().click();
+    await expect(page).toHaveURL(/\/en\/learning$/);
+    await expect(page.locator("#learning")).toBeVisible();
   });
 
   test("does not list sections reachable by scrolling", async ({ page }) => {

@@ -3,8 +3,8 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://renanrambul.dev';
 
-  // The blog and learning log routes are temporarily off the site, so they are
-  // deliberately absent here as well.
+  // The blog routes are still off the site, so they are deliberately absent
+  // here; /learning is back and listed for both locales.
   return [
     {
       url: `${baseUrl}/en`,
@@ -17,6 +17,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/en/learning`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/pt/learning`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     },
   ];
 }

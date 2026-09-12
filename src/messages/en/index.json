@@ -193,7 +193,9 @@
   },
   "learning": {
     "title": "Learning Log",
-    "subtitle": "Articles, talks, videos, books, and courses worth remembering, logged by the month I got to them.",
+    "subtitle": "Books, articles, talks and courses worth remembering. Dated once I started keeping this log; the shelf is what came before it.",
+    "reading": "currently reading",
+    "shelf": "on the shelf",
     "empty": "Nothing logged here yet.",
     "types": {
       "article": "Article",

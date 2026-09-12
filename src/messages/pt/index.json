@@ -193,7 +193,9 @@
   },
   "learning": {
     "title": "Registro de Aprendizado",
-    "subtitle": "Artigos, palestras, vídeos, livros e cursos que vale a pena lembrar, organizados pelo mês em que os consumi.",
+    "subtitle": "Livros, artigos, palestras e cursos que valem lembrar. Os datados são de depois que eu comecei este log; a estante é o que veio antes.",
+    "reading": "lendo agora",
+    "shelf": "na estante",
     "empty": "Nada registrado aqui ainda.",
     "types": {
       "article": "Artigo",

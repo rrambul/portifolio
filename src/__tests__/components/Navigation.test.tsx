@@ -42,12 +42,19 @@ afterEach(() => {
 });
 
 describe("Navigation", () => {
-  it("renders the brand and the four section labels", () => {
+  it("renders the brand and the section labels", () => {
     render(<Navigation />);
     expect(screen.getByText("Renan Rambul")).toBeInTheDocument();
-    for (const label of ["about", "experience", "projects", "contact"]) {
+    for (const label of ["about", "experience", "projects", "learning", "contact"]) {
       expect(screen.getByText(label)).toBeInTheDocument();
     }
+  });
+
+  it("routes to the learning page instead of scrolling", () => {
+    render(<Navigation />);
+    fireEvent.click(screen.getByText("learning"));
+    expect(h.push).toHaveBeenCalledWith("/en/learning");
+    expect(scrollToSection).not.toHaveBeenCalled();
   });
 
   it("does not list sections reachable by scrolling", () => {
@@ -161,6 +168,8 @@ describe("Navigation", () => {
     for (const label of ["about", "experience", "projects", "contact"]) {
       expect(screen.getByText(label).className).not.toContain(active);
     }
+    // "learning" is a route, never an anchor, so it is never highlighted here.
+    expect(screen.getByText("learning").className).not.toContain(active);
 
     document.body.removeChild(about);
     document.body.removeChild(projects);

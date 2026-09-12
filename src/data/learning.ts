@@ -11,20 +11,58 @@ export type LearningType =
 export interface LearningEntry {
   /** The title, as published. */
   title: string;
-  url: string;
-  /** ISO date (YYYY-MM-DD) I got to it. Drives the monthly grouping. */
-  date: string;
+  /** Canonical link, when there is one. Books often have no obvious one. */
+  url?: string;
+  /**
+   * ISO date (YYYY-MM-DD) I got to it, which drives the monthly grouping.
+   * Optional: an entry without a date renders on the shelf instead of in the
+   * dated log, so a book read years ago does not need an invented date.
+   */
+  date?: string;
   type: LearningType;
-  /** Optional source/author, e.g. "codeopinion.com". */
+  /** Source or author, e.g. "codeopinion.com" or "Robert C. Martin". */
   source?: string;
+  /** In progress. Rendered at the top rather than in the log. */
+  status?: "reading";
 }
 
 /**
  * Things I learned from, across formats: articles, talks, videos, books,
- * courses, and more. Add an entry with the date you got to it; the page groups
- * and sorts by month automatically, so the order in this array does not matter.
+ * courses, and more. A dated entry is grouped and sorted by month
+ * automatically, so the order in this array does not matter.
  */
 export const learning: LearningEntry[] = [
+  {
+    title: "System Design Interview",
+    type: "book",
+    source: "Alex Xu",
+    status: "reading",
+  },
+  {
+    title: "The Pragmatic Programmer",
+    type: "book",
+    source: "Andrew Hunt, David Thomas",
+  },
+  {
+    title: "Clean Code",
+    type: "book",
+    source: "Robert C. Martin",
+  },
+  {
+    title: "Fundamentals of Software Architecture",
+    type: "book",
+    source: "Mark Richards, Neal Ford",
+  },
+  {
+    title: "The Mythical Man-Month",
+    type: "book",
+    source: "Frederick P. Brooks Jr.",
+  },
+  {
+    title: "Clean Craftsmanship",
+    type: "book",
+    source: "Robert C. Martin",
+  },
   {
     date: "2026-06-20",
     title: "Modular Monolith Boundaries",
@@ -40,19 +78,39 @@ export interface LearningMonth {
   entries: LearningEntry[];
 }
 
+/** Entries I am working through right now, in array order. */
+export function getInProgress(
+  entries: LearningEntry[] = learning
+): LearningEntry[] {
+  return entries.filter((entry) => entry.status === "reading");
+}
+
 /**
- * Learning entries grouped by the month they happened, newest month first and
+ * Finished entries with no date on them. These are the ones I got to before
+ * keeping this log, so they sit on a shelf rather than being filed under a
+ * month I would have to make up.
+ */
+export function getShelf(
+  entries: LearningEntry[] = learning
+): LearningEntry[] {
+  return entries.filter((entry) => entry.status !== "reading" && !entry.date);
+}
+
+/**
+ * Dated entries grouped by the month they happened, newest month first and
  * newest entry first within each month. Defaults to the full log; accepts an
  * explicit list so the grouping is unit-testable in isolation.
  */
 export function getLearningByMonth(
   entries: LearningEntry[] = learning
 ): LearningMonth[] {
-  const sorted = [...entries].sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = entries
+    .filter((entry) => entry.status !== "reading" && entry.date)
+    .sort((a, b) => b.date!.localeCompare(a.date!));
 
   const months: LearningMonth[] = [];
   for (const entry of sorted) {
-    const key = entry.date.slice(0, 7);
+    const key = entry.date!.slice(0, 7);
     const last = months[months.length - 1];
     if (last && last.key === key) {
       last.entries.push(entry);
