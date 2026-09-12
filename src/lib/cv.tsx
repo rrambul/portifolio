@@ -37,7 +37,10 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 9.5,
     color: INK,
-    lineHeight: 1.4,
+    // 1.35 rather than 1.4: Portuguese runs noticeably longer than English, and
+    // at 1.4 the PT CV spilled the Languages block (wrap={false}) onto a third
+    // page by a few points. This keeps both locales at two pages with headroom.
+    lineHeight: 1.35,
   },
   name: { fontSize: 22, fontFamily: "Helvetica-Bold", lineHeight: 1.2, marginBottom: 4 },
   role: { fontSize: 11, color: ACCENT, marginBottom: 2 },

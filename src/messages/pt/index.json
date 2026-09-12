@@ -24,7 +24,7 @@
   "hero": {
     "title": "Renan Rambul",
     "subtitle": "Engenheiro de Software",
-    "taglineShort": "Produtos de ponta a ponta, da API ao pixel.",
+    "taglineShort": "Construo produtos de ponta a ponta, do modelo de dados à interface.",
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
     "statusShipping": "entregando",
     "latest": "recentes",
@@ -39,18 +39,18 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "A maior parte do que eu entrego ninguém vê. Um data grid virtualizado, porque o antigo derretia com alguns milhares de linhas. Um fluxo de cobrança que se recusa a enviar metade de um lote de faturas. Um comando de teste que vinha pulando 13 pacotes caladinho. Meu centro de gravidade é o frontend, mas os bugs interessantes moram nas costuras, então eu escrevo a migration e o contrato da API também. Sete anos nisso, de Ribeirão Preto, hoje construindo software de saúde com um time nos Estados Unidos.",
+    "content": "A maior parte do que eu entrego ninguém vê. O data grid que virou virtualizado porque o antigo derretia com alguns milhares de linhas, o fluxo de cobrança que se recusa a enviar metade de um lote de faturas, o comando de teste do monorepo que vinha pulando 13 pacotes caladinho. Trabalho mais no frontend, mas escrevo a migration e o contrato da API também, porque é quase sempre ali que o bug estava. Sete anos nisso, de Ribeirão Preto, hoje construindo software de saúde com um time nos Estados Unidos.",
     "personal": {
       "title": "Pessoal",
-      "content": "Leio muito, principalmente postmortem e texto de arquitetura dos outros. Treino numa rotina que eu realmente cumpro. Projeto paralelo é como eu aprendo: Fortuna e Mindforge nasceram de coisas que eu queria que existissem e não achei."
+      "content": "Leio muito, principalmente postmortem e texto de arquitetura dos outros. A academia acontece numa rotina que eu realmente cumpro. Projeto paralelo é como eu aprendo: Fortuna e Mindforge nasceram de coisas que eu queria que existissem e não achei."
     },
     "technical": {
       "title": "Técnico",
-      "content": "React, TypeScript e Node de ponta a ponta, mais Lit e Web Components quando o design system precisa sobreviver ao framework que o criou. Passo a maior parte do tempo no que é caro de consertar depois: acessibilidade, performance de render e o formato do contrato da API."
+      "content": "React, TypeScript e Node de ponta a ponta, mais Lit e Web Components quando o design system precisa sobreviver ao framework que o criou. A maior parte do meu tempo vai para o que é caro de consertar depois: acessibilidade e performance de render, e acertar o contrato da API de primeira."
     },
     "languages": {
       "title": "Idiomas",
-      "content": "Português é nativo. Inglês é como eu trabalho: daily, code review e discussão de design, todo dia, com um time dividido entre Brasil e Arizona desde o começo de 2025."
+      "content": "Português é nativo. Inglês é a língua em que eu trabalho: daily, code review e discussão de design, todo dia desde o começo de 2025, com um time dividido entre Brasil e Arizona."
     }
   },
   "experience": {
@@ -278,19 +278,19 @@
   },
   "interests": {
     "title": "Posições",
-    "subtitle": "O que eu acredito sobre construir software, com graus variados de convicção.",
+    "subtitle": "O que eu acredito hoje sobre construir software.",
     "positions": {
       "accessibility": "Componente que não funciona no teclado não está pronto. É um bug com um hover bonito.",
-      "designSystems": "Design system se paga no segundo produto, não no primeiro. Antes disso é uma pasta de componentes com reunião extra.",
+      "designSystems": "Design system não se paga até um segundo produto usar ele; antes disso é uma pasta de componentes com reunião extra.",
       "seams": "Os bugs interessantes moram nas costuras: entre a migration, o evento de domínio e o render. É por isso que eu me recuso a cuidar de só um lado da stack.",
       "tests": "O único teste em que eu confio de verdade é o que eu vi falhar antes de eu corrigir o bug. Já derrubei o S3 de propósito para conseguir esse sinal.",
-      "agents": "Agente de código rende o tanto de contexto que você entrega. Boa parte do \"a IA é ruim nisso\" é, na real, \"esse repositório é difícil de ler\".",
-      "performance": "Performance é a feature que não tem advogado. Ninguém abre ticket porque a página está só devagar."
+      "agents": "Agente de código é limitado pelo contexto que você entrega, e por isso eu leio quase toda reclamação de que a IA é ruim em alguma coisa como reclamação de que o repositório é difícil de ler.",
+      "performance": "Ninguém abre ticket porque a página está só devagar, então trabalho de performance só acontece quando alguém decide se importar sem ser cobrado."
     },
     "changedMyMindTitle": "mudei de ideia",
     "changedMyMind": {
-      "consistency": "Eu achava que o trabalho do design system era consistência visual. Na verdade é fazer da escolha acessível e rápida a escolha mais fácil.",
-      "coverage": "Eu escrevia teste end to end atrás de cobertura. Hoje escrevo para os poucos fluxos que custam dinheiro de verdade quando quebram, e apago o resto."
+      "consistency": "Eu achava que o trabalho do design system era consistência visual. Hoje acho que é fazer da escolha acessível e rápida a mais fácil de alcançar.",
+      "coverage": "Teste end to end, para mim, já foi sobre cobertura. Hoje eu guardo os poucos que cobrem fluxo que custa dinheiro de verdade quando quebra, e apago o resto."
     }
   },
   "theme": {

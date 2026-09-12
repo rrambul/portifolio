@@ -24,7 +24,7 @@
   "hero": {
     "title": "Renan Rambul",
     "subtitle": "Software Engineer",
-    "taglineShort": "Products end to end, from the API to the pixel.",
+    "taglineShort": "I build products end to end, from the data model to the interface.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
     "statusShipping": "shipping",
     "latest": "latest",
@@ -39,18 +39,18 @@
   },
   "about": {
     "title": "About Me",
-    "content": "Most of what I've shipped, people never see. A virtualized data grid, because the old one folded at a few thousand rows. A billing flow that refuses to send half a batch of invoices. A test command that had been quietly skipping 13 packages. Frontend is my center of gravity, but the interesting bugs live at the seams, so I write the migration and the API contract too. Seven years in, from Ribeirão Preto, currently building healthcare software with a team in the United States.",
+    "content": "Most of what I've shipped, people never see. The data grid that got virtualized because the old one folded at a few thousand rows, the billing flow that refuses to send half a batch of invoices, the monorepo test command that had been silently skipping 13 packages. I work mostly on the frontend, but I write the migration and the API contract too, because that is usually where the bug turns out to be. Seven years of this, from Ribeirão Preto, currently building healthcare software with a team in the United States.",
     "personal": {
       "title": "Personal",
-      "content": "I read constantly, mostly other people's postmortems and architecture writeups. I train at the gym on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as things I wanted to exist and could not find."
+      "content": "I read constantly, mostly other people's postmortems and architecture writeups. The gym happens on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as something I wanted and could not find."
     },
     "technical": {
       "title": "Technical",
-      "content": "React, TypeScript and Node across the stack, plus Lit and Web Components where a design system has to outlive the framework that created it. I spend most of my time on the parts that are hard to retrofit later: accessibility, render performance, and the shape of the API contract."
+      "content": "React, TypeScript and Node across the stack, plus Lit and Web Components where a design system has to outlive the framework that created it. Most of my time goes to the things that are expensive to retrofit: accessibility and render performance, and getting the API contract right the first time."
     },
     "languages": {
       "title": "Languages",
-      "content": "Portuguese is native. English is how I work: standups, code review and design discussion, daily, with a team split between Brazil and Arizona since the start of 2025."
+      "content": "Portuguese is native. English is the language I work in: standups, code review and design discussion, every day since the start of 2025, with a team split between Brazil and Arizona."
     }
   },
   "experience": {
@@ -278,19 +278,19 @@
   },
   "interests": {
     "title": "Positions",
-    "subtitle": "Things I believe about building software, held with varying confidence.",
+    "subtitle": "What I currently believe about building software.",
     "positions": {
       "accessibility": "A component that is not keyboard operable is not done. It is a bug with a nice hover state.",
-      "designSystems": "A design system earns its keep at the second product, not the first. Before that it is a component folder with extra meetings.",
+      "designSystems": "A design system does not pay for itself until a second product uses it; before that it is a component folder with extra meetings.",
       "seams": "The interesting bugs live at the seams: between the migration, the domain event and the render. That is why I refuse to own only one side of the stack.",
       "tests": "The only test I fully trust is one I watched fail before I fixed the bug. I have induced real S3 outages to get that signal.",
-      "agents": "Coding agents are only as good as the context you hand them. Most of \"the AI is bad at this\" is really \"this repo is hard to read\".",
-      "performance": "Performance is a feature with no advocate. Nobody opens a ticket because a page is merely slow."
+      "agents": "Coding agents are limited by the context you hand them, which is why I read most complaints about what the AI cannot do as complaints about how hard the repo is to read.",
+      "performance": "Nobody opens a ticket because a page is merely slow, so performance work only happens when someone decides to care about it without being asked."
     },
     "changedMyMindTitle": "changed my mind",
     "changedMyMind": {
-      "consistency": "I used to think a design system's job was visual consistency. It is really to make the accessible, fast choice the easiest one to make.",
-      "coverage": "I used to write end-to-end tests for coverage. Now I write them for the handful of flows that cost real money when they break, and delete the rest."
+      "consistency": "I used to think a design system's job was visual consistency. Now I think its job is to make the accessible, fast choice the easiest one to reach for.",
+      "coverage": "End-to-end tests used to be about coverage for me. Now I keep the handful that cover flows which cost real money when they break, and delete the rest."
     }
   },
   "theme": {
