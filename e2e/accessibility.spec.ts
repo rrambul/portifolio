@@ -38,31 +38,9 @@ test.describe("Axe scans", () => {
     });
   }
 
-  for (const theme of ["dark", "light"] as const) {
-    test(`learning log has no axe violations (${theme})`, async ({ page }) => {
-      await setTheme(page, theme);
-      await page.goto("/en/learning");
-      // Let entrance animations settle so axe doesn't flag still-fading text.
-      await page.waitForTimeout(2500);
-      await expectNoAxeViolations(page);
-    });
-  }
-
   test("Portuguese homepage has no axe violations", async ({ page }) => {
     await page.goto("/pt");
     await page.waitForTimeout(2500);
-    await expectNoAxeViolations(page);
-  });
-
-  test("blog index has no axe violations", async ({ page }) => {
-    await page.goto("/en/blog");
-    await page.waitForTimeout(1000);
-    await expectNoAxeViolations(page);
-  });
-
-  test("blog post has no axe violations", async ({ page }) => {
-    await page.goto("/en/blog/a-brief-introduction");
-    await page.waitForTimeout(1000);
     await expectNoAxeViolations(page);
   });
 });
@@ -87,9 +65,9 @@ test.describe("Accessibility & SEO", () => {
   });
 
   test("images have alt text", async ({ page }) => {
-    // The homepage is image-free by design; blog posts still render markdown
-    // images. Any <img> that exists must carry a non-empty alt.
-    for (const path of ["/en", "/en/blog/introduction-to-web-components"]) {
+    // The site is image-free by design; any <img> that does exist must carry
+    // a non-empty alt.
+    for (const path of ["/en", "/pt"]) {
       await page.goto(path);
       const images = page.locator("img");
       const count = await images.count();
@@ -130,11 +108,6 @@ test.describe("Accessibility & SEO", () => {
     const h1s = page.locator("h1");
     const count = await h1s.count();
     expect(count).toBe(1);
-  });
-
-  test("blog post page has proper title", async ({ page }) => {
-    await page.goto("/en/blog/a-brief-introduction");
-    await expect(page).toHaveTitle(/Brief Introduction|Renan Rambul/);
   });
 
   test("page is keyboard navigable", async ({ page }) => {

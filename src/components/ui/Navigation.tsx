@@ -6,14 +6,13 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { m, AnimatePresence } from "framer-motion";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { scrollToSection as scrollToSectionLib } from "@/lib/scroll";
 
 export function Navigation() {
   const t = useTranslations("navigation");
   const locale = useLocale();
   const router = useRouter();
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const navigationRef = useRef<HTMLDivElement>(null);
@@ -29,7 +28,6 @@ export function Navigation() {
       { id: "skills", label: t("skills") },
       { id: "projects", label: t("projects") },
       { id: "interests", label: t("interests") },
-      { id: "learning", label: t("learning") },
       { id: "contact", label: t("contact") },
     ],
     [t]
@@ -44,18 +42,6 @@ export function Navigation() {
 
     // Close the menu first
     setIsMenuOpen(false);
-
-    // Handle blog navigation - redirect to blog page
-    if (sectionId === "blog") {
-      router.push(`/${locale}/blog`);
-      return;
-    }
-
-    // Learning Log is its own page, not a homepage anchor.
-    if (sectionId === "learning") {
-      router.push(`/${locale}/learning`);
-      return;
-    }
 
     // Handle home navigation - go to homepage
     if (sectionId === "home") {
@@ -77,16 +63,6 @@ export function Navigation() {
 
   // Highlight the nav item for whichever section is currently under the nav.
   useEffect(() => {
-    if (pathname.includes("/blog")) {
-      setActiveSection("blog");
-      return;
-    }
-
-    if (pathname.includes("/learning")) {
-      setActiveSection("learning");
-      return;
-    }
-
     const sectionIds = sections
       .map((s) => s.id)
       .filter((id) => id !== "home");
@@ -126,7 +102,7 @@ export function Navigation() {
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [sections, pathname]);
+  }, [sections]);
 
   return (
     <nav

@@ -25,12 +25,14 @@ CI (`.github/workflows/ci.yml`) runs lint, typecheck, `test:coverage`, build, an
 
 ## Architecture
 
-**Routing & document shell.** Everything lives under `src/app/[locale]/` (locales `en`/`pt`, negotiated by `middleware.ts` at the repo root via next-intl). The real document shell — `<html lang>`, fonts, JSON-LD, `ThemeProvider` → `NextIntlClientProvider` → `TransitionProvider` — is in **`src/app/[locale]/layout.tsx`** (there is no root `app/layout.tsx`; the locale-less `/` route is just a redirect, isolated in the `app/(redirect)/` route group with its own minimal shell). The homepage (`[locale]/page.tsx`) composes the section components in order: Hero, About, Experience, SkillsBento, Projects, Writing (latest posts), Interests, Contact. `/about`, `/experience`, `/skills` redirect to homepage anchors; `/blog` and `/blog/[slug]` are real pages.
+**Routing & document shell.** Everything lives under `src/app/[locale]/` (locales `en`/`pt`, negotiated by `middleware.ts` at the repo root via next-intl). The real document shell — `<html lang>`, fonts, JSON-LD, `ThemeProvider` → `NextIntlClientProvider` → `TransitionProvider` — is in **`src/app/[locale]/layout.tsx`** (there is no root `app/layout.tsx`; the locale-less `/` route is just a redirect, isolated in the `app/(redirect)/` route group with its own minimal shell). The homepage (`[locale]/page.tsx`) composes the section components in order: Hero, About, Experience, SkillsBento, Projects, Interests, Contact. `/about`, `/experience`, `/skills` redirect to homepage anchors.
 
 **Content is data + message keys, joined by string.** This is the most important pattern to understand before editing content:
 - `src/data/*.ts` holds *structural* data (projects, experiences, skills, interests, blog-post metadata) with bare string **keys** like `titleKey: "modularGameStore.title"`, `i18nKey`, `descriptionKey`.
 - `src/messages/{en,pt}/index.json` holds the actual **copy**, looked up by those keys at render via next-intl.
 - There is **no compile-time link** between them. When you add or rename a project/experience/skill, you must add the matching key to **both** `en` and `pt`. `src/__tests__/i18n-data-drift.test.ts` walks every data key against both locales and fails CI if one doesn't resolve — run the unit tests after content changes.
+
+**The blog and learning log are temporarily off the site.** The `/blog`, `/blog/[slug]` and `/learning` routes, the homepage `Writing` section, and their nav entries and sitemap URLs were removed; the sitemap deliberately lists only the two homepages. Everything behind them is still here and still unit-tested: `Blog`, `Writing`, `LearningLog`, `src/components/blog/*`, `src/data/blog-posts.ts`, `src/data/learning.ts`, `src/lib/blog-content.ts`, the `blog` and `learning` message namespaces, and the markdown in `content/blog/`. To bring them back, restore the route files and re-wire those four surfaces (homepage, nav, sitemap, e2e specs).
 
 **Blog content is markdown files.** Post bodies live in `content/blog/<slug>.<locale>.md` and are read server-side by `src/lib/blog-content.ts` (`fs`); only metadata is in `src/data/blog-posts.ts`. `getBlogPostContent()` is server-only — never import it into a client component; the post page passes the string down to `<BlogPost content=...>`.
 
@@ -46,7 +48,7 @@ CI (`.github/workflows/ci.yml`) runs lint, typecheck, `test:coverage`, build, an
 
 - Unit tests (Vitest/jsdom) live in `src/__tests__/`. Coverage thresholds are enforced (90% statements/functions/lines, 85% branches) in `vitest.config.ts`. Genuinely un-jsdom-able files are excluded there with rationale: the html-shell layouts, `src/i18n/**` and `middleware.ts` (crash on import outside the Next server runtime), and `src/types/**`.
 - **Framer Motion is mocked centrally** at `__mocks__/framer-motion.tsx`. In a test, use a bare `vi.mock("framer-motion")` to pick it up (don't re-inline the proxy). The mock uses `React.JSX.IntrinsicElements` — match that in any new mock (React 19 removed the global `JSX` namespace).
-- e2e specs (`e2e/`) run axe-core accessibility scans on the homepage (both themes), blog index, and a post; these fail on any WCAG violation. Decorative icons/canvas must be `aria-hidden`.
+- e2e specs (`e2e/`) run axe-core accessibility scans on the homepage in both themes; these fail on any WCAG violation. Decorative icons/canvas must be `aria-hidden`.
 
 ## Conventions
 

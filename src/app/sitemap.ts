@@ -1,12 +1,11 @@
 import { MetadataRoute } from 'next';
-import { getBlogPosts } from '@/data/blog-posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://renanrambul.dev';
-  const blogPosts = getBlogPosts();
-  
-  // Static pages
-  const staticPages = [
+
+  // The blog and learning log routes are temporarily off the site, so they are
+  // deliberately absent here as well.
+  return [
     {
       url: `${baseUrl}/en`,
       lastModified: new Date(),
@@ -19,47 +18,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 1,
     },
-    {
-      url: `${baseUrl}/en/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/pt/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/learning`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/pt/learning`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
   ];
-
-  // Blog post pages
-  const blogPages = blogPosts.flatMap((post) => [
-    {
-      url: `${baseUrl}/en/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/pt/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-  ]);
-
-  return [...staticPages, ...blogPages];
-} 
+}

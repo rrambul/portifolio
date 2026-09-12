@@ -45,7 +45,7 @@ describe("Navigation", () => {
   it("renders the brand and all section labels", () => {
     render(<Navigation />);
     expect(screen.getByText("Renan Rambul")).toBeInTheDocument();
-    for (const label of ["home", "about", "experience", "skills", "projects", "interests", "learning", "contact"]) {
+    for (const label of ["home", "about", "experience", "skills", "projects", "interests", "contact"]) {
       expect(screen.getByText(label)).toBeInTheDocument();
     }
   });
@@ -54,12 +54,6 @@ describe("Navigation", () => {
     render(<Navigation />);
     fireEvent.click(screen.getByText("home"));
     expect(h.push).toHaveBeenCalledWith("/en");
-  });
-
-  it("routes to the Learning Log page when 'learning' is clicked", () => {
-    render(<Navigation />);
-    fireEvent.click(screen.getByText("learning"));
-    expect(h.push).toHaveBeenCalledWith("/en/learning");
   });
 
   it("navigates with a hash when a missing section is clicked", () => {
@@ -160,18 +154,6 @@ describe("Navigation", () => {
 
     document.body.removeChild(about);
     document.body.removeChild(projects);
-  });
-
-  it("treats blog routes as the active section without attaching a scroll listener", () => {
-    h.pathname.current = "/en/blog";
-    render(<Navigation />);
-    expect(screen.getByText("Renan Rambul")).toBeInTheDocument();
-  });
-
-  it("treats learning routes as the active section", () => {
-    h.pathname.current = "/en/learning";
-    render(<Navigation />);
-    expect(screen.getByText("Renan Rambul")).toBeInTheDocument();
   });
 
   it("throttles scroll-driven recomputes through requestAnimationFrame", () => {

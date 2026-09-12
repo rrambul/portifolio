@@ -9,24 +9,16 @@ describe("sitemap", () => {
     expect(result.length).toBeGreaterThan(0);
   });
 
-  it("includes static pages for both locales", () => {
+  it("includes the homepage for both locales", () => {
     const urls = result.map((entry) => entry.url);
     expect(urls).toContain("https://renanrambul.dev/en");
     expect(urls).toContain("https://renanrambul.dev/pt");
-    expect(urls).toContain("https://renanrambul.dev/en/blog");
-    expect(urls).toContain("https://renanrambul.dev/pt/blog");
-    expect(urls).toContain("https://renanrambul.dev/en/learning");
-    expect(urls).toContain("https://renanrambul.dev/pt/learning");
   });
 
-  it("includes blog post pages for both locales", () => {
+  it("omits the temporarily disabled blog and learning routes", () => {
     const urls = result.map((entry) => entry.url);
-    const blogPostUrls = urls.filter(
-      (url) => url.includes("/blog/") && !url.endsWith("/blog")
-    );
-    // Each blog post appears twice (en + pt)
-    expect(blogPostUrls.length).toBeGreaterThan(0);
-    expect(blogPostUrls.length % 2).toBe(0);
+    expect(urls.some((url) => url.includes("/blog"))).toBe(false);
+    expect(urls.some((url) => url.includes("/learning"))).toBe(false);
   });
 
   it("homepage has priority 1", () => {
@@ -34,23 +26,6 @@ describe("sitemap", () => {
       (entry) => entry.url === "https://renanrambul.dev/en"
     );
     expect(homePage?.priority).toBe(1);
-  });
-
-  it("blog index has priority 0.8", () => {
-    const blogIndex = result.find(
-      (entry) => entry.url === "https://renanrambul.dev/en/blog"
-    );
-    expect(blogIndex?.priority).toBe(0.8);
-  });
-
-  it("blog posts have priority 0.6", () => {
-    const blogPosts = result.filter(
-      (entry) =>
-        entry.url.includes("/blog/") && !entry.url.endsWith("/blog")
-    );
-    for (const post of blogPosts) {
-      expect(post.priority).toBe(0.6);
-    }
   });
 
   it("all entries have lastModified dates", () => {

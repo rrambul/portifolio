@@ -46,12 +46,6 @@ test.describe("Internationalization", () => {
     await expect(page).toHaveURL(/\/en/);
     await expect(page.getByText("Get in touch").first()).toBeVisible();
   });
-
-  test("blog page respects locale", async ({ page }) => {
-    await page.goto("/pt/blog");
-    // Blog should show Portuguese content
-    await expect(page.getByText("Uma Breve Apresentação").first()).toBeVisible();
-  });
 });
 
 test.describe("Theme Switching", () => {

@@ -44,13 +44,6 @@ test.describe("Navigation", () => {
     await expect(aboutButton).toHaveClass(/text-emerald/);
   });
 
-  test("Learning nav link opens the learning log page", async ({ page }) => {
-    await page.goto("/en");
-    await page.locator("nav").getByRole("button", { name: "Learning" }).first().click();
-    await expect(page).toHaveURL(/\/en\/learning$/);
-    await expect(page.getByRole("heading", { name: "Learning Log" })).toBeVisible();
-  });
-
   test("mobile hamburger menu opens and closes", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/en");
