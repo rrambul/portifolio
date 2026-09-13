@@ -9,24 +9,32 @@ vi.mock("next-intl", () => ({
 
 vi.mock("framer-motion");
 
+/**
+ * Stubbed: the forge block reads its own snapshot and its own message keys, and
+ * `ForgeProgress.test.tsx` owns it. What matters here is that the log renders it.
+ */
+vi.mock("@/components/sections/ForgeProgress", () => ({
+  ForgeProgress: () => <div data-testid="forge" />,
+}));
+
 vi.mock("@/data/learning", () => ({
   getLearningByMonth: vi.fn(),
   getInProgress: vi.fn(),
-  getShelf: vi.fn(),
+  getUndated: vi.fn(),
 }));
 
 import { LearningLog } from "@/components/sections/LearningLog";
-import { getInProgress, getLearningByMonth, getShelf } from "@/data/learning";
+import { getInProgress, getLearningByMonth, getUndated } from "@/data/learning";
 
 const mockMonths = vi.mocked(getLearningByMonth);
 const mockReading = vi.mocked(getInProgress);
-const mockShelf = vi.mocked(getShelf);
+const mockUndated = vi.mocked(getUndated);
 
 /** Default every group to empty; each test opts into the ones it needs. */
 beforeEach(() => {
   mockMonths.mockReset().mockReturnValue([]);
   mockReading.mockReset().mockReturnValue([]);
-  mockShelf.mockReset().mockReturnValue([]);
+  mockUndated.mockReset().mockReturnValue([]);
   h.locale.current = "en";
 });
 
@@ -34,6 +42,11 @@ describe("LearningLog", () => {
   it("renders the section with id 'learning'", () => {
     const { container } = render(<LearningLog />);
     expect(container.querySelector("#learning")).toBeInTheDocument();
+  });
+
+  it("renders the forge block above the log", () => {
+    render(<LearningLog />);
+    expect(screen.getByTestId("forge")).toBeInTheDocument();
   });
 
   it("shows the empty state when every group is empty", () => {
@@ -83,26 +96,26 @@ describe("LearningLog", () => {
   });
 
   it("renders an entry with no url as plain text rather than a dead link", () => {
-    mockShelf.mockReturnValue([
+    mockUndated.mockReturnValue([
       { title: "Clean Code", type: "book", source: "Robert C. Martin" },
     ]);
     render(<LearningLog />);
 
     const title = screen.getByText("Clean Code");
     expect(title.closest("a")).toBeNull();
-    expect(screen.getByText(/shelf/)).toBeInTheDocument();
+    expect(screen.getByText(/undated/)).toBeInTheDocument();
     expect(screen.getByText("types.book")).toBeInTheDocument();
   });
 
   it("omits the date element for an entry with no date", () => {
-    mockShelf.mockReturnValue([{ title: "Clean Code", type: "book" }]);
+    mockUndated.mockReturnValue([{ title: "Clean Code", type: "book" }]);
     const { container } = render(<LearningLog />);
     expect(container.querySelector("time")).toBeNull();
   });
 
   it("counts every group in the heading meta", () => {
     mockReading.mockReturnValue([{ title: "Reading", type: "book" }]);
-    mockShelf.mockReturnValue([{ title: "Shelved", type: "book" }]);
+    mockUndated.mockReturnValue([{ title: "Shelved", type: "book" }]);
     mockMonths.mockReturnValue([
       {
         key: "2026-06",
@@ -116,7 +129,7 @@ describe("LearningLog", () => {
   });
 
   it("uses the singular label for a single entry", () => {
-    mockShelf.mockReturnValue([{ title: "Clean Code", type: "book" }]);
+    mockUndated.mockReturnValue([{ title: "Clean Code", type: "book" }]);
     render(<LearningLog />);
     expect(screen.getByText("1 entry")).toBeInTheDocument();
   });

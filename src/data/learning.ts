@@ -15,8 +15,8 @@ export interface LearningEntry {
   url?: string;
   /**
    * ISO date (YYYY-MM-DD) I got to it, which drives the monthly grouping.
-   * Optional: an entry without a date renders on the shelf instead of in the
-   * dated log, so a book read years ago does not need an invented date.
+   * Optional: an entry without a date renders in its own group instead of in
+   * the dated log, so something read years ago needs no invented date.
    */
   date?: string;
   type: LearningType;
@@ -64,6 +64,25 @@ export const learning: LearningEntry[] = [
     source: "Robert C. Martin",
   },
   {
+    title: "Agentic Coding is a Trap",
+    url: "https://larsfaye.com/articles/agentic-coding-is-a-trap",
+    type: "article",
+    source: "larsfaye.com",
+  },
+  {
+    title:
+      "How DriveClub and shadPS4 Almost Defeated AI and Me: How to Learn",
+    url: "https://akitaonrails.com/en/2026/04/23/driveclub-shadps4-e-ia-como-aprender/",
+    type: "article",
+    source: "akitaonrails.com",
+  },
+  {
+    title: "The engineer AI can't replace",
+    url: "https://strategizeyourcareer.com/p/developer-taste-ai-slop",
+    type: "article",
+    source: "strategizeyourcareer.com",
+  },
+  {
     date: "2026-06-20",
     title: "Modular Monolith Boundaries",
     url: "https://codeopinion.com/modular-monolith-boundaries/",
@@ -86,11 +105,10 @@ export function getInProgress(
 }
 
 /**
- * Finished entries with no date on them. These are the ones I got to before
- * keeping this log, so they sit on a shelf rather than being filed under a
- * month I would have to make up.
+ * Finished entries carrying no date. They render in their own group rather
+ * than being filed under a month I would have to make up.
  */
-export function getShelf(
+export function getUndated(
   entries: LearningEntry[] = learning
 ): LearningEntry[] {
   return entries.filter((entry) => entry.status !== "reading" && !entry.date);

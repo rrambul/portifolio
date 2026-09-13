@@ -193,10 +193,17 @@
   },
   "learning": {
     "title": "Registro de Aprendizado",
-    "subtitle": "Livros, artigos, palestras e cursos que valem lembrar. Os datados são de depois que eu comecei este log; a estante é o que veio antes.",
+    "subtitle": "Livros, artigos, palestras e cursos que valem lembrar. Agrupados pelo mês em que cheguei neles, quando eu sei qual foi.",
     "reading": "lendo agora",
-    "shelf": "na estante",
+    "undated": "sem data",
     "empty": "Nada registrado aqui ainda.",
+    "forge": {
+      "label": "na forja",
+      "lessons": "lições",
+      "module": "módulo {index} de {count}",
+      "finished": "todos os módulos planejados concluídos",
+      "snapshot": "Progresso de currículo do Mindforge, o app de aprendizado que estou construindo. Exportado em <date>{when}</date>, não é ao vivo."
+    },
     "types": {
       "article": "Artigo",
       "video": "Vídeo",

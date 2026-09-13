@@ -16,13 +16,14 @@ import type { IconType } from "react-icons";
 import {
   getInProgress,
   getLearningByMonth,
-  getShelf,
+  getUndated,
   type LearningEntry,
   type LearningType,
 } from "@/data/learning";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
+import { ForgeProgress } from "@/components/sections/ForgeProgress";
 import { focusRing } from "@/lib/ui";
 
 const TYPE_ICONS: Record<LearningType, IconType> = {
@@ -102,11 +103,11 @@ export function LearningLog() {
   const locale = useLocale();
 
   const inProgress = getInProgress();
-  const shelf = getShelf();
+  const undated = getUndated();
   const months = getLearningByMonth();
 
   const dated = months.reduce((sum, group) => sum + group.entries.length, 0);
-  const total = inProgress.length + shelf.length + dated;
+  const total = inProgress.length + undated.length + dated;
   const listClass = "divide-y divide-zinc-200 dark:divide-white/10";
 
   return (
@@ -119,6 +120,10 @@ export function LearningLog() {
           meta={`${total} ${total === 1 ? "entry" : "entries"}`}
           as="h1"
         />
+
+        <div className="mb-10">
+          <ForgeProgress />
+        </div>
 
         {total === 0 ? (
           <p className="font-accent-mono text-sm text-zinc-500 dark:text-zinc-400">
@@ -145,14 +150,14 @@ export function LearningLog() {
               </m.div>
             )}
 
-            {shelf.length > 0 && (
+            {undated.length > 0 && (
               <m.div variants={fadeInUp}>
                 <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   {"// "}
-                  {t("shelf")}
+                  {t("undated")}
                 </h2>
                 <ul className={listClass}>
-                  {shelf.map((entry) => (
+                  {undated.map((entry) => (
                     <li key={entry.title}>
                       <LearningRow
                         entry={entry}

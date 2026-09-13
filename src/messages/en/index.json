@@ -193,10 +193,17 @@
   },
   "learning": {
     "title": "Learning Log",
-    "subtitle": "Books, articles, talks and courses worth remembering. Dated once I started keeping this log; the shelf is what came before it.",
+    "subtitle": "Books, articles, talks and courses worth remembering. Grouped by the month I got to them, when I know it.",
     "reading": "currently reading",
-    "shelf": "on the shelf",
+    "undated": "undated",
     "empty": "Nothing logged here yet.",
+    "forge": {
+      "label": "in the forge",
+      "lessons": "lessons",
+      "module": "module {index} of {count}",
+      "finished": "every planned module finished",
+      "snapshot": "Curriculum progress from Mindforge, the learning app I am building. Exported on <date>{when}</date>, not live."
+    },
     "types": {
       "article": "Article",
       "video": "Video",

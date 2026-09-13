@@ -3,7 +3,7 @@ import {
   learning,
   getInProgress,
   getLearningByMonth,
-  getShelf,
+  getUndated,
   type LearningType,
 } from "@/data/learning";
 
@@ -40,7 +40,7 @@ describe("learning data", () => {
   });
 });
 
-describe("getInProgress / getShelf", () => {
+describe("getInProgress / getUndated", () => {
   it("splits entries into reading, undated shelf, and dated log", () => {
     const entries = [
       { title: "Reading", type: "book" as const, status: "reading" as const },
@@ -49,7 +49,7 @@ describe("getInProgress / getShelf", () => {
     ];
 
     expect(getInProgress(entries).map((e) => e.title)).toEqual(["Reading"]);
-    expect(getShelf(entries).map((e) => e.title)).toEqual(["Shelved"]);
+    expect(getUndated(entries).map((e) => e.title)).toEqual(["Shelved"]);
     expect(getLearningByMonth(entries).flatMap((m) => m.entries.map((e) => e.title)))
       .toEqual(["Dated"]);
   });
@@ -69,7 +69,7 @@ describe("getInProgress / getShelf", () => {
 
   it("every entry lands in exactly one of the three groups", () => {
     const counted =
-      getInProgress().length + getShelf().length +
+      getInProgress().length + getUndated().length +
       getLearningByMonth().reduce((n, m) => n + m.entries.length, 0);
     expect(counted).toBe(learning.length);
   });

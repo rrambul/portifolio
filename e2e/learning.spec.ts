@@ -40,6 +40,19 @@ test.describe("Learning log", () => {
     await expect(page.getByText("The Pragmatic Programmer")).toBeVisible();
   });
 
+  test("shows curriculum progress as a fraction, never as a bar", async ({
+    page,
+  }) => {
+    await page.goto("/en/learning");
+    const forge = page.locator("#learning").getByText("in the forge");
+    await expect(forge).toBeVisible();
+    // A committed snapshot, so the page has to say when it was taken.
+    await expect(page.locator("#learning time[datetime]").last()).toBeVisible();
+    await expect(page.getByText(/module \d+ of \d+/).first()).toBeVisible();
+    // The honesty rule this block inherits from Mindforge: fractions only.
+    await expect(page.locator('#learning [role="progressbar"]')).toHaveCount(0);
+  });
+
   test("renders books without a link as plain text", async ({ page }) => {
     await page.goto("/en/learning");
     // A book with no canonical url must not become an empty or dead anchor.
