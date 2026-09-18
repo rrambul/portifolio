@@ -156,6 +156,16 @@
 .animate-enter-fade-left { animation: enter-fade-left 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
 .animate-enter-fade { animation: enter-fade 0.6s ease-out both; }
 
+/* Route change entrance. See TransitionProvider: this is CSS rather than
+   Framer because the Framer version could stall at opacity 0 and leave a page
+   blank until the visitor scrolled. */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-page-enter { animation: page-enter 0.3s ease-in-out both; }
+
 /* Respect users who prefer reduced motion: neutralize transitions/animations
    and disable smooth scrolling so nothing moves more than it has to. */
 @media (prefers-reduced-motion: reduce) {

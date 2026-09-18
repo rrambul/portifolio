@@ -25,6 +25,32 @@ describe("TransitionProvider", () => {
     expect(screen.getByTestId("child")).toBeInTheDocument();
   });
 
+  it("does not animate the session's first page", () => {
+    const { container } = render(
+      <TransitionProvider>
+        <div data-testid="child">a</div>
+      </TransitionProvider>
+    );
+    expect(
+      container.querySelector(".animate-page-enter")
+    ).not.toBeInTheDocument();
+  });
+
+  it("animates the entrance once the visitor navigates", () => {
+    const { container, rerender } = render(
+      <TransitionProvider>
+        <div data-testid="child">a</div>
+      </TransitionProvider>
+    );
+    h.pathname.current = "/en/learning";
+    rerender(
+      <TransitionProvider>
+        <div data-testid="child">b</div>
+      </TransitionProvider>
+    );
+    expect(container.querySelector(".animate-page-enter")).toBeInTheDocument();
+  });
+
   it("strips the locale prefix from the transition key", () => {
     h.pathname.current = "/pt/about";
     const { rerender } = render(

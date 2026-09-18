@@ -38,6 +38,37 @@ test.describe("Navigation", () => {
     await expect(nav.getByText("Interests")).toHaveCount(0);
   });
 
+  test("a homepage anchor reached from the learning page is painted", async ({
+    page,
+  }) => {
+    // Regression: the page transition used to stall at opacity 0 on this exact
+    // route, so the homepage arrived blank until the visitor scrolled. Assert
+    // the painted opacity, because Playwright counts an opacity-0 element as
+    // visible and `toBeVisible()` passed throughout the bug.
+    await page.goto("/en/learning");
+    await page
+      .getByRole("navigation")
+      .getByRole("button", { name: "About" })
+      .click();
+    await expect(page).toHaveURL(/#about$/);
+
+    await expect
+      .poll(
+        async () =>
+          page.locator("#about h2").evaluate((el) => {
+            let node: HTMLElement | null = el as HTMLElement;
+            let effective = 1;
+            while (node) {
+              effective *= Number(getComputedStyle(node).opacity);
+              node = node.parentElement;
+            }
+            return effective;
+          }),
+        { timeout: 5000 }
+      )
+      .toBeGreaterThan(0.99);
+  });
+
   test("scrolls to About section when clicking About link", async ({ page }) => {
     await page.goto("/en");
     await page.locator("nav").getByRole("button", { name: "About" }).first().click();

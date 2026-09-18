@@ -1,13 +1,7 @@
 "use client";
 
-import { ReactNode, useEffect, useMemo, useState } from "react";
-import {
-  AnimatePresence,
-  LazyMotion,
-  MotionConfig,
-  domMax,
-  m,
-} from "framer-motion";
+import { ReactNode, useMemo, useState } from "react";
+import { LazyMotion, MotionConfig, domMax } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { stripLocale } from "@/lib/strip-locale";
 
@@ -17,19 +11,23 @@ interface TransitionProviderProps {
 
 export function TransitionProvider({ children }: TransitionProviderProps) {
   const pathname = usePathname();
-  const [isFirstMount, setIsFirstMount] = useState(true);
 
-  // Strip locale prefix so locale changes don't trigger page transition
+  // Strip locale prefix so locale changes don't trigger a page transition
   const pathnameWithoutLocale = useMemo(() => {
     return stripLocale(pathname);
   }, [pathname]);
 
-  // Skip initial animation on first page load
-  useEffect(() => {
-    if (isFirstMount) {
-      setIsFirstMount(false);
-    }
-  }, [isFirstMount]);
+  // Has the visitor navigated at all? The session's first page must not fade
+  // in: that would gate the LCP behind hydration, which is the whole reason
+  // the Hero entrances are CSS. Adjusted during render (the React "derived
+  // state" pattern) rather than in an effect, so the class is already on the
+  // element in the same commit that remounts it, with no flash in between.
+  const [previousPath, setPreviousPath] = useState(pathnameWithoutLocale);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  if (previousPath !== pathnameWithoutLocale) {
+    setPreviousPath(pathnameWithoutLocale);
+    setHasNavigated(true);
+  }
 
   return (
     // `reducedMotion="user"` makes every Framer Motion animation honor the OS
@@ -40,17 +38,21 @@ export function TransitionProvider({ children }: TransitionProviderProps) {
     // `strict` throws if a full `motion.` component sneaks back in.
     <MotionConfig reducedMotion="user">
       <LazyMotion features={domMax} strict>
-        <AnimatePresence mode="wait">
-          <m.div
-            key={pathnameWithoutLocale}
-            initial={isFirstMount ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            {children}
-          </m.div>
-        </AnimatePresence>
+        {/* The page entrance is a CSS keyframe, not Framer, and deliberately.
+            This used to be an AnimatePresence/m.div pair, and the entering
+            page could be left at `opacity: 0` forever: coming from /learning
+            to a homepage anchor whose hash scroll lands near the top (#about)
+            stalled the enter animation every time, so the page rendered blank
+            until a scroll forced it to repaint. A keyframe cannot stall, and
+            dropping `mode="wait"` also drops the 300ms the old page spent
+            animating out before the new one was allowed to mount. Keyed on the
+            path so React remounts here, which is what restarts the animation. */}
+        <div
+          key={pathnameWithoutLocale}
+          className={hasNavigated ? "animate-page-enter" : undefined}
+        >
+          {children}
+        </div>
       </LazyMotion>
     </MotionConfig>
   );
