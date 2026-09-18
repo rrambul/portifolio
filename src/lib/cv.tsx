@@ -22,7 +22,6 @@ interface CompanyCopy {
 
 interface EducationCopy {
   degree: string;
-  focus: string;
   note: string;
 }
 
@@ -200,18 +199,13 @@ export function createCvDocument(locale: Locale) {
             const copy = degrees[entry.i18nKey];
             if (!copy) return null;
             return (
-              <View key={entry.id}>
-                <View style={styles.entryHeader}>
-                  <Text style={styles.entryTitle}>
-                    {copy.degree} · {entry.institution}
-                  </Text>
-                  {entry.period ? (
-                    <Text style={styles.entryPeriod}>{entry.period}</Text>
-                  ) : null}
-                </View>
-                <Text style={styles.entryMeta}>
-                  {m.education.focusLabel}: {copy.focus}
+              <View key={entry.id} style={styles.entryHeader}>
+                <Text style={styles.entryTitle}>
+                  {copy.degree} · {entry.institution}
                 </Text>
+                {entry.period ? (
+                  <Text style={styles.entryPeriod}>{entry.period}</Text>
+                ) : null}
               </View>
             );
           })}

@@ -185,12 +185,10 @@
   "education": {
     "title": "Formação",
     "subtitle": "Aprendi a programar sozinho, na documentação, no código dos outros e nas coisas que quebraram em produção. A parte formal veio depois de sete anos entregando, não antes.",
-    "focusLabel": "foco",
     "inProgress": "estudando",
     "entries": {
       "fullCycleMba": {
-        "degree": "MBA, Engenharia de Software",
-        "focus": "Arquitetura de Software",
+        "degree": "MBA, Arquitetura de Software",
         "note": "O programa de arquitetura da Full Cycle, 600 horas em cinco módulos: arquitetura de soluções, arquitetura de software (DDD, SOLID, arquitetura hexagonal e clean, CQRS, sistemas orientados a eventos), DevOps e SRE (containers e Kubernetes, infraestrutura como código, observabilidade), soft skills e arquitetura na era dos agentes de IA."
       }
     }

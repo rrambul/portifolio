@@ -47,7 +47,7 @@ test.describe("Homepage Sections", () => {
 
   test("renders Education section with the MBA in progress", async ({ page }) => {
     await page.locator("#education").scrollIntoViewIfNeeded();
-    await expect(page.getByText("MBA, Computer Software Engineering")).toBeVisible();
+    await expect(page.getByText("MBA, Software Architecture")).toBeVisible();
     // Exact: the module summary below also mentions Full Cycle by name.
     await expect(
       page.locator("#education").getByText("Full Cycle", { exact: true })

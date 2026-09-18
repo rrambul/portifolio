@@ -47,14 +47,13 @@ describe.each(Object.entries(locales))("%s message keys", (_name, m) => {
     }
   });
 
-  it("resolves every education entry key (degree + focus + note)", () => {
+  it("resolves every education entry key (degree + note)", () => {
     for (const entry of education) {
       const copy = resolve(m.education.entries, entry.i18nKey) as
         | Record<string, unknown>
         | undefined;
       expect(copy, `education.entries.${entry.i18nKey}`).toBeTruthy();
       expect(copy?.degree).toBeTypeOf("string");
-      expect(copy?.focus).toBeTypeOf("string");
       expect(copy?.note).toBeTypeOf("string");
     }
   });

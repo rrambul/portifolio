@@ -47,20 +47,15 @@ export function Education() {
                 {entry.institution}
               </p>
 
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-accent-mono text-xs">
-                <span className="text-zinc-500 dark:text-zinc-400">
-                  {t("focusLabel")}: {t(`entries.${entry.i18nKey}.focus`)}
+              {entry.status === "in-progress" && (
+                <span className="mt-2 inline-flex items-center gap-1.5 font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                    aria-hidden="true"
+                  />
+                  {t("inProgress")}
                 </span>
-                {entry.status === "in-progress" && (
-                  <span className="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
-                    <span
-                      className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                      aria-hidden="true"
-                    />
-                    {t("inProgress")}
-                  </span>
-                )}
-              </div>
+              )}
 
               <p className="mt-3 text-zinc-600 dark:text-zinc-400">
                 {t(`entries.${entry.i18nKey}.note`)}

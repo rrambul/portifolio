@@ -185,12 +185,10 @@
   "education": {
     "title": "Education",
     "subtitle": "I taught myself to program, from documentation, other people's code and things that broke in production. The formal part came after seven years of shipping, not before it.",
-    "focusLabel": "focus",
     "inProgress": "studying",
     "entries": {
       "fullCycleMba": {
-        "degree": "MBA, Computer Software Engineering",
-        "focus": "Software Architecture",
+        "degree": "MBA, Software Architecture",
         "note": "Full Cycle's architecture program, 600 hours in five modules: solution architecture, software architecture (DDD, SOLID, hexagonal and clean architecture, CQRS, event driven systems), DevOps and SRE (containers and Kubernetes, infrastructure as code, observability), soft skills, and architecture in the age of AI agents."
       }
     }
