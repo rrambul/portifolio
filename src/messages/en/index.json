@@ -191,7 +191,7 @@
       "fullCycleMba": {
         "degree": "MBA, Computer Software Engineering",
         "focus": "Software Architecture",
-        "note": "Two years on the part of the job I had been picking up one production incident at a time: how a system gets split, what each split costs to run, and which of those decisions are expensive to take back."
+        "note": "Full Cycle's architecture program, 600 hours in five modules: solution architecture, software architecture (DDD, SOLID, hexagonal and clean architecture, CQRS, event driven systems), DevOps and SRE (containers and Kubernetes, infrastructure as code, observability), soft skills, and architecture in the age of AI agents."
       }
     }
   },
