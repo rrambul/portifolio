@@ -182,6 +182,19 @@
       "text": "Contribuidor do RPJS, a comunidade JavaScript de Ribeirão Preto."
     }
   },
+  "education": {
+    "title": "Formação",
+    "subtitle": "Aprendi a programar sozinho, na documentação, no código dos outros e nas coisas que quebraram em produção. A parte formal veio depois de sete anos entregando, não antes.",
+    "focusLabel": "foco",
+    "inProgress": "estudando",
+    "entries": {
+      "fullCycleMba": {
+        "degree": "MBA, Engenharia de Software",
+        "focus": "Arquitetura de Software",
+        "note": "Dois anos na parte do trabalho que eu vinha aprendendo um incidente de produção por vez: como um sistema é dividido, quanto cada divisão custa para rodar e quais dessas decisões são caras de desfazer."
+      }
+    }
+  },
   "blog": {
     "title": "Blog",
     "subtitle": "Artigos e anotações sobre desenvolvimento de software.",

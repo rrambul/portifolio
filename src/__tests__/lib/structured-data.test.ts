@@ -15,6 +15,13 @@ describe("buildPersonJsonLd", () => {
     expect(buildPersonJsonLd().jobTitle).toBe("Software Engineer");
   });
 
+  it("names the school behind the in-progress MBA", () => {
+    expect(buildPersonJsonLd().alumniOf).toEqual({
+      "@type": "EducationalOrganization",
+      "name": "Full Cycle",
+    });
+  });
+
   it("exposes the social profiles via sameAs", () => {
     const { sameAs } = buildPersonJsonLd();
     expect(sameAs).toContain(siteConfig.links.github);

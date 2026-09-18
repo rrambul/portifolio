@@ -45,6 +45,12 @@ test.describe("Homepage Sections", () => {
     await expect(page.getByText("Professional Experience")).toBeVisible();
   });
 
+  test("renders Education section with the MBA in progress", async ({ page }) => {
+    await page.locator("#education").scrollIntoViewIfNeeded();
+    await expect(page.getByText("MBA, Computer Software Engineering")).toBeVisible();
+    await expect(page.locator("#education").getByText("Full Cycle")).toBeVisible();
+  });
+
   test("renders Projects section with project cards", async ({ page }) => {
     await page.locator("#projects").scrollIntoViewIfNeeded();
     await expect(page.locator("#projects")).toBeVisible();

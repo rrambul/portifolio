@@ -182,6 +182,19 @@
       "text": "Contributor to RPJS, the Ribeirão Preto JavaScript community."
     }
   },
+  "education": {
+    "title": "Education",
+    "subtitle": "I taught myself to program, from documentation, other people's code and things that broke in production. The formal part came after seven years of shipping, not before it.",
+    "focusLabel": "focus",
+    "inProgress": "studying",
+    "entries": {
+      "fullCycleMba": {
+        "degree": "MBA, Computer Software Engineering",
+        "focus": "Software Architecture",
+        "note": "Two years on the part of the job I had been picking up one production incident at a time: how a system gets split, what each split costs to run, and which of those decisions are expensive to take back."
+      }
+    }
+  },
   "blog": {
     "title": "Blog",
     "subtitle": "Articles and notes on software development.",

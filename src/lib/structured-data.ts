@@ -18,6 +18,10 @@ export function buildPersonJsonLd() {
       "name": "Translational Analytics & Statistics",
     },
     "description": siteConfig.description,
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Full Cycle",
+    },
     "knowsAbout": [
       "JavaScript",
       "TypeScript",

@@ -9,6 +9,7 @@ import {
 import { siteConfig } from "@/config/site";
 import { experiences } from "@/data/experiences";
 import { skillCategories } from "@/data/skills";
+import { education } from "@/data/education";
 import enMessages from "@/messages/en/index.json";
 import ptMessages from "@/messages/pt/index.json";
 import type { Locale } from "../../i18n.config";
@@ -17,6 +18,12 @@ interface CompanyCopy {
   title: string;
   responsibilities: string[];
   skills: string[];
+}
+
+interface EducationCopy {
+  degree: string;
+  focus: string;
+  note: string;
 }
 
 /** Labels that don't exist in the site messages. */
@@ -32,14 +39,15 @@ const FAINT = "#a1a1aa";
 
 const styles = StyleSheet.create({
   page: {
-    paddingVertical: 32,
+    paddingVertical: 28,
     paddingHorizontal: 44,
     fontFamily: "Helvetica",
     fontSize: 9.5,
     color: INK,
     // 1.35 rather than 1.4: Portuguese runs noticeably longer than English, and
     // at 1.4 the PT CV spilled the Languages block (wrap={false}) onto a third
-    // page by a few points. This keeps both locales at two pages with headroom.
+    // page by a few points. Both locales are two pages, and PT has only a few
+    // points to spare, so measure it (not just EN) after any content change.
     lineHeight: 1.35,
   },
   name: { fontSize: 22, fontFamily: "Helvetica-Bold", lineHeight: 1.2, marginBottom: 4 },
@@ -52,20 +60,24 @@ const styles = StyleSheet.create({
   },
   contactItem: { color: MUTED, textDecoration: "none", fontSize: 9 },
   contactSeparator: { color: FAINT, fontSize: 9 },
+  // The three margins below (page padding, section title, entry) were each
+  // pulled in by a point or two when Education was added: the block costs the
+  // PT CV about a section's worth of height, and this bought it back without
+  // touching the type scale.
   sectionTitle: {
     fontSize: 10.5,
     fontFamily: "Helvetica-Bold",
     color: ACCENT,
     textTransform: "uppercase",
     letterSpacing: 1,
-    marginTop: 13,
-    marginBottom: 6,
+    marginTop: 10,
+    marginBottom: 5,
     paddingBottom: 2,
     borderBottomWidth: 1,
     borderBottomColor: "#e4e4e7",
   },
   paragraph: { color: INK },
-  entry: { marginBottom: 10 },
+  entry: { marginBottom: 9 },
   entryHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -104,6 +116,7 @@ export function createCvDocument(locale: Locale) {
   const m = messagesFor(locale);
   const labels = LABELS[locale];
   const companies = m.experience.companies as Record<string, CompanyCopy>;
+  const degrees = m.education.entries as Record<string, EducationCopy>;
   const siteHost = siteConfig.url.replace(/^https?:\/\//, "");
 
   const contact = [
@@ -175,6 +188,34 @@ export function createCvDocument(locale: Locale) {
             </Text>
           </View>
         ))}
+
+        {/* Education. The self-taught line carries more here than the one
+            degree under it does, so it is the first thing in the block. */}
+        <View wrap={false}>
+          <Text style={styles.sectionTitle}>{m.education.title}</Text>
+          <Text style={[styles.paragraph, { marginBottom: 6 }]}>
+            {m.education.subtitle}
+          </Text>
+          {education.map((entry) => {
+            const copy = degrees[entry.i18nKey];
+            if (!copy) return null;
+            return (
+              <View key={entry.id}>
+                <View style={styles.entryHeader}>
+                  <Text style={styles.entryTitle}>
+                    {copy.degree} · {entry.institution}
+                  </Text>
+                  {entry.period ? (
+                    <Text style={styles.entryPeriod}>{entry.period}</Text>
+                  ) : null}
+                </View>
+                <Text style={styles.entryMeta}>
+                  {m.education.focusLabel}: {copy.focus}
+                </Text>
+              </View>
+            );
+          })}
+        </View>
 
         {/* Languages */}
         <View wrap={false}>

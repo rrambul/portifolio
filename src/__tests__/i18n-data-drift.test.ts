@@ -5,6 +5,7 @@ import { projects } from "@/data/projects";
 import { experiences } from "@/data/experiences";
 import { skillCategories } from "@/data/skills";
 import { positions, changedMyMind } from "@/data/interests";
+import { education } from "@/data/education";
 
 /**
  * Guards the coupling between the data files (which carry bare string keys)
@@ -43,6 +44,18 @@ describe.each(Object.entries(locales))("%s message keys", (_name, m) => {
       expect(company?.title).toBeTypeOf("string");
       expect(Array.isArray(company?.responsibilities)).toBe(true);
       expect(Array.isArray(company?.skills)).toBe(true);
+    }
+  });
+
+  it("resolves every education entry key (degree + focus + note)", () => {
+    for (const entry of education) {
+      const copy = resolve(m.education.entries, entry.i18nKey) as
+        | Record<string, unknown>
+        | undefined;
+      expect(copy, `education.entries.${entry.i18nKey}`).toBeTruthy();
+      expect(copy?.degree).toBeTypeOf("string");
+      expect(copy?.focus).toBeTypeOf("string");
+      expect(copy?.note).toBeTypeOf("string");
     }
   });
 
