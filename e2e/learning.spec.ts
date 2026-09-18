@@ -40,6 +40,13 @@ test.describe("Learning log", () => {
     await expect(page.getByText("The Pragmatic Programmer")).toBeVisible();
   });
 
+  test("lists the MBA in progress above the log", async ({ page }) => {
+    await page.goto("/en/learning");
+    await expect(page.getByText("MBA, Software Architecture")).toBeVisible();
+    await expect(page.getByText("Full Cycle", { exact: true })).toBeVisible();
+    await expect(page.getByText("Sep 2026 - May 2028")).toBeVisible();
+  });
+
   test("shows curriculum progress as a fraction, never as a bar", async ({
     page,
   }) => {

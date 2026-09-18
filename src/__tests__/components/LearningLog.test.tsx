@@ -25,6 +25,7 @@ vi.mock("@/data/learning", () => ({
 
 import { LearningLog } from "@/components/sections/LearningLog";
 import { getInProgress, getLearningByMonth, getUndated } from "@/data/learning";
+import { education } from "@/data/education";
 
 const mockMonths = vi.mocked(getLearningByMonth);
 const mockReading = vi.mocked(getInProgress);
@@ -36,6 +37,27 @@ beforeEach(() => {
   mockReading.mockReset().mockReturnValue([]);
   mockUndated.mockReset().mockReturnValue([]);
   h.locale.current = "en";
+});
+
+describe("LearningLog education block", () => {
+  it("lists every degree with its institution and period", () => {
+    render(<LearningLog />);
+    for (const entry of education) {
+      expect(
+        screen.getByText(`entries.${entry.i18nKey}.degree`)
+      ).toBeInTheDocument();
+      expect(screen.getByText(entry.institution)).toBeInTheDocument();
+      if (entry.period) {
+        expect(screen.getByText(entry.period)).toBeInTheDocument();
+      }
+    }
+  });
+
+  it("marks a program still running", () => {
+    render(<LearningLog />);
+    const current = education.filter((e) => e.status === "in-progress");
+    expect(screen.getAllByText("inProgress")).toHaveLength(current.length);
+  });
 });
 
 describe("LearningLog", () => {

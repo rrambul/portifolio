@@ -13,6 +13,7 @@ import {
   FiFile,
 } from "react-icons/fi";
 import type { IconType } from "react-icons";
+import { education } from "@/data/education";
 import {
   getInProgress,
   getLearningByMonth,
@@ -100,6 +101,7 @@ function LearningRow({ entry, label }: { entry: LearningEntry; label: string }) 
 
 export function LearningLog() {
   const t = useTranslations("learning");
+  const tEducation = useTranslations("education");
   const locale = useLocale();
 
   const inProgress = getInProgress();
@@ -120,6 +122,47 @@ export function LearningLog() {
           meta={`${total} ${total === 1 ? "entry" : "entries"}`}
           as="h1"
         />
+
+        {/* Formal study first, then the curriculum I set myself, then what I
+            read. The degrees are not log entries, so they stay out of the
+            count in the heading. */}
+        {education.length > 0 && (
+          <m.div variants={fadeInUp} className="mb-10">
+            <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+              {"// "}
+              {tEducation("title")}
+            </h2>
+            <ul className={listClass}>
+              {education.map((entry) => (
+                <li
+                  key={entry.id}
+                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-3"
+                >
+                  {entry.period ? (
+                    <span className="shrink-0 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
+                      {entry.period}
+                    </span>
+                  ) : null}
+                  <span className="flex-1 text-zinc-700 dark:text-zinc-300">
+                    {tEducation(`entries.${entry.i18nKey}.degree`)}
+                    <span className="ml-2 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
+                      {entry.institution}
+                    </span>
+                  </span>
+                  {entry.status === "in-progress" && (
+                    <span className="inline-flex shrink-0 items-center gap-1.5 self-center font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
+                      <span
+                        className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        aria-hidden="true"
+                      />
+                      {tEducation("inProgress")}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </m.div>
+        )}
 
         <div className="mb-10">
           <ForgeProgress />
