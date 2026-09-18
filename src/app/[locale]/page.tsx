@@ -4,7 +4,10 @@ import { Experience } from "@/components/sections/Experience";
 import { SkillsBento } from "@/components/sections/SkillsBento";
 import { Education } from "@/components/sections/Education";
 import { Projects } from "@/components/sections/Projects";
-import { Interests } from "@/components/sections/Interests";
+// Positions is parked for now. Uncomment this import and the <Interests />
+// below to bring the section back; the component, its data and its copy all
+// stay in the repo, still unit tested.
+// import { Interests } from "@/components/sections/Interests";
 import { Contact } from "@/components/sections/Contact";
 import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
@@ -46,7 +49,7 @@ export default function Home() {
       <SkillsBento />
       <Education />
       <Projects />
-      <Interests />
+      {/* <Interests /> */}
       <Contact />
       <Footer />
     </main>

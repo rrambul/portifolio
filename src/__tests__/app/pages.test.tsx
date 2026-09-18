@@ -24,9 +24,14 @@ import SkillsPage from "@/app/[locale]/skills/page";
 describe("Home page", () => {
   it("composes all sections", () => {
     render(<Home />);
-    for (const id of ["nav", "hero", "about", "experience", "skills", "education", "projects", "interests", "contact", "footer"]) {
+    for (const id of ["nav", "hero", "about", "experience", "skills", "education", "projects", "contact", "footer"]) {
       expect(screen.getByTestId(id)).toBeInTheDocument();
     }
+  });
+
+  it("leaves the parked Positions section out of the page", () => {
+    render(<Home />);
+    expect(screen.queryByTestId("interests")).not.toBeInTheDocument();
   });
 
   it("generates English metadata", async () => {
