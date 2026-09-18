@@ -290,7 +290,6 @@
     "subtitle": "O que eu acredito hoje sobre construir software.",
     "positions": {
       "accessibility": "Componente que não funciona no teclado não está pronto. É um bug com um hover bonito.",
-      "designSystems": "Design system não se paga até um segundo produto usar ele; antes disso é uma pasta de componentes com reunião extra.",
       "seams": "Os bugs interessantes moram nas costuras: entre a migration, o evento de domínio e o render. É por isso que eu me recuso a cuidar de só um lado da stack.",
       "tests": "O único teste em que eu confio de verdade é o que eu vi falhar antes de eu corrigir o bug. Já derrubei o S3 de propósito para conseguir esse sinal.",
       "agents": "Agente de código é limitado pelo contexto que você entrega, e por isso eu leio quase toda reclamação de que a IA é ruim em alguma coisa como reclamação de que o repositório é difícil de ler.",

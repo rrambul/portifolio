@@ -290,7 +290,6 @@
     "subtitle": "What I currently believe about building software.",
     "positions": {
       "accessibility": "A component that is not keyboard operable is not done. It is a bug with a nice hover state.",
-      "designSystems": "A design system does not pay for itself until a second product uses it; before that it is a component folder with extra meetings.",
       "seams": "The interesting bugs live at the seams: between the migration, the domain event and the render. That is why I refuse to own only one side of the stack.",
       "tests": "The only test I fully trust is one I watched fail before I fixed the bug. I have induced real S3 outages to get that signal.",
       "agents": "Coding agents are limited by the context you hand them, which is why I read most complaints about what the AI cannot do as complaints about how hard the repo is to read.",

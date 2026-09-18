@@ -7,7 +7,6 @@
 /** Keys under `interests.positions` in the message files. */
 export const positions = [
   "accessibility",
-  "designSystems",
   "seams",
   "tests",
   "agents",
