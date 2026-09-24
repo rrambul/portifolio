@@ -83,6 +83,14 @@ export const learning: LearningEntry[] = [
     source: "strategizeyourcareer.com",
   },
   {
+    date: "2026-09-24",
+    title:
+      "When AI writes almost all code, what happens to software engineering?",
+    url: "https://newsletter.pragmaticengineer.com/p/when-ai-writes-almost-all-code-what",
+    type: "article",
+    source: "newsletter.pragmaticengineer.com",
+  },
+  {
     date: "2026-06-20",
     title: "Modular Monolith Boundaries",
     url: "https://codeopinion.com/modular-monolith-boundaries/",
