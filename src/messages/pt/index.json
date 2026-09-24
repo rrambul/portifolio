@@ -39,7 +39,7 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "A maior parte do que eu entrego ninguém vê. O data grid que virou virtualizado porque o antigo derretia com alguns milhares de linhas, o fluxo de cobrança que se recusa a enviar metade de um lote de faturas, o comando de teste do monorepo que vinha pulando 13 pacotes caladinho. Trabalho mais no frontend, mas escrevo a migration e o contrato da API também, porque é quase sempre ali que o bug estava. Sete anos nisso, de Ribeirão Preto, hoje construindo software de saúde com um time nos Estados Unidos.",
+    "content": "Construo produtos de ponta a ponta: o modelo de dados, o contrato da API e a interface que as pessoas realmente usam. Sete anos nisso, mais no frontend, mas raramente só ali, porque os problemas que valem a pena resolver moram entre as camadas. Hoje isso é software de saúde, construído com um time nos Estados Unidos.",
     "personal": {
       "title": "Pessoal",
       "content": "Leio muito, principalmente postmortem e texto de arquitetura dos outros. A academia acontece numa rotina que eu realmente cumpro. Projeto paralelo é como eu aprendo: Fortuna e Mindforge nasceram de coisas que eu queria que existissem e não achei."
@@ -227,7 +227,7 @@
   },
   "footer": {
     "about": "Sobre",
-    "aboutText": "Engenheiro de software em Ribeirão Preto. Hoje construindo software de saúde e o design system em que ele roda.",
+    "aboutText": "Engenheiro de software construindo software de saúde e o design system em que ele roda.",
     "social": "Social",
     "links": "Links Rápidos",
     "aboutLink": "Sobre",

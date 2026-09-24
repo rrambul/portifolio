@@ -39,7 +39,7 @@
   },
   "about": {
     "title": "About Me",
-    "content": "Most of what I've shipped, people never see. The data grid that got virtualized because the old one folded at a few thousand rows, the billing flow that refuses to send half a batch of invoices, the monorepo test command that had been silently skipping 13 packages. I work mostly on the frontend, but I write the migration and the API contract too, because that is usually where the bug turns out to be. Seven years of this, from Ribeirão Preto, currently building healthcare software with a team in the United States.",
+    "content": "I build products end to end: the data model, the API contract, and the interface people actually touch. Seven years of it, mostly on the frontend but rarely only there, because the problems worth solving sit between the layers. Today that means healthcare software, built with a team in the United States.",
     "personal": {
       "title": "Personal",
       "content": "I read constantly, mostly other people's postmortems and architecture writeups. The gym happens on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as something I wanted and could not find."
@@ -227,7 +227,7 @@
   },
   "footer": {
     "about": "About",
-    "aboutText": "Software engineer in Ribeirão Preto, Brazil. Currently building healthcare software and the design system it ships on.",
+    "aboutText": "Software engineer building healthcare software and the design system it ships on.",
     "social": "Social",
     "links": "Quick Links",
     "aboutLink": "About",
