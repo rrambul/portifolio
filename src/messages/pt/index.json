@@ -68,7 +68,9 @@
           "Construí peças fundamentais do design system sobre o qual toda a plataforma é construída: o data grid, o select, os dialogs e as versões virtualizadas de select e grid que resolveram um teto de performance de toda a plataforma. Mantenho a biblioteca com acessibilidade e performance como requisitos obrigatórios de todo componente, e hoje estou adaptando a plataforma para caber em um celular.",
           "Corrijo falhas de confiabilidade que só aparecem sob falha parcial, incluindo um bug em que erros de notificação podiam reverter as escritas de negócio que os dispararam, e uma falha de atomicidade que deixava registros órfãos quando a geração de PDF falhava. Deixei o envio de múltiplas faturas tudo-ou-nada, então um lote rejeitado não muda nada e aponta cada culpado, e testei isso provocando quedas reais do S3.",
           "Cuido dos testes em toda a stack: suítes de integração, de página, de API e de regressão visual com Playwright. Corrijo a própria infraestrutura de testes, incluindo um comando de teste do monorepo que estava pulando 13 pacotes em silêncio.",
-          "Publico os pacotes npm compartilhados que mantêm a UI consistente entre as equipes de produto, e reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma. Melhoro os workflows de IA do time com revisão de código automática em cada PR e uma base de conhecimento hierárquica que deixa agentes de codificação produtivos, e reduzi o tempo de CI com builds paralelizados do monorepo."
+          "Reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
+          "Ajudei a trazer IA para o processo de engenharia do time: criei skills de revisão pré-PR para que problemas sejam pegos antes mesmo de o PR ser aberto, configurei a revisão automática do Claude em todo PR e montei uma base de conhecimento hierárquica que mantém os agentes de codificação produtivos no código.",
+          "Reduzi o tempo de CI com builds paralelizados do monorepo."
         ],
         "skills": [
           "TypeScript",

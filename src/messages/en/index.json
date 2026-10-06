@@ -68,7 +68,9 @@
           "Built foundational pieces of the design system the entire platform ships on: the data grid, select, dialogs, and the virtualized select and grid that fixed a platform-wide performance ceiling. Maintain it with accessibility and performance as hard requirements for every component, and I'm currently fitting the platform to a phone.",
           "Fix reliability holes that only surface under partial failure, including a bug where notification failures could roll back the business writes that triggered them, and an atomicity gap that left orphaned records when PDF generation failed. Made multi-invoice sending all-or-nothing, so a rejected batch changes nothing and names every offender, and tested it by inducing real S3 outages.",
           "Own testing across the stack: Playwright integration, page, API, and visual-regression suites. Fix the test infrastructure itself, including a monorepo test command that was silently skipping 13 packages.",
-          "Publish the shared npm packages that keep UI consistent across product teams, and review frontend PRs for architecture and fidelity to Figma designs. Improve the team's AI-assisted workflows with automated code review on every PR and a hierarchical knowledge base that keeps coding agents productive, and cut CI time with parallelized monorepo builds."
+          "Review frontend PRs for architecture and fidelity to Figma designs.",
+          "Helped bring AI into the team's engineering process: wrote pre-PR review skills so problems get caught before a PR is even opened, set up automated Claude review on every PR, and built a hierarchical knowledge base that keeps coding agents productive in the codebase.",
+          "Cut CI time with parallelized monorepo builds."
         ],
         "skills": [
           "TypeScript",
