@@ -39,7 +39,7 @@
   },
   "about": {
     "title": "About Me",
-    "content": "Software engineer, seven years in, mostly on the frontend but often across the whole stack, from the database up. Right now I work on healthcare software with a team in the United States, and I've helped bring AI into how we build: pre-PR review skills and automated Claude review on every PR. What I care about most is performance and helping the team ship things it's proud of.",
+    "content": "Software engineer, seven years in, mostly on the frontend but often across the whole stack, from the database up. Right now I work on healthcare software with a team in the United States, and I've helped bring AI into how we build: pre-PR review skills and automated Claude review on every PR. What I care about most is crafting long-lasting solutions that bring value to users, and helping the team ship things it's proud of.",
     "personal": {
       "title": "Personal",
       "content": "I read constantly, mostly other people's postmortems and architecture writeups. The gym happens on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as something I wanted and could not find."
