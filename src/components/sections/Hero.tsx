@@ -59,7 +59,7 @@ export function Hero() {
       {/* Back to the reading column for everything below the name. */}
       <div className="max-w-2xl">
         <p
-          className="mt-8 text-xl text-zinc-600 dark:text-zinc-300 md:text-2xl animate-enter-fade-left"
+          className="mt-8 text-xl text-balance text-zinc-600 dark:text-zinc-300 md:text-2xl animate-enter-fade-left"
           style={{ animationDelay: "0.34s" }}
         >
           {t("taglineShort")}
