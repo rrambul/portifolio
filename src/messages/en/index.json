@@ -39,7 +39,7 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I build products end to end: the data model, the API contract, and the interface people actually touch. Seven years of it, mostly on the frontend but rarely only there, because the problems worth solving sit between the layers. Today that means healthcare software, built with a team in the United States.",
+    "content": "Software engineer, seven years in, mostly on the frontend but often across the whole stack, from the database up. Right now I work on healthcare software with a team in the United States, and I've helped bring AI into how we build: pre-PR review skills and automated Claude review on every PR. What I care about most is accessibility, performance, and helping the team ship things it's proud of.",
     "personal": {
       "title": "Personal",
       "content": "I read constantly, mostly other people's postmortems and architecture writeups. The gym happens on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as something I wanted and could not find."
