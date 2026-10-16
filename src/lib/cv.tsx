@@ -82,8 +82,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "baseline",
   },
-  entryTitle: { fontFamily: "Helvetica-Bold", fontSize: 10.5 },
-  entryPeriod: { color: MUTED, fontSize: 9 },
+  // The title shrinks and wraps so a long one can never run into the date.
+  entryTitle: {
+    fontFamily: "Helvetica-Bold",
+    fontSize: 10.5,
+    flexShrink: 1,
+    marginRight: 12,
+  },
+  entryPeriod: { color: MUTED, fontSize: 9, flexShrink: 0 },
   entryMeta: { color: MUTED, fontSize: 9, marginBottom: 3 },
   bulletRow: { flexDirection: "row", marginBottom: 1.5 },
   bulletMark: { width: 10, color: ACCENT },
