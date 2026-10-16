@@ -69,7 +69,7 @@
           "Fix reliability holes that only surface under partial failure, including a bug where notification failures could roll back the business writes that triggered them, and an atomicity gap that left orphaned records when PDF generation failed. Made multi-invoice sending all-or-nothing, so a rejected batch changes nothing and names every offender, and tested it by inducing real S3 outages.",
           "Own testing across the stack: Playwright integration, page, API, and visual-regression suites. Fix the test infrastructure itself, including a monorepo test command that was silently skipping 13 packages.",
           "Review frontend PRs for architecture and fidelity to Figma designs.",
-          "Helped bring AI into the team's engineering process: wrote pre-PR review skills so problems get caught before a PR is even opened, set up automated Claude review on every PR, and built a hierarchical knowledge base that keeps coding agents productive in the codebase.",
+          "Helped bring agentic development into the team's engineering process: wrote pre-PR review skills so problems get caught before a PR is even opened, set up automated Claude review on every PR, and built a hierarchical knowledge base that keeps coding agents productive in the codebase.",
           "Cut CI time with parallelized monorepo builds."
         ],
         "skills": [
@@ -79,7 +79,7 @@
           "REST APIs",
           "Playwright",
           "Accessibility",
-          "AI Workflows",
+          "Agentic Development",
           "Storybook",
           "Figma"
         ]
