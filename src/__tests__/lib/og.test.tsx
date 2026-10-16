@@ -4,15 +4,15 @@ import { siteConfig } from "@/config/site";
 
 describe("siteOgFields", () => {
   it("uses the Portuguese subtitle for pt", () => {
-    expect(siteOgFields("pt").subtitle).toBe("Engenheiro de Software");
+    expect(siteOgFields("pt").subtitle).toBe("Engenheiro de Software Sênior");
   });
 
   it("uses the English subtitle for en", () => {
-    expect(siteOgFields("en").subtitle).toBe("Software Engineer");
+    expect(siteOgFields("en").subtitle).toBe("Senior Software Engineer");
   });
 
   it("falls back to the English subtitle for any other locale", () => {
-    expect(siteOgFields("anything-else").subtitle).toBe("Software Engineer");
+    expect(siteOgFields("anything-else").subtitle).toBe("Senior Software Engineer");
   });
 
   it("carries the site name as the title and a stable footer", () => {

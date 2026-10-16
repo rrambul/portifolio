@@ -32,7 +32,7 @@ export function siteOgFields(locale: string): OgFields {
   return {
     eyebrow: ogEyebrow(),
     title: siteConfig.name,
-    subtitle: locale === "pt" ? "Engenheiro de Software" : "Software Engineer",
+    subtitle: locale === "pt" ? "Engenheiro de Software Sênior" : "Senior Software Engineer",
     footer: "7+ years building web products end to end",
   };
 }

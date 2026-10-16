@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${siteConfig.name} - Software Engineer Portfolio`,
+    name: `${siteConfig.name} - Senior Software Engineer Portfolio`,
     short_name: siteConfig.name,
     description: siteConfig.description,
     start_url: "/",

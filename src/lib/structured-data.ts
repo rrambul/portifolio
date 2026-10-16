@@ -12,7 +12,7 @@ export function buildPersonJsonLd() {
     "@type": "Person",
     "name": siteConfig.name,
     "url": siteConfig.url,
-    "jobTitle": "Software Engineer",
+    "jobTitle": "Senior Software Engineer",
     "worksFor": {
       "@type": "Organization",
       "name": "Translational Analytics & Statistics",

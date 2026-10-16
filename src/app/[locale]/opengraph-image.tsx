@@ -4,7 +4,7 @@ import { locales } from "../../../i18n.config";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = `${siteConfig.name} - Software Engineer`;
+export const alt = `${siteConfig.name} - Senior Software Engineer`;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

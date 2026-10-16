@@ -23,7 +23,7 @@
   },
   "hero": {
     "title": "Renan Rambul",
-    "subtitle": "Software Engineer",
+    "subtitle": "Senior Software Engineer",
     "taglineShort": "Building awesome products, helping great teams ship things they're proud of.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
     "statusShipping": "shipping",
@@ -39,7 +39,7 @@
   },
   "about": {
     "title": "About Me",
-    "content": "Software engineer, seven years in, mostly on the frontend but often across the whole stack, from the database up. Right now I work on healthcare software with a team in the United States, and I've helped bring AI into how we build: pre-PR review skills and automated Claude review on every PR. What I care about most is crafting long-lasting solutions that bring value to users, and helping the team ship things it's proud of.",
+    "content": "Software engineer with 7+ years in startups, across healthcare SaaS, smart retail and connected hardware, genomics lab software, ed-tech and agency web work. I work mostly in TypeScript, React, Next.js, Node.js and NestJS, and I usually own features end to end, from the architecture to the UI. At TAS I've also helped bring AI into how we build: pre-PR review skills, automated Claude review on every PR, and structured knowledge for coding agents. I move fast without cutting corners, and I care about code that's still easy to change years later.",
     "personal": {
       "title": "Personal",
       "content": "I read constantly, mostly other people's postmortems and architecture writeups. The gym happens on a schedule I actually keep. Side projects are how I learn: Fortuna and Mindforge both started as something I wanted and could not find."
@@ -62,11 +62,11 @@
     "responsibilities": "Responsibilities",
     "companies": {
       "tas": {
-        "title": "Software Engineer",
+        "title": "Senior Software Engineer",
         "responsibilities": [
-          "Own features end to end on a U.S. healthcare SaaS platform, including inventory-logistics flows and a full billing suite, writing the Postgres migrations, core-api services, domain events, and API contracts, then carrying each through to accessible production UI.",
-          "Built foundational pieces of the design system the entire platform ships on: the data grid, select, dialogs, and the virtualized select and grid that fixed a platform-wide performance ceiling. Maintain it with accessibility and performance as hard requirements for every component, and I'm currently fitting the platform to a phone.",
-          "Fix reliability holes that only surface under partial failure, including a bug where notification failures could roll back the business writes that triggered them, and an atomicity gap that left orphaned records when PDF generation failed. Made multi-invoice sending all-or-nothing, so a rejected batch changes nothing and names every offender, and tested it by inducing real S3 outages.",
+          "Own features end to end on a U.S. healthcare SaaS platform, from inventory-logistics flows to a full billing suite, writing the Postgres migrations, core-api services, domain events, and API contracts, then carrying each through to accessible production UI.",
+          "Built foundational pieces of the design system the entire platform ships on: the data grid, select, dialogs, and the virtualized select and grid that fixed a platform-wide performance ceiling. Maintain it with accessibility and performance treated as requirements, not nice-to-haves, and am currently fitting the platform to a phone.",
+          "Fix reliability holes that only surface under partial failure, including a bug where notification failures could roll back the business writes that triggered them, and an atomicity hole that left orphaned records when PDF generation failed. Made multi-invoice sending all-or-nothing, so a rejected batch changes nothing and names every offender, and tested it by inducing real S3 outages.",
           "Own testing across the stack: Playwright integration, page, API, and visual-regression suites. Fix the test infrastructure itself, including a monorepo test command that was silently skipping 13 packages.",
           "Review frontend PRs for architecture and fidelity to Figma designs.",
           "Helped bring agentic development into the team's engineering process: wrote pre-PR review skills so problems get caught before a PR is even opened, set up automated Claude review on every PR, and built a hierarchical knowledge base that keeps coding agents productive in the codebase.",
@@ -87,10 +87,10 @@
       "freelance": {
         "title": "Frontend Software Engineer",
         "responsibilities": [
-          "Built the landing pages and application UI for an ed-tech platform with 1,000+ students, and those pages drove thousands of conversions.",
+          "Built the landing pages and application UI for an ed-tech platform serving 1,000+ students, with pages that drove thousands of conversions.",
           "Streamlined student and admin workflows, removing manual steps from day-to-day operations.",
           "Established the frontend architecture around React, React Query, and React Hook Form so the codebase stays maintainable as the product grows.",
-          "Worked directly with product stakeholders to turn business requirements into features we could actually ship."
+          "Worked directly with product stakeholders to turn business requirements into shippable, user-centered features."
         ],
         "skills": [
           "React.js",
@@ -103,7 +103,7 @@
         ]
       },
       "bymycell": {
-        "title": "Software Engineer",
+        "title": "Mid Software Engineer",
         "responsibilities": [
           "Built the React dashboards and reports that turn raw genomics lab results into something researchers can actually read.",
           "Connected frontend and backend systems to make lab workflows traceable end to end, with fewer manual handoffs and errors.",
@@ -122,14 +122,14 @@
         ]
       },
       "take": {
-        "title": "Frontend Software Engineer",
+        "title": "Mid Software Engineer",
         "responsibilities": [
           "Built and owned the backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, promotions, fiscal reporting, and live operational dashboards used daily by internal teams and licensed operators.",
           "Shipped the planogram builder behind a greenfield connected-cooler platform: drag-and-drop shelf composition, stackable product modeling, live door preview, and fleet-wide rollout scored against a computer-vision compliance model.",
           "Ran releases for both products, reviewing and merging 274 pull requests to trunk, 75% of all merges on the newer platform, and owning the production hotfix path.",
           "Wrote the frontend architecture standard the team built against: clean architecture with ports and adapters, the engineering conventions, and the definition of done.",
           "Largest contributor to the shared design system, roughly 70 React and TypeScript components documented in Storybook and reused across teams.",
-          "Introduced end-to-end testing with Cypress, so bugs showed up before a deploy instead of after one, then extended CI to run the suite in parallel through Docker builds to AWS ECR.",
+          "Introduced end-to-end testing with Cypress, catching bugs before deploys instead of after, then extended CI to run the suite in parallel through Docker builds to AWS ECR.",
           "Created accessible, interactive data visualizations for day-to-day operational decisions, covering sales, execution, demographics, and energy consumption."
         ],
         "skills": [
@@ -144,7 +144,7 @@
         ]
       },
       "suave": {
-        "title": "Full-stack Developer",
+        "title": "Software Engineer, Junior to Mid",
         "responsibilities": [
           "Shipped 10+ client websites and Next.js landing pages where load speed and conversion were the whole brief.",
           "Designed and built a multi-tenant link-aggregator platform (React + Express) serving multiple client brands from a single codebase.",

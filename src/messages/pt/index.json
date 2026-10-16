@@ -23,7 +23,7 @@
   },
   "hero": {
     "title": "Renan Rambul",
-    "subtitle": "Engenheiro de Software",
+    "subtitle": "Engenheiro de Software Sênior",
     "taglineShort": "Construindo produtos incríveis, ajudando ótimos times a entregar coisas que dão orgulho.",
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
     "statusShipping": "entregando",
@@ -39,7 +39,7 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "content": "Engenheiro de software há sete anos, mais no frontend, mas muitas vezes na stack inteira, do banco de dados para cima. Hoje trabalho com software de saúde em um time nos Estados Unidos, e ajudei a trazer IA para o jeito como a gente constrói: skills de revisão pré-PR e revisão automática do Claude em todo PR. O que mais me importa é criar soluções duradouras que gerem valor para os usuários, e ajudar o time a entregar coisas que dão orgulho.",
+    "content": "Engenheiro de software com mais de 7 anos em startups, passando por SaaS de saúde, varejo inteligente e hardware conectado, software de laboratório de genômica, edtech e projetos web de agência. Trabalho principalmente com TypeScript, React, Next.js, Node.js e NestJS, e costumo assumir features de ponta a ponta, da arquitetura à interface. Na TAS também ajudei a trazer IA para o jeito como a gente constrói: skills de revisão pré-PR, revisão automática do Claude em todo PR e conhecimento estruturado para agentes de código. Trabalho rápido sem cortar caminho, e me importo com código que continue fácil de mudar anos depois.",
     "personal": {
       "title": "Pessoal",
       "content": "Leio muito, principalmente postmortem e texto de arquitetura dos outros. A academia acontece numa rotina que eu realmente cumpro. Projeto paralelo é como eu aprendo: Fortuna e Mindforge nasceram de coisas que eu queria que existissem e não achei."
@@ -62,12 +62,12 @@
     "responsibilities": "Responsabilidades",
     "companies": {
       "tas": {
-        "title": "Engenheiro de Software",
+        "title": "Engenheiro de Software Sênior",
         "responsibilities": [
-          "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, incluindo fluxos de logística de inventário e uma suíte completa de faturamento, escrevendo as migrations do Postgres, os serviços da core-api, os eventos de domínio e os contratos de API, e levando cada uma até a UI acessível em produção.",
-          "Construí peças fundamentais do design system sobre o qual toda a plataforma é construída: o data grid, o select, os dialogs e as versões virtualizadas de select e grid que resolveram um teto de performance de toda a plataforma. Mantenho a biblioteca com acessibilidade e performance como requisitos obrigatórios de todo componente, e hoje estou adaptando a plataforma para caber em um celular.",
-          "Corrijo falhas de confiabilidade que só aparecem sob falha parcial, incluindo um bug em que erros de notificação podiam reverter as escritas de negócio que os dispararam, e uma falha de atomicidade que deixava registros órfãos quando a geração de PDF falhava. Deixei o envio de múltiplas faturas tudo-ou-nada, então um lote rejeitado não muda nada e aponta cada culpado, e testei isso provocando quedas reais do S3.",
-          "Cuido dos testes em toda a stack: suítes de integração, de página, de API e de regressão visual com Playwright. Corrijo a própria infraestrutura de testes, incluindo um comando de teste do monorepo que estava pulando 13 pacotes em silêncio.",
+          "Assumo features de ponta a ponta em uma plataforma SaaS de saúde americana, de fluxos de logística de inventário a uma suíte completa de faturamento, escrevendo as migrations do Postgres, os serviços da core-api, os eventos de domínio e os contratos de API, e levando cada uma até a UI acessível em produção.",
+          "Construí peças fundamentais do design system sobre o qual toda a plataforma é construída: o data grid, o select, os dialogs e as versões virtualizadas de select e grid que resolveram um teto de performance de toda a plataforma. Mantenho a biblioteca tratando acessibilidade e performance como requisitos, não como extras, e hoje estou adaptando a plataforma para caber em um celular.",
+          "Corrijo falhas de confiabilidade que só aparecem sob falha parcial, incluindo um bug em que erros de notificação podiam reverter as escritas de negócio que os dispararam, e uma brecha de atomicidade que deixava registros órfãos quando a geração de PDF falhava. Deixei o envio de múltiplas faturas tudo-ou-nada, então um lote rejeitado não muda nada e aponta cada culpado, e testei isso provocando quedas reais do S3.",
+          "Cuido dos testes em toda a stack: suítes de integração, de página, de API e de regressão visual com Playwright. Corrijo a própria infraestrutura de testes, incluindo um comando de teste do monorepo que pulava 13 pacotes em silêncio.",
           "Reviso PRs de frontend com foco em arquitetura e fidelidade aos designs do Figma.",
           "Ajudei a trazer o desenvolvimento com agentes para o processo de engenharia do time: criei skills de revisão pré-PR para que problemas sejam pegos antes mesmo de o PR ser aberto, configurei a revisão automática do Claude em todo PR e montei uma base de conhecimento hierárquica que mantém os agentes de codificação produtivos no código.",
           "Reduzi o tempo de CI com builds paralelizados do monorepo."
@@ -87,10 +87,10 @@
       "freelance": {
         "title": "Engenheiro de Software Frontend",
         "responsibilities": [
-          "Construí as landing pages e a interface da aplicação de uma plataforma de educação com mais de 1.000 alunos, e essas páginas geraram milhares de conversões.",
+          "Construí as landing pages e a interface da aplicação de uma plataforma de educação que atende mais de 1.000 alunos, com páginas que geraram milhares de conversões.",
           "Simplifiquei fluxos de alunos e administrativos, eliminando etapas manuais da operação do dia a dia.",
           "Estruturei a arquitetura frontend com React, React Query e React Hook Form para o código se manter saudável conforme o produto cresce.",
-          "Trabalhei direto com stakeholders de produto, transformando requisitos de negócio em features prontas para uso."
+          "Trabalhei direto com stakeholders de produto, transformando requisitos de negócio em features centradas no usuário."
         ],
         "skills": [
           "React.js",
@@ -103,7 +103,7 @@
         ]
       },
       "bymycell": {
-        "title": "Engenheiro de Software",
+        "title": "Engenheiro de Software Pleno",
         "responsibilities": [
           "Construí os dashboards e relatórios em React que transformam resultados brutos de análises genômicas em algo que pesquisadores conseguem ler.",
           "Integrei frontend e backend para dar rastreabilidade de ponta a ponta aos fluxos do laboratório, com menos passos manuais e menos erros.",
@@ -122,14 +122,14 @@
         ]
       },
       "take": {
-        "title": "Engenheiro de Software Frontend",
+        "title": "Engenheiro de Software Pleno",
         "responsibilities": [
           "Construí e assumi o backoffice que opera uma rede de mais de 1.000 coolers inteligentes de varejo: gestão de pedidos, controle de estoque, promoções, relatórios fiscais e dashboards operacionais em tempo real usados todos os dias por times internos e operadores licenciados.",
           "Entreguei o construtor de planogramas por trás de uma plataforma greenfield de coolers conectados: composição de prateleiras com drag-and-drop, modelagem de produtos empilháveis, preview da porta em tempo real e rollout para toda a frota avaliado por um modelo de visão computacional de compliance.",
           "Cuidei dos releases dos dois produtos, revisando e integrando 274 pull requests na trunk, 75% de todos os merges da plataforma mais nova, e assumindo o caminho de hotfix em produção.",
           "Escrevi o padrão de arquitetura frontend que o time seguia: clean architecture com ports and adapters, as convenções de engenharia e a definition of done.",
           "Maior contribuidor do design system compartilhado, com cerca de 70 componentes React e TypeScript documentados no Storybook e reusados entre times.",
-          "Introduzi testes end-to-end com Cypress, então os bugs apareciam antes do deploy e não depois, e depois estendi o CI para rodar a suíte em paralelo com builds Docker para o AWS ECR.",
+          "Introduzi testes end-to-end com Cypress, pegando bugs antes do deploy e não depois, e depois estendi o CI para rodar a suíte em paralelo com builds Docker para o AWS ECR.",
           "Criei visualizações de dados acessíveis e interativas para as decisões operacionais do dia a dia, cobrindo vendas, execução, demografia e consumo de energia."
         ],
         "skills": [
@@ -144,7 +144,7 @@
         ]
       },
       "suave": {
-        "title": "Desenvolvedor Full-stack",
+        "title": "Engenheiro de Software, Júnior a Pleno",
         "responsibilities": [
           "Entreguei mais de 10 sites e landing pages em Next.js para clientes da agência, em que velocidade de carregamento e conversão eram o briefing inteiro.",
           "Projetei e construí uma plataforma multi-tenant de agregação de links (React + Express), servindo várias marcas a partir de um único código.",

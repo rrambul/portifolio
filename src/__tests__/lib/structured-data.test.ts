@@ -12,7 +12,7 @@ describe("buildPersonJsonLd", () => {
   });
 
   it("keeps the hardcoded job title (siteConfig has no jobTitle field)", () => {
-    expect(buildPersonJsonLd().jobTitle).toBe("Software Engineer");
+    expect(buildPersonJsonLd().jobTitle).toBe("Senior Software Engineer");
   });
 
   it("names the school behind the in-progress MBA", () => {

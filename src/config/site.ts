@@ -2,7 +2,7 @@ import { locales } from "../../i18n.config";
 
 export const siteConfig = {
   name: "Renan Rambul",
-  title: "Renan Rambul | Software Engineer Portfolio",
+  title: "Renan Rambul | Senior Software Engineer Portfolio",
   description:
     "Portfolio of Renan Rambul, a software engineer with 7+ years of experience building web products end to end, from APIs to fast, accessible interfaces.",
   url: "https://renanrambul.dev",
@@ -17,6 +17,7 @@ export const siteConfig = {
   // Single source so the layout and any page-level metadata stay in sync.
   keywords: [
     "Renan Rambul",
+    "Senior Software Engineer",
     "Software Engineer",
     "Frontend Engineer",
     "Full-stack Developer",

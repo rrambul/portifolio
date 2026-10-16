@@ -33,7 +33,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     titleKey: "backend",
-    skills: ["Node.js", "Express", "REST APIs", "PostgreSQL", "MySQL", "Firebase"],
+    skills: ["Node.js", "NestJS", "Express", "REST APIs", "PostgreSQL", "MySQL", "Firebase"],
   },
   {
     titleKey: "testing",
