@@ -83,6 +83,20 @@ export const learning: LearningEntry[] = [
     source: "strategizeyourcareer.com",
   },
   {
+    date: "2026-10-22",
+    title: "A Pinterest Progressive Web App Performance Case Study",
+    url: "https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154",
+    type: "article",
+    source: "medium.com",
+  },
+  {
+    date: "2026-10-21",
+    title: "Como o Nubank processa 1 trilhão de logs diariamente na AWS",
+    url: "https://aws.amazon.com/pt/blogs/aws-brasil/como-o-nubank-processa-1-trilhao-de-logs-diariamente-na-aws/",
+    type: "article",
+    source: "aws.amazon.com",
+  },
+  {
     date: "2026-09-24",
     title:
       "When AI writes almost all code, what happens to software engineering?",
