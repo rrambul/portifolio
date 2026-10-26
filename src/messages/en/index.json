@@ -64,8 +64,8 @@
       "tas": {
         "title": "Senior Software Engineer",
         "responsibilities": [
-          "Own four product areas end to end on a U.S. healthcare SaaS platform (billing, multi-vendor drop shipments, requisitions, and inventory counts), writing the Postgres migrations, core-api services, domain events, and API contracts, then building the UI.",
-          "Built most of the billing suite on the new platform as it moved over from a legacy app: encounters, invoices, payments, and statements, plus document uploads and bulk invoice sending.",
+          "Work end to end on four product areas of a U.S. healthcare SaaS platform (billing, multi-vendor drop shipments, requisitions, and inventory counts), writing the Postgres migrations, core-api services, domain events, and API contracts, then building the UI.",
+          "Rebuilt the billing suite with my team on the new platform as it moved over from a legacy app: encounters, invoices, payments, and statements, plus document uploads and bulk invoice sending.",
           "Built multi-vendor drop shipments on a system that had only supported a single vendor, and the requisition flow from request through shipping, receiving, and reconciliation, with barcode scanning and lot-level traceability.",
           "Built foundational pieces of the design system the entire platform ships on: the data grid, select, dialogs, and the virtualized select and grid that fixed a platform-wide performance ceiling. Took the platform from desktop-only to usable on a phone.",
           "Own testing across the stack: Playwright integration, page, API, and visual-regression suites. Cut CI time with parallelized monorepo builds.",
@@ -124,7 +124,7 @@
       "take": {
         "title": "Mid Software Engineer",
         "responsibilities": [
-          "Built and owned the mobile-first backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, promotions, fiscal reporting, and live operational dashboards used daily by internal teams and licensed operators.",
+          "Led and built the foundational architecture of the mobile-first backoffice that runs a network of 1,000+ smart retail coolers: order management, inventory control, promotions, fiscal reporting, and live operational dashboards used daily by internal teams and licensed operators.",
           "Shipped the planogram builder behind a greenfield connected-cooler platform: drag-and-drop shelf composition, stackable product modeling, live door preview, and fleet-wide rollout scored against a computer-vision compliance model.",
           "Ran releases for both products, reviewing and merging 274 pull requests to trunk, 75% of all merges on the newer platform, and owning the production hotfix path.",
           "Wrote the frontend architecture standard the team built against: clean architecture with ports and adapters, the engineering conventions, and the definition of done.",

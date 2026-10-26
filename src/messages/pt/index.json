@@ -64,8 +64,8 @@
       "tas": {
         "title": "Engenheiro de Software Sênior",
         "responsibilities": [
-          "Assumo quatro áreas de produto de ponta a ponta em uma plataforma SaaS de saúde americana (faturamento, drop shipments com múltiplos fornecedores, requisições e contagens de inventário), escrevendo as migrations do Postgres, os serviços da core-api, os eventos de domínio e os contratos de API, e depois construindo a UI.",
-          "Construí a maior parte da suíte de faturamento na nova plataforma, na migração a partir de um app legado: atendimentos, faturas, pagamentos e extratos, além do upload de documentos e do envio de faturas em lote.",
+          "Trabalho de ponta a ponta em quatro áreas de produto de uma plataforma SaaS de saúde americana (faturamento, drop shipments com múltiplos fornecedores, requisições e contagens de inventário), escrevendo as migrations do Postgres, os serviços da core-api, os eventos de domínio e os contratos de API, e depois construindo a UI.",
+          "Reconstruí com meu time a suíte de faturamento na nova plataforma, na migração a partir de um app legado: atendimentos, faturas, pagamentos e extratos, além do upload de documentos e do envio de faturas em lote.",
           "Construí os drop shipments com múltiplos fornecedores em um sistema que só suportava um fornecedor, e o fluxo de requisições do pedido ao envio, recebimento e conciliação, com leitura de código de barras e rastreabilidade por lote.",
           "Construí peças fundamentais do design system sobre o qual toda a plataforma é construída: o data grid, o select, os dialogs e as versões virtualizadas de select e grid que resolveram um teto de performance de toda a plataforma. Levei a plataforma de só desktop a utilizável no celular.",
           "Cuido dos testes em toda a stack: suítes de integração, de página, de API e de regressão visual com Playwright. Reduzi o tempo de CI com builds paralelizados do monorepo.",
@@ -124,7 +124,7 @@
       "take": {
         "title": "Engenheiro de Software Pleno",
         "responsibilities": [
-          "Construí e assumi o backoffice mobile first que opera uma rede de mais de 1.000 coolers inteligentes de varejo: gestão de pedidos, controle de estoque, promoções, relatórios fiscais e dashboards operacionais em tempo real usados todos os dias por times internos e operadores licenciados.",
+          "Liderei e construí a arquitetura base do backoffice mobile first que opera uma rede de mais de 1.000 coolers inteligentes de varejo: gestão de pedidos, controle de estoque, promoções, relatórios fiscais e dashboards operacionais em tempo real usados todos os dias por times internos e operadores licenciados.",
           "Entreguei o construtor de planogramas por trás de uma plataforma greenfield de coolers conectados: composição de prateleiras com drag-and-drop, modelagem de produtos empilháveis, preview da porta em tempo real e rollout para toda a frota avaliado por um modelo de visão computacional de compliance.",
           "Cuidei dos releases dos dois produtos, revisando e integrando 274 pull requests na trunk, 75% de todos os merges da plataforma mais nova, e assumindo o caminho de hotfix em produção.",
           "Escrevi o padrão de arquitetura frontend que o time seguia: clean architecture com ports and adapters, as convenções de engenharia e a definition of done.",
