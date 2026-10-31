@@ -39,6 +39,12 @@ export const learning: LearningEntry[] = [
     status: "reading",
   },
   {
+    title: "System Design Workbook",
+    type: "book",
+    source: "Matheus Fidelis",
+    status: "reading",
+  },
+  {
     title: "The Pragmatic Programmer",
     type: "book",
     source: "Andrew Hunt, David Thomas",
