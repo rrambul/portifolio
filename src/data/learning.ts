@@ -91,6 +91,14 @@ export const learning: LearningEntry[] = [
   {
     date: "2026-11-01",
     title:
+      "The cost of acquisitions: What we learned about engineering from a decade of rapid growth",
+    url: "https://portal.spotify.com/blog/the-cost-of-acquisitions",
+    type: "article",
+    source: "portal.spotify.com",
+  },
+  {
+    date: "2026-11-01",
+    title:
       "The Hidden Contracts of AWS Systems: Time, Duplicates, and Ordering",
     url: "https://builder.aws.com/content/3KQFPfbq4JNHbzssjJjcZJMeTMw/the-hidden-contracts-of-aws-systems-time-duplicates-and-ordering",
     type: "article",
