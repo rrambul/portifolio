@@ -89,6 +89,14 @@ export const learning: LearningEntry[] = [
     source: "strategizeyourcareer.com",
   },
   {
+    date: "2026-11-01",
+    title:
+      "The Hidden Contracts of AWS Systems: Time, Duplicates, and Ordering",
+    url: "https://builder.aws.com/content/3KQFPfbq4JNHbzssjJjcZJMeTMw/the-hidden-contracts-of-aws-systems-time-duplicates-and-ordering",
+    type: "article",
+    source: "builder.aws.com",
+  },
+  {
     date: "2026-10-22",
     title: "A Pinterest Progressive Web App Performance Case Study",
     url: "https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154",
