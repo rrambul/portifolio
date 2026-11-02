@@ -23,7 +23,8 @@ export default defineConfig({
         // glob covers both [locale]/ and (redirect)/ layouts; the brace-style
         // dir names are glob-special, so an explicit path would not match.
         "src/app/**/layout.tsx",
-        "src/i18n/**",
+        "src/i18n/request.ts",
+        "src/i18n/navigation.ts",
         // Pure type declarations (no runtime).
         "src/types/**",
         // next/og ImageResponse needs the Next server runtime, not jsdom; the

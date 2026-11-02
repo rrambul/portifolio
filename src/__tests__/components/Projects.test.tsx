@@ -25,8 +25,8 @@ describe("Projects", () => {
   it("renders a card for every project", () => {
     render(<Projects />);
     for (const project of projects) {
-      expect(screen.getByText(project.titleKey)).toBeInTheDocument();
-      expect(screen.getByText(project.descriptionKey)).toBeInTheDocument();
+      expect(screen.getByText(`${project.id}.title`)).toBeInTheDocument();
+      expect(screen.getByText(`${project.id}.description`)).toBeInTheDocument();
     }
   });
 

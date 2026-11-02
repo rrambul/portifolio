@@ -2,7 +2,9 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 vi.mock("next-intl", () => ({
-  useTranslations: () => (key: string) => key,
+  // Echo the key, plus any values, so counts like `t("count", { count })` are checkable.
+  useTranslations: () => (key: string, values?: Record<string, unknown>) =>
+    values ? `${key}:${Object.values(values).join(",")}` : key,
   useLocale: () => "en",
 }));
 
@@ -29,7 +31,7 @@ describe("Writing", () => {
     render(<Writing />);
     expect(screen.getByText("title")).toBeInTheDocument();
     const count = getBlogPosts().length;
-    expect(screen.getByText(`${count} posts`)).toBeInTheDocument();
+    expect(screen.getByText(`count:${count}`)).toBeInTheDocument();
   });
 
   it("renders a dated link for every post, newest first", () => {

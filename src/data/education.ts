@@ -4,9 +4,8 @@
  * and no honest dates to put beside it.
  */
 export interface EducationEntry {
+  /** Also the key under `education.entries` in the message files. */
   id: string;
-  /** Key under `education.entries` in the message files. */
-  i18nKey: string;
   institution: string;
   /** Omitted when there is no honest date to show. */
   period?: string;
@@ -16,8 +15,7 @@ export interface EducationEntry {
 
 export const education: EducationEntry[] = [
   {
-    id: "fullcycle-mba",
-    i18nKey: "fullCycleMba",
+    id: "fullCycleMba",
     institution: "Full Cycle",
     period: "Sep 2026 - May 2028",
     status: "in-progress",

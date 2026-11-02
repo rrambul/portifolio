@@ -3,7 +3,7 @@ import { Outfit, Space_Grotesk, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { isLocale } from "../../../i18n.config";
+import { isLocale, locales } from "@/i18n/config";
 import "../globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { TransitionProvider } from "@/providers/TransitionProvider";
@@ -36,10 +36,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    template: `%s | ${siteConfig.name}`,
-    default: siteConfig.title,
-  },
+  // Every page sets its own absolute title through `buildMetadata`; this is
+  // the fallback for routes that do not (the 404 page).
+  title: siteConfig.title,
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   keywords: [...siteConfig.keywords],
@@ -54,32 +53,18 @@ export const metadata: Metadata = {
   // Icons (src/app/icon.svg, src/app/favicon.ico) and the web manifest
   // (src/app/manifest.ts) are wired automatically by Next's file conventions,
   // so they are intentionally not declared here (a single source of truth).
+  // OpenGraph and Twitter are per page too (src/lib/metadata.ts), because a
+  // root default would carry one locale for both languages.
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: siteConfig.url,
-    siteName: `${siteConfig.name} Portfolio`,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    // og:image is supplied by the opengraph-image route conventions.
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.title,
-    description: siteConfig.description,
-    creator: siteConfig.links.twitter,
-    // twitter:image falls back to the opengraph-image route conventions.
   },
   // Set GOOGLE_SITE_VERIFICATION in the environment (e.g. Vercel) to the
   // token from Search Console; rendered only when present.
@@ -93,13 +78,13 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0f10' },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f10" },
   ],
 };
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "pt" }];
+  return locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
@@ -111,32 +96,17 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!isLocale(locale)) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages({ locale });
 
   return (
+    // `suppressHydrationWarning`: next-themes sets the theme class on <html>
+    // from its own inline script before React hydrates.
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'dark';
-                  document.documentElement.classList.add(theme);
-                } catch (e) {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

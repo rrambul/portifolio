@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { m } from "framer-motion";
 import {
@@ -13,7 +14,7 @@ import {
   FiFile,
 } from "react-icons/fi";
 import type { IconType } from "react-icons";
-import { education } from "@/data/education";
+import { education, type EducationEntry } from "@/data/education";
 import {
   getInProgress,
   getLearningByMonth,
@@ -21,9 +22,12 @@ import {
   type LearningEntry,
   type LearningType,
 } from "@/data/learning";
+import { localeTag } from "@/i18n/config";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { LiveStatus } from "@/components/ui/Status";
 import { ForgeProgress } from "@/components/sections/ForgeProgress";
 import { focusRing } from "@/lib/ui";
 
@@ -37,13 +41,65 @@ const TYPE_ICONS: Record<LearningType, IconType> = {
   paper: FiFile,
 };
 
+/** Every row in the log shares this shape: mono meta left, the title filling the rest. */
+const ROW = "flex flex-wrap items-baseline gap-x-3 gap-y-1 py-3";
+const META = "shrink-0 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400";
+
 /** Localized "Month Year" label for a "YYYY-MM" group key, e.g. "June 2026". */
 function monthLabel(key: string, locale: string): string {
   const [year, month] = key.split("-").map(Number);
-  return new Intl.DateTimeFormat(locale === "pt" ? "pt-BR" : "en-US", {
+  return new Intl.DateTimeFormat(localeTag(locale), {
     month: "long",
     year: "numeric",
   }).format(new Date(year!, month! - 1, 1));
+}
+
+/** One titled group of the log: a mono eyebrow over a hairline-separated list. */
+function LogGroup({
+  label,
+  tone = "muted",
+  className = "",
+  children,
+}: {
+  label: string;
+  tone?: "muted" | "accent";
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <m.div variants={fadeInUp} className={className}>
+      <Eyebrow as="h2" tone={tone} className="mb-2">
+        {label}
+      </Eyebrow>
+      <ul className="divide-y divide-zinc-200 dark:divide-white/10">{children}</ul>
+    </m.div>
+  );
+}
+
+/** A degree as a single line: period, degree and school, and the live marker if still running. */
+function EducationRow({
+  entry,
+  degree,
+  inProgress,
+}: {
+  entry: EducationEntry;
+  degree: string;
+  inProgress: string;
+}) {
+  return (
+    <div className={ROW}>
+      {entry.period ? <span className={META}>{entry.period}</span> : null}
+      <span className="flex-1 text-zinc-700 dark:text-zinc-300">
+        {degree}
+        <span className="ml-2 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
+          {entry.institution}
+        </span>
+      </span>
+      {entry.status === "in-progress" && (
+        <LiveStatus className="self-center">{inProgress}</LiveStatus>
+      )}
+    </div>
+  );
 }
 
 /**
@@ -52,15 +108,11 @@ function monthLabel(key: string, locale: string): string {
  */
 function LearningRow({ entry, label }: { entry: LearningEntry; label: string }) {
   const Icon = TYPE_ICONS[entry.type];
-  const row = "flex flex-wrap items-baseline gap-x-3 gap-y-1 py-3";
 
   const body = (
     <>
       {entry.date ? (
-        <time
-          dateTime={entry.date}
-          className="shrink-0 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400"
-        >
+        <time dateTime={entry.date} className={META}>
           {entry.date}
         </time>
       ) : null}
@@ -85,14 +137,14 @@ function LearningRow({ entry, label }: { entry: LearningEntry; label: string }) 
     </>
   );
 
-  if (!entry.url) return <div className={row}>{body}</div>;
+  if (!entry.url) return <div className={ROW}>{body}</div>;
 
   return (
     <a
       href={entry.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group rounded-sm transition-colors ${row} ${focusRing}`}
+      className={`group rounded-sm transition-colors ${ROW} ${focusRing}`}
     >
       {body}
     </a>
@@ -110,7 +162,13 @@ export function LearningLog() {
 
   const dated = months.reduce((sum, group) => sum + group.entries.length, 0);
   const total = inProgress.length + undated.length + dated;
-  const listClass = "divide-y divide-zinc-200 dark:divide-white/10";
+
+  const rows = (entries: LearningEntry[]) =>
+    entries.map((entry) => (
+      <li key={entry.url ?? entry.title}>
+        <LearningRow entry={entry} label={t(`types.${entry.type}`)} />
+      </li>
+    ));
 
   return (
     <Section id="learning" spacing="normal">
@@ -119,7 +177,7 @@ export function LearningLog() {
           label="learning"
           title={t("title")}
           subtitle={t("subtitle")}
-          meta={`${total} ${total === 1 ? "entry" : "entries"}`}
+          meta={t("count", { count: total })}
           as="h1"
         />
 
@@ -127,41 +185,17 @@ export function LearningLog() {
             read. The degrees are not log entries, so they stay out of the
             count in the heading. */}
         {education.length > 0 && (
-          <m.div variants={fadeInUp} className="mb-10">
-            <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              {"// "}
-              {tEducation("title")}
-            </h2>
-            <ul className={listClass}>
-              {education.map((entry) => (
-                <li
-                  key={entry.id}
-                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-3"
-                >
-                  {entry.period ? (
-                    <span className="shrink-0 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
-                      {entry.period}
-                    </span>
-                  ) : null}
-                  <span className="flex-1 text-zinc-700 dark:text-zinc-300">
-                    {tEducation(`entries.${entry.i18nKey}.degree`)}
-                    <span className="ml-2 font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
-                      {entry.institution}
-                    </span>
-                  </span>
-                  {entry.status === "in-progress" && (
-                    <span className="inline-flex shrink-0 items-center gap-1.5 self-center font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
-                      <span
-                        className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                        aria-hidden="true"
-                      />
-                      {tEducation("inProgress")}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </m.div>
+          <LogGroup label={tEducation("title")} className="mb-10">
+            {education.map((entry) => (
+              <li key={entry.id}>
+                <EducationRow
+                  entry={entry}
+                  degree={tEducation(`entries.${entry.id}.degree`)}
+                  inProgress={tEducation("inProgress")}
+                />
+              </li>
+            ))}
+          </LogGroup>
         )}
 
         <div className="mb-10">
@@ -175,60 +209,19 @@ export function LearningLog() {
         ) : (
           <div className="space-y-10">
             {inProgress.length > 0 && (
-              <m.div variants={fadeInUp}>
-                <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-                  {"// "}
-                  {t("reading")}
-                </h2>
-                <ul className={listClass}>
-                  {inProgress.map((entry) => (
-                    <li key={entry.title}>
-                      <LearningRow
-                        entry={entry}
-                        label={t(`types.${entry.type}`)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </m.div>
+              <LogGroup label={t("reading")} tone="accent">
+                {rows(inProgress)}
+              </LogGroup>
             )}
 
             {undated.length > 0 && (
-              <m.div variants={fadeInUp}>
-                <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                  {"// "}
-                  {t("undated")}
-                </h2>
-                <ul className={listClass}>
-                  {undated.map((entry) => (
-                    <li key={entry.title}>
-                      <LearningRow
-                        entry={entry}
-                        label={t(`types.${entry.type}`)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </m.div>
+              <LogGroup label={t("undated")}>{rows(undated)}</LogGroup>
             )}
 
             {months.map((month) => (
-              <m.div key={month.key} variants={fadeInUp}>
-                <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                  {"// "}
-                  {monthLabel(month.key, locale)}
-                </h2>
-                <ul className={listClass}>
-                  {month.entries.map((entry) => (
-                    <li key={entry.url ?? entry.title}>
-                      <LearningRow
-                        entry={entry}
-                        label={t(`types.${entry.type}`)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </m.div>
+              <LogGroup key={month.key} label={monthLabel(month.key, locale)}>
+                {rows(month.entries)}
+              </LogGroup>
             ))}
           </div>
         )}

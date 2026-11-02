@@ -1,30 +1,36 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import type { IconType } from "react-icons";
 import { siteConfig } from "@/config/site";
-import { scrollToSection } from "@/lib/scroll";
+import { anchor, navigateTo } from "@/lib/nav";
+import { socialLinks, externalLinkProps, type SocialId } from "@/lib/social";
+import { StatusDot } from "@/components/ui/Status";
+import { focusRing } from "@/lib/ui";
+
+const SOCIAL_ICONS: Record<SocialId, IconType> = {
+  github: FiGithub,
+  linkedin: FiLinkedin,
+  email: FiMail,
+};
 
 export function Footer() {
   const t = useTranslations("footer");
+  const locale = useLocale();
+  const router = useRouter();
   const currentYear = new Date().getFullYear();
 
+  // Homepage anchors. Going through `navigateTo` means they still work from a
+  // page that has no sections, such as /learning, by routing to the homepage.
   const quickLinks = [
     { id: "about", label: t("aboutLink") },
     { id: "experience", label: t("experienceLink") },
     { id: "projects", label: t("projectsLink") },
   ];
 
-  const socials = [
-    { href: siteConfig.links.github, label: "GitHub", Icon: FiGithub, external: true },
-    {
-      href: siteConfig.links.linkedin,
-      label: "LinkedIn",
-      Icon: FiLinkedin,
-      external: true,
-    },
-    { href: `mailto:${siteConfig.links.email}`, label: "Email", Icon: FiMail, external: false },
-  ];
+  const goTo = (id: string) => navigateTo(router, locale, anchor(id));
 
   return (
     <footer className="footer-section relative z-10 border-t border-zinc-200 py-12 dark:border-white/10">
@@ -33,49 +39,45 @@ export function Footer() {
           {/* Colophon */}
           <div className="max-w-sm">
             <button
-              onClick={() => scrollToSection("about")}
-              className="flex items-center gap-1.5 rounded-sm font-accent-mono text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              onClick={() => goTo("about")}
+              className={`flex items-center gap-1.5 rounded-sm font-accent-mono text-base font-semibold ${focusRing}`}
             >
-              <span
-                className="text-emerald-600 dark:text-emerald-400"
-                aria-hidden="true"
-              >
+              <span className="text-emerald-600 dark:text-emerald-400" aria-hidden="true">
                 ❯
               </span>
-              renanrambul.dev
+              {siteConfig.host}
             </button>
-            <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
-              {t("aboutText")}
-            </p>
+            <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">{t("aboutText")}</p>
           </div>
 
           {/* Quick links + social */}
           <div className="flex gap-12">
             <div className="flex flex-col gap-2 font-accent-mono text-sm">
-              {quickLinks.map((l) => (
+              {quickLinks.map((link) => (
                 <button
-                  key={l.id}
-                  onClick={() => scrollToSection(l.id)}
-                  className="rounded-sm text-left text-zinc-500 outline-none transition-colors hover:text-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-400"
+                  key={link.id}
+                  onClick={() => goTo(link.id)}
+                  className={`rounded-sm text-left text-zinc-500 transition-colors hover:text-emerald-700 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
                 >
-                  {l.label}
+                  {link.label}
                 </button>
               ))}
             </div>
             <div className="flex h-fit gap-2">
-              {socials.map(({ href, label, Icon, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  {...(external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-200 text-zinc-500 outline-none transition-colors hover:border-emerald-500/50 hover:text-emerald-600 focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-white/10 dark:text-zinc-400 dark:hover:text-emerald-400"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              {socialLinks.map(({ id, href, label }) => {
+                const Icon = SOCIAL_ICONS[id];
+                return (
+                  <a
+                    key={id}
+                    href={href}
+                    aria-label={label}
+                    {...externalLinkProps(href)}
+                    className={`inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-200 text-zinc-500 transition-colors hover:border-emerald-500/50 hover:text-emerald-600 dark:border-white/10 dark:text-zinc-400 dark:hover:text-emerald-400 ${focusRing}`}
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -86,10 +88,7 @@ export function Footer() {
             &copy; {currentYear} {siteConfig.name}. {t("copyright")}
           </span>
           <span className="flex items-center gap-2">
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-              aria-hidden="true"
-            />
+            <StatusDot />
             v4.2.0
           </span>
         </div>

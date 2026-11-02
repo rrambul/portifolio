@@ -9,7 +9,6 @@ describe("education", () => {
   it("each entry has required fields", () => {
     for (const entry of education) {
       expect(entry.id).toBeTruthy();
-      expect(entry.i18nKey).toBeTruthy();
       expect(entry.institution).toBeTruthy();
     }
   });
@@ -20,7 +19,7 @@ describe("education", () => {
   });
 
   it("lists the in-progress MBA at Full Cycle", () => {
-    const mba = education.find((e) => e.id === "fullcycle-mba");
+    const mba = education.find((e) => e.id === "fullCycleMba");
     expect(mba?.institution).toBe("Full Cycle");
     expect(mba?.status).toBe("in-progress");
     expect(mba?.period).toBe("Sep 2026 - May 2028");

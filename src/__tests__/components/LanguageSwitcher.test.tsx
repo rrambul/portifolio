@@ -8,6 +8,7 @@ const h = vi.hoisted(() => ({
 
 vi.mock("next-intl", () => ({
   useLocale: () => h.locale.current,
+  useTranslations: () => (key: string) => key,
 }));
 
 vi.mock("@/i18n/navigation", () => ({

@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { m } from "framer-motion";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
-import { AnimatedContactForm } from "../ui/AnimatedContactForm";
+import { AnimatedContactForm } from "@/components/ui/AnimatedContactForm";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
 

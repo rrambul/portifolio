@@ -26,11 +26,11 @@ describe("Education", () => {
     render(<Education />);
     for (const entry of education) {
       expect(
-        screen.getByText(`entries.${entry.i18nKey}.degree`)
+        screen.getByText(`entries.${entry.id}.degree`)
       ).toBeInTheDocument();
       expect(screen.getByText(entry.institution)).toBeInTheDocument();
       expect(
-        screen.getByText(`entries.${entry.i18nKey}.note`)
+        screen.getByText(`entries.${entry.id}.note`)
       ).toBeInTheDocument();
     }
   });

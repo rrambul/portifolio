@@ -1,30 +1,5 @@
-import { test, expect, type Page } from "@playwright/test";
-import AxeBuilder from "@axe-core/playwright";
-
-async function expectNoAxeViolations(page: Page) {
-  // @axe-core/playwright bundles its own playwright-core types, which lag
-  // behind our @playwright/test version; the runtime object is compatible.
-  type AxePage = ConstructorParameters<typeof AxeBuilder>[0]["page"];
-  const results = await new AxeBuilder({ page: page as unknown as AxePage })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"])
-    .analyze();
-
-  const summary = results.violations.map((v) => ({
-    id: v.id,
-    impact: v.impact,
-    description: v.description,
-    nodes: v.nodes.slice(0, 3).map((n) => n.html),
-  }));
-  expect(summary, JSON.stringify(summary, null, 2)).toEqual([]);
-}
-
-async function setTheme(page: Page, theme: "light" | "dark") {
-  await page.addInitScript((t) => {
-    try {
-      localStorage.setItem("theme", t);
-    } catch {}
-  }, theme);
-}
+import { test, expect } from "@playwright/test";
+import { expectNoAxeViolations, setTheme } from "./support/a11y";
 
 test.describe("Learning log", () => {
   test("renders the page with its own h1", async ({ page }) => {
@@ -83,7 +58,6 @@ test.describe("Learning log", () => {
     test(`has no axe violations (${theme})`, async ({ page }) => {
       await setTheme(page, theme);
       await page.goto("/en/learning");
-      await page.waitForTimeout(1500);
       await expectNoAxeViolations(page);
     });
   }

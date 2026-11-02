@@ -1,21 +1,22 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
-// Mock scrollToSection
+const push = vi.fn();
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push }),
+}));
+
 vi.mock("@/lib/scroll", () => ({
   scrollToSection: vi.fn(),
 }));
 
 import { scrollToSection } from "@/lib/scroll";
 
-beforeEach(() => {
-  vi.mocked(scrollToSection).mockClear();
-});
-
 // Mock siteConfig
 vi.mock("@/config/site", () => ({
   siteConfig: {
     name: "Test User",
+    host: "renanrambul.dev",
     links: {
       github: "https://github.com/testuser",
       linkedin: "https://www.linkedin.com/in/testuser/",
@@ -27,9 +28,27 @@ vi.mock("@/config/site", () => ({
 // Mock next-intl
 vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
+  useLocale: () => "en",
 }));
 
 import { Footer } from "@/components/ui/Footer";
+
+/** Put a homepage section in the document so anchors resolve to a scroll. */
+function mountSection(id: string) {
+  const section = document.createElement("div");
+  section.id = id;
+  document.body.appendChild(section);
+}
+
+beforeEach(() => {
+  push.mockClear();
+  vi.mocked(scrollToSection).mockClear();
+});
+
+afterEach(() => {
+  cleanup();
+  document.body.innerHTML = "";
+});
 
 describe("Footer", () => {
   it("renders the footer", () => {
@@ -66,10 +85,12 @@ describe("Footer", () => {
     expect(email).not.toHaveAttribute("rel");
   });
 
-  it("scrolls to the about section when the wordmark is clicked", () => {
+  it("scrolls to the about section when the wordmark is clicked on the homepage", () => {
+    mountSection("about");
     render(<Footer />);
     fireEvent.click(screen.getByText("renanrambul.dev"));
     expect(scrollToSection).toHaveBeenCalledWith("about");
+    expect(push).not.toHaveBeenCalled();
   });
 
   it("renders navigation buttons", () => {
@@ -79,7 +100,8 @@ describe("Footer", () => {
     expect(screen.getByText("projectsLink")).toBeInTheDocument();
   });
 
-  it("scrolls to the matching section when a quick link is clicked", () => {
+  it("scrolls to the matching section when a quick link is clicked on the homepage", () => {
+    for (const id of ["about", "experience", "projects"]) mountSection(id);
     render(<Footer />);
     fireEvent.click(screen.getByText("aboutLink"));
     expect(scrollToSection).toHaveBeenCalledWith("about");
@@ -87,6 +109,16 @@ describe("Footer", () => {
     expect(scrollToSection).toHaveBeenCalledWith("experience");
     fireEvent.click(screen.getByText("projectsLink"));
     expect(scrollToSection).toHaveBeenCalledWith("projects");
+    expect(push).not.toHaveBeenCalled();
+  });
+
+  it("routes to the homepage anchor from a page without sections", () => {
+    // The /learning page renders the footer but none of the homepage sections,
+    // so a quick link has nothing to scroll to and must navigate instead.
+    render(<Footer />);
+    fireEvent.click(screen.getByText("projectsLink"));
+    expect(push).toHaveBeenCalledWith("/en#projects");
+    expect(scrollToSection).not.toHaveBeenCalled();
   });
 
   it("renders copyright with current year", () => {

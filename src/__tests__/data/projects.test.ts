@@ -8,10 +8,14 @@ describe("projects", () => {
 
   it("each project has required fields", () => {
     for (const project of projects) {
-      expect(project.titleKey).toBeTruthy();
-      expect(project.descriptionKey).toBeTruthy();
+      expect(project.id).toBeTruthy();
       expect(project.tags.length).toBeGreaterThan(0);
     }
+  });
+
+  it("each project has a unique id", () => {
+    const ids = projects.map((p) => p.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it("each project has either demoUrl or githubUrl", () => {

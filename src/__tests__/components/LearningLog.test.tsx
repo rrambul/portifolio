@@ -3,7 +3,9 @@ import { render, screen } from "@testing-library/react";
 
 const h = vi.hoisted(() => ({ locale: { current: "en" } }));
 vi.mock("next-intl", () => ({
-  useTranslations: () => (key: string) => key,
+  // Echo the key, plus any values, so `t("count", { count: 3 })` is checkable.
+  useTranslations: () => (key: string, values?: Record<string, unknown>) =>
+    values ? `${key}:${Object.values(values).join(",")}` : key,
   useLocale: () => h.locale.current,
 }));
 
@@ -44,7 +46,7 @@ describe("LearningLog education block", () => {
     render(<LearningLog />);
     for (const entry of education) {
       expect(
-        screen.getByText(`entries.${entry.i18nKey}.degree`)
+        screen.getByText(`entries.${entry.id}.degree`)
       ).toBeInTheDocument();
       expect(screen.getByText(entry.institution)).toBeInTheDocument();
       if (entry.period) {
@@ -147,13 +149,13 @@ describe("LearningLog", () => {
       },
     ]);
     render(<LearningLog />);
-    expect(screen.getByText("3 entries")).toBeInTheDocument();
+    expect(screen.getByText("count:3")).toBeInTheDocument();
   });
 
-  it("uses the singular label for a single entry", () => {
+  it("leaves the degrees out of the entry count", () => {
     mockUndated.mockReturnValue([{ title: "Clean Code", type: "book" }]);
     render(<LearningLog />);
-    expect(screen.getByText("1 entry")).toBeInTheDocument();
+    expect(screen.getByText("count:1")).toBeInTheDocument();
   });
 
   it("localizes the month heading for the pt locale", () => {

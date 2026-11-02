@@ -4,11 +4,11 @@
     "about": "Sobre",
     "experience": "Experiência",
     "projects": "Projetos",
-    "skills": "Habilidades",
     "blog": "Blog",
     "learning": "Aprendizado",
-    "interests": "Interesses",
-    "contact": "Contato"
+    "contact": "Contato",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -23,7 +23,6 @@
   },
   "hero": {
     "title": "Renan Rambul",
-    "subtitle": "Engenheiro de Software Sênior",
     "taglineShort": "Construindo produtos incríveis, ajudando ótimos times a entregar coisas que dão orgulho.",
     "currentlyAt": "Atualmente na Translational Analytics & Statistics",
     "statusShipping": "entregando",
@@ -55,11 +54,8 @@
   },
   "experience": {
     "title": "Experiência Profissional",
-    "jobTitle": "Cargo",
-    "company": "Empresa",
-    "period": "Período",
-    "location": "Localização",
-    "responsibilities": "Responsabilidades",
+    "releases": "{count, plural, one {# lançamento} other {# lançamentos}}",
+    "current": "entregando",
     "companies": {
       "tas": {
         "title": "Engenheiro de Software Sênior",
@@ -172,8 +168,6 @@
     "backend": "Backend",
     "devopsTools": "DevOps & Ferramentas",
     "testing": "Testes",
-    "languages": "Linguagens",
-    "specialties": "Especialidades",
     "stats": {
       "prs": "PRs mergeados construindo SaaS de saúde na TAS",
       "trunk": "PRs mergeados na trunk na Take, 75% de todos os merges daquela plataforma",
@@ -202,7 +196,9 @@
     "publishedOn": "Publicado em",
     "backToBlog": "Voltar ao Blog",
     "backToAllPosts": "Voltar para todos os posts",
-    "allPosts": "Todos os posts"
+    "allPosts": "Todos os posts",
+    "count": "{count, plural, one {# post} other {# posts}}",
+    "readTime": "{minutes} min de leitura"
   },
   "learning": {
     "title": "Registro de Aprendizado",
@@ -225,19 +221,14 @@
       "course": "Curso",
       "podcast": "Podcast",
       "paper": "Artigo científico"
-    }
+    },
+    "count": "{count, plural, one {# entrada} other {# entradas}}"
   },
   "footer": {
-    "about": "Sobre",
     "aboutText": "Engenheiro de software construindo software de saúde e o design system em que ele roda.",
-    "social": "Social",
-    "links": "Links Rápidos",
     "aboutLink": "Sobre",
     "experienceLink": "Experiência",
     "projectsLink": "Projetos & Contribuições",
-    "skillsLink": "Habilidades",
-    "contact": "Contato",
-    "contactText": "Entre em contato se tiver uma pergunta ou uma oportunidade.",
     "copyright": "Todos os direitos reservados."
   },
   "contact": {
@@ -273,6 +264,8 @@
     "liveDemo": "Demo ao Vivo",
     "sourceCode": "Código Fonte",
     "contribution": "Contribuição",
+    "count": "{count, plural, one {# projeto} other {# projetos}}",
+    "live": "no ar",
     "fortuna": {
       "title": "Fortuna",
       "description": "Um app de finanças pessoais que reúne gastos, cartões, parcelas, investimentos e metas em um só lugar, com um copiloto de IA que lê seus extratos, aponta surpresas e responde em linguagem simples. Feito para o Brasil (BRL, CDI, parcelas) e totalmente bilíngue."
@@ -316,11 +309,18 @@
   },
   "theme": {
     "light": "Claro",
-    "dark": "Escuro",
-    "system": "Sistema"
+    "dark": "Escuro"
   },
   "language": {
-    "english": "Inglês",
-    "portuguese": "Português"
+    "label": "Idioma"
+  },
+  "meta": {
+    "description": "Portfolio de Renan Rambul, engenheiro de software com mais de 7 anos de experiência construindo produtos web de ponta a ponta com React, TypeScript e Node.js.",
+    "keywords": "Renan Rambul, engenheiro de software, React, TypeScript, Next.js, frontend, backend, portfolio, Brasil",
+    "ogFooter": "7+ anos construindo produtos web de ponta a ponta"
+  },
+  "cv": {
+    "summary": "Resumo",
+    "generated": "Gerado a partir de"
   }
 }

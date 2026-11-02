@@ -6,7 +6,7 @@ import { FiClock, FiCalendar, FiArrowLeft } from "react-icons/fi";
 import { BlogPostMetadata } from "@/types/blog";
 import ReactMarkdown from "react-markdown";
 import { useLocale, useTranslations } from "next-intl";
-import { isLocale } from "../../../i18n.config";
+import { localeTag, toLocale } from "@/i18n/config";
 
 interface BlogPostProps {
   post: BlogPostMetadata;
@@ -15,8 +15,7 @@ interface BlogPostProps {
 }
 
 export function BlogPost({ post, content }: BlogPostProps) {
-  const rawLocale = useLocale();
-  const locale = isLocale(rawLocale) ? rawLocale : "en";
+  const locale = toLocale(useLocale());
   const t = useTranslations("blog");
 
   return (
@@ -54,13 +53,14 @@ export function BlogPost({ post, content }: BlogPostProps) {
                 <div className="flex items-center gap-1">
                   <FiCalendar className="w-4 h-4" />
                   <time dateTime={post.date}>
-                    {t("publishedOn")} {new Date(post.date).toLocaleDateString(locale === "pt" ? "pt-BR" : "en-US")}
+                    {t("publishedOn")}{" "}
+                    {new Date(post.date).toLocaleDateString(localeTag(locale))}
                   </time>
                 </div>
 
                 <div className="flex items-center gap-1">
                   <FiClock className="w-4 h-4" />
-                  <span>{post.readTime} min read</span>
+                  <span>{t("readTime", { minutes: post.readTime })}</span>
                 </div>
               </div>
             </m.div>
@@ -103,4 +103,4 @@ export function BlogPost({ post, content }: BlogPostProps) {
       </m.div>
     </article>
   );
-} 
+}

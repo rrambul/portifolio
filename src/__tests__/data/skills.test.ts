@@ -6,18 +6,18 @@ describe("skillCategories", () => {
     expect(skillCategories).toHaveLength(5);
   });
 
-  it("has expected category title keys", () => {
-    const titleKeys = skillCategories.map((c) => c.titleKey);
-    expect(titleKeys).toContain("frontend");
-    expect(titleKeys).toContain("ai");
-    expect(titleKeys).toContain("backend");
-    expect(titleKeys).toContain("testing");
-    expect(titleKeys).toContain("devopsTools");
+  it("has the expected category ids", () => {
+    const ids = skillCategories.map((c) => c.id);
+    expect(ids).toContain("frontend");
+    expect(ids).toContain("ai");
+    expect(ids).toContain("backend");
+    expect(ids).toContain("testing");
+    expect(ids).toContain("devopsTools");
   });
 
   it("each category has required fields", () => {
     for (const cat of skillCategories) {
-      expect(cat.titleKey).toBeTruthy();
+      expect(cat.id).toBeTruthy();
       expect(Array.isArray(cat.skills)).toBe(true);
     }
   });
@@ -33,8 +33,8 @@ describe("skillCategories", () => {
   });
 
   it("frontend category has the most skills", () => {
-    const frontend = skillCategories.find((c) => c.titleKey === "frontend")!;
-    const others = skillCategories.filter((c) => c.titleKey !== "frontend");
+    const frontend = skillCategories.find((c) => c.id === "frontend")!;
+    const others = skillCategories.filter((c) => c.id !== "frontend");
     const frontendCount = frontend.skills.length;
     for (const cat of others) {
       expect(frontendCount).toBeGreaterThanOrEqual(cat.skills.length);

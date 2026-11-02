@@ -3,104 +3,62 @@
 import { useTranslations, useLocale } from "next-intl";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { m, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { scrollToSection as scrollToSectionLib } from "@/lib/scroll";
+import { anchorIds, homeItem, navItems, navigateTo, type NavItem } from "@/lib/nav";
+import { focusRing } from "@/lib/ui";
+import { siteConfig } from "@/config/site";
+
+/** Duration of the mobile menu's collapse, which a scroll has to wait out. */
+const MENU_CLOSE_MS = 300;
+
+/** A section becomes active once its top crosses into the upper third of the
+ *  viewport, comfortably below the sticky nav plus the scroll-margin offset. */
+const TRIGGER_LINE = 0.3;
+
+const ACTIVE = "text-emerald-700 dark:text-emerald-400";
+const INACTIVE = "text-zinc-600 dark:text-zinc-400";
 
 export function Navigation() {
   const t = useTranslations("navigation");
   const locale = useLocale();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const navigationRef = useRef<HTMLDivElement>(null);
+  // The anchor currently under the nav, or null while still above the first.
+  const [activeId, setActiveId] = useState<string | null>(null);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  // Kept short on purpose. A single-page scroll does not need an index of
-  // itself, and "home" is already the brand button; Skills and Interests are
-  // reachable by scrolling past the sections that introduce them. Learning is
-  // here because it is a separate route, so scrolling will never reach it.
-  const sections = useMemo(
-    () => [
-      { id: "about", label: t("about") },
-      { id: "experience", label: t("experience") },
-      { id: "projects", label: t("projects") },
-      { id: "learning", label: t("learning") },
-      { id: "contact", label: t("contact") },
-    ],
-    [t]
-  );
-
-  // Mobile-optimized scroll handling
-  const scrollToSection = (sectionId: string, event?: React.MouseEvent) => {
-    // Prevent default behavior to ensure we handle scrolling
-    if (event) {
-      event.preventDefault();
-    }
-
-    // Close the menu first
+  const go = (item: NavItem) => {
     setIsMenuOpen(false);
-
-    // The learning log is its own page, not a homepage anchor.
-    if (sectionId === "learning") {
-      router.push(`/${locale}/learning`);
-      return;
-    }
-
-    // Handle home navigation - go to homepage
-    if (sectionId === "home") {
-      router.push(`/${locale}`);
-      return;
-    }
-
-    // If section doesn't exist on this page, navigate to homepage with hash
-    if (!document.getElementById(sectionId)) {
-      router.push(`/${locale}#${sectionId}`);
-      return;
-    }
-
-    // Delay scrolling so the mobile menu finishes collapsing first (its height
-    // change would otherwise throw off the final scroll position). The actual
-    // offset is handled by `scroll-margin-top` in globals.css.
-    setTimeout(() => scrollToSectionLib(sectionId), 300);
+    navigateTo(router, locale, item, { scrollDelayMs: MENU_CLOSE_MS });
   };
 
-  // Highlight the nav item for whichever section is currently under the nav.
-  useEffect(() => {
-    const sectionIds = sections
-      .map((s) => s.id)
-      .filter((id) => id !== "learning");
+  const tone = (id: string) => (activeId === id ? ACTIVE : INACTIVE);
 
-    // A section becomes active once its top crosses into the upper third of
-    // the viewport (comfortably below the sticky nav + scroll-margin offset).
-    // The last such section wins; "home" while still above the first.
-    const updateActiveSection = () => {
-      const triggerLine = window.innerHeight * 0.3;
-      let current = "home";
-      for (const id of sectionIds) {
+  useEffect(() => {
+    // The last anchor whose top is past the trigger line wins.
+    const updateActive = () => {
+      const triggerLine = window.innerHeight * TRIGGER_LINE;
+      let current: string | null = null;
+      for (const id of anchorIds) {
         const top = document.getElementById(id)?.getBoundingClientRect().top;
-        if (top !== undefined && top <= triggerLine) {
-          current = id;
-        }
+        if (top !== undefined && top <= triggerLine) current = id;
       }
-      setActiveSection(current);
+      setActiveId(current);
     };
 
-    // Throttle to at most one measurement per animation frame instead of
-    // recomputing on every individual scroll event.
+    // At most one measurement per animation frame, not one per scroll event.
     let frame = 0;
     const onScroll = () => {
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
-        updateActiveSection();
+        updateActive();
       });
     };
 
-    updateActiveSection();
+    updateActive();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
@@ -109,42 +67,32 @@ export function Navigation() {
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [sections]);
+  }, []);
 
   return (
-    <nav
-      ref={navigationRef}
-      className="sticky top-0 z-50 border-b border-zinc-200 bg-[hsl(var(--background))] dark:border-white/10"
-    >
+    <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-[hsl(var(--background))] dark:border-white/10">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <button
-            onClick={(e) => scrollToSection("home", e)}
-            className="flex cursor-pointer items-center gap-1.5 rounded-sm font-accent-mono text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900"
+            onClick={() => go(homeItem)}
+            className={`flex cursor-pointer items-center gap-1.5 rounded-sm font-accent-mono text-base font-semibold ${focusRing}`}
           >
-            <span
-              className="text-emerald-600 dark:text-emerald-400"
-              aria-hidden="true"
-            >
+            <span className="text-emerald-600 dark:text-emerald-400" aria-hidden="true">
               ❯
             </span>
-            Renan Rambul
+            {siteConfig.name}
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            {sections.map((section) => (
+          {/* Desktop */}
+          <div className="hidden items-center space-x-6 md:flex">
+            {navItems.map((item) => (
               <button
-                key={section.id}
-                onClick={(e) => scrollToSection(section.id, e)}
-                className={`relative rounded-sm py-1 font-accent-mono text-sm transition-colors hover:text-emerald-700 dark:hover:text-emerald-400 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900 ${
-                  activeSection === section.id
-                    ? "text-emerald-700 dark:text-emerald-400"
-                    : "text-zinc-600 dark:text-zinc-400"
-                }`}
+                key={item.id}
+                onClick={() => go(item)}
+                className={`relative cursor-pointer rounded-sm py-1 font-accent-mono text-sm transition-colors hover:text-emerald-700 dark:hover:text-emerald-400 ${focusRing} ${tone(item.id)}`}
               >
-                {section.label}
-                {activeSection === section.id && (
+                {t(item.id)}
+                {activeId === item.id && (
                   <m.span
                     layoutId="nav-active-indicator"
                     className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-emerald-600 dark:bg-emerald-400"
@@ -155,50 +103,42 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden items-center space-x-3 md:flex">
             <ThemeSwitcher />
             <LanguageSwitcher />
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu toggle */}
           <button
-            className="md:hidden p-2 rounded-md cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-            onClick={toggleMenu}
+            className={`cursor-pointer rounded-md p-2 md:hidden ${focusRing}`}
+            onClick={() => setIsMenuOpen((open) => !open)}
             aria-expanded={isMenuOpen}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
           >
-            {isMenuOpen ? (
-              <FiX className="h-6 w-6" />
-            ) : (
-              <FiMenu className="h-6 w-6" />
-            )}
+            {isMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile */}
       <AnimatePresence>
         {isMenuOpen && (
           <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-[hsl(var(--background))] border-b border-zinc-200 dark:border-white/10"
+            transition={{ duration: MENU_CLOSE_MS / 1000 }}
+            className="overflow-hidden border-b border-zinc-200 bg-[hsl(var(--background))] md:hidden dark:border-white/10"
           >
-            <div className="px-4 py-3 space-y-4">
+            <div className="space-y-4 px-4 py-3">
               <div className="space-y-2">
-                {sections.map((section) => (
+                {navItems.map((item) => (
                   <button
-                    key={section.id}
-                    onClick={(e) => scrollToSection(section.id, e)}
-                    className={`block w-full py-2 text-left font-accent-mono transition-colors hover:text-emerald-700 dark:hover:text-emerald-400 cursor-pointer ${
-                      activeSection === section.id
-                        ? "text-emerald-700 dark:text-emerald-400"
-                        : "text-zinc-600 dark:text-zinc-400"
-                    }`}
+                    key={item.id}
+                    onClick={() => go(item)}
+                    className={`block w-full cursor-pointer py-2 text-left font-accent-mono transition-colors hover:text-emerald-700 dark:hover:text-emerald-400 ${tone(item.id)}`}
                   >
-                    {section.label}
+                    {t(item.id)}
                   </button>
                 ))}
               </div>

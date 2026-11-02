@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
+import { toLocale } from "@/i18n/config";
+import { messagesFor } from "@/i18n/messages";
 
 /**
  * Shared renderer for the `opengraph-image` route conventions. Generating the
@@ -18,36 +20,24 @@ export type OgFields = {
   footer?: string;
 };
 
-/** Strip the protocol so the eyebrow reads as a bare host (renanrambul.dev). */
-export function ogEyebrow(suffix = ""): string {
-  return `${siteConfig.url.replace(/^https?:\/\//, "")}${suffix}`;
-}
-
 /**
  * Pure input computation for the site (homepage) OG card. Kept separate from
- * the ImageResponse render so the per-locale subtitle can be unit tested
+ * the ImageResponse render so the per-locale fields can be unit tested
  * without the Next runtime.
  */
 export function siteOgFields(locale: string): OgFields {
   return {
-    eyebrow: ogEyebrow(),
+    eyebrow: siteConfig.host,
     title: siteConfig.name,
-    subtitle: locale === "pt" ? "Engenheiro de Software Sênior" : "Senior Software Engineer",
-    footer: "7+ years building web products end to end",
+    subtitle: siteConfig.role[toLocale(locale)],
+    footer: messagesFor(locale).meta.ogFooter,
   };
 }
 
 const EMERALD = "#34d399";
 const BG = "#0a0f10";
 
-export function renderOgImage(opts: {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-  footer?: string;
-}) {
-  const { eyebrow, title, subtitle, footer } = opts;
-
+export function renderOgImage({ eyebrow, title, subtitle, footer }: OgFields) {
   return new ImageResponse(
     (
       <div

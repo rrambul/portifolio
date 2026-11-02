@@ -11,15 +11,18 @@ describe("buildPersonJsonLd", () => {
     expect(person.name).toBe(siteConfig.name);
   });
 
-  it("keeps the hardcoded job title (siteConfig has no jobTitle field)", () => {
-    expect(buildPersonJsonLd().jobTitle).toBe("Senior Software Engineer");
+  it("takes the job title and employer from siteConfig and the experience data", () => {
+    const person = buildPersonJsonLd();
+    expect(person.jobTitle).toBe(siteConfig.role.en);
+    expect(person.worksFor).toEqual({
+      "@type": "Organization",
+      name: "Translational Analytics & Statistics",
+    });
   });
 
-  it("names the school behind the in-progress MBA", () => {
-    expect(buildPersonJsonLd().alumniOf).toEqual({
-      "@type": "EducationalOrganization",
-      "name": "Full Cycle",
-    });
+  it("does not claim alumni status for a program still in progress", () => {
+    // The only education entry is the MBA, which runs until 2028.
+    expect(buildPersonJsonLd()).not.toHaveProperty("alumniOf");
   });
 
   it("exposes the social profiles via sameAs", () => {

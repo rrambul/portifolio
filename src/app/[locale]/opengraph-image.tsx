@@ -1,10 +1,10 @@
 import { renderOgImage, siteOgFields, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 import { siteConfig } from "@/config/site";
-import { locales } from "../../../i18n.config";
+import { locales } from "@/i18n/config";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = `${siteConfig.name} - Senior Software Engineer`;
+export const alt = `${siteConfig.name} - ${siteConfig.role.en}`;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

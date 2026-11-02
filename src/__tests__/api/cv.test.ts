@@ -6,7 +6,11 @@ import { createCvDocument } from "@/lib/cv";
 import { experiences } from "@/data/experiences";
 import en from "@/messages/en/index.json";
 
-/** Recursively collect every text leaf from a react-pdf element tree. */
+/**
+ * Recursively collect every text leaf from a react-pdf element tree. The
+ * document is split into plain function components (no hooks), so those are
+ * expanded by calling them, the way a renderer would.
+ */
 function collectText(node: unknown, out: string[] = []): string[] {
   if (node == null || typeof node === "boolean") return out;
   if (typeof node === "string" || typeof node === "number") {
@@ -18,7 +22,12 @@ function collectText(node: unknown, out: string[] = []): string[] {
     return out;
   }
   if (typeof node === "object" && "props" in node) {
-    collectText((node as { props?: { children?: unknown } }).props?.children, out);
+    const element = node as { type?: unknown; props?: { children?: unknown } };
+    if (typeof element.type === "function") {
+      collectText((element.type as (props: unknown) => unknown)(element.props), out);
+    } else {
+      collectText(element.props?.children, out);
+    }
   }
   return out;
 }
@@ -68,6 +77,22 @@ describe("GET /api/cv", () => {
   }, 60000);
 });
 
+describe("CV length", () => {
+  /** Pages in a rendered PDF: react-pdf writes one `/Type /Page` object per page. */
+  async function pageCount(locale: "en" | "pt"): Promise<number> {
+    const res = await GET(new Request(`http://localhost/api/cv?locale=${locale}`));
+    const pdf = Buffer.from(await res.arrayBuffer()).toString("latin1");
+    return (pdf.match(/\/Type\s*\/Page(?![s])/g) ?? []).length;
+  }
+
+  // Both locales are meant to fit on two pages, and Portuguese runs longer
+  // than English with only a few points to spare, so any copy or style change
+  // that spills a third page fails here instead of in the download.
+  it.each(["en", "pt"] as const)("the %s CV is exactly two pages", async (locale) => {
+    expect(await pageCount(locale)).toBe(2);
+  }, 30000);
+});
+
 describe("createCvDocument structure", () => {
   it("includes every experience and its responsibility bullets", () => {
     const text = collectText(createCvDocument("en")).join("\n");
@@ -84,15 +109,31 @@ describe("createCvDocument structure", () => {
       string,
       { responsibilities: string[] }
     >;
-    const firstBullet = companies[experiences[0]!.i18nKey]!.responsibilities[0]!;
+    const firstBullet = companies[experiences[0]!.id]!.responsibilities[0]!;
     expect(text).toContain(firstBullet);
+  });
+
+  it("skips an experience whose copy is missing instead of printing its key", () => {
+    experiences.push({
+      id: "notTranslated",
+      company: "Ghost Co",
+      period: "Jan 2030 - Present",
+      location: "Nowhere · Remote",
+    });
+    try {
+      const text = collectText(createCvDocument("en")).join("\n");
+      expect(text).not.toContain("Ghost Co");
+      expect(text).not.toContain("experience.companies.notTranslated");
+    } finally {
+      experiences.pop();
+    }
   });
 
   it("uses the Portuguese-only labels for the pt locale", () => {
     const text = collectText(createCvDocument("pt")).join("\n");
 
-    // "Resumo" / "Summary" are hardcoded labels in cv.tsx (LABELS), not in the
-    // message JSON, so they prove the pt branch of the document was rendered.
+    // "Resumo" / "Summary" come from the `cv` namespace in the message files,
+    // so they prove the pt message tree was the one rendered.
     expect(text).toContain("Resumo");
     expect(text).not.toContain("Summary");
   });

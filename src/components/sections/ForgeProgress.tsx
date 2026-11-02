@@ -5,6 +5,7 @@ import { m } from "framer-motion";
 import { forge } from "@/data/mindforge";
 import { currentModule } from "@/lib/forge";
 import { fadeInUp } from "@/lib/animations";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 /**
  * Curriculum progress, from Mindforge: the app I am building to turn a topic
@@ -23,10 +24,9 @@ export function ForgeProgress() {
 
   return (
     <m.div variants={fadeInUp}>
-      <h2 className="mb-2 font-accent-mono text-xs uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-        {"// "}
+      <Eyebrow as="h2" tone="accent" className="mb-2">
         {t("label")}
-      </h2>
+      </Eyebrow>
 
       <ul className="divide-y divide-zinc-200 dark:divide-white/10">
         {forge.missions.map((mission) => {

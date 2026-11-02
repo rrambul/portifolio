@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MAX = { name: 100, email: 200, message: 5000 };
+import { isValidEmail, MAX_FIELD_LENGTH as MAX } from "@/lib/validation";
 
 /** Escape user input before interpolating it into the notification email HTML. */
 function escapeHtml(value: string): string {
@@ -47,7 +45,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!EMAIL_RE.test(email)) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: "A valid email address is required" },
         { status: 400 }

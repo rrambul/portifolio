@@ -93,18 +93,18 @@ describe("Navigation", () => {
 
   it("toggles the mobile menu open and closed", () => {
     render(<Navigation />);
-    const button = screen.getByLabelText("Open menu");
+    const button = screen.getByLabelText("openMenu");
     expect(button).toHaveAttribute("aria-expanded", "false");
 
     fireEvent.click(button);
     // Now both desktop and mobile copies of each label exist
     expect(screen.getAllByText("about").length).toBe(2);
-    expect(screen.getByLabelText("Close menu")).toHaveAttribute(
+    expect(screen.getByLabelText("closeMenu")).toHaveAttribute(
       "aria-expanded",
       "true"
     );
 
-    fireEvent.click(screen.getByLabelText("Close menu"));
+    fireEvent.click(screen.getByLabelText("closeMenu"));
     expect(screen.getAllByText("about").length).toBe(1);
   });
 
@@ -223,7 +223,7 @@ describe("Navigation", () => {
 
   it("navigates and closes the mobile menu when a mobile item is tapped", () => {
     render(<Navigation />);
-    fireEvent.click(screen.getByLabelText("Open menu"));
+    fireEvent.click(screen.getByLabelText("openMenu"));
     // Desktop + mobile copies both present while the menu is open.
     expect(screen.getAllByText("about").length).toBe(2);
 

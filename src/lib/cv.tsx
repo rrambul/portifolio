@@ -6,30 +6,22 @@ import {
   Link,
   StyleSheet,
 } from "@react-pdf/renderer";
+import { createTranslator } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { experiences } from "@/data/experiences";
 import { skillCategories } from "@/data/skills";
 import { education } from "@/data/education";
-import enMessages from "@/messages/en/index.json";
-import ptMessages from "@/messages/pt/index.json";
-import type { Locale } from "../../i18n.config";
+import type { Locale } from "@/i18n/config";
+import { messagesFor } from "@/i18n/messages";
+import { displayUrl } from "@/lib/url";
 
-interface CompanyCopy {
-  title: string;
-  responsibilities: string[];
-  skills: string[];
-}
+/**
+ * The CV is the site's content in a second medium: the same identity from
+ * siteConfig, the same data files, the same copy from the message files, read
+ * here through `createTranslator` so no request context is needed.
+ */
 
-interface EducationCopy {
-  degree: string;
-  note: string;
-}
-
-/** Labels that don't exist in the site messages. */
-const LABELS: Record<Locale, { summary: string; generated: string }> = {
-  en: { summary: "Summary", generated: "Generated from" },
-  pt: { summary: "Resumo", generated: "Gerado a partir de" },
-};
+type Translator = ReturnType<typeof createTranslator>;
 
 const ACCENT = "#047857";
 const INK = "#18181b";
@@ -109,27 +101,118 @@ const styles = StyleSheet.create({
   },
 });
 
-function messagesFor(locale: Locale) {
-  return locale === "pt" ? ptMessages : enMessages;
+export function cvFileName(locale: Locale): string {
+  return `${siteConfig.name.replace(/\s+/g, "-")}-CV-${locale.toUpperCase()}.pdf`;
 }
 
-export function cvFileName(locale: Locale): string {
-  return `Renan-Rambul-CV-${locale.toUpperCase()}.pdf`;
+/** Whether the active locale has copy at this message path. */
+function hasCopy(t: Translator, path: string): boolean {
+  return (t.has as (key: string) => boolean)(path);
+}
+
+function SectionTitle({ children }: { children: string }) {
+  return <Text style={styles.sectionTitle}>{children}</Text>;
+}
+
+function Header({ locale }: { locale: Locale }) {
+  const contact = [
+    { label: siteConfig.links.email, href: `mailto:${siteConfig.links.email}` },
+    { label: displayUrl(siteConfig.links.github), href: siteConfig.links.github },
+    { label: displayUrl(siteConfig.links.linkedin), href: siteConfig.links.linkedin },
+    { label: siteConfig.host, href: siteConfig.url },
+  ];
+
+  return (
+    <>
+      <Text style={styles.name}>{siteConfig.name}</Text>
+      <Text style={styles.role}>{siteConfig.role[locale]}</Text>
+      <View style={styles.contactRow}>
+        {contact.map((item, idx) => (
+          <View key={item.href} style={{ flexDirection: "row", gap: 4 }}>
+            {idx > 0 && <Text style={styles.contactSeparator}>|</Text>}
+            <Link src={item.href} style={styles.contactItem}>
+              {item.label}
+            </Link>
+          </View>
+        ))}
+      </View>
+    </>
+  );
+}
+
+function ExperienceBlock({ t }: { t: Translator }) {
+  return (
+    <>
+      <SectionTitle>{t("experience.title")}</SectionTitle>
+      {experiences.map((exp) => {
+        const copy = `experience.companies.${exp.id}`;
+        // Skip an entry whose copy is missing rather than print a raw key or
+        // crash the download. The drift test fails CI on it first; this is the
+        // runtime safety net.
+        if (!hasCopy(t, copy)) return null;
+        const responsibilities = t.raw(`${copy}.responsibilities`) as string[];
+        const skills = t.raw(`${copy}.skills`) as string[];
+        return (
+          <View key={exp.id} style={styles.entry} wrap={false}>
+            <View style={styles.entryHeader}>
+              <Text style={styles.entryTitle}>
+                {t(`${copy}.title`)} · {exp.company}
+              </Text>
+              <Text style={styles.entryPeriod}>{exp.period}</Text>
+            </View>
+            <Text style={styles.entryMeta}>{exp.location}</Text>
+            {responsibilities.map((item, idx) => (
+              <View key={`${idx}-${item}`} style={styles.bulletRow}>
+                <Text style={styles.bulletMark}>•</Text>
+                <Text style={styles.bulletText}>{item}</Text>
+              </View>
+            ))}
+            <Text style={styles.entrySkills}>{skills.join(" · ")}</Text>
+          </View>
+        );
+      })}
+    </>
+  );
+}
+
+function SkillsBlock({ t }: { t: Translator }) {
+  return (
+    <>
+      <SectionTitle>{t("skills.title")}</SectionTitle>
+      {skillCategories.map((category) => (
+        <View key={category.id} style={styles.skillCategoryRow}>
+          <Text style={styles.skillCategoryLabel}>{t(`skills.${category.id}`)}</Text>
+          <Text style={styles.skillCategoryItems}>{category.skills.join(", ")}</Text>
+        </View>
+      ))}
+    </>
+  );
+}
+
+/** The self-taught line carries more here than the one degree under it does, so it comes first. */
+function EducationBlock({ t }: { t: Translator }) {
+  return (
+    <View wrap={false}>
+      <SectionTitle>{t("education.title")}</SectionTitle>
+      <Text style={[styles.paragraph, { marginBottom: 6 }]}>{t("education.subtitle")}</Text>
+      {education.map((entry) => {
+        const copy = `education.entries.${entry.id}`;
+        if (!hasCopy(t, copy)) return null;
+        return (
+          <View key={entry.id} style={styles.entryHeader}>
+            <Text style={styles.entryTitle}>
+              {t(`${copy}.degree`)} · {entry.institution}
+            </Text>
+            {entry.period ? <Text style={styles.entryPeriod}>{entry.period}</Text> : null}
+          </View>
+        );
+      })}
+    </View>
+  );
 }
 
 export function createCvDocument(locale: Locale) {
-  const m = messagesFor(locale);
-  const labels = LABELS[locale];
-  const companies = m.experience.companies as Record<string, CompanyCopy>;
-  const degrees = m.education.entries as Record<string, EducationCopy>;
-  const siteHost = siteConfig.url.replace(/^https?:\/\//, "");
-
-  const contact = [
-    { label: siteConfig.links.email, href: `mailto:${siteConfig.links.email}` },
-    { label: "github.com/rrambul", href: siteConfig.links.github },
-    { label: "linkedin.com/in/renan-rambul", href: siteConfig.links.linkedin },
-    { label: siteHost, href: siteConfig.url },
-  ];
+  const t = createTranslator({ locale, messages: messagesFor(locale) });
 
   return (
     <Document
@@ -138,93 +221,22 @@ export function createCvDocument(locale: Locale) {
       language={locale}
     >
       <Page size="A4" style={styles.page}>
-        {/* Header */}
-        <Text style={styles.name}>{siteConfig.name}</Text>
-        <Text style={styles.role}>{m.hero.subtitle}</Text>
-        <View style={styles.contactRow}>
-          {contact.map((item, idx) => (
-            <View key={item.href} style={{ flexDirection: "row", gap: 4 }}>
-              {idx > 0 && <Text style={styles.contactSeparator}>|</Text>}
-              <Link src={item.href} style={styles.contactItem}>
-                {item.label}
-              </Link>
-            </View>
-          ))}
-        </View>
+        <Header locale={locale} />
 
-        {/* Summary */}
-        <Text style={styles.sectionTitle}>{labels.summary}</Text>
-        <Text style={styles.paragraph}>{m.about.content}</Text>
+        <SectionTitle>{t("cv.summary")}</SectionTitle>
+        <Text style={styles.paragraph}>{t("about.content")}</Text>
 
-        {/* Experience */}
-        <Text style={styles.sectionTitle}>{m.experience.title}</Text>
-        {experiences.map((exp) => {
-          const copy = companies[exp.i18nKey];
-          if (!copy) return null;
-          return (
-            <View key={exp.companyId} style={styles.entry} wrap={false}>
-              <View style={styles.entryHeader}>
-                <Text style={styles.entryTitle}>
-                  {copy.title} · {exp.company}
-                </Text>
-                <Text style={styles.entryPeriod}>{exp.period}</Text>
-              </View>
-              <Text style={styles.entryMeta}>{exp.location}</Text>
-              {copy.responsibilities.map((item, idx) => (
-                <View key={idx} style={styles.bulletRow}>
-                  <Text style={styles.bulletMark}>•</Text>
-                  <Text style={styles.bulletText}>{item}</Text>
-                </View>
-              ))}
-              <Text style={styles.entrySkills}>{copy.skills.join(" · ")}</Text>
-            </View>
-          );
-        })}
+        <ExperienceBlock t={t} />
+        <SkillsBlock t={t} />
+        <EducationBlock t={t} />
 
-        {/* Skills */}
-        <Text style={styles.sectionTitle}>{m.skills.title}</Text>
-        {skillCategories.map((category) => (
-          <View key={category.titleKey} style={styles.skillCategoryRow}>
-            <Text style={styles.skillCategoryLabel}>
-              {m.skills[category.titleKey as "frontend"]}
-            </Text>
-            <Text style={styles.skillCategoryItems}>
-              {category.skills.join(", ")}
-            </Text>
-          </View>
-        ))}
-
-        {/* Education. The self-taught line carries more here than the one
-            degree under it does, so it is the first thing in the block. */}
         <View wrap={false}>
-          <Text style={styles.sectionTitle}>{m.education.title}</Text>
-          <Text style={[styles.paragraph, { marginBottom: 6 }]}>
-            {m.education.subtitle}
-          </Text>
-          {education.map((entry) => {
-            const copy = degrees[entry.i18nKey];
-            if (!copy) return null;
-            return (
-              <View key={entry.id} style={styles.entryHeader}>
-                <Text style={styles.entryTitle}>
-                  {copy.degree} · {entry.institution}
-                </Text>
-                {entry.period ? (
-                  <Text style={styles.entryPeriod}>{entry.period}</Text>
-                ) : null}
-              </View>
-            );
-          })}
-        </View>
-
-        {/* Languages */}
-        <View wrap={false}>
-          <Text style={styles.sectionTitle}>{m.about.languages.title}</Text>
-          <Text style={styles.paragraph}>{m.about.languages.content}</Text>
+          <SectionTitle>{t("about.languages.title")}</SectionTitle>
+          <Text style={styles.paragraph}>{t("about.languages.content")}</Text>
         </View>
 
         <Text style={styles.footer} fixed>
-          {labels.generated} {siteHost}
+          {t("cv.generated")} {siteConfig.host}
         </Text>
       </Page>
     </Document>

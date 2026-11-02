@@ -302,6 +302,30 @@ describe("AnimatedContactForm submission lifecycle", () => {
     expect(consoleError).toHaveBeenCalled();
   });
 
+  it("drops the pending notice timer when unmounted before it fires", async () => {
+    vi.useFakeTimers();
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    });
+
+    const { unmount } = render(<AnimatedContactForm />);
+    fillValidFields();
+
+    await act(async () => {
+      fireEvent.submit(screen.getByLabelText("Name").closest("form")!);
+    });
+    await flushMicrotasks();
+
+    expect(screen.getByText("Message Sent!")).toBeInTheDocument();
+    expect(vi.getTimerCount()).toBe(1);
+
+    // Leaving the page mid-notice must not leave a timer waiting to update a
+    // component that no longer exists.
+    unmount();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
   it("shows the sending label and disables inputs while the request is pending", async () => {
     let resolveFetch: (value: { ok: boolean; json: () => Promise<unknown> }) => void = () => {};
     const pending = new Promise<{ ok: boolean; json: () => Promise<unknown> }>(

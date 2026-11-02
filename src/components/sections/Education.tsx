@@ -6,6 +6,7 @@ import { education as educationData } from "@/data/education";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
+import { LiveStatus } from "@/components/ui/Status";
 
 export function Education() {
   const t = useTranslations("education");
@@ -34,7 +35,7 @@ export function Education() {
             <m.li key={entry.id} variants={fadeInUp}>
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="text-lg font-semibold">
-                  {t(`entries.${entry.i18nKey}.degree`)}
+                  {t(`entries.${entry.id}.degree`)}
                 </h3>
                 {entry.period && (
                   <span className="font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
@@ -48,17 +49,11 @@ export function Education() {
               </p>
 
               {entry.status === "in-progress" && (
-                <span className="mt-2 inline-flex items-center gap-1.5 font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
-                  <span
-                    className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                    aria-hidden="true"
-                  />
-                  {t("inProgress")}
-                </span>
+                <LiveStatus className="mt-2">{t("inProgress")}</LiveStatus>
               )}
 
               <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-                {t(`entries.${entry.i18nKey}.note`)}
+                {t(`entries.${entry.id}.note`)}
               </p>
             </m.li>
           ))}

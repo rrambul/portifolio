@@ -1,13 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildMetadata, ogLocale } from "@/lib/metadata";
-
-describe("ogLocale", () => {
-  it("maps locales to OpenGraph codes", () => {
-    expect(ogLocale("pt")).toBe("pt_BR");
-    expect(ogLocale("en")).toBe("en_US");
-    expect(ogLocale("anything-else")).toBe("en_US");
-  });
-});
+import { buildMetadata } from "@/lib/metadata";
 
 describe("buildMetadata", () => {
   it("builds website metadata with sensible defaults", () => {
@@ -17,11 +9,14 @@ describe("buildMetadata", () => {
       description: "desc",
     });
 
-    expect(meta.title).toBe("Home | Renan");
+    // Absolute, so the layout's title template cannot append the name again.
+    expect(meta.title).toEqual({ absolute: "Home | Renan" });
+    expect(meta.openGraph?.title).toBe("Home | Renan");
     // @ts-expect-error narrow OG union in test
     expect(meta.openGraph?.type).toBe("website");
     expect(meta.openGraph?.locale).toBe("en_US");
     expect(meta.openGraph?.url).toBe("https://renanrambul.dev/en");
+    expect(meta.openGraph?.siteName).toBe("Renan Rambul Portfolio");
     expect(meta.alternates?.canonical).toBe("https://renanrambul.dev/en");
     expect(meta.alternates?.languages).toMatchObject({
       en: "https://renanrambul.dev/en",

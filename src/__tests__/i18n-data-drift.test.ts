@@ -8,9 +8,9 @@ import { positions, changedMyMind } from "@/data/interests";
 import { education } from "@/data/education";
 
 /**
- * Guards the coupling between the data files (which carry bare string keys)
- * and the message files. Without this, adding a project/experience/skill and
- * forgetting its translation would silently render the raw key at runtime,
+ * Guards the coupling between the data files (whose `id`s double as message
+ * keys) and the message files. Without this, adding a project/experience/skill
+ * and forgetting its translation would silently render the raw key at runtime,
  * with no type error and no other failing test.
  */
 const locales = { en, pt };
@@ -28,39 +28,39 @@ function resolve(obj: unknown, path: string): unknown {
 }
 
 describe.each(Object.entries(locales))("%s message keys", (_name, m) => {
-  it("resolves every project title and description key", () => {
+  it("resolves every project's title and description", () => {
     for (const p of projects) {
-      expect(resolve(m.projects, p.titleKey), p.titleKey).toBeTypeOf("string");
-      expect(resolve(m.projects, p.descriptionKey), p.descriptionKey).toBeTypeOf("string");
+      expect(resolve(m.projects, `${p.id}.title`), `projects.${p.id}.title`).toBeTypeOf("string");
+      expect(resolve(m.projects, `${p.id}.description`), `projects.${p.id}.description`).toBeTypeOf("string");
     }
   });
 
-  it("resolves every experience company key (title + arrays)", () => {
+  it("resolves every experience's company copy (title + arrays)", () => {
     for (const e of experiences) {
-      const company = resolve(m.experience.companies, e.i18nKey) as
+      const company = resolve(m.experience.companies, e.id) as
         | Record<string, unknown>
         | undefined;
-      expect(company, `experience.companies.${e.i18nKey}`).toBeTruthy();
+      expect(company, `experience.companies.${e.id}`).toBeTruthy();
       expect(company?.title).toBeTypeOf("string");
       expect(Array.isArray(company?.responsibilities)).toBe(true);
       expect(Array.isArray(company?.skills)).toBe(true);
     }
   });
 
-  it("resolves every education entry key (degree + note)", () => {
+  it("resolves every education entry (degree + note)", () => {
     for (const entry of education) {
-      const copy = resolve(m.education.entries, entry.i18nKey) as
+      const copy = resolve(m.education.entries, entry.id) as
         | Record<string, unknown>
         | undefined;
-      expect(copy, `education.entries.${entry.i18nKey}`).toBeTruthy();
+      expect(copy, `education.entries.${entry.id}`).toBeTruthy();
       expect(copy?.degree).toBeTypeOf("string");
       expect(copy?.note).toBeTypeOf("string");
     }
   });
 
-  it("resolves every skill category title key", () => {
+  it("resolves every skill category label", () => {
     for (const cat of skillCategories) {
-      expect(resolve(m.skills, cat.titleKey), `skills.${cat.titleKey}`).toBeTypeOf("string");
+      expect(resolve(m.skills, cat.id), `skills.${cat.id}`).toBeTypeOf("string");
     }
   });
 

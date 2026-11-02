@@ -39,11 +39,11 @@ export function SkillsBento() {
         <m.div variants={fadeInUp} className="space-y-5">
           {skillCategories.map((category) => (
             <div
-              key={category.titleKey}
+              key={category.id}
               className="grid gap-1 sm:grid-cols-[9rem_1fr] sm:gap-4"
             >
               <h3 className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400 sm:pt-1">
-                {t(category.titleKey)}
+                {t(category.id)}
               </h3>
               <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 {category.skills.join(" · ")}

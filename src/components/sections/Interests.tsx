@@ -6,6 +6,7 @@ import { positions, changedMyMind } from "@/data/interests";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function Interests() {
   const t = useTranslations("interests");
@@ -47,10 +48,7 @@ export function Interests() {
 
         {/* Positions are cheap without a record of being wrong. */}
         <m.div variants={fadeInUp} className="mt-12">
-          <p className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            {"// "}
-            {t("changedMyMindTitle")}
-          </p>
+          <Eyebrow>{t("changedMyMindTitle")}</Eyebrow>
           <ul className="mt-4 space-y-3">
             {changedMyMind.map((key) => (
               <li

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { FiArrowLeft } from "react-icons/fi";
+import { focusRing } from "@/lib/ui";
 
 export default function NotFound() {
   const t = useTranslations("notFound");
@@ -22,7 +23,7 @@ export default function NotFound() {
       </p>
       <Link
         href={`/${locale}`}
-        className="mt-8 inline-flex items-center gap-2 rounded-md bg-zinc-900 px-5 py-2.5 font-accent-mono font-medium text-white transition-colors hover:bg-zinc-700 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white dark:focus-visible:ring-offset-zinc-900"
+        className={`mt-8 inline-flex items-center gap-2 rounded-md bg-zinc-900 px-5 py-2.5 font-accent-mono font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white ${focusRing}`}
       >
         <FiArrowLeft className="h-4 w-4" />
         {t("home")}

@@ -4,7 +4,7 @@ import { BlogPostMetadata } from "@/types/blog";
 import { m } from "framer-motion";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { isLocale } from "../../../i18n.config";
+import { localeTag, toLocale } from "@/i18n/config";
 
 interface BlogCardProps {
   post: BlogPostMetadata;
@@ -13,8 +13,7 @@ interface BlogCardProps {
 
 /** One post as an editorial list row: meta line, title, excerpt, byline. */
 export function BlogCard({ post, index }: BlogCardProps) {
-  const rawLocale = useLocale();
-  const locale = isLocale(rawLocale) ? rawLocale : "en";
+  const locale = toLocale(useLocale());
   const t = useTranslations("blog");
 
   return (
@@ -29,11 +28,9 @@ export function BlogCard({ post, index }: BlogCardProps) {
         <div className="flex items-center justify-between font-accent-mono text-xs text-zinc-500 dark:text-zinc-400">
           <time dateTime={post.date}>
             {t("publishedOn")}{" "}
-            {new Date(post.date).toLocaleDateString(
-              locale === "pt" ? "pt-BR" : "en-US"
-            )}
+            {new Date(post.date).toLocaleDateString(localeTag(locale))}
           </time>
-          <span>{post.readTime} min</span>
+          <span>{t("readTime", { minutes: post.readTime })}</span>
         </div>
 
         {/* Title */}

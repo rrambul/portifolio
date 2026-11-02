@@ -1,7 +1,14 @@
 import { describe, it, expect } from "vitest";
-import { isLocale, locales, defaultLocale } from "../../i18n.config";
+import {
+  isLocale,
+  locales,
+  defaultLocale,
+  toLocale,
+  localeTag,
+  ogLocale,
+} from "@/i18n/config";
 
-describe("i18n.config", () => {
+describe("i18n config", () => {
   it("recognizes the supported locales", () => {
     expect(isLocale("en")).toBe(true);
     expect(isLocale("pt")).toBe(true);
@@ -17,5 +24,20 @@ describe("i18n.config", () => {
     expect(locales).toEqual(["en", "pt"]);
     expect(defaultLocale).toBe("en");
     expect(locales).toContain(defaultLocale);
+  });
+
+  it("narrows an untyped locale, falling back to the default", () => {
+    expect(toLocale("pt")).toBe("pt");
+    expect(toLocale("fr")).toBe("en");
+    expect(toLocale("")).toBe("en");
+  });
+
+  it("maps locales to Intl tags and OpenGraph codes", () => {
+    expect(localeTag("pt")).toBe("pt-BR");
+    expect(localeTag("en")).toBe("en-US");
+    expect(localeTag("anything-else")).toBe("en-US");
+    expect(ogLocale("pt")).toBe("pt_BR");
+    expect(ogLocale("en")).toBe("en_US");
+    expect(ogLocale("anything-else")).toBe("en_US");
   });
 });

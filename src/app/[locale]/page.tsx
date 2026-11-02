@@ -11,8 +11,11 @@ import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/config/site";
+import { toLocale } from "@/i18n/config";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -20,22 +23,14 @@ interface HomePageProps {
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
 
   return buildMetadata({
     locale,
-    title:
-      locale === "pt"
-        ? "Renan Rambul | Engenheiro de Software Sênior"
-        : "Renan Rambul | Senior Software Engineer",
-    description:
-      locale === "pt"
-        ? "Portfolio de Renan Rambul, engenheiro de software com mais de 7 anos de experiência construindo produtos web de ponta a ponta com React, TypeScript e Node.js."
-        : "Portfolio of Renan Rambul, a software engineer with 7+ years of experience building web products end to end with React, TypeScript, and Node.js.",
-    keywords:
-      locale === "pt"
-        ? "Renan Rambul, engenheiro de software, React, TypeScript, Next.js, frontend, backend, portfolio, Brasil"
-        : "Renan Rambul, software engineer, React, TypeScript, Next.js, frontend, backend, portfolio, Brazil",
-    authors: [{ name: "Renan Rambul" }],
+    title: `${siteConfig.name} | ${siteConfig.role[toLocale(locale)]}`,
+    description: t("description"),
+    keywords: t("keywords"),
+    authors: [{ name: siteConfig.name }],
   });
 }
 

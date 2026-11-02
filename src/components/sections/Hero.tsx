@@ -3,8 +3,12 @@
 import { useTranslations, useLocale } from "next-intl";
 import { FiArrowDown } from "react-icons/fi";
 import { siteConfig } from "@/config/site";
+import { toLocale } from "@/i18n/config";
 import { scrollToSection } from "@/lib/scroll";
+import { socialLinks, externalLinkProps } from "@/lib/social";
 import { Section } from "@/components/ui/Section";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { LiveStatus } from "@/components/ui/Status";
 import { focusRing } from "@/lib/ui";
 
 /*
@@ -17,24 +21,20 @@ import { focusRing } from "@/lib/ui";
  * hero is the LCP and JS-driven entrances would keep it hidden until hydration.
  */
 
+/**
+ * Release notes. The markers are structural ("+" shipped, "~" in progress) and
+ * live here in code; the copy lives under `hero.*` in the message files.
+ */
+const LOG: { kind: "add" | "change"; key: string }[] = [
+  { kind: "add", key: "logShipped" },
+  { kind: "add", key: "logFortuna" },
+  { kind: "add", key: "logAgents" },
+  { kind: "change", key: "logLearning" },
+];
+
 export function Hero() {
   const t = useTranslations("hero");
-  const locale = useLocale();
-
-  const socials = [
-    { href: siteConfig.links.github, label: "GitHub" },
-    { href: siteConfig.links.linkedin, label: "LinkedIn" },
-    { href: `mailto:${siteConfig.links.email}`, label: "Email" },
-  ];
-
-  // Release notes. Marker semantics ("+" shipped, "~" in progress) are
-  // structural and live here in code; the copy lives in the message files.
-  const log = [
-    { kind: "add" as const, text: t("logShipped") },
-    { kind: "add" as const, text: t("logFortuna") },
-    { kind: "add" as const, text: t("logAgents") },
-    { kind: "change" as const, text: t("logLearning") },
-  ];
+  const locale = toLocale(useLocale());
 
   const linkClass = `rounded-sm font-accent-mono text-sm text-zinc-600 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-emerald-700 hover:decoration-emerald-600/50 dark:text-zinc-400 dark:decoration-zinc-700 dark:hover:text-emerald-400 dark:hover:decoration-emerald-400/50 ${focusRing}`;
 
@@ -45,7 +45,7 @@ export function Hero() {
         className="font-accent-mono text-xs uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 animate-enter-fade"
         style={{ animationDelay: "0.15s" }}
       >
-        {t("subtitle")}
+        {siteConfig.role[locale]}
       </p>
 
       {/* The one moment of real scale on the page. */}
@@ -87,45 +87,23 @@ export function Hero() {
           <a href={`/api/cv?locale=${locale}`} className={linkClass}>
             {t("downloadCV")}
           </a>
-          {socials.map(({ href, label }) => {
-            const external = href.startsWith("http");
-            return (
-              <a
-                key={label}
-                href={href}
-                {...(external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className={linkClass}
-              >
-                {label}
-              </a>
-            );
-          })}
+          {socialLinks.map(({ id, href, label }) => (
+            <a key={id} href={href} {...externalLinkProps(href)} className={linkClass}>
+              {label}
+            </a>
+          ))}
         </div>
 
         {/* Release log: the signature, kept as a bare list. */}
         <div className="mt-20 animate-enter-fade" style={{ animationDelay: "0.65s" }}>
           <div className="flex items-baseline justify-between gap-4">
-            <p className="font-accent-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              {"// "}
-              {t("latest")}
-            </p>
-            <span className="flex shrink-0 items-center gap-2 font-accent-mono text-xs text-emerald-700 dark:text-emerald-400">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-                aria-hidden="true"
-              />
-              {t("statusShipping")}
-            </span>
+            <Eyebrow>{t("latest")}</Eyebrow>
+            <LiveStatus className="shrink-0">{t("statusShipping")}</LiveStatus>
           </div>
 
           <ul className="mt-4 space-y-2.5">
-            {log.map((entry) => (
-              <li
-                key={entry.text}
-                className="flex gap-3 text-zinc-700 dark:text-zinc-300"
-              >
+            {LOG.map((entry) => (
+              <li key={entry.key} className="flex gap-3 text-zinc-700 dark:text-zinc-300">
                 <span
                   className={`select-none font-accent-mono ${
                     entry.kind === "add"
@@ -136,7 +114,7 @@ export function Hero() {
                 >
                   {entry.kind === "add" ? "+" : "~"}
                 </span>
-                <span>{entry.text}</span>
+                <span>{t(entry.key)}</span>
               </li>
             ))}
           </ul>

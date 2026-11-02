@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-
-const BASE_URL = siteConfig.url;
-const SITE_NAME = `${siteConfig.name} Portfolio`;
-
-/** Map an app locale to an OpenGraph locale code. */
-export function ogLocale(locale: string): string {
-  return locale === "pt" ? "pt_BR" : "en_US";
-}
+import { ogLocale } from "@/i18n/config";
 
 /** Resolve a site-relative or absolute image path to an absolute URL. */
 export function absoluteImage(image: string): string {
-  return image.startsWith("http") ? image : `${BASE_URL}${image}`;
+  return image.startsWith("http") ? image : `${siteConfig.url}${image}`;
 }
 
 export interface BuildMetadataOptions {
   locale: string;
+  /** The full document title. It is emitted as-is; no layout template is applied. */
   title: string;
   description: string;
   /** Path after the locale segment, e.g. "" for home, "/blog", "/blog/slug". */
@@ -41,7 +35,7 @@ export interface BuildMetadataOptions {
 }
 
 /**
- * Build a consistent Metadata object — handles the OpenGraph, Twitter, and
+ * Build a consistent Metadata object: the OpenGraph, Twitter, and
  * hreflang/canonical boilerplate that every page would otherwise repeat.
  */
 export function buildMetadata({
@@ -56,11 +50,13 @@ export function buildMetadata({
   article,
   other,
 }: BuildMetadataOptions): Metadata {
-  const url = (l: string) => `${BASE_URL}/${l}${path}`;
+  const url = (l: string) => `${siteConfig.url}/${l}${path}`;
   const imageUrl = image ? absoluteImage(image) : undefined;
 
   return {
-    title,
+    // Absolute on purpose: a plain string would go through the layout's
+    // `%s | name` template on nested routes and print the name twice.
+    title: { absolute: title },
     description,
     ...(keywords ? { keywords } : {}),
     ...(authors ? { authors } : {}),
@@ -70,7 +66,7 @@ export function buildMetadata({
       type,
       locale: ogLocale(locale),
       url: url(locale),
-      siteName: SITE_NAME,
+      siteName: siteConfig.siteName,
       ...(imageUrl
         ? { images: [{ url: imageUrl, width: 1200, height: 630, alt: title }] }
         : {}),

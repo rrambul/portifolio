@@ -2,7 +2,9 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 vi.mock("next-intl", () => ({
-  useTranslations: () => (key: string) => key,
+  // Echo the key, plus any values, so counts like `t("count", { count })` are checkable.
+  useTranslations: () => (key: string, values?: Record<string, unknown>) =>
+    values ? `${key}:${Object.values(values).join(",")}` : key,
 }));
 
 vi.mock("framer-motion");
@@ -39,7 +41,7 @@ describe("Blog section", () => {
     render(<Blog />);
     const count = getBlogPosts().length;
     expect(
-      screen.getByText((text) => text.includes(`${count} posts`))
+      screen.getByText((text) => text.includes(`count:${count}`))
     ).toBeInTheDocument();
   });
 });

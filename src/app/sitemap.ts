@@ -1,34 +1,25 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
+import { locales } from "@/i18n/config";
+
+/**
+ * Every indexable page, once per locale. The blog routes are still off the
+ * site, so they are deliberately absent.
+ */
+const ROUTES = [
+  { path: "", priority: 1 },
+  { path: "/learning", priority: 0.6 },
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://renanrambul.dev';
+  const lastModified = new Date();
 
-  // The blog routes are still off the site, so they are deliberately absent
-  // here; /learning is back and listed for both locales.
-  return [
-    {
-      url: `${baseUrl}/en`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/pt`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/en/learning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/pt/learning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-  ];
+  return locales.flatMap((locale) =>
+    ROUTES.map((route) => ({
+      url: `${siteConfig.url}/${locale}${route.path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: route.priority,
+    }))
+  );
 }

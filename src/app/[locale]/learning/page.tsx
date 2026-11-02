@@ -1,9 +1,10 @@
 import { LearningLog } from "@/components/sections/LearningLog";
 import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/config/site";
 
 interface LearningPageProps {
   params: Promise<{ locale: string }>;
@@ -18,7 +19,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     path: "/learning",
-    title: `${t("title")} | Renan Rambul`,
+    title: `${t("title")} | ${siteConfig.name}`,
     description: t("subtitle"),
   });
 }

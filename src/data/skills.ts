@@ -1,12 +1,12 @@
 export interface SkillCategory {
-  /** Key under `skills` in the message files. */
-  titleKey: string;
+  /** Also the key under `skills` in the message files. */
+  id: string;
   skills: string[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
-    titleKey: "frontend",
+    id: "frontend",
     skills: [
       "React",
       "Next.js",
@@ -22,7 +22,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    titleKey: "ai",
+    id: "ai",
     skills: [
       "Coding Agents",
       "Claude",
@@ -32,15 +32,15 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    titleKey: "backend",
+    id: "backend",
     skills: ["Node.js", "NestJS", "Express", "REST APIs", "PostgreSQL", "MySQL", "Firebase"],
   },
   {
-    titleKey: "testing",
+    id: "testing",
     skills: ["Playwright", "Vitest", "Jest", "Testing Library", "Cypress", "Axe"],
   },
   {
-    titleKey: "devopsTools",
+    id: "devopsTools",
     skills: ["Git", "Docker", "AWS", "Vercel", "Vite", "Storybook", "Figma", "Linux"],
   },
 ];

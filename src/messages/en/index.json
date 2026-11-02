@@ -4,11 +4,11 @@
     "about": "About",
     "experience": "Experience",
     "projects": "Projects",
-    "skills": "Skills",
     "blog": "Blog",
     "learning": "Learning",
-    "interests": "Interests",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "notFound": {
     "title": "Page not found",
@@ -23,7 +23,6 @@
   },
   "hero": {
     "title": "Renan Rambul",
-    "subtitle": "Senior Software Engineer",
     "taglineShort": "Building awesome products, helping great teams ship things they're proud of.",
     "currentlyAt": "Currently at Translational Analytics & Statistics",
     "statusShipping": "shipping",
@@ -55,11 +54,8 @@
   },
   "experience": {
     "title": "Professional Experience",
-    "jobTitle": "Job Title",
-    "company": "Company",
-    "period": "Period",
-    "location": "Location",
-    "responsibilities": "Responsibilities",
+    "releases": "{count, plural, one {# release} other {# releases}}",
+    "current": "shipping",
     "companies": {
       "tas": {
         "title": "Senior Software Engineer",
@@ -172,8 +168,6 @@
     "backend": "Backend",
     "devopsTools": "DevOps & Tools",
     "testing": "Testing",
-    "languages": "Languages",
-    "specialties": "Specialties",
     "stats": {
       "prs": "PRs merged building healthcare SaaS at TAS",
       "trunk": "PRs merged to trunk at Take, 75% of every merge on that platform",
@@ -202,7 +196,9 @@
     "publishedOn": "Published on",
     "backToBlog": "Back to Blog",
     "backToAllPosts": "Back to all posts",
-    "allPosts": "All posts"
+    "allPosts": "All posts",
+    "count": "{count, plural, one {# post} other {# posts}}",
+    "readTime": "{minutes} min read"
   },
   "learning": {
     "title": "Learning Log",
@@ -225,19 +221,14 @@
       "course": "Course",
       "podcast": "Podcast",
       "paper": "Paper"
-    }
+    },
+    "count": "{count, plural, one {# entry} other {# entries}}"
   },
   "footer": {
-    "about": "About",
     "aboutText": "Software engineer building healthcare software and the design system it ships on.",
-    "social": "Social",
-    "links": "Quick Links",
     "aboutLink": "About",
     "experienceLink": "Experience",
     "projectsLink": "Projects & Contributions",
-    "skillsLink": "Skills",
-    "contact": "Contact",
-    "contactText": "Reach out if you have a question or an opportunity.",
     "copyright": "All rights reserved."
   },
   "contact": {
@@ -273,6 +264,8 @@
     "liveDemo": "Live Demo",
     "sourceCode": "Source Code",
     "contribution": "Contribution",
+    "count": "{count, plural, one {# project} other {# projects}}",
+    "live": "live",
     "fortuna": {
       "title": "Fortuna",
       "description": "A personal finance app that keeps spending, cards, parcelas, investments and goals in one place, with an AI co-pilot that reads your bank statements, flags surprises, and answers in plain language. Built for Brazil (BRL, CDI, parcelas) and fully bilingual."
@@ -316,11 +309,18 @@
   },
   "theme": {
     "light": "Light",
-    "dark": "Dark",
-    "system": "System"
+    "dark": "Dark"
   },
   "language": {
-    "english": "English",
-    "portuguese": "Portuguese"
+    "label": "Language"
+  },
+  "meta": {
+    "description": "Portfolio of Renan Rambul, a software engineer with 7+ years of experience building web products end to end with React, TypeScript, and Node.js.",
+    "keywords": "Renan Rambul, software engineer, React, TypeScript, Next.js, frontend, backend, portfolio, Brazil",
+    "ogFooter": "7+ years building web products end to end"
+  },
+  "cv": {
+    "summary": "Summary",
+    "generated": "Generated from"
   }
 }

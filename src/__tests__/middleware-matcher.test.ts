@@ -5,15 +5,15 @@ import { describe, it, expect } from "vitest";
  * carrying a file extension (sitemap.xml, favicon.ico, static chunks). It must
  * still run for locale-negotiable page routes. This guards that matcher.
  *
- * Importing middleware.ts crashes outside the Next runtime (next-intl reaches
- * for "next/server"), so this pattern is a verbatim mirror of the literal in
- * the repo-root middleware.ts (config.matcher[0]). Keep the two in sync.
+ * Importing proxy.ts crashes outside the Next runtime (next-intl reaches for
+ * "next/server"), so this pattern is a verbatim mirror of the literal in the
+ * repo-root proxy.ts (config.matcher[0]). Keep the two in sync.
  */
 const pattern = "/((?!api|_next|.*\\..*).*)";
 // Next.js applies the matcher as a full-path match, so anchor it the same way.
 const matcher = new RegExp(`^${pattern}$`);
 
-describe("middleware config.matcher", () => {
+describe("proxy config.matcher", () => {
   it.each([
     "/api/contact",
     "/_next/static/chunk.js",

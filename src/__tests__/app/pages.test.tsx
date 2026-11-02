@@ -1,8 +1,29 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 const redirect = vi.fn();
-vi.mock("next/navigation", () => ({ redirect: (...a: unknown[]) => redirect(...a) }));
+const notFound = vi.fn(() => {
+  // The real one throws to abort rendering; mirror that so a page cannot
+  // fall through to a redirect after calling it.
+  throw new Error("NEXT_NOT_FOUND");
+});
+vi.mock("next/navigation", () => ({
+  redirect: (...a: unknown[]) => redirect(...a),
+  notFound: () => notFound(),
+}));
+
+// Server-side translations backed by the real message files, so the metadata
+// assertions check actual copy rather than echoed keys.
+vi.mock("next-intl/server", async () => {
+  const { default: en } = await import("@/messages/en/index.json");
+  const { default: pt } = await import("@/messages/pt/index.json");
+  return {
+    getTranslations: async ({ locale, namespace }: { locale: string; namespace: string }) => {
+      const tree = (locale === "pt" ? pt : en) as unknown as Record<string, Record<string, string>>;
+      return (key: string) => tree[namespace]?.[key] ?? key;
+    },
+  };
+});
 
 // Stub the composed client components so the page tests focus on composition.
 vi.mock("@/components/ui/Navigation", () => ({ Navigation: () => <nav data-testid="nav" /> }));
@@ -17,9 +38,12 @@ vi.mock("@/components/sections/SkillsBento", () => ({ SkillsBento: () => <div da
 vi.mock("@/components/sections/Education", () => ({ Education: () => <div data-testid="education" /> }));
 
 import Home, { generateMetadata } from "@/app/[locale]/page";
-import AboutPage from "@/app/[locale]/about/page";
-import ExperiencePage from "@/app/[locale]/experience/page";
-import SkillsPage from "@/app/[locale]/skills/page";
+import SectionRedirect, { generateStaticParams } from "@/app/[locale]/[section]/page";
+
+beforeEach(() => {
+  redirect.mockClear();
+  notFound.mockClear();
+});
 
 describe("Home page", () => {
   it("composes all sections", () => {
@@ -36,32 +60,44 @@ describe("Home page", () => {
 
   it("generates English metadata", async () => {
     const meta = await generateMetadata({ params: Promise.resolve({ locale: "en" }) });
-    expect(meta.title).toContain("Software Engineer");
+    expect(meta.title).toEqual({ absolute: "Renan Rambul | Senior Software Engineer" });
+    expect(meta.description).toContain("7+ years");
     expect(meta.openGraph?.locale).toBe("en_US");
     expect(meta.alternates?.canonical).toContain("/en");
   });
 
   it("generates Portuguese metadata", async () => {
     const meta = await generateMetadata({ params: Promise.resolve({ locale: "pt" }) });
-    expect(meta.title).toContain("Engenheiro");
+    expect(meta.title).toEqual({ absolute: "Renan Rambul | Engenheiro de Software Sênior" });
+    expect(meta.description).toContain("7 anos");
     expect(meta.openGraph?.locale).toBe("pt_BR");
     expect(meta.alternates?.canonical).toContain("/pt");
   });
 });
 
-describe("Duplicate section routes redirect to homepage anchors", () => {
-  it("redirects /about to the homepage anchor", async () => {
-    await AboutPage({ params: Promise.resolve({ locale: "en" }) });
-    expect(redirect).toHaveBeenCalledWith("/en#about");
+describe("Section routes redirect to homepage anchors", () => {
+  it.each(["about", "experience", "skills"])("redirects /%s to its anchor", async (section) => {
+    await SectionRedirect({ params: Promise.resolve({ locale: "en", section }) });
+    expect(redirect).toHaveBeenCalledWith(`/en#${section}`);
   });
 
-  it("redirects /experience to the homepage anchor", async () => {
-    await ExperiencePage({ params: Promise.resolve({ locale: "pt" }) });
+  it("keeps the locale of the request", async () => {
+    await SectionRedirect({ params: Promise.resolve({ locale: "pt", section: "experience" }) });
     expect(redirect).toHaveBeenCalledWith("/pt#experience");
   });
 
-  it("redirects /skills to the homepage anchor", async () => {
-    await SkillsPage({ params: Promise.resolve({ locale: "en" }) });
-    expect(redirect).toHaveBeenCalledWith("/en#skills");
+  it("404s anything that is not one of those sections", async () => {
+    await expect(
+      SectionRedirect({ params: Promise.resolve({ locale: "en", section: "nope" }) })
+    ).rejects.toThrow("NEXT_NOT_FOUND");
+    expect(redirect).not.toHaveBeenCalled();
+  });
+
+  it("prerenders exactly the three section routes", () => {
+    expect(generateStaticParams()).toEqual([
+      { section: "about" },
+      { section: "experience" },
+      { section: "skills" },
+    ]);
   });
 });

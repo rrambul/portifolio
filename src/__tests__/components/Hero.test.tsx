@@ -11,6 +11,7 @@ vi.mock("@/lib/scroll", () => ({
 vi.mock("@/config/site", () => ({
   siteConfig: {
     url: "https://renanrambul.dev",
+    role: { en: "Senior Software Engineer", pt: "Engenheiro de Software Sênior" },
     links: {
       github: "https://github.com/testuser",
       linkedin: "https://www.linkedin.com/in/testuser/",
@@ -41,7 +42,7 @@ describe("Hero", () => {
   it("renders name and role", () => {
     render(<Hero />);
     expect(screen.getByText("title")).toBeInTheDocument();
-    expect(screen.getByText("subtitle")).toBeInTheDocument();
+    expect(screen.getByText("Senior Software Engineer")).toBeInTheDocument();
   });
 
   it("renders CTA button", () => {

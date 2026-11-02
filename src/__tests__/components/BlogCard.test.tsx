@@ -6,7 +6,9 @@ const h = vi.hoisted(() => ({ locale: { current: "en" as string } }));
 // Mock next-intl
 vi.mock("next-intl", () => ({
   useLocale: () => h.locale.current,
-  useTranslations: () => (key: string) => key,
+  // Echo the key, plus any values, so counts like `t("count", { count })` are checkable.
+  useTranslations: () => (key: string, values?: Record<string, unknown>) =>
+    values ? `${key}:${Object.values(values).join(",")}` : key,
 }));
 
 // Mock next/image
@@ -84,7 +86,7 @@ describe("BlogCard", () => {
 
   it("renders read time", () => {
     render(<BlogCard post={mockPost} index={0} />);
-    expect(screen.getByText("5 min")).toBeInTheDocument();
+    expect(screen.getByText("readTime:5")).toBeInTheDocument();
   });
 
   it("renders the Portuguese title/excerpt, a pt-BR date, and a pt blog link for the pt locale", () => {
