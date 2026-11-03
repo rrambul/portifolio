@@ -89,6 +89,13 @@ export const learning: LearningEntry[] = [
     source: "strategizeyourcareer.com",
   },
   {
+    date: "2026-11-03",
+    title: "A Note on Distributed Computing",
+    url: "https://waldo.scholars.harvard.edu/publications/note-distributed-computing",
+    type: "paper",
+    source: "Jim Waldo, Geoff Wyant, Ann Wollrath, Sam Kendall",
+  },
+  {
     date: "2026-11-01",
     title:
       "The cost of acquisitions: What we learned about engineering from a decade of rapid growth",
