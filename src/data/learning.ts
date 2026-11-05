@@ -89,6 +89,13 @@ export const learning: LearningEntry[] = [
     source: "strategizeyourcareer.com",
   },
   {
+    date: "2026-11-05",
+    title: "Petals: Collaborative Inference and Fine-tuning of Large Models",
+    url: "https://aclanthology.org/2023.acl-demo.54/",
+    type: "paper",
+    source: "Alexander Borzunov et al.",
+  },
+  {
     date: "2026-11-03",
     title: "A Note on Distributed Computing",
     url: "https://waldo.scholars.harvard.edu/publications/note-distributed-computing",
